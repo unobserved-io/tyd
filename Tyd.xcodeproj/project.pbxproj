@@ -15,6 +15,7 @@
 		9C02532E2A4AECC200F2E68B /* TydTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02532D2A4AECC200F2E68B /* TydTests.swift */; };
 		9C0253382A4AECC200F2E68B /* TydUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253372A4AECC200F2E68B /* TydUITests.swift */; };
 		9C02533A2A4AECC200F2E68B /* TydUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */; };
+		9C2CE94D2A4AF43300AAAC52 /* TamponTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		9C0253332A4AECC200F2E68B /* TydUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TydUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0253372A4AECC200F2E68B /* TydUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITests.swift; sourceTree = "<group>"; };
 		9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamponTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				9C0253212A4AECC100F2E68B /* Day.swift */,
+				9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C2CE94D2A4AF43300AAAC52 /* TamponTimer.swift in Sources */,
 				9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */,
 				9C0253222A4AECC100F2E68B /* Day.swift in Sources */,
 				9C0253192A4AECC100F2E68B /* TydApp.swift in Sources */,
