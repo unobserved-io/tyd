@@ -15,6 +15,6 @@ struct TydApp: App {
         WindowGroup {
             HomeView()
         }
-        .modelContainer(for: Item.self)
+        .modelContainer(for: Day.self)
     }
 }

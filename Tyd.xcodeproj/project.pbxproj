@@ -11,7 +11,7 @@
 		9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02531A2A4AECC100F2E68B /* HomeView.swift */; };
 		9C02531D2A4AECC100F2E68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C02531C2A4AECC100F2E68B /* Assets.xcassets */; };
 		9C0253202A4AECC100F2E68B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C02531F2A4AECC100F2E68B /* Preview Assets.xcassets */; };
-		9C0253222A4AECC100F2E68B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253212A4AECC100F2E68B /* Item.swift */; };
+		9C0253222A4AECC100F2E68B /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253212A4AECC100F2E68B /* Day.swift */; };
 		9C02532E2A4AECC200F2E68B /* TydTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02532D2A4AECC200F2E68B /* TydTests.swift */; };
 		9C0253382A4AECC200F2E68B /* TydUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253372A4AECC200F2E68B /* TydUITests.swift */; };
 		9C02533A2A4AECC200F2E68B /* TydUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */; };
@@ -40,7 +40,7 @@
 		9C02531A2A4AECC100F2E68B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9C02531C2A4AECC100F2E68B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C02531F2A4AECC100F2E68B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		9C0253212A4AECC100F2E68B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		9C0253212A4AECC100F2E68B /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		9C0253232A4AECC100F2E68B /* Tyd.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tyd.entitlements; sourceTree = "<group>"; };
 		9C0253242A4AECC100F2E68B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C0253292A4AECC200F2E68B /* TydTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TydTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,10 +98,10 @@
 		9C0253172A4AECC100F2E68B /* Tyd */ = {
 			isa = PBXGroup;
 			children = (
+				9C2CE94B2A4AF06800AAAC52 /* Models */,
+				9C2CE94A2A4AF05A00AAAC52 /* Views */,
 				9C0253182A4AECC100F2E68B /* TydApp.swift */,
-				9C02531A2A4AECC100F2E68B /* HomeView.swift */,
 				9C02531C2A4AECC100F2E68B /* Assets.xcassets */,
-				9C0253212A4AECC100F2E68B /* Item.swift */,
 				9C0253232A4AECC100F2E68B /* Tyd.entitlements */,
 				9C0253242A4AECC100F2E68B /* Info.plist */,
 				9C02531E2A4AECC100F2E68B /* Preview Content */,
@@ -132,6 +132,22 @@
 				9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */,
 			);
 			path = TydUITests;
+			sourceTree = "<group>";
+		};
+		9C2CE94A2A4AF05A00AAAC52 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9C02531A2A4AECC100F2E68B /* HomeView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9C2CE94B2A4AF06800AAAC52 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9C0253212A4AECC100F2E68B /* Day.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,7 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */,
-				9C0253222A4AECC100F2E68B /* Item.swift in Sources */,
+				9C0253222A4AECC100F2E68B /* Day.swift in Sources */,
 				9C0253192A4AECC100F2E68B /* TydApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
