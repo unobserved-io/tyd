@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9C0253192A4AECC100F2E68B /* TydApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253182A4AECC100F2E68B /* TydApp.swift */; };
-		9C02531B2A4AECC100F2E68B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02531A2A4AECC100F2E68B /* ContentView.swift */; };
+		9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02531A2A4AECC100F2E68B /* HomeView.swift */; };
 		9C02531D2A4AECC100F2E68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C02531C2A4AECC100F2E68B /* Assets.xcassets */; };
 		9C0253202A4AECC100F2E68B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C02531F2A4AECC100F2E68B /* Preview Assets.xcassets */; };
 		9C0253222A4AECC100F2E68B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253212A4AECC100F2E68B /* Item.swift */; };
@@ -37,7 +37,7 @@
 /* Begin PBXFileReference section */
 		9C0253152A4AECC100F2E68B /* Tyd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tyd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0253182A4AECC100F2E68B /* TydApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydApp.swift; sourceTree = "<group>"; };
-		9C02531A2A4AECC100F2E68B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9C02531A2A4AECC100F2E68B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9C02531C2A4AECC100F2E68B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C02531F2A4AECC100F2E68B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9C0253212A4AECC100F2E68B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				9C0253182A4AECC100F2E68B /* TydApp.swift */,
-				9C02531A2A4AECC100F2E68B /* ContentView.swift */,
+				9C02531A2A4AECC100F2E68B /* HomeView.swift */,
 				9C02531C2A4AECC100F2E68B /* Assets.xcassets */,
 				9C0253212A4AECC100F2E68B /* Item.swift */,
 				9C0253232A4AECC100F2E68B /* Tyd.entitlements */,
@@ -264,7 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C02531B2A4AECC100F2E68B /* ContentView.swift in Sources */,
+				9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */,
 				9C0253222A4AECC100F2E68B /* Item.swift in Sources */,
 				9C0253192A4AECC100F2E68B /* TydApp.swift in Sources */,
 			);
