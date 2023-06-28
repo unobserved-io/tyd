@@ -16,6 +16,8 @@
 		9C0253382A4AECC200F2E68B /* TydUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253372A4AECC200F2E68B /* TydUITests.swift */; };
 		9C02533A2A4AECC200F2E68B /* TydUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */; };
 		9C2CE94D2A4AF43300AAAC52 /* TamponTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */; };
+		9CDF3F8C2A4C67B0007DF07F /* TImerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF3F8B2A4C67B0007DF07F /* TImerProgressBar.swift */; };
+		9CDF3F8F2A4C73B2007DF07F /* TamponTimerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF3F8E2A4C73B2007DF07F /* TamponTimerHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		9C0253372A4AECC200F2E68B /* TydUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITests.swift; sourceTree = "<group>"; };
 		9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamponTimer.swift; sourceTree = "<group>"; };
+		9CDF3F8B2A4C67B0007DF07F /* TImerProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImerProgressBar.swift; sourceTree = "<group>"; };
+		9CDF3F8E2A4C73B2007DF07F /* TamponTimerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamponTimerHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +104,9 @@
 		9C0253172A4AECC100F2E68B /* Tyd */ = {
 			isa = PBXGroup;
 			children = (
-				9C2CE94B2A4AF06800AAAC52 /* Models */,
+				9CDF3F8D2A4C739F007DF07F /* Helpers */,
+				9CDF3F8A2A4C67A3007DF07F /* Widgets */,
+				9C2CE94B2A4AF06800AAAC52 /* Data Models */,
 				9C2CE94A2A4AF05A00AAAC52 /* Views */,
 				9C0253182A4AECC100F2E68B /* TydApp.swift */,
 				9C02531C2A4AECC100F2E68B /* Assets.xcassets */,
@@ -144,13 +150,29 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		9C2CE94B2A4AF06800AAAC52 /* Models */ = {
+		9C2CE94B2A4AF06800AAAC52 /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
 				9C0253212A4AECC100F2E68B /* Day.swift */,
 				9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */,
 			);
-			path = Models;
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		9CDF3F8A2A4C67A3007DF07F /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				9CDF3F8B2A4C67B0007DF07F /* TImerProgressBar.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
+		9CDF3F8D2A4C739F007DF07F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9CDF3F8E2A4C73B2007DF07F /* TamponTimerHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,9 +305,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CDF3F8C2A4C67B0007DF07F /* TImerProgressBar.swift in Sources */,
 				9C2CE94D2A4AF43300AAAC52 /* TamponTimer.swift in Sources */,
 				9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */,
 				9C0253222A4AECC100F2E68B /* Day.swift in Sources */,
+				9CDF3F8F2A4C73B2007DF07F /* TamponTimerHelper.swift in Sources */,
 				9C0253192A4AECC100F2E68B /* TydApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

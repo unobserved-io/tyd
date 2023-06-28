@@ -21,8 +21,7 @@ final class Day {
     var pmsSymptoms: [String]
     var pmsMedsTaken: [[String]]
     var pmsNotes: String
-    var timerData: [[TamponTimer]]
-    
+    var timerData: [TamponTimer]
     
     init(day: String) {
         self.day = day
