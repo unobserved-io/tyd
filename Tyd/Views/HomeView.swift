@@ -16,6 +16,10 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
+            Text("DAY 29")
+                .bold()
+                .padding(.bottom)
+            
             ZStack {
                 // TODO: Only show if the timer is running
                 if tamponTimer.isRunning {
@@ -32,13 +36,24 @@ struct HomeView: View {
                         .opacity(0.3)
                 }
             }
-            .padding(.top)
-
-            Button("Progress") {
-                timerProgress += 0.1
-                tamponTimer.isRunning = true
+            
+            //TODO: If not on period or PMS, show the helper text
+            // Tampon timer will also only be available when on period, so this
+            // won't show when tampon timer is on.
+            if !tamponTimer.isRunning {
+                VStack {
+                    Text("Tap for period")
+                        .foregroundStyle(.accent)
+                    Text("Hold for PMS")
+                        .foregroundStyle(.accent)
+                }
+                .padding(.top)
             }
-            Spacer()
+
+//            Button("Progress") {
+//                timerProgress += 0.1
+//                tamponTimer.isRunning = true
+//            }
         }
     }
 }
