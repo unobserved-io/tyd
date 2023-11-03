@@ -1,5 +1,5 @@
 //
-//  TImerProgressBar.swift
+//  TimerProgressBar.swift
 //  Tyd
 //
 //  Created by Ricky Kresslein on 6/28/23.
