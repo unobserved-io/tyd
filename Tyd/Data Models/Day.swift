@@ -25,5 +25,16 @@ final class Day {
     
     init(day: String) {
         self.day = day
+        self.period = false
+        self.pms = false
+        self.bleeding = 0
+        self.pain = 0
+        self.periodSymptoms = []
+        self.periodMedsTaken = [[]]
+        self.periodNotes = ""
+        self.pmsSymptoms = []
+        self.pmsMedsTaken = [[]]
+        self.pmsNotes = ""
+        self.timerData = []
     }
 }

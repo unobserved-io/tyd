@@ -12,11 +12,12 @@ import SwiftData
 final class TamponTimer {
     var type: String
     var startTime: Date
-    var stopTime: Date
+    var stopTime: Date?
     
     init(type: String, startTime: Date) {
         self.type = type
         self.startTime = startTime
+        self.stopTime = nil
     }
     
     func setStopTime(_ stopTime: Date) {
