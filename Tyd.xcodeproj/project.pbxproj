@@ -16,6 +16,7 @@
 		9C0253382A4AECC200F2E68B /* TydUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253372A4AECC200F2E68B /* TydUITests.swift */; };
 		9C02533A2A4AECC200F2E68B /* TydUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */; };
 		9C2CE94D2A4AF43300AAAC52 /* TamponTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */; };
+		9C82B0702A4E1CD900ACFA5D /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C82B06F2A4E1CD900ACFA5D /* TabView.swift */; };
 		9CDF3F8C2A4C67B0007DF07F /* TImerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF3F8B2A4C67B0007DF07F /* TImerProgressBar.swift */; };
 		9CDF3F8F2A4C73B2007DF07F /* TamponTimerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF3F8E2A4C73B2007DF07F /* TamponTimerHelper.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		9C0253372A4AECC200F2E68B /* TydUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITests.swift; sourceTree = "<group>"; };
 		9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamponTimer.swift; sourceTree = "<group>"; };
+		9C82B06F2A4E1CD900ACFA5D /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		9CDF3F8B2A4C67B0007DF07F /* TImerProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TImerProgressBar.swift; sourceTree = "<group>"; };
 		9CDF3F8E2A4C73B2007DF07F /* TamponTimerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamponTimerHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				9C02531A2A4AECC100F2E68B /* HomeView.swift */,
+				9C82B06F2A4E1CD900ACFA5D /* TabView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				9C2CE94D2A4AF43300AAAC52 /* TamponTimer.swift in Sources */,
 				9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */,
 				9C0253222A4AECC100F2E68B /* Day.swift in Sources */,
+				9C82B0702A4E1CD900ACFA5D /* TabView.swift in Sources */,
 				9CDF3F8F2A4C73B2007DF07F /* TamponTimerHelper.swift in Sources */,
 				9C0253192A4AECC100F2E68B /* TydApp.swift in Sources */,
 			);
