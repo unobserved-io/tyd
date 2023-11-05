@@ -10,9 +10,21 @@ import SwiftData
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var days: [Day]
+    @Query private var dayData: [Day]
+//    static var today: String { getTodaysDate() }
+//    let dayData = #Predicate<Day> { day in
+//        day.day == today
+//    }
     var tamponTimer = TamponTimerHelper.sharedInstance
     @State var timerProgress: Float = 0.0
+    
+//    init() {
+//        let today = getTodaysDate()
+//        let predicate = #Predicate<Day> { day in
+//            day.day == today
+//        }
+//        _dayData = Query(filter: predicate)
+//    }
     
     var body: some View {
         VStack {
@@ -21,7 +33,6 @@ struct HomeView: View {
                 .padding(.bottom)
             
             ZStack {
-                // TODO: Only show if the timer is running
                 if tamponTimer.isRunning {
                     ProgressBar(progress: $timerProgress)
                         .offset(y: 40)
@@ -50,6 +61,7 @@ struct HomeView: View {
                 .padding(.top)
             }
 
+            
 //            Button("Progress") {
 //                timerProgress += 0.1
 //                tamponTimer.isRunning = true
@@ -60,5 +72,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .modelContainer(for: Day.self, inMemory: true)
+//        .modelContainer(for: Day.self, inMemory: true)
 }

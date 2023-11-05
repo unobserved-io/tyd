@@ -11,6 +11,7 @@ import SwiftData
 @Model
 final class Day {
     var day: String
+    var date: Date
     var period: Bool
     var pms: Bool
     var bleeding: Int
@@ -25,6 +26,7 @@ final class Day {
     
     init(day: String) {
         self.day = day
+        self.date = dateFormatter.date(from: day) ?? Date.now
         self.period = false
         self.pms = false
         self.bleeding = 0

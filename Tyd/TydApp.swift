@@ -13,8 +13,9 @@ struct TydApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
+//            HomeView()
+            LoadingView()
         }
-        .modelContainer(for: Day.self)
+//        .modelContainer(for: Day.self)
     }
 }
