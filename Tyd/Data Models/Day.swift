@@ -10,12 +10,12 @@ import SwiftData
 
 @Model
 final class Day {
-    var day: String
+    @Attribute(.unique) var day: String
     var date: Date
     var period: Bool
     var pms: Bool
-    var bleeding: Int
-    var pain: Int
+    var bleeding: Double
+    var pain: Double
     var periodSymptoms: [String]
     var periodMedsTaken: [[String]]
     var periodNotes: String
@@ -29,8 +29,8 @@ final class Day {
         self.date = dateFormatter.date(from: day) ?? Date.now
         self.period = false
         self.pms = false
-        self.bleeding = 0
-        self.pain = 0
+        self.bleeding = 0.0
+        self.pain = 0.0
         self.periodSymptoms = []
         self.periodMedsTaken = [[]]
         self.periodNotes = ""

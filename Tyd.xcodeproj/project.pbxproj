@@ -15,6 +15,7 @@
 		9C02532E2A4AECC200F2E68B /* TydTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02532D2A4AECC200F2E68B /* TydTests.swift */; };
 		9C0253382A4AECC200F2E68B /* TydUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253372A4AECC200F2E68B /* TydUITests.swift */; };
 		9C02533A2A4AECC200F2E68B /* TydUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */; };
+		9C2AF4AB2AF78FB600A05699 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2AF4AA2AF78FB600A05699 /* CalendarView.swift */; };
 		9C2CE94D2A4AF43300AAAC52 /* TamponTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */; };
 		9C412BCE2AF50B320051DBAF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCD2AF50B320051DBAF /* LoadingView.swift */; };
 		9C412BD02AF50B570051DBAF /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCF2AF50B570051DBAF /* TabsView.swift */; };
@@ -55,6 +56,7 @@
 		9C0253332A4AECC200F2E68B /* TydUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TydUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0253372A4AECC200F2E68B /* TydUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITests.swift; sourceTree = "<group>"; };
 		9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9C2AF4AA2AF78FB600A05699 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamponTimer.swift; sourceTree = "<group>"; };
 		9C412BCD2AF50B320051DBAF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		9C412BCF2AF50B570051DBAF /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
@@ -154,8 +156,9 @@
 		9C2CE94A2A4AF05A00AAAC52 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9C412BCC2AF50B240051DBAF /* Overviews */,
+				9C2AF4AA2AF78FB600A05699 /* CalendarView.swift */,
 				9C02531A2A4AECC100F2E68B /* HomeView.swift */,
+				9C412BCC2AF50B240051DBAF /* Overviews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				9C412BCE2AF50B320051DBAF /* LoadingView.swift in Sources */,
 				9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */,
 				9C0253222A4AECC100F2E68B /* Day.swift in Sources */,
+				9C2AF4AB2AF78FB600A05699 /* CalendarView.swift in Sources */,
 				9CF9E1902AF4F618002BF692 /* Globals.swift in Sources */,
 				9C412BD02AF50B570051DBAF /* TabsView.swift in Sources */,
 				9CDF3F8F2A4C73B2007DF07F /* TamponTimerHelper.swift in Sources */,

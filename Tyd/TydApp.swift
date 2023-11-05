@@ -16,6 +16,6 @@ struct TydApp: App {
 //            HomeView()
             LoadingView()
         }
-//        .modelContainer(for: Day.self)
+        .modelContainer(for: Day.self)
     }
 }
