@@ -11,32 +11,28 @@ import SwiftData
 @Model
 final class Day {
     @Attribute(.unique) var day: String
-    var date: Date
     var period: Bool
     var pms: Bool
     var bleeding: Double
     var pain: Double
-    var periodSymptoms: [String]
+    var periodSymptoms: Set<String>
     var periodMedsTaken: [[String]]
-    var periodNotes: String
-    var pmsSymptoms: [String]
+    var pmsSymptoms: Set<String>
     var pmsMedsTaken: [[String]]
-    var pmsNotes: String
+    var notes: String
     var timerData: [TamponTimer]
     
     init(day: String) {
         self.day = day
-        self.date = dateFormatter.date(from: day) ?? Date.now
         self.period = false
         self.pms = false
         self.bleeding = 0.0
         self.pain = 0.0
         self.periodSymptoms = []
         self.periodMedsTaken = [[]]
-        self.periodNotes = ""
         self.pmsSymptoms = []
         self.pmsMedsTaken = [[]]
-        self.pmsNotes = ""
+        self.notes = ""
         self.timerData = []
     }
 }
