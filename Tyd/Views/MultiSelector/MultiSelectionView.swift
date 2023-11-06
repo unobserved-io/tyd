@@ -39,16 +39,3 @@ struct MultiSelectionView: View {
         }
     }
 }
-
-struct MultiSelectionView_Previews: PreviewProvider {
-    @State static var selected: Set<String> = Set(["A", "C"].map { $0 })
-
-    static var previews: some View {
-        NavigationStack {
-            MultiSelectionView(
-                options: ["A", "B", "C", "D"],
-                selected: $selected
-            )
-        }
-    }
-}
