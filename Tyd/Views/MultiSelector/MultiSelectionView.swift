@@ -32,8 +32,8 @@ struct MultiSelectionView: View {
     }
 
     private func toggleSelection(selectable: String) {
-        if let existingIndex = selected.firstIndex(of: selectable) {
-            selected.remove(at: existingIndex)
+        if selected.contains(selectable) {
+            selected.remove(selectable)
         } else {
             selected.insert(selectable)
         }

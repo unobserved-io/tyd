@@ -16,12 +16,11 @@ final class Day {
     var bleeding: Double
     var pain: Double
     var periodSymptoms: Set<String>
-    var periodMedsTaken: [[String]]
     var pmsSymptoms: Set<String>
-    var pmsMedsTaken: [[String]]
+    var medication: [Medication]
     var notes: String
     var timerData: [TamponTimer]
-    
+
     init(day: String) {
         self.day = day
         self.period = false
@@ -29,9 +28,8 @@ final class Day {
         self.bleeding = 0.0
         self.pain = 0.0
         self.periodSymptoms = []
-        self.periodMedsTaken = [[]]
         self.pmsSymptoms = []
-        self.pmsMedsTaken = [[]]
+        self.medication = []
         self.notes = ""
         self.timerData = []
     }
