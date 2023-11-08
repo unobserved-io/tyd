@@ -17,12 +17,12 @@ struct CalendarView: View {
     @State private var showAddMedSheet: Bool = false
     @StateObject var clickedMedication = ClickedMedication(nil)
     
-    init() {
-        updateSelectedDay()
-        if appData.isEmpty {
-            // TODO: Create new AppData value
-        }
-    }
+//    init() {
+//        updateSelectedDay()
+//        if appData.isEmpty {
+//            // TODO: Create new AppData value
+//        }
+//    }
 
     var body: some View {
         NavigationStack {
@@ -134,9 +134,10 @@ struct CalendarView: View {
         let predicate = #Predicate<Day> { day in
             day.day == selectedDateString
         }
-        
         let data = try? dayData.filter(predicate)
         selectedDayData = data?.first ?? Day(day: getTodaysDate())
+//        let descriptor = FetchDescriptor<Day>(predicate: predicate)
+//        selectedDayData = try! modelContext.fetch(descriptor).first ?? Day(day: getTodaysDate())
     }
 }
 

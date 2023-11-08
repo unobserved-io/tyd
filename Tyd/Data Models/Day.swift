@@ -10,16 +10,16 @@ import SwiftData
 
 @Model
 final class Day {
-    @Attribute(.unique) var day: String
+    var day: String
     var period: Bool
     var pms: Bool
     var bleeding: Double
     var pain: Double
     var periodSymptoms: Set<String>
     var pmsSymptoms: Set<String>
-    var medication: [Medication]
+    var medication: [Medication]?
     var notes: String
-    var timerData: [TamponTimer]
+    var timerData: [TamponTimer]?
 
     init(day: String) {
         self.day = day

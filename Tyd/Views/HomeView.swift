@@ -60,10 +60,10 @@ struct HomeView: View {
                 .padding(.top)
             }
 
-//            Button("Progress") {
-//                timerProgress += 0.1
-//                tamponTimer.isRunning = true
-//            }
+            Button("Progress") {
+                timerProgress += 0.1
+                tamponTimer.isRunning = true
+            }
         }
     }
 }
