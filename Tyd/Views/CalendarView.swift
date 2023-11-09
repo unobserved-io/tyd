@@ -15,7 +15,6 @@ struct CalendarView: View {
     @State private var datePredicate: Predicate<Day> = #Predicate<Day> { day in
         day.day == today
     }
-    @State var testInt = 2
 
     var body: some View {
         NavigationStack {
