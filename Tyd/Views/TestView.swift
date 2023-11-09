@@ -19,8 +19,6 @@ struct TestView: View {
 //    @State var selectedDayData: Day = .init(day: getTodaysDate())
 //    @Query private var dayData: [Day]
 //    @Query private var appData: [AppData]
-//    @State private var showAddMedSheet: Bool = false
-//    @StateObject var clickedMedication = ClickedMedication(nil)
 
     var body: some View {
         NavigationStack {

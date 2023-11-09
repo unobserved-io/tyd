@@ -12,26 +12,20 @@ struct AddEditMedicationView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var medication: ClickedMedication
     @Query private var appData: [AppData]
-    let dayTaken: String
     @State var medName: String = ""
     @State var medTime: Date = .now
     @State var medDose: String = ""
 
-    init(dayTaken: String = "") {
-        self.dayTaken = dayTaken
-//        dayTakenString = dateFormatter.string(from: dayTaken)
-//        _dayData = FetchRequest(
-//            sortDescriptors: [],
-//            predicate: NSPredicate(format: "date = %@", dayTakenString)
-//        )
-    }
-
     var body: some View {
-        Form {
+        VStack {
             // Name field
-            Picker("Medication", selection: $medName) {
-                ForEach(appData.first?.medication ?? [], id: \.self) { name in
-                    Text(LocalizedStringKey(name.localizedCapitalized))
+            HStack {
+                Text("Medication")
+                Spacer()
+                Picker("Medication", selection: $medName) {
+                    ForEach(appData.first?.medication ?? [], id: \.self) { name in
+                        Text(LocalizedStringKey(name.localizedCapitalized))
+                    }
                 }
             }
 
@@ -44,7 +38,36 @@ struct AddEditMedicationView: View {
             )
 
             // Dose field
-            TextField("Dose", text: $medDose)
+            HStack {
+                Text("Dose")
+//                    .frame(alignment: .leading)
+                Spacer()
+                TextField("20 mg, etc.", text: $medDose)
+                    .multilineTextAlignment(.trailing)
+            }
+            
+            // Save & Cancel
+            HStack(spacing: 15) {
+                Button("Save") {
+                    // TODO: Save behavior
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(.accentColor)
+                Button("Cancel") {
+                    // TODO: Cancel behavior
+                }
+                .buttonStyle(.bordered)
+            }
+            .padding(.top, 10)
+        }
+        .padding()
+        .onAppear {
+            medName = medication.medication?.name ?? ""
+            if medName.isEmpty {
+                medName = appData.first?.medication.first ?? ""
+            }
+            medTime = medication.medication?.time ?? .now
+            medDose = medication.medication?.dose ?? ""
         }
     }
 }

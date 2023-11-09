@@ -12,6 +12,8 @@ struct UnderCalendarView: View {
     @Query var dayData: [Day]
     let date: Date
     @Environment(\.modelContext) private var modelContext
+    @State private var showAddMedSheet: Bool = false
+    @StateObject var clickedMedication = ClickedMedication(nil)
     
     init(predicate: Predicate<Day>, date: Date) {
         _dayData = Query(filter: predicate)
@@ -39,6 +41,14 @@ struct UnderCalendarView: View {
         .onChange(of: date) {
 //            print("\(dateFormatter.string(from: date)) CHANGED")
             checkForAndCreateDate()
+        }
+        .sheet(isPresented: $showAddMedSheet) {
+            if clickedMedication.medication != nil {
+                AddEditMedicationView()
+                    .environmentObject(clickedMedication)
+                    .navigationTitle("Add Medication")
+                    .presentationDetents([.medicationInput])
+            }
         }
                     
         if dayData.first?.period ?? false || dayData.first?.pms ?? false {
@@ -92,22 +102,24 @@ struct UnderCalendarView: View {
             }
                         
             // Medication
-            //            Section {
-            //                // Med drop down from meds list
-            //                //                        for medication in selectedDayData.medication {
-            //                //
-            //                //                        }
-            //                Button("Add medication") {
-            //                    clickedMedication.medication = Medication()
-            //                    showAddMedSheet.toggle()
-            //                }
-            //            }
+            Section {
+                // Med drop down from meds list
+                //                        for medication in selectedDayData.medication {
+                //
+                //                        }
+                Button("Add medication") {
+                    // TODO: Add a new Medication to the days meds
+                    clickedMedication.medication = Medication()
+                    showAddMedSheet.toggle()
+                }
+            }
                         
             // Notes
             Section {
                 TextField("Notes", text: Bindable(dayData.first ?? Day(day: getTodaysDate())).notes, axis: .vertical)
             }
         }
+        
     }
     
     func checkForAndCreateDate() {

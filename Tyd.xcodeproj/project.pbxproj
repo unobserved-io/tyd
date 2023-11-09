@@ -19,6 +19,7 @@
 		9C2CE94D2A4AF43300AAAC52 /* TamponTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */; };
 		9C412BCE2AF50B320051DBAF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCD2AF50B320051DBAF /* LoadingView.swift */; };
 		9C412BD02AF50B570051DBAF /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCF2AF50B570051DBAF /* TabsView.swift */; };
+		9C6B38182AFCE47200A4F987 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6B38172AFCE47200A4F987 /* Extensions.swift */; };
 		9C86E4552AF8D660000F84D5 /* MultiSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4542AF8D660000F84D5 /* MultiSelector.swift */; };
 		9C86E4572AF8D66B000F84D5 /* MultiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */; };
 		9C86E4592AF8DC6E000F84D5 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4582AF8DC6E000F84D5 /* AppData.swift */; };
@@ -68,6 +69,7 @@
 		9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamponTimer.swift; sourceTree = "<group>"; };
 		9C412BCD2AF50B320051DBAF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		9C412BCF2AF50B570051DBAF /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
+		9C6B38172AFCE47200A4F987 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9C86E4542AF8D660000F84D5 /* MultiSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelector.swift; sourceTree = "<group>"; };
 		9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectionView.swift; sourceTree = "<group>"; };
 		9C86E4582AF8DC6E000F84D5 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 			children = (
 				9CF9E18F2AF4F618002BF692 /* Globals.swift */,
 				9CF9E1912AF4F6CD002BF692 /* Functions.swift */,
+				9C6B38172AFCE47200A4F987 /* Extensions.swift */,
 			);
 			path = Globals;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				9CF9E1902AF4F618002BF692 /* Globals.swift in Sources */,
 				9CED713F2AFAC4CB006D5732 /* UnderCalendarView.swift in Sources */,
 				9C412BD02AF50B570051DBAF /* TabsView.swift in Sources */,
+				9C6B38182AFCE47200A4F987 /* Extensions.swift in Sources */,
 				9CDF3F8F2A4C73B2007DF07F /* TamponTimerHelper.swift in Sources */,
 				9C0253192A4AECC100F2E68B /* TydApp.swift in Sources */,
 				9CED71392AFA9B7C006D5732 /* ClickedMedication.swift in Sources */,

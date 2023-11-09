@@ -124,7 +124,7 @@ struct CalendarView: View {
                 AddEditMedicationView()
                     .environmentObject(clickedMedication)
                     .navigationTitle("Add Medication")
-                    .presentationDetents([.medium])
+                    .presentationDetents([.medicationInput])
             }
         }
     }

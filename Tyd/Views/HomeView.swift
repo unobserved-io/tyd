@@ -10,7 +10,6 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
-//    @Query private var dayData: [Day]
     static var today: String { getTodaysDate() }
     let dayData = #Predicate<Day> { day in
         day.day == today
