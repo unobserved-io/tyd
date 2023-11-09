@@ -10,19 +10,12 @@ import SwiftUI
 
 struct CalendarView: View {
     @Environment(\.modelContext) private var modelContext
-    @State var date: Date = .now
-    @State var selectedDayData: Day = .init(day: getTodaysDate())
-    @Query private var dayData: [Day]
-    @Query private var appData: [AppData]
-    @State private var showAddMedSheet: Bool = false
-    @StateObject var clickedMedication = ClickedMedication(nil)
-    
-//    init() {
-//        updateSelectedDay()
-//        if appData.isEmpty {
-//            // TODO: Create new AppData value
-//        }
-//    }
+    static var today: String { getTodaysDate() }
+    @State private var date: Date = .now
+    @State private var datePredicate: Predicate<Day> = #Predicate<Day> { day in
+        day.day == today
+    }
+    @State var testInt = 2
 
     var body: some View {
         NavigationStack {
@@ -35,109 +28,17 @@ struct CalendarView: View {
                         displayedComponents: [.date]
                     )
                     .datePickerStyle(.graphical)
-                }
-                
-                Section {
-                    if !Calendar.current.isDateInToday(date) {
-                        if !selectedDayData.pms {
-                            Toggle("Period", isOn: $selectedDayData.period)
-                                .tint(.accentColor)
-                        }
-                        if !selectedDayData.period {
-                            Toggle("PMS", isOn: $selectedDayData.pms)
-                                .tint(.accentColor)
+                    .onChange(of: date) { oldDate, newDate in
+                        let dateString = dateFormatter.string(from: newDate)
+                        datePredicate = #Predicate<Day> { day in
+                            day.day == dateString
                         }
                     }
                 }
                 
-                if selectedDayData.period || selectedDayData.pms {
-                    Section {
-                        // Bleeding
-                        if selectedDayData.period {
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text("Bleeding")
-                                    Spacer()
-                                    Text("\(Int(selectedDayData.bleeding))")
-                                }
-                                Slider(
-                                    value: $selectedDayData.bleeding,
-                                    in: 0 ... 10,
-                                    step: 1.0
-                                )
-                            }
-                        }
-                        
-                        // Pain
-                        VStack(alignment: .leading) {
-                            HStack {
-                                Text("Pain")
-                                Spacer()
-                                Text("\(Int(selectedDayData.pain))")
-                            }
-                            Slider(
-                                value: $selectedDayData.pain,
-                                in: 0 ... 10,
-                                step: 1.0
-                            )
-                        }
-                    }
-                    
-                    // Symptoms
-                    Section {
-                        if selectedDayData.period {
-                            MultiSelector(
-                                label: String(localized: "Symptoms"),
-                                options: ["symp1", "symp2"],
-                                selected: $selectedDayData.periodSymptoms
-                            )
-                        } else {
-                            MultiSelector(
-                                label: String(localized: "Symptoms"),
-                                options: ["symp1", "symp2"],
-                                selected: $selectedDayData.pmsSymptoms
-                            )
-                        }
-                    }
-                    
-                    // Medication
-                    Section {
-                        // Med drop down from meds list
-//                        for medication in selectedDayData.medication {
-//
-//                        }
-                        Button("Add medication") {
-                            clickedMedication.medication = Medication()
-                            showAddMedSheet.toggle()
-                        }
-                    }
-                    
-                    // Notes
-                    Section {
-                        TextField("Notes", text: $selectedDayData.notes, axis: .vertical)
-                    }
-                }
+                UnderCalendarView(predicate: datePredicate, date: date)
             }
         }
-        .sheet(isPresented: $showAddMedSheet) {
-            if clickedMedication.medication != nil {
-                AddEditMedicationView()
-                    .environmentObject(clickedMedication)
-                    .navigationTitle("Add Medication")
-                    .presentationDetents([.medicationInput])
-            }
-        }
-    }
-    
-    func updateSelectedDay() {
-        let selectedDateString = dateFormatter.string(from: date)
-        let predicate = #Predicate<Day> { day in
-            day.day == selectedDateString
-        }
-        let data = try? dayData.filter(predicate)
-        selectedDayData = data?.first ?? Day(day: getTodaysDate())
-//        let descriptor = FetchDescriptor<Day>(predicate: predicate)
-//        selectedDayData = try! modelContext.fetch(descriptor).first ?? Day(day: getTodaysDate())
     }
 }
 

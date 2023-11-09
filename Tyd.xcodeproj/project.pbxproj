@@ -15,7 +15,6 @@
 		9C02532E2A4AECC200F2E68B /* TydTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02532D2A4AECC200F2E68B /* TydTests.swift */; };
 		9C0253382A4AECC200F2E68B /* TydUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253372A4AECC200F2E68B /* TydUITests.swift */; };
 		9C02533A2A4AECC200F2E68B /* TydUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */; };
-		9C2AF4AB2AF78FB600A05699 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2AF4AA2AF78FB600A05699 /* CalendarView.swift */; };
 		9C2CE94D2A4AF43300AAAC52 /* TamponTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */; };
 		9C412BCE2AF50B320051DBAF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCD2AF50B320051DBAF /* LoadingView.swift */; };
 		9C412BD02AF50B570051DBAF /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCF2AF50B570051DBAF /* TabsView.swift */; };
@@ -28,7 +27,7 @@
 		9CED71362AFA9A02006D5732 /* AddEditMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED71352AFA9A02006D5732 /* AddEditMedicationView.swift */; };
 		9CED71392AFA9B7C006D5732 /* ClickedMedication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED71382AFA9B7C006D5732 /* ClickedMedication.swift */; };
 		9CED713B2AFAA458006D5732 /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713A2AFAA458006D5732 /* Medication.swift */; };
-		9CED713D2AFABEAA006D5732 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713C2AFABEAA006D5732 /* TestView.swift */; };
+		9CED713D2AFABEAA006D5732 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713C2AFABEAA006D5732 /* CalendarView.swift */; };
 		9CED713F2AFAC4CB006D5732 /* UnderCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713E2AFAC4CB006D5732 /* UnderCalendarView.swift */; };
 		9CF9E1902AF4F618002BF692 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9E18F2AF4F618002BF692 /* Globals.swift */; };
 		9CF9E1922AF4F6CD002BF692 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9E1912AF4F6CD002BF692 /* Functions.swift */; };
@@ -65,7 +64,6 @@
 		9C0253332A4AECC200F2E68B /* TydUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TydUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0253372A4AECC200F2E68B /* TydUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITests.swift; sourceTree = "<group>"; };
 		9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		9C2AF4AA2AF78FB600A05699 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamponTimer.swift; sourceTree = "<group>"; };
 		9C412BCD2AF50B320051DBAF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		9C412BCF2AF50B570051DBAF /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
@@ -78,7 +76,7 @@
 		9CED71352AFA9A02006D5732 /* AddEditMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddEditMedicationView.swift; path = Tyd/Views/AddEditMedicationView.swift; sourceTree = SOURCE_ROOT; };
 		9CED71382AFA9B7C006D5732 /* ClickedMedication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickedMedication.swift; sourceTree = "<group>"; };
 		9CED713A2AFAA458006D5732 /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
-		9CED713C2AFABEAA006D5732 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		9CED713C2AFABEAA006D5732 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		9CED713E2AFAC4CB006D5732 /* UnderCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderCalendarView.swift; sourceTree = "<group>"; };
 		9CF9E18F2AF4F618002BF692 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		9CF9E1912AF4F6CD002BF692 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -176,10 +174,9 @@
 			isa = PBXGroup;
 			children = (
 				9C86E4532AF8D63D000F84D5 /* MultiSelector */,
-				9C2AF4AA2AF78FB600A05699 /* CalendarView.swift */,
 				9C02531A2A4AECC100F2E68B /* HomeView.swift */,
 				9C412BCC2AF50B240051DBAF /* Overviews */,
-				9CED713C2AFABEAA006D5732 /* TestView.swift */,
+				9CED713C2AFABEAA006D5732 /* CalendarView.swift */,
 				9CED713E2AFAC4CB006D5732 /* UnderCalendarView.swift */,
 			);
 			path = Views;
@@ -385,11 +382,10 @@
 				9CF9E1922AF4F6CD002BF692 /* Functions.swift in Sources */,
 				9CED713B2AFAA458006D5732 /* Medication.swift in Sources */,
 				9C412BCE2AF50B320051DBAF /* LoadingView.swift in Sources */,
-				9CED713D2AFABEAA006D5732 /* TestView.swift in Sources */,
+				9CED713D2AFABEAA006D5732 /* CalendarView.swift in Sources */,
 				9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */,
 				9C0253222A4AECC100F2E68B /* Day.swift in Sources */,
 				9C86E4552AF8D660000F84D5 /* MultiSelector.swift in Sources */,
-				9C2AF4AB2AF78FB600A05699 /* CalendarView.swift in Sources */,
 				9C86E4572AF8D66B000F84D5 /* MultiSelectionView.swift in Sources */,
 				9CF9E1902AF4F618002BF692 /* Globals.swift in Sources */,
 				9CED713F2AFAC4CB006D5732 /* UnderCalendarView.swift in Sources */,

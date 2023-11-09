@@ -18,15 +18,15 @@ struct TabsView: View {
                     Image(systemName: "house")
                 }
 
-//            CalendarView()
-//                .tabItem {
-//                    Image(systemName: "calendar")
-//                }
-//
-            TestView()
+            CalendarView()
                 .tabItem {
-                    Image(systemName: "timer")
+                    Image(systemName: "calendar")
                 }
+//
+//            TestView()
+//                .tabItem {
+//                    Image(systemName: "timer")
+//                }
 //
 //            HomeView()
 //                .tabItem {
