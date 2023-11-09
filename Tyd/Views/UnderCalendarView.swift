@@ -28,13 +28,16 @@ struct UnderCalendarView: View {
                 Toggle("PMS", isOn: Bindable(dayData.first ?? Day(day: getTodaysDate())).pms)
                     .tint(.accentColor)
             }
+            if dayData.first == nil {
+                Text("No Data")
+            }
         }
         .onAppear {
-            print("\(dateFormatter.string(from: date)) APPEARED")
+//            print("\(dateFormatter.string(from: date)) APPEARED")
             checkForAndCreateDate()
         }
         .onChange(of: date) {
-            print("\(dateFormatter.string(from: date)) CHANGED")
+//            print("\(dateFormatter.string(from: date)) CHANGED")
             checkForAndCreateDate()
         }
                     
@@ -109,10 +112,10 @@ struct UnderCalendarView: View {
     
     func checkForAndCreateDate() {
         DispatchQueue.main.async {
-            print("CHECKED")
+//            print("CHECKED")
             if dayData.first == nil {
                 modelContext.insert(Day(day: dateFormatter.string(from: date)))
-                print("CREATED")
+//                print("CREATED")
             }
         }
     }
