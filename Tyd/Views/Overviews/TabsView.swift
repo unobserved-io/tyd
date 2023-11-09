@@ -23,17 +23,17 @@ struct TabsView: View {
                     Image(systemName: "calendar")
                 }
 //
-//            TestView()
+//            TimerView()
 //                .tabItem {
 //                    Image(systemName: "timer")
 //                }
 //
-//            HomeView()
+//            StatsView()
 //                .tabItem {
 //                    Image(systemName: "chart.bar")
 //                }
 //
-//            HomeView()
+//            SettingsView()
 //                .tabItem {
 //                    Image(systemName: "gear")
 //                }
