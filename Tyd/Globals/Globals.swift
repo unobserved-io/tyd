@@ -24,3 +24,46 @@ let calendar: Calendar = {
     calendar.timeZone = TimeZone.current
     return calendar
 }()
+
+let defaultPeriodSymptoms = [
+    "Anxious",
+    "Back pain",
+    "Bloating",
+    "Breast tenderness",
+    "Constipation",
+    "Cramps",
+    "Diarrhea",
+    "Fatigue",
+    "Headache",
+    "Insomnia",
+    "Irritable",
+    "Joint pain",
+    "Muscle aches",
+    "Nausea",
+    "Painful defecation",
+    "Pimples"
+]
+
+let defaultPmsSymptoms = [
+    "Anger",
+    "Anxious",
+    "Back pain",
+    "Bloating",
+    "Breast tenderness",
+    "Changed appetite",
+    "Changed sex drive",
+    "Constipation",
+    "Cramps",
+    "Diarrhea",
+    "Dizziness",
+    "Fatigue",
+    "Headache",
+    "Insomnia",
+    "Irritable",
+    "Joint pain",
+    "Muscle aches",
+    "Nausea",
+    "Painful defecation",
+    "Pimples",
+    "Sadness"
+]

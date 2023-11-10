@@ -9,9 +9,10 @@ import SwiftData
 import SwiftUI
 
 struct UnderCalendarView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query var appData: [AppData]
     @Query var dayData: [Day]
     let date: Date
-    @Environment(\.modelContext) private var modelContext
     @State private var showAddMedSheet: Bool = false
     static var defaultUUID: UUID { UUID() }
     @State private var medicationPredicate: Predicate<Medication> = #Predicate<Medication> { medication in
@@ -86,13 +87,13 @@ struct UnderCalendarView: View {
                 if dayData.first?.period ?? false {
                     MultiSelector(
                         label: String(localized: "Symptoms"),
-                        options: ["symp1", "symp2"],
+                        options: defaultPeriodSymptoms + (appData.first?.periodSymptoms ?? []),
                         selected: Bindable(dayData.first ?? Day(day: getTodaysDate())).periodSymptoms
                     )
                 } else {
                     MultiSelector(
                         label: String(localized: "Symptoms"),
-                        options: ["symp1", "symp2"],
+                        options: defaultPmsSymptoms + (appData.first?.pmsSymptoms ?? []),
                         selected: Bindable(dayData.first ?? Day(day: getTodaysDate())).pmsSymptoms
                     )
                 }
