@@ -103,6 +103,8 @@ struct UnderCalendarView: View {
                 ForEach(dayData.first?.medication ?? []) { medication in
                     Text("\(timeFormatter.string(from: medication.time)) - \(medication.dose) \(medication.name)")
                 }
+                .onDelete(perform: deleteMedication)
+                
                 Button("Add medication") {
                     let newMedication = Medication()
                     modelContext.insert(newMedication)
@@ -122,10 +124,21 @@ struct UnderCalendarView: View {
         }
     }
     
-    func checkForAndCreateDate() {
+    private func checkForAndCreateDate() {
         DispatchQueue.main.async {
             if dayData.first == nil {
                 modelContext.insert(Day(day: dateFormatter.string(from: date)))
+            }
+        }
+    }
+    
+    private func deleteMedication(at offsets: IndexSet) {
+        let index = offsets.first
+        if index != nil {
+            let medToDelete: Medication? = dayData.first?.medication?[index!]
+            if medToDelete != nil {
+                dayData.first?.medication?.remove(at: index!)
+                modelContext.delete(medToDelete!)
             }
         }
     }
