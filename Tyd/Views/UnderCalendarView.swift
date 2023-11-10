@@ -13,7 +13,10 @@ struct UnderCalendarView: View {
     let date: Date
     @Environment(\.modelContext) private var modelContext
     @State private var showAddMedSheet: Bool = false
-    @StateObject var clickedMedication = ClickedMedication(nil)
+    static var defaultUUID: UUID { UUID() }
+    @State private var medicationPredicate: Predicate<Medication> = #Predicate<Medication> { medication in
+        medication.id == defaultUUID
+    }
     
     init(predicate: Predicate<Day>, date: Date) {
         _dayData = Query(filter: predicate)
@@ -35,20 +38,14 @@ struct UnderCalendarView: View {
             }
         }
         .onAppear {
-//            print("\(dateFormatter.string(from: date)) APPEARED")
             checkForAndCreateDate()
         }
         .onChange(of: date) {
-//            print("\(dateFormatter.string(from: date)) CHANGED")
             checkForAndCreateDate()
         }
         .sheet(isPresented: $showAddMedSheet) {
-            if clickedMedication.medication != nil {
-                AddEditMedicationView()
-                    .environmentObject(clickedMedication)
-                    .navigationTitle("Add Medication")
+                AddEditMedicationView(predicate: medicationPredicate)
                     .presentationDetents([.medicationInput])
-            }
         }
                     
         if dayData.first?.period ?? false || dayData.first?.pms ?? false {
@@ -103,13 +100,18 @@ struct UnderCalendarView: View {
                         
             // Medication
             Section {
-                // Med drop down from meds list
-                //                        for medication in selectedDayData.medication {
-                //
-                //                        }
+                ForEach(dayData.first?.medication ?? []) { medication in
+                    Text("\(timeFormatter.string(from: medication.time)) - \(medication.dose) \(medication.name)")
+                }
                 Button("Add medication") {
                     // TODO: Add a new Medication to the days meds
-                    clickedMedication.medication = Medication()
+                    let newMedication = Medication()
+                    modelContext.insert(newMedication)
+                    dayData.first?.medication?.append(newMedication)
+                    let newUUID = newMedication.id
+                    medicationPredicate = #Predicate<Medication> { medication in
+                        medication.id == newUUID
+                    }
                     showAddMedSheet.toggle()
                 }
             }
@@ -119,15 +121,12 @@ struct UnderCalendarView: View {
                 TextField("Notes", text: Bindable(dayData.first ?? Day(day: getTodaysDate())).notes, axis: .vertical)
             }
         }
-        
     }
     
     func checkForAndCreateDate() {
         DispatchQueue.main.async {
-//            print("CHECKED")
             if dayData.first == nil {
                 modelContext.insert(Day(day: dateFormatter.string(from: date)))
-//                print("CREATED")
             }
         }
     }

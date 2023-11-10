@@ -10,11 +10,12 @@ import SwiftUI
 
 struct AddEditMedicationView: View {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var medication: ClickedMedication
     @Query private var appData: [AppData]
-    @State var medName: String = ""
-    @State var medTime: Date = .now
-    @State var medDose: String = ""
+    @Query var medication: [Medication]
+    
+    init(predicate: Predicate<Medication>) {
+        _medication = Query(filter: predicate)
+    }
 
     var body: some View {
         VStack {
@@ -22,7 +23,7 @@ struct AddEditMedicationView: View {
             HStack {
                 Text("Medication")
                 Spacer()
-                Picker("Medication", selection: $medName) {
+                Picker("Medication", selection: Bindable(medication.first ?? Medication()).name) {
                     ForEach(appData.first?.medication ?? [], id: \.self) { name in
                         Text(LocalizedStringKey(name.localizedCapitalized))
                     }
@@ -32,7 +33,7 @@ struct AddEditMedicationView: View {
             // Time taken field
             DatePicker(
                 "Time Taken",
-                selection: $medTime,
+                selection: Bindable(medication.first ?? Medication()).time,
                 in: ...Date.now,
                 displayedComponents: [.hourAndMinute]
             )
@@ -40,21 +41,15 @@ struct AddEditMedicationView: View {
             // Dose field
             HStack {
                 Text("Dose")
-//                    .frame(alignment: .leading)
                 Spacer()
-                TextField("20 mg, etc.", text: $medDose)
+                TextField("20 mg, etc.", text: Bindable(medication.first ?? Medication()).dose)
                     .multilineTextAlignment(.trailing)
             }
             
             // Save & Cancel
             HStack(spacing: 15) {
-                Button("Save") {
-                    // TODO: Save behavior
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.accentColor)
-                Button("Cancel") {
-                    // TODO: Cancel behavior
+                Button("Close") {
+                    dismiss()
                 }
                 .buttonStyle(.bordered)
             }
@@ -62,12 +57,13 @@ struct AddEditMedicationView: View {
         }
         .padding()
         .onAppear {
-            medName = medication.medication?.name ?? ""
-            if medName.isEmpty {
-                medName = appData.first?.medication.first ?? ""
+            if medication.first?.name.isEmpty ?? false {
+                medication.first?.name = appData.first?.medication.first ?? ""
             }
-            medTime = medication.medication?.time ?? .now
-            medDose = medication.medication?.dose ?? ""
+            // TODO: Set original vars to set everything back to if user clicks cancel
+            // TODO: If keeping Save & Cancel, use and 'existing' init var to see if the medication already existed
+            // TODO: That way we know whether to discard changes or delete it on Cancel
+            // TODO: Or replace Save & Cancel with just a Close button. User can reset changes or delete med on their own
         }
     }
 }

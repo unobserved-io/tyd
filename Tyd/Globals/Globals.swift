@@ -13,6 +13,12 @@ let dateFormatter: DateFormatter = {
     return dateFormatter
 }()
 
+let timeFormatter: DateFormatter = {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "H:mm"
+    return dateFormatter
+}()
+
 let calendar: Calendar = {
     var calendar = Calendar.current
     calendar.timeZone = TimeZone.current

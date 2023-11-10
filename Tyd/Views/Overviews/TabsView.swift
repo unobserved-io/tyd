@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TabsView: View {
-//    @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.modelContext) private var modelContext
 
     var body: some View {

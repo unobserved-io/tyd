@@ -25,7 +25,6 @@
 		9CDF3F8C2A4C67B0007DF07F /* TimerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF3F8B2A4C67B0007DF07F /* TimerProgressBar.swift */; };
 		9CDF3F8F2A4C73B2007DF07F /* TamponTimerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF3F8E2A4C73B2007DF07F /* TamponTimerHelper.swift */; };
 		9CED71362AFA9A02006D5732 /* AddEditMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED71352AFA9A02006D5732 /* AddEditMedicationView.swift */; };
-		9CED71392AFA9B7C006D5732 /* ClickedMedication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED71382AFA9B7C006D5732 /* ClickedMedication.swift */; };
 		9CED713B2AFAA458006D5732 /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713A2AFAA458006D5732 /* Medication.swift */; };
 		9CED713D2AFABEAA006D5732 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713C2AFABEAA006D5732 /* CalendarView.swift */; };
 		9CED713F2AFAC4CB006D5732 /* UnderCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713E2AFAC4CB006D5732 /* UnderCalendarView.swift */; };
@@ -74,7 +73,6 @@
 		9CDF3F8B2A4C67B0007DF07F /* TimerProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProgressBar.swift; sourceTree = "<group>"; };
 		9CDF3F8E2A4C73B2007DF07F /* TamponTimerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamponTimerHelper.swift; sourceTree = "<group>"; };
 		9CED71352AFA9A02006D5732 /* AddEditMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddEditMedicationView.swift; path = Tyd/Views/AddEditMedicationView.swift; sourceTree = SOURCE_ROOT; };
-		9CED71382AFA9B7C006D5732 /* ClickedMedication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickedMedication.swift; sourceTree = "<group>"; };
 		9CED713A2AFAA458006D5732 /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
 		9CED713C2AFABEAA006D5732 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		9CED713E2AFAC4CB006D5732 /* UnderCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderCalendarView.swift; sourceTree = "<group>"; };
@@ -231,7 +229,6 @@
 		9CED71372AFA9B6B006D5732 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				9CED71382AFA9B7C006D5732 /* ClickedMedication.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -393,7 +390,6 @@
 				9C6B38182AFCE47200A4F987 /* Extensions.swift in Sources */,
 				9CDF3F8F2A4C73B2007DF07F /* TamponTimerHelper.swift in Sources */,
 				9C0253192A4AECC100F2E68B /* TydApp.swift in Sources */,
-				9CED71392AFA9B7C006D5732 /* ClickedMedication.swift in Sources */,
 				9C86E4592AF8DC6E000F84D5 /* AppData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
