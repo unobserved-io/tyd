@@ -11,58 +11,81 @@ import SwiftUI
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
     static var today: String { getTodaysDate() }
-    let dayData = #Predicate<Day> { day in
+    @Query(filter: #Predicate<Day> { day in
         day.day == today
-    }
+    }) var dayData: [Day]
+    @State var longPressed = false
 
     var tamponTimer = TamponTimerHelper.sharedInstance
     @State var timerProgress: Float = 0.0
-    
-//    init() {
-//        let today = getTodaysDate()
-//        let predicate = #Predicate<Day> { day in
-//            day.day == today
-//        }
-//        _dayData = Query(filter: predicate)
-//    }
-    
+
     var body: some View {
         VStack {
             Text("DAY 29")
                 .bold()
                 .padding(.bottom)
-            
+
             ZStack {
                 if tamponTimer.isRunning {
                     ProgressBar(progress: $timerProgress)
                         .offset(y: 40)
                 }
-                
-                // TODO: Use the new hints feature to tell user on first load to tap the image to start period?
-                Button {} label: {
+
+                Button {
+                    if longPressed {
+                        if dayData.first?.pms ?? false {
+                            dayData.first?.pms = false
+                        } else if !(dayData.first?.pms ?? true) && !(dayData.first?.period ?? true) {
+                            dayData.first?.pms = true
+                        } else if dayData.first?.period ?? false {
+                            dayData.first?.period = false
+                        }
+                        longPressed = false
+                    } else {
+                        if dayData.first?.pms ?? false {
+                            dayData.first?.pms = false
+                        } else {
+                            dayData.first?.period.toggle()
+                        }
+                    }
+                } label: {
                     Image("TydLogo")
                         .imageScale(.small)
-                        .opacity(0.3)
+                        .opacity(dayData.first?.pms ?? false || dayData.first?.period ?? false ? 1.0 : 0.3)
                 }
+                .simultaneousGesture(
+                    LongPressGesture(minimumDuration: 0.2).onEnded { _ in
+                        longPressed = true
+                    }
+                )
             }
-            
-            // TODO: If not on period or PMS, show the helper text
-            // Tampon timer will also only be available when on period, so this
-            // won't show when tampon timer is on.
-            if !tamponTimer.isRunning {
+
+            if !(dayData.first?.pms ?? false || dayData.first?.period ?? false) {
                 VStack {
-                    Text("Tap for period")
-                        .foregroundStyle(.accent)
-                    Text("Hold for PMS")
+                    Text("Tap for period, hold for PMS")
                         .foregroundStyle(.accent)
                 }
                 .padding(.top)
+            } else {
+                if dayData.first?.pms ?? false {
+                    VStack {
+                        Text("PMS")
+                            .foregroundStyle(.accent)
+                    }
+                    .padding(.top)
+                } else if dayData.first?.period ?? false {
+                    VStack {
+                        Text("Period")
+                            .foregroundStyle(.accent)
+                    }
+                    .padding(.top)
+                }
             }
 
-            Button("Progress") {
-                timerProgress += 0.1
-                tamponTimer.isRunning = true
-            }
+//            Button("Progress") {
+//                timerProgress += 0.1
+//                tamponTimer.isRunning = true
+//            }
         }
     }
 }
