@@ -104,7 +104,6 @@ struct UnderCalendarView: View {
                     Text("\(timeFormatter.string(from: medication.time)) - \(medication.dose) \(medication.name)")
                 }
                 Button("Add medication") {
-                    // TODO: Add a new Medication to the days meds
                     let newMedication = Medication()
                     modelContext.insert(newMedication)
                     dayData.first?.medication?.append(newMedication)
