@@ -32,10 +32,10 @@ struct TabsView: View {
 //                    Image(systemName: "chart.bar")
 //                }
 //
-//            SettingsView()
-//                .tabItem {
-//                    Image(systemName: "gear")
-//                }
+            SettingsView()
+                .tabItem {
+                    Image(systemName: "gear")
+                }
         }
     }
 }

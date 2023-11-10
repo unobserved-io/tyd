@@ -16,6 +16,7 @@
 		9C0253382A4AECC200F2E68B /* TydUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253372A4AECC200F2E68B /* TydUITests.swift */; };
 		9C02533A2A4AECC200F2E68B /* TydUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */; };
 		9C2CE94D2A4AF43300AAAC52 /* TamponTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */; };
+		9C35A8FE2AFE73A600540A2B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35A8FD2AFE73A600540A2B /* SettingsView.swift */; };
 		9C412BCE2AF50B320051DBAF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCD2AF50B320051DBAF /* LoadingView.swift */; };
 		9C412BD02AF50B570051DBAF /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCF2AF50B570051DBAF /* TabsView.swift */; };
 		9C6B38182AFCE47200A4F987 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6B38172AFCE47200A4F987 /* Extensions.swift */; };
@@ -64,6 +65,7 @@
 		9C0253372A4AECC200F2E68B /* TydUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITests.swift; sourceTree = "<group>"; };
 		9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9C2CE94C2A4AF43300AAAC52 /* TamponTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamponTimer.swift; sourceTree = "<group>"; };
+		9C35A8FD2AFE73A600540A2B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		9C412BCD2AF50B320051DBAF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		9C412BCF2AF50B570051DBAF /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 		9C6B38172AFCE47200A4F987 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		9C2CE94A2A4AF05A00AAAC52 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9C35A8FC2AFE739900540A2B /* Settings */,
 				9C675FB22AFE399F007102B0 /* Calendar */,
 				9C86E4532AF8D63D000F84D5 /* MultiSelector */,
 				9C02531A2A4AECC100F2E68B /* HomeView.swift */,
@@ -188,6 +191,14 @@
 				9CED713A2AFAA458006D5732 /* Medication.swift */,
 			);
 			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		9C35A8FC2AFE739900540A2B /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9C35A8FD2AFE73A600540A2B /* SettingsView.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		9C412BCC2AF50B240051DBAF /* Overviews */ = {
@@ -399,6 +410,7 @@
 				9CDF3F8F2A4C73B2007DF07F /* TamponTimerHelper.swift in Sources */,
 				9C0253192A4AECC100F2E68B /* TydApp.swift in Sources */,
 				9C86E4592AF8DC6E000F84D5 /* AppData.swift in Sources */,
+				9C35A8FE2AFE73A600540A2B /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
