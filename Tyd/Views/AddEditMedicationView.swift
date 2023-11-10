@@ -60,10 +60,6 @@ struct AddEditMedicationView: View {
             if medication.first?.name.isEmpty ?? false {
                 medication.first?.name = appData.first?.medication.first ?? ""
             }
-            // TODO: Set original vars to set everything back to if user clicks cancel
-            // TODO: If keeping Save & Cancel, use and 'existing' init var to see if the medication already existed
-            // TODO: That way we know whether to discard changes or delete it on Cancel
-            // TODO: Or replace Save & Cancel with just a Close button. User can reset changes or delete med on their own
         }
     }
 }
