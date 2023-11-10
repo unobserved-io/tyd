@@ -108,7 +108,7 @@ struct UnderCalendarView: View {
                 Button("Add medication") {
                     let newMedication = Medication()
                     modelContext.insert(newMedication)
-                    dayData.first?.medication?.append(newMedication)
+                    dayData.first?.medication.append(newMedication)
                     let newUUID = newMedication.id
                     medicationPredicate = #Predicate<Medication> { medication in
                         medication.id == newUUID
@@ -135,9 +135,9 @@ struct UnderCalendarView: View {
     private func deleteMedication(at offsets: IndexSet) {
         let index = offsets.first
         if index != nil {
-            let medToDelete: Medication? = dayData.first?.medication?[index!]
+            let medToDelete: Medication? = dayData.first?.medication[index!]
             if medToDelete != nil {
-                dayData.first?.medication?.remove(at: index!)
+                dayData.first?.medication.remove(at: index!)
                 modelContext.delete(medToDelete!)
             }
         }

@@ -17,9 +17,9 @@ final class Day {
     var pain: Double
     var periodSymptoms: Set<String>
     var pmsSymptoms: Set<String>
-    var medication: [Medication]?
+    var medication: [Medication]
     var notes: String
-    var timerData: [TamponTimer]?
+    var timerData: [TamponTimer]
 
     init(day: String) {
         self.day = day
