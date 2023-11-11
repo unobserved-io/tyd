@@ -20,6 +20,7 @@
 		9C412BCE2AF50B320051DBAF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCD2AF50B320051DBAF /* LoadingView.swift */; };
 		9C412BD02AF50B570051DBAF /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCF2AF50B570051DBAF /* TabsView.swift */; };
 		9C6B38182AFCE47200A4F987 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6B38172AFCE47200A4F987 /* Extensions.swift */; };
+		9C7C68602AFF85A600B3F8B6 /* MedicinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C685F2AFF85A600B3F8B6 /* MedicinesView.swift */; };
 		9C86E4552AF8D660000F84D5 /* MultiSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4542AF8D660000F84D5 /* MultiSelector.swift */; };
 		9C86E4572AF8D66B000F84D5 /* MultiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */; };
 		9C86E4592AF8DC6E000F84D5 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4582AF8DC6E000F84D5 /* AppData.swift */; };
@@ -69,6 +70,7 @@
 		9C412BCD2AF50B320051DBAF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		9C412BCF2AF50B570051DBAF /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 		9C6B38172AFCE47200A4F987 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9C7C685F2AFF85A600B3F8B6 /* MedicinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicinesView.swift; sourceTree = "<group>"; };
 		9C86E4542AF8D660000F84D5 /* MultiSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelector.swift; sourceTree = "<group>"; };
 		9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectionView.swift; sourceTree = "<group>"; };
 		9C86E4582AF8DC6E000F84D5 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				9C35A8FD2AFE73A600540A2B /* SettingsView.swift */,
+				9C7C685F2AFF85A600B3F8B6 /* MedicinesView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				9CF9E1922AF4F6CD002BF692 /* Functions.swift in Sources */,
 				9CED713B2AFAA458006D5732 /* Medication.swift in Sources */,
 				9C412BCE2AF50B320051DBAF /* LoadingView.swift in Sources */,
+				9C7C68602AFF85A600B3F8B6 /* MedicinesView.swift in Sources */,
 				9CED713D2AFABEAA006D5732 /* CalendarView.swift in Sources */,
 				9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */,
 				9C0253222A4AECC100F2E68B /* Day.swift in Sources */,

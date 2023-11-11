@@ -12,11 +12,11 @@ import SwiftData
 final class AppData {
     var periodSymptoms: [String]
     var pmsSymptoms: [String]
-    var medication: [String]
+    var medicines: [String]
 
     init() {
         self.periodSymptoms = []
         self.pmsSymptoms = []
-        self.medication = ["Aspirin", "Ibuprofen", "Paracetamol", "Acetaminophen"]
+        self.medicines = ["Aspirin", "Ibuprofen", "Paracetamol", "Acetaminophen"]
     }
 }

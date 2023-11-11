@@ -24,7 +24,7 @@ struct AddEditMedicationView: View {
                 Text("Medication")
                 Spacer()
                 Picker("Medication", selection: Bindable(medication.first ?? Medication()).name) {
-                    ForEach(appData.first?.medication ?? [], id: \.self) { name in
+                    ForEach(appData.first?.medicines ?? [], id: \.self) { name in
                         Text(LocalizedStringKey(name.localizedCapitalized))
                     }
                 }
@@ -58,7 +58,7 @@ struct AddEditMedicationView: View {
         .padding()
         .onAppear {
             if medication.first?.name.isEmpty ?? false {
-                medication.first?.name = appData.first?.medication.first ?? ""
+                medication.first?.name = appData.first?.medicines.first ?? ""
             }
         }
     }

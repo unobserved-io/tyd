@@ -25,7 +25,7 @@ let calendar: Calendar = {
     return calendar
 }()
 
-let defaultPeriodSymptoms = [
+let defaultPeriodSymptoms: [String] = [
     "Anxious",
     "Back pain",
     "Bloating",
@@ -44,7 +44,7 @@ let defaultPeriodSymptoms = [
     "Pimples"
 ]
 
-let defaultPmsSymptoms = [
+let defaultPmsSymptoms: [String] = [
     "Anger",
     "Anxious",
     "Back pain",
