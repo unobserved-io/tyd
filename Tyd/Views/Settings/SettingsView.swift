@@ -12,6 +12,8 @@ struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
     @Query var appData: [AppData]
     @State private var showingResetAlert: Bool = false
+    @State private var showingDeleteDataAlert: Bool = false
+    @State private var deleteDataConfirmationText: String = ""
     
     var body: some View {
         NavigationStack {
@@ -42,16 +44,33 @@ struct SettingsView: View {
                     Button("Reset All Settings") {
                         showingResetAlert.toggle()
                     }
+                    Button("Delete All Data") {
+                        showingDeleteDataAlert.toggle()
+                    }
                 }
-                .alert("Reset all settings to default?", isPresented: $showingResetAlert, actions: {                  
-                    Button("Reset", action: {
-                        if appData.first != nil {
-                            modelContext.delete(appData.first!)
+                .alert("Reset settings?", isPresented: $showingResetAlert) {
+                    Button("Reset") {
+                        do {
+                            try modelContext.delete(model: AppData.self)
                             modelContext.insert(AppData())
-                        }
-                    })
-                    Button("Cancel", role: .cancel, action: {})
-                })
+                        } catch {}
+                    }
+                    Button("Cancel", role: .cancel) {}
+                } message: {
+                    Text("Are you sure you want to reset all settings to their defaults?")
+                }
+                .alert("Delete all data?", isPresented: $showingDeleteDataAlert) {
+                    Button("Reset") {
+                        do {
+                            try modelContext.delete(model: Day.self)
+                            modelContext.insert(Day(day: getTodaysDate()))
+                        } catch {}
+                    }
+                    Button("Cancel", role: .cancel) {}
+                } message: {
+                    Text("Are you sure you want to erase all of your data? This is irreversible.")
+                }
+                
                 
                 Section("Info") {
                     
