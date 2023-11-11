@@ -28,7 +28,7 @@ struct MedicinesView: View {
                 }
             }
         }
-        .alert("Add Symptom", isPresented: $showingAlert, actions: {
+        .alert("Add Medicine", isPresented: $showingAlert, actions: {
             TextField("Add Medicine", text: $newMedicineName)
             
             Button("Add", action: {
@@ -36,7 +36,6 @@ struct MedicinesView: View {
                     if !medicines.wrappedValue.contains(newMedicineName) {
                         medicines.wrappedValue.append(newMedicineName)
                         newMedicineName = ""
-//                        refreshView()
                     }
                 }
             })

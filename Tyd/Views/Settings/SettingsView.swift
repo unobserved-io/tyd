@@ -15,8 +15,12 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 Section("Symptoms & Meds") {
-                    Text("Period Symptoms")
-                    Text("PMS Symptoms")
+                    NavigationLink(destination: PmsSymptomsView(symptoms: Bindable(appData.first ?? AppData()).periodSymptoms)) {
+                        Text("Additional Period Symptoms")
+                    }
+                    NavigationLink(destination: PmsSymptomsView(symptoms: Bindable(appData.first ?? AppData()).pmsSymptoms)) {
+                        Text("Additional PMS Symptoms")
+                    }
                     NavigationLink(destination: MedicinesView(medicines: Bindable(appData.first ?? AppData()).medicines)) {
                         Text("Medicines")
                     }
