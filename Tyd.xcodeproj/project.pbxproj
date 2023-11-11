@@ -23,6 +23,7 @@
 		9C7C68602AFF85A600B3F8B6 /* MedicinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C685F2AFF85A600B3F8B6 /* MedicinesView.swift */; };
 		9C7C68622AFF8D0900B3F8B6 /* PmsSymptomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C68612AFF8D0900B3F8B6 /* PmsSymptomsView.swift */; };
 		9C7C68642AFF8D9600B3F8B6 /* PeriodSymptomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C68632AFF8D9600B3F8B6 /* PeriodSymptomsView.swift */; };
+		9C7C68662AFF8FEC00B3F8B6 /* TimerIntervalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C68652AFF8FEC00B3F8B6 /* TimerIntervalsView.swift */; };
 		9C86E4552AF8D660000F84D5 /* MultiSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4542AF8D660000F84D5 /* MultiSelector.swift */; };
 		9C86E4572AF8D66B000F84D5 /* MultiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */; };
 		9C86E4592AF8DC6E000F84D5 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4582AF8DC6E000F84D5 /* AppData.swift */; };
@@ -75,6 +76,7 @@
 		9C7C685F2AFF85A600B3F8B6 /* MedicinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicinesView.swift; sourceTree = "<group>"; };
 		9C7C68612AFF8D0900B3F8B6 /* PmsSymptomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PmsSymptomsView.swift; sourceTree = "<group>"; };
 		9C7C68632AFF8D9600B3F8B6 /* PeriodSymptomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodSymptomsView.swift; sourceTree = "<group>"; };
+		9C7C68652AFF8FEC00B3F8B6 /* TimerIntervalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerIntervalsView.swift; sourceTree = "<group>"; };
 		9C86E4542AF8D660000F84D5 /* MultiSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelector.swift; sourceTree = "<group>"; };
 		9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectionView.swift; sourceTree = "<group>"; };
 		9C86E4582AF8DC6E000F84D5 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				9C7C685F2AFF85A600B3F8B6 /* MedicinesView.swift */,
 				9C7C68612AFF8D0900B3F8B6 /* PmsSymptomsView.swift */,
 				9C7C68632AFF8D9600B3F8B6 /* PeriodSymptomsView.swift */,
+				9C7C68652AFF8FEC00B3F8B6 /* TimerIntervalsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				9C7C68622AFF8D0900B3F8B6 /* PmsSymptomsView.swift in Sources */,
 				9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */,
 				9C0253222A4AECC100F2E68B /* Day.swift in Sources */,
+				9C7C68662AFF8FEC00B3F8B6 /* TimerIntervalsView.swift in Sources */,
 				9C86E4552AF8D660000F84D5 /* MultiSelector.swift in Sources */,
 				9C86E4572AF8D66B000F84D5 /* MultiSelectionView.swift in Sources */,
 				9CF9E1902AF4F618002BF692 /* Globals.swift in Sources */,

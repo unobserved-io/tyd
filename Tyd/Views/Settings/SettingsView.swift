@@ -27,7 +27,9 @@ struct SettingsView: View {
                 }
                 
                 Section("Timer") {
-                    
+                    NavigationLink(destination: TimerIntervalsView(intervals: Bindable(appData.first ?? AppData()).timerIntervals)) {
+                        Text("Intervals")
+                    }
                 }
                 
                 Section("Saved Data") {
