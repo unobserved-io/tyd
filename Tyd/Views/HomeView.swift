@@ -10,6 +10,7 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
+    @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     static var today: String { getTodaysDate() }
     @Query(filter: #Predicate<Day> { day in
         day.day == today
@@ -52,6 +53,7 @@ struct HomeView: View {
                     Image("TydLogo")
                         .imageScale(.small)
                         .opacity(dayData.first?.pms ?? false || dayData.first?.period ?? false ? 1.0 : 0.3)
+                        
                 }
                 .simultaneousGesture(
                     LongPressGesture(minimumDuration: 0.2).onEnded { _ in
@@ -63,20 +65,20 @@ struct HomeView: View {
             if !(dayData.first?.pms ?? false || dayData.first?.period ?? false) {
                 VStack {
                     Text("Tap for period, hold for PMS")
-                        .foregroundStyle(.accent)
+                        .foregroundStyle(Color(hex: tydAccentColor) ?? .accent)
                 }
                 .padding(.top)
             } else {
                 if dayData.first?.pms ?? false {
                     VStack {
                         Text("PMS")
-                            .foregroundStyle(.accent)
+                            .foregroundStyle(Color(hex: tydAccentColor) ?? .accent)
                     }
                     .padding(.top)
                 } else if dayData.first?.period ?? false {
                     VStack {
                         Text("Period")
-                            .foregroundStyle(.accent)
+                            .foregroundStyle(Color(hex: tydAccentColor) ?? .accent)
                     }
                     .padding(.top)
                 }

@@ -18,6 +18,13 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             Form {
+                Section("Appearance") {
+                    // TODO: Pro version allows user to customize accent color (and perhaps logo, etc.)
+                    NavigationLink(destination: AccentColorPickerView()) {
+                        Text("App Color")
+                    }
+                }
+                
                 Section("Symptoms & Meds") {
                     NavigationLink(destination: PmsSymptomsView(symptoms: Bindable(appData.first ?? AppData()).periodSymptoms)) {
                         Text("Additional Period Symptoms")
@@ -37,7 +44,8 @@ struct SettingsView: View {
                 }
                 
                 Section("Saved Data") {
-                    
+                    // TODO: Import data from Tyd or Clue
+                    // TODO: Export data
                 }
                 
                 Section("Danger Zone") {
@@ -73,7 +81,7 @@ struct SettingsView: View {
                 
                 
                 Section("Info") {
-                    
+                    // TODO: About Tyd page? (Is this allowed by Apple if it includes email?)
                 }
             }
         }
