@@ -9,7 +9,9 @@ import SwiftData
 import SwiftUI
 
 struct SettingsView: View {
+    @Environment(\.modelContext) private var modelContext
     @Query var appData: [AppData]
+    @State private var showingResetAlert: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -37,8 +39,19 @@ struct SettingsView: View {
                 }
                 
                 Section("Danger Zone") {
-                    
+                    Button("Reset All Settings") {
+                        showingResetAlert.toggle()
+                    }
                 }
+                .alert("Reset all settings to default?", isPresented: $showingResetAlert, actions: {                  
+                    Button("Reset", action: {
+                        if appData.first != nil {
+                            modelContext.delete(appData.first!)
+                            modelContext.insert(AppData())
+                        }
+                    })
+                    Button("Cancel", role: .cancel, action: {})
+                })
                 
                 Section("Info") {
                     
