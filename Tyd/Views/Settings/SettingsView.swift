@@ -19,7 +19,6 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 Section("Appearance") {
-                    // TODO: Pro version allows user to customize accent color (and perhaps logo, etc.)
                     NavigationLink(destination: AccentColorPickerView()) {
                         Text("App Color")
                     }
