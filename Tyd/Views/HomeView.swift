@@ -89,6 +89,13 @@ struct HomeView: View {
 //                tamponTimer.isRunning = true
 //            }
         }
+        .onAppear {
+            DispatchQueue.main.async {
+                if dayData.first == nil {
+                    modelContext.insert(Day(day: getTodaysDate()))
+                }
+            }
+        }
     }
 }
 
