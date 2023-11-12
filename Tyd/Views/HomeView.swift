@@ -10,6 +10,7 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
+    @Query var tamponTimer: [TamponTimer]
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     static var today: String { getTodaysDate() }
     @Query(filter: #Predicate<Day> { day in
@@ -17,7 +18,6 @@ struct HomeView: View {
     }) var dayData: [Day]
     @State var longPressed = false
 
-    var tamponTimer = TamponTimerHelper.sharedInstance
     @State var timerProgress: Float = 0.0
 
     var body: some View {
@@ -27,7 +27,7 @@ struct HomeView: View {
                 .padding(.bottom)
 
             ZStack {
-                if tamponTimer.isRunning {
+                if tamponTimer.first?.isRunning ?? false {
                     ProgressBar(progress: $timerProgress)
                         .offset(y: 40)
                 }
@@ -53,7 +53,6 @@ struct HomeView: View {
                     Image("TydLogo")
                         .imageScale(.small)
                         .opacity(dayData.first?.pms ?? false || dayData.first?.period ?? false ? 1.0 : 0.3)
-                        
                 }
                 .simultaneousGesture(
                     LongPressGesture(minimumDuration: 0.2).onEnded { _ in

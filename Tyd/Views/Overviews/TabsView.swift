@@ -21,11 +21,11 @@ struct TabsView: View {
                 .tabItem {
                     Image(systemName: "calendar")
                 }
-//
-//            TimerView()
-//                .tabItem {
-//                    Image(systemName: "timer")
-//                }
+
+            TimerView()
+                .tabItem {
+                    Image(systemName: "timer")
+                }
 //
 //            StatsView()
 //                .tabItem {

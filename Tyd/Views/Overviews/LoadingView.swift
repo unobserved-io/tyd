@@ -11,12 +11,16 @@ import SwiftUI
 struct LoadingView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var appData: [AppData]
+    @Query var persistentTimer: [TamponTimer]
 
     var body: some View {
         TabsView()
-            .onAppear() {
+            .onAppear {
                 if appData.first == nil {
                     modelContext.insert(AppData())
+                }
+                if persistentTimer.first == nil {
+                    modelContext.insert(TamponTimer())
                 }
             }
     }

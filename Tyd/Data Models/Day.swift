@@ -19,7 +19,7 @@ final class Day {
     var pmsSymptoms: Set<String>
     var medication: [Medication]
     var notes: String
-    var timerData: [TamponTimer]
+    var timerData: [TimedEvent]
 
     init(day: String) {
         self.day = day
