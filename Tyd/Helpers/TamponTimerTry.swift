@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// TODO: Delete this file if TamponTimer model works
+
 @Observable
 class TamponTimerTry {
     var isRunning: Bool = false
