@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class TamponTimer {
+final class PersistentTimer {
     var isRunning: Bool
     var formatted: String
     var timedEvent: TimedEvent?

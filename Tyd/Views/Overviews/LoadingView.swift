@@ -9,9 +9,10 @@ import SwiftData
 import SwiftUI
 
 struct LoadingView: View {
+    @Environment(TamponTimer.self) private var tamponTimer
     @Environment(\.modelContext) private var modelContext
     @Query private var appData: [AppData]
-    @Query var persistentTimer: [TamponTimer]
+    @Query var persistentTimer: [PersistentTimer]
 
     var body: some View {
         TabsView()
@@ -20,7 +21,12 @@ struct LoadingView: View {
                     modelContext.insert(AppData())
                 }
                 if persistentTimer.first == nil {
-                    modelContext.insert(TamponTimer())
+                    modelContext.insert(PersistentTimer())
+                } else {
+                    tamponTimer.isRunning = persistentTimer.first?.isRunning ?? false
+                    if tamponTimer.isRunning {
+                        tamponTimer.timedEvent = persistentTimer.first?.timedEvent
+                    }
                 }
             }
     }

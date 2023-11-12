@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C01410E2B00C5580036C7AB /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C01410D2B00C5580036C7AB /* TimerView.swift */; };
 		9C0141102B00D2470036C7AB /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C01410F2B00D2470036C7AB /* Enums.swift */; };
-		9C0141122B00D4C30036C7AB /* TamponTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0141112B00D4C30036C7AB /* TamponTimer.swift */; };
+		9C0141122B00D4C30036C7AB /* PersistentTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0141112B00D4C30036C7AB /* PersistentTimer.swift */; };
 		9C0253192A4AECC100F2E68B /* TydApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253182A4AECC100F2E68B /* TydApp.swift */; };
 		9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02531A2A4AECC100F2E68B /* HomeView.swift */; };
 		9C02531D2A4AECC100F2E68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C02531C2A4AECC100F2E68B /* Assets.xcassets */; };
@@ -33,7 +33,7 @@
 		9C86E4572AF8D66B000F84D5 /* MultiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */; };
 		9C86E4592AF8DC6E000F84D5 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4582AF8DC6E000F84D5 /* AppData.swift */; };
 		9CDF3F8C2A4C67B0007DF07F /* TimerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF3F8B2A4C67B0007DF07F /* TimerProgressBar.swift */; };
-		9CDF3F8F2A4C73B2007DF07F /* TamponTimerTry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF3F8E2A4C73B2007DF07F /* TamponTimerTry.swift */; };
+		9CDF3F8F2A4C73B2007DF07F /* TamponTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF3F8E2A4C73B2007DF07F /* TamponTimer.swift */; };
 		9CED71362AFA9A02006D5732 /* AddEditMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED71352AFA9A02006D5732 /* AddEditMedicationView.swift */; };
 		9CED713B2AFAA458006D5732 /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713A2AFAA458006D5732 /* Medication.swift */; };
 		9CED713D2AFABEAA006D5732 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713C2AFABEAA006D5732 /* CalendarView.swift */; };
@@ -62,7 +62,7 @@
 /* Begin PBXFileReference section */
 		9C01410D2B00C5580036C7AB /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		9C01410F2B00D2470036C7AB /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		9C0141112B00D4C30036C7AB /* TamponTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamponTimer.swift; sourceTree = "<group>"; };
+		9C0141112B00D4C30036C7AB /* PersistentTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentTimer.swift; sourceTree = "<group>"; };
 		9C0253152A4AECC100F2E68B /* Tyd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tyd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0253182A4AECC100F2E68B /* TydApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydApp.swift; sourceTree = "<group>"; };
 		9C02531A2A4AECC100F2E68B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 		9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectionView.swift; sourceTree = "<group>"; };
 		9C86E4582AF8DC6E000F84D5 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		9CDF3F8B2A4C67B0007DF07F /* TimerProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProgressBar.swift; sourceTree = "<group>"; };
-		9CDF3F8E2A4C73B2007DF07F /* TamponTimerTry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamponTimerTry.swift; sourceTree = "<group>"; };
+		9CDF3F8E2A4C73B2007DF07F /* TamponTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamponTimer.swift; sourceTree = "<group>"; };
 		9CED71352AFA9A02006D5732 /* AddEditMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddEditMedicationView.swift; path = Tyd/Views/Calendar/AddEditMedicationView.swift; sourceTree = SOURCE_ROOT; };
 		9CED713A2AFAA458006D5732 /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
 		9CED713C2AFABEAA006D5732 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 				9C2CE94C2A4AF43300AAAC52 /* TimedEvent.swift */,
 				9C86E4582AF8DC6E000F84D5 /* AppData.swift */,
 				9CED713A2AFAA458006D5732 /* Medication.swift */,
-				9C0141112B00D4C30036C7AB /* TamponTimer.swift */,
+				9C0141112B00D4C30036C7AB /* PersistentTimer.swift */,
 			);
 			path = "Data Models";
 			sourceTree = "<group>";
@@ -265,7 +265,7 @@
 		9CDF3F8D2A4C739F007DF07F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				9CDF3F8E2A4C73B2007DF07F /* TamponTimerTry.swift */,
+				9CDF3F8E2A4C73B2007DF07F /* TamponTimer.swift */,
 				9C26D0FB2B00021F001548E2 /* ColorHex.swift */,
 			);
 			path = Helpers;
@@ -442,8 +442,8 @@
 				9C26D0FE2B000499001548E2 /* AccentColorPickerView.swift in Sources */,
 				9C6B38182AFCE47200A4F987 /* Extensions.swift in Sources */,
 				9C7C68642AFF8D9600B3F8B6 /* PeriodSymptomsView.swift in Sources */,
-				9C0141122B00D4C30036C7AB /* TamponTimer.swift in Sources */,
-				9CDF3F8F2A4C73B2007DF07F /* TamponTimerTry.swift in Sources */,
+				9C0141122B00D4C30036C7AB /* PersistentTimer.swift in Sources */,
+				9CDF3F8F2A4C73B2007DF07F /* TamponTimer.swift in Sources */,
 				9C0253192A4AECC100F2E68B /* TydApp.swift in Sources */,
 				9C86E4592AF8DC6E000F84D5 /* AppData.swift in Sources */,
 				9C35A8FE2AFE73A600540A2B /* SettingsView.swift in Sources */,

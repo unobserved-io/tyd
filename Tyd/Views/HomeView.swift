@@ -10,7 +10,7 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query var tamponTimer: [TamponTimer]
+    @Query var tamponTimer: [PersistentTimer]
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     static var today: String { getTodaysDate() }
     @Query(filter: #Predicate<Day> { day in
