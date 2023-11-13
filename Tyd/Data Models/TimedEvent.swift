@@ -12,12 +12,12 @@ import SwiftData
 final class TimedEvent {
     var product: Product
     var startTime: Date
-    var stopTime: Date?
+    var stopTime: Date
     
-    init(product: Product, startTime: Date) {
+    init(product: Product, startTime: Date, stopTime: Date) {
         self.product = product
         self.startTime = startTime
-        self.stopTime = nil
+        self.stopTime = stopTime
     }
     
     func setStopTime(_ stopTime: Date) {

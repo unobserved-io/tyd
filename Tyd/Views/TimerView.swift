@@ -15,11 +15,12 @@ struct TimerView: View {
     @Query(filter: #Predicate<Day> { day in
         day.day == today
     }) var dayData: [Day]
+    @Query var appData: [AppData]
     
     var body: some View {
         VStack {
             if tamponTimer.isRunning {
-                Text("Change your \((tamponTimer.timedEvent?.product ?? Product.tampon).rawValue) in")
+                Text("Change your \((tamponTimer.product ?? Product.tampon).rawValue) in")
             } else {
                 Text("")
             }
@@ -33,27 +34,27 @@ struct TimerView: View {
             
             if !(tamponTimer.isRunning) {
                 HStack {
-                    Button("Tampon") {}
+                    ForEach(Product.allCases, id: \.rawValue) { product in
+                        Button(product.rawValue.capitalized) {
+                            startTimer(with: product)
+                        }
                         .buttonStyle(.borderedProminent)
-                    Button("Pad") {}
-                        .buttonStyle(.borderedProminent)
-                    Button("Cup") {}
-                        .buttonStyle(.borderedProminent)
-                    Button("Underwear") {}
-                        .buttonStyle(.borderedProminent)
+                    }
                 }
             }
             
-            if dayData.first?.timerData.contains(where: { $0.stopTime != nil }) ?? false {
+            if !(dayData.first?.timerData.isEmpty ?? true) {
                 List {
                     ForEach(dayData.first?.timerData ?? []) { timedEvent in
-                        if timedEvent.stopTime != nil {
-                            Text(timedEvent.product.rawValue)
-                        }
+                        Text(timedEvent.product.rawValue.capitalized)
                     }
                 }
             }
         }
+    }
+    
+    private func startTimer(with product: Product) {
+        tamponTimer.start(product: product, interval: appData.first?.timerIntervals[product] ?? 4.0)
     }
 }
 

@@ -13,17 +13,17 @@ final class AppData {
     var periodSymptoms: [String]
     var pmsSymptoms: [String]
     var medicines: [String]
-    var timerIntervals: [String: Float]
+    var timerIntervals: [Product: Float]
 
     init() {
         self.periodSymptoms = []
         self.pmsSymptoms = []
         self.medicines = ["Aspirin", "Ibuprofen", "Paracetamol", "Acetaminophen"]
         self.timerIntervals = [
-            "Tampon": 4.0,
-            "Pad": 4.0,
-            "Cup": 4.0,
-            "Underwear": 4.0
+            .tampon: 4.0,
+            .pad: 4.0,
+            .cup: 4.0,
+            .underwear: 4.0
         ]
     }
 }

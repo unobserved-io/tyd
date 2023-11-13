@@ -9,20 +9,20 @@ import SwiftData
 import SwiftUI
 
 struct TimerIntervalsView: View {
-    @Binding var intervals: [String: Float]
+    @Binding var intervals: [Product: Float]
     @State private var showingAlert: Bool = false
     @State private var newInterval: Float = 4.0
-    @State private var showSliders: [String: Bool] = [
-        "Tampon": false,
-        "Pad": false,
-        "Cup": false,
-        "Underwear": false
+    @State private var showSliders: [Product: Bool] = [
+        .tampon: false,
+        .pad: false,
+        .cup: false,
+        .underwear: false
     ]
     
     var body: some View {
         Form {
             Section {
-                ForEach(intervals.sorted(by: <), id: \.key) { product, interval in
+                ForEach(intervals.sorted(by: { $0.key.rawValue < $1.key.rawValue }), id: \.key) { product, interval in
                     VStack {
                         Button {
                             // Close all other product sliders
@@ -35,7 +35,7 @@ struct TimerIntervalsView: View {
                             showSliders[product]?.toggle()
                         } label: {
                             HStack {
-                                Text(product)
+                                Text(product.rawValue.capitalized)
                                 Spacer()
                                 Text("\(interval.formatted(FloatingPointFormatStyle())) \(interval == 1.0 ? "hour" : "hours")").bold()
                             }

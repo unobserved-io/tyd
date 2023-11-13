@@ -20,14 +20,16 @@ struct LoadingView: View {
                 if appData.first == nil {
                     modelContext.insert(AppData())
                 }
-                if persistentTimer.first == nil {
-                    modelContext.insert(PersistentTimer())
-                } else {
-                    tamponTimer.isRunning = persistentTimer.first?.isRunning ?? false
-                    if tamponTimer.isRunning {
-                        tamponTimer.timedEvent = persistentTimer.first?.timedEvent
-                    }
-                }
+                // TODO: Uncomment and start timer if necessary
+//                if persistentTimer.first == nil {
+//                    modelContext.insert(PersistentTimer())
+//                } else {
+//                    tamponTimer.isRunning = persistentTimer.first?.isRunning ?? false
+//                    if tamponTimer.isRunning {
+//                        tamponTimer.product = persistentTimer.first?.product
+//                        tamponTimer.startTime = persistentTimer.first?.startTime
+//                    }
+//                }
             }
     }
 }

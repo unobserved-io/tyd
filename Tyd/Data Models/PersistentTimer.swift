@@ -12,11 +12,17 @@ import SwiftData
 final class PersistentTimer {
     var isRunning: Bool
     var formatted: String
-    var timedEvent: TimedEvent?
+    var product: Product
+    var startTime: Date?
+    var stopTime: Date?
+//    var timedEvent: TimedEvent?
 
     init() {
         self.isRunning = false
         self.formatted = "00:00:00"
-        self.timedEvent = nil
+        self.product = .tampon
+        self.startTime = nil
+        self.stopTime = nil
+//        self.timedEvent = nil
     }
 }
