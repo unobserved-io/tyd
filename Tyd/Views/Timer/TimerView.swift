@@ -17,6 +17,8 @@ struct TimerView: View {
         day.day == today
     }) var dayData: [Day]
     @Query var appData: [AppData]
+    @State var showingEditTimedEventSheet: Bool = false
+    @State var tappedTimedEvent: TimedEvent = TimedEvent(product: .tampon, startTime: .now, stopTime: .now)
     
     var body: some View {
         VStack {
@@ -79,15 +81,24 @@ struct TimerView: View {
             if !(dayData.first?.timerData.isEmpty ?? true) {
                 List {
                     ForEach((dayData.first?.timerData ?? []).sorted(by: { $0.stopTime > $1.stopTime })) { timedEvent in
-                        HStack {
-                            Text(timedEvent.product.rawValue.capitalized)
-                            Spacer()
-                            Text("\(timeFormatter.string(from: timedEvent.startTime)) - \(timeFormatter.string(from: timedEvent.stopTime))")
-                                .lineLimit(1)
-                                .opacity(0.626)
+                        Button {
+                            tappedTimedEvent = timedEvent
+                            showingEditTimedEventSheet.toggle()
+                        } label: {
+                            HStack {
+                                Text(timedEvent.product.rawValue.capitalized)
+                                Spacer()
+                                Text("\(timeFormatter.string(from: timedEvent.startTime)) - \(timeFormatter.string(from: timedEvent.stopTime))")
+                                    .lineLimit(1)
+                                    .opacity(0.626)
+                            }
                         }
                     }
                     .onDelete(perform: deleteTimerData)
+                }
+                .sheet(isPresented: $showingEditTimedEventSheet) {
+                    EditTimedEventView(timedEvent: $tappedTimedEvent)
+                        .presentationDetents([.medicationInput])
                 }
             }
         }
@@ -98,7 +109,6 @@ struct TimerView: View {
     }
     
     private func deleteTimerData(at offsets: IndexSet) {
-//        (dayData.first?.timerData ?? []).sorted(by: { $0.stopTime > $1.stopTime }).remove(atOffsets: offsets)
         for index in offsets {
             let timedEventToMatch: TimedEvent = (dayData.first?.timerData ?? []).sorted(by: { $0.stopTime > $1.stopTime })[index]
             if let indexToRemove = dayData.first?.timerData.firstIndex(where: { $0 == timedEventToMatch}) {
