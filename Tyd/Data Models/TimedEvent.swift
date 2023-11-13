@@ -13,11 +13,13 @@ final class TimedEvent {
     var product: Product
     var startTime: Date
     var stopTime: Date
+    var formattedTime: String
     
     init(product: Product, startTime: Date, stopTime: Date) {
         self.product = product
         self.startTime = startTime
         self.stopTime = stopTime
+        self.formattedTime = "00:00"
     }
     
     func setStopTime(_ stopTime: Date) {

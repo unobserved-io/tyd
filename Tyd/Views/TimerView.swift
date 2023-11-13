@@ -10,6 +10,7 @@ import SwiftUI
 
 struct TimerView: View {
     @Environment(TamponTimer.self) private var tamponTimer
+    @Environment(\.modelContext) private var modelContext
     @Query var persistentTimer: [PersistentTimer]
     static var today: String { getTodaysDate() }
     @Query(filter: #Predicate<Day> { day in
@@ -20,7 +21,11 @@ struct TimerView: View {
     var body: some View {
         VStack {
             if tamponTimer.isRunning {
-                Text("Change your \((tamponTimer.product ?? Product.tampon).rawValue) in")
+                if tamponTimer.timesUp {
+                    Text("Time since you changed your \((tamponTimer.product ?? Product.tampon).rawValue)")
+                } else {
+                    Text("Change your \((tamponTimer.product ?? Product.tampon).rawValue) in")
+                }
             } else {
                 Text("")
             }
@@ -41,13 +46,48 @@ struct TimerView: View {
                         .buttonStyle(.borderedProminent)
                     }
                 }
+            } else {
+                HStack {
+                    DatePicker(
+                        "Change start time",
+                        selection: Binding(get: {
+                            tamponTimer.startTime ?? .now
+                        },
+                      set: { newValue in
+                          tamponTimer.startTime = newValue
+                      }),
+                        in: ...Date.now,
+                        displayedComponents: [.hourAndMinute]
+                    )
+                    .labelsHidden()
+                    .onChange(of: tamponTimer.startTime) {
+                        print("Changed notification")
+                        tamponTimer.updateNotificationTime()
+                    }
+                    
+                    Button("Stop") {
+                        tamponTimer.stop()
+                        let newTimedEvent = TimedEvent(product: tamponTimer.product ?? .tampon, startTime: tamponTimer.startTime ?? .now, stopTime: tamponTimer.stopTime ?? .now)
+                        modelContext.insert(newTimedEvent)
+                        dayData.first?.timerData.append(newTimedEvent)
+                        tamponTimer.resetTimedEventData()
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
             }
             
             if !(dayData.first?.timerData.isEmpty ?? true) {
                 List {
-                    ForEach(dayData.first?.timerData ?? []) { timedEvent in
-                        Text(timedEvent.product.rawValue.capitalized)
+                    ForEach((dayData.first?.timerData ?? []).sorted(by: { $0.stopTime > $1.stopTime })) { timedEvent in
+                        HStack {
+                            Text(timedEvent.product.rawValue.capitalized)
+                            Spacer()
+                            Text("\(timeFormatter.string(from: timedEvent.startTime)) - \(timeFormatter.string(from: timedEvent.stopTime))")
+                                .lineLimit(1)
+                                .opacity(0.626)
+                        }
                     }
+                    .onDelete(perform: deleteTimerData)
                 }
             }
         }
@@ -55,6 +95,18 @@ struct TimerView: View {
     
     private func startTimer(with product: Product) {
         tamponTimer.start(product: product, interval: appData.first?.timerIntervals[product] ?? 4.0)
+    }
+    
+    private func deleteTimerData(at offsets: IndexSet) {
+//        (dayData.first?.timerData ?? []).sorted(by: { $0.stopTime > $1.stopTime }).remove(atOffsets: offsets)
+        for index in offsets {
+            let timedEventToMatch: TimedEvent = (dayData.first?.timerData ?? []).sorted(by: { $0.stopTime > $1.stopTime })[index]
+            if let indexToRemove = dayData.first?.timerData.firstIndex(where: { $0 == timedEventToMatch}) {
+                dayData.first?.timerData.remove(at: indexToRemove)
+                modelContext.delete(timedEventToMatch)
+            }
+        }
+        
     }
 }
 
