@@ -13,16 +13,18 @@ struct TydApp: App {
     @Environment(\.modelContext) private var modelContext
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     @State private var tamponTimer = TamponTimer()
+    @State private var stats = Stats()
 
     var body: some Scene {
         WindowGroup {
             LoadingView()
                 .accentColor(Color(hex: tydAccentColor) ?? .accent)
                 .environment(tamponTimer)
+                .environment(stats)
         }
         .modelContainer(for: [
             AppData.self,
-            Day.self,
+            DayData.self,
             Medication.self,
             TimedEvent.self,
             PersistentTimer.self

@@ -11,13 +11,13 @@ import SwiftUI
 struct UnderCalendarView: View {
     @Environment(\.modelContext) private var modelContext
     @Query var appData: [AppData]
-    @Query var dayData: [Day]
+    @Query var dayData: [DayData]
     let date: Date
     @State private var showingEditMedSheet: Bool = false
     static var defaultUUID: UUID { UUID() }
     @State private var tappedMedication: Medication = .init()
     
-    init(predicate: Predicate<Day>, date: Date) {
+    init(predicate: Predicate<DayData>, date: Date) {
         _dayData = Query(filter: predicate)
         self.date = date
     }
@@ -25,11 +25,11 @@ struct UnderCalendarView: View {
     var body: some View {
         Section {
             if !(dayData.first?.pms ?? true) {
-                Toggle("Period", isOn: Bindable(dayData.first ?? Day(day: getTodaysDate())).period)
+                Toggle("Period", isOn: Bindable(dayData.first ?? DayData(day: getTodaysDate())).period)
                     .tint(.accentColor)
             }
             if !(dayData.first?.period ?? true) {
-                Toggle("PMS", isOn: Bindable(dayData.first ?? Day(day: getTodaysDate())).pms)
+                Toggle("PMS", isOn: Bindable(dayData.first ?? DayData(day: getTodaysDate())).pms)
                     .tint(.accentColor)
             }
             if dayData.first == nil {
@@ -58,7 +58,7 @@ struct UnderCalendarView: View {
                             Text("\(Int(dayData.first?.bleeding ?? 0.0))")
                         }
                         Slider(
-                            value: Bindable(dayData.first ?? Day(day: getTodaysDate())).bleeding,
+                            value: Bindable(dayData.first ?? DayData(day: getTodaysDate())).bleeding,
                             in: 0 ... 10,
                             step: 1.0
                         )
@@ -73,7 +73,7 @@ struct UnderCalendarView: View {
                         Text("\(Int(dayData.first?.pain ?? 0.0))")
                     }
                     Slider(
-                        value: Bindable(dayData.first ?? Day(day: getTodaysDate())).pain,
+                        value: Bindable(dayData.first ?? DayData(day: getTodaysDate())).pain,
                         in: 0 ... 10,
                         step: 1.0
                     )
@@ -86,13 +86,13 @@ struct UnderCalendarView: View {
                     MultiSelector(
                         label: String(localized: "Symptoms"),
                         options: defaultPeriodSymptoms + (appData.first?.periodSymptoms ?? []),
-                        selected: Bindable(dayData.first ?? Day(day: getTodaysDate())).periodSymptoms
+                        selected: Bindable(dayData.first ?? DayData(day: getTodaysDate())).periodSymptoms
                     )
                 } else {
                     MultiSelector(
                         label: String(localized: "Symptoms"),
                         options: defaultPmsSymptoms + (appData.first?.pmsSymptoms ?? []),
-                        selected: Bindable(dayData.first ?? Day(day: getTodaysDate())).pmsSymptoms
+                        selected: Bindable(dayData.first ?? DayData(day: getTodaysDate())).pmsSymptoms
                     )
                 }
             }
@@ -120,7 +120,7 @@ struct UnderCalendarView: View {
                         
             // Notes
             Section((dayData.first?.notes.isEmpty ?? true) ? "" : "NOTES") {
-                TextField("Notes", text: Bindable(dayData.first ?? Day(day: getTodaysDate())).notes, axis: .vertical)
+                TextField("Notes", text: Bindable(dayData.first ?? DayData(day: getTodaysDate())).notes, axis: .vertical)
             }
         }
     }
@@ -128,7 +128,7 @@ struct UnderCalendarView: View {
     private func checkForAndCreateDate() {
         DispatchQueue.main.async {
             if dayData.first == nil {
-                modelContext.insert(Day(day: dateFormatter.string(from: date)))
+                modelContext.insert(DayData(day: dateFormatter.string(from: date)))
             }
         }
     }

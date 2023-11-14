@@ -69,8 +69,8 @@ struct SettingsView: View {
                 .alert("Delete all data?", isPresented: $showingDeleteDataAlert) {
                     Button("Reset") {
                         do {
-                            try modelContext.delete(model: Day.self)
-                            modelContext.insert(Day(day: getTodaysDate()))
+                            try modelContext.delete(model: DayData.self)
+                            modelContext.insert(DayData(day: getTodaysDate()))
                         } catch {}
                     }
                     Button("Cancel", role: .cancel) {}

@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class Day {
+final class DayData {
     var day: String
     var period: Bool
     var pms: Bool

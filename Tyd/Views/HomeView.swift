@@ -13,9 +13,9 @@ struct HomeView: View {
     @Environment(TamponTimer.self) private var tamponTimer
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     static var today: String { getTodaysDate() }
-    @Query(filter: #Predicate<Day> { day in
+    @Query(filter: #Predicate<DayData> { day in
         day.day == today
-    }) var dayData: [Day]
+    }) var dayData: [DayData]
     @State var longPressed = false
     
     var body: some View {
@@ -84,7 +84,7 @@ struct HomeView: View {
         .onAppear {
             DispatchQueue.main.async {
                 if dayData.first == nil {
-                    modelContext.insert(Day(day: getTodaysDate()))
+                    modelContext.insert(DayData(day: getTodaysDate()))
                 }
             }
         }
@@ -93,5 +93,5 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .modelContainer(for: Day.self, inMemory: true)
+        .modelContainer(for: DayData.self, inMemory: true)
 }

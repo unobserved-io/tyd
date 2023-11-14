@@ -13,9 +13,9 @@ struct TimerView: View {
     @Environment(\.modelContext) private var modelContext
     @Query var persistentTimer: [PersistentTimer]
     static var today: String { getTodaysDate() }
-    @Query(filter: #Predicate<Day> { day in
+    @Query(filter: #Predicate<DayData> { day in
         day.day == today
-    }) var dayData: [Day]
+    }) var dayData: [DayData]
     @Query var appData: [AppData]
     @State var showingEditTimedEventSheet: Bool = false
     @State var tappedTimedEvent: TimedEvent = .init(product: .tampon, startTime: .now, stopTime: .now)

@@ -12,7 +12,7 @@ struct CalendarView: View {
     @Environment(\.modelContext) private var modelContext
     static var today: String { getTodaysDate() }
     @State private var date: Date = .now
-    @State private var datePredicate: Predicate<Day> = #Predicate<Day> { day in
+    @State private var datePredicate: Predicate<DayData> = #Predicate<DayData> { day in
         day.day == today
     }
 
@@ -29,7 +29,7 @@ struct CalendarView: View {
                     .datePickerStyle(.graphical)
                     .onChange(of: date) { oldDate, newDate in
                         let dateString = dateFormatter.string(from: newDate)
-                        datePredicate = #Predicate<Day> { day in
+                        datePredicate = #Predicate<DayData> { day in
                             day.day == dateString
                         }
                     }
@@ -43,5 +43,5 @@ struct CalendarView: View {
 
 #Preview {
     CalendarView()
-        .modelContainer(for: Day.self, inMemory: true)
+        .modelContainer(for: DayData.self, inMemory: true)
 }

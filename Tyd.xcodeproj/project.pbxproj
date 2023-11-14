@@ -14,7 +14,7 @@
 		9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02531A2A4AECC100F2E68B /* HomeView.swift */; };
 		9C02531D2A4AECC100F2E68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C02531C2A4AECC100F2E68B /* Assets.xcassets */; };
 		9C0253202A4AECC100F2E68B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C02531F2A4AECC100F2E68B /* Preview Assets.xcassets */; };
-		9C0253222A4AECC100F2E68B /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253212A4AECC100F2E68B /* Day.swift */; };
+		9C0253222A4AECC100F2E68B /* DayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253212A4AECC100F2E68B /* DayData.swift */; };
 		9C02532E2A4AECC200F2E68B /* TydTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02532D2A4AECC200F2E68B /* TydTests.swift */; };
 		9C0253382A4AECC200F2E68B /* TydUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253372A4AECC200F2E68B /* TydUITests.swift */; };
 		9C02533A2A4AECC200F2E68B /* TydUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */; };
@@ -33,6 +33,7 @@
 		9C86E4572AF8D66B000F84D5 /* MultiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */; };
 		9C86E4592AF8DC6E000F84D5 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4582AF8DC6E000F84D5 /* AppData.swift */; };
 		9CDD0AAF2B040E4900F09B39 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD0AAE2B040E4900F09B39 /* StatsView.swift */; };
+		9CDD0AB12B04199800F09B39 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD0AB02B04199800F09B39 /* Stats.swift */; };
 		9CDF3F8C2A4C67B0007DF07F /* TimerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF3F8B2A4C67B0007DF07F /* TimerProgressBar.swift */; };
 		9CDF3F8F2A4C73B2007DF07F /* TamponTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF3F8E2A4C73B2007DF07F /* TamponTimer.swift */; };
 		9CED71362AFA9A02006D5732 /* AddEditMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED71352AFA9A02006D5732 /* AddEditMedicationView.swift */; };
@@ -70,7 +71,7 @@
 		9C02531A2A4AECC100F2E68B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9C02531C2A4AECC100F2E68B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C02531F2A4AECC100F2E68B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		9C0253212A4AECC100F2E68B /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		9C0253212A4AECC100F2E68B /* DayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayData.swift; sourceTree = "<group>"; };
 		9C0253232A4AECC100F2E68B /* Tyd.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tyd.entitlements; sourceTree = "<group>"; };
 		9C0253242A4AECC100F2E68B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C0253292A4AECC200F2E68B /* TydTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TydTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +94,7 @@
 		9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectionView.swift; sourceTree = "<group>"; };
 		9C86E4582AF8DC6E000F84D5 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		9CDD0AAE2B040E4900F09B39 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		9CDD0AB02B04199800F09B39 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		9CDF3F8B2A4C67B0007DF07F /* TimerProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProgressBar.swift; sourceTree = "<group>"; };
 		9CDF3F8E2A4C73B2007DF07F /* TamponTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamponTimer.swift; sourceTree = "<group>"; };
 		9CED71352AFA9A02006D5732 /* AddEditMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddEditMedicationView.swift; path = Tyd/Views/Calendar/AddEditMedicationView.swift; sourceTree = SOURCE_ROOT; };
@@ -209,7 +211,7 @@
 		9C2CE94B2A4AF06800AAAC52 /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
-				9C0253212A4AECC100F2E68B /* Day.swift */,
+				9C0253212A4AECC100F2E68B /* DayData.swift */,
 				9C2CE94C2A4AF43300AAAC52 /* TimedEvent.swift */,
 				9C86E4582AF8DC6E000F84D5 /* AppData.swift */,
 				9CED713A2AFAA458006D5732 /* Medication.swift */,
@@ -280,6 +282,7 @@
 			children = (
 				9CDF3F8E2A4C73B2007DF07F /* TamponTimer.swift */,
 				9C26D0FB2B00021F001548E2 /* ColorHex.swift */,
+				9CDD0AB02B04199800F09B39 /* Stats.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -451,7 +454,7 @@
 				9CED713D2AFABEAA006D5732 /* CalendarView.swift in Sources */,
 				9C7C68622AFF8D0900B3F8B6 /* PmsSymptomsView.swift in Sources */,
 				9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */,
-				9C0253222A4AECC100F2E68B /* Day.swift in Sources */,
+				9C0253222A4AECC100F2E68B /* DayData.swift in Sources */,
 				9C7C68662AFF8FEC00B3F8B6 /* TimerIntervalsView.swift in Sources */,
 				9C86E4552AF8D660000F84D5 /* MultiSelector.swift in Sources */,
 				9C26D0FC2B00021F001548E2 /* ColorHex.swift in Sources */,
@@ -459,6 +462,7 @@
 				9CF9E1902AF4F618002BF692 /* Globals.swift in Sources */,
 				9C0141102B00D2470036C7AB /* Enums.swift in Sources */,
 				9CED713F2AFAC4CB006D5732 /* UnderCalendarView.swift in Sources */,
+				9CDD0AB12B04199800F09B39 /* Stats.swift in Sources */,
 				9C412BD02AF50B570051DBAF /* TabsView.swift in Sources */,
 				9C01410E2B00C5580036C7AB /* TimerView.swift in Sources */,
 				9C26D0FE2B000499001548E2 /* AccentColorPickerView.swift in Sources */,
