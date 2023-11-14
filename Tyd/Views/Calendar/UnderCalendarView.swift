@@ -98,7 +98,7 @@ struct UnderCalendarView: View {
             }
                         
             // Medication
-            Section {
+            Section((dayData.first?.medication.isEmpty ?? true) ? "" : "MEDICATION") {
                 ForEach(dayData.first?.medication ?? []) { medication in
                     Button {
                         tappedMedication = medication
@@ -119,7 +119,7 @@ struct UnderCalendarView: View {
             }
                         
             // Notes
-            Section {
+            Section((dayData.first?.notes.isEmpty ?? true) ? "" : "NOTES") {
                 TextField("Notes", text: Bindable(dayData.first ?? Day(day: getTodaysDate())).notes, axis: .vertical)
             }
         }
