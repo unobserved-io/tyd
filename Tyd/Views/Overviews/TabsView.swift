@@ -26,12 +26,12 @@ struct TabsView: View {
                 .tabItem {
                     Image(systemName: "timer")
                 }
-//
-//            StatsView()
-//                .tabItem {
-//                    Image(systemName: "chart.bar")
-//                }
-//
+
+            StatsView()
+                .tabItem {
+                    Image(systemName: "chart.bar")
+                }
+
             SettingsView()
                 .tabItem {
                     Image(systemName: "gear")
