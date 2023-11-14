@@ -10,16 +10,14 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query var tamponTimer: [PersistentTimer]
+    @Environment(TamponTimer.self) private var tamponTimer
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     static var today: String { getTodaysDate() }
     @Query(filter: #Predicate<Day> { day in
         day.day == today
     }) var dayData: [Day]
     @State var longPressed = false
-
-    @State var timerProgress: Float = 0.0
-
+    
     var body: some View {
         VStack {
             Text("DAY 29")
@@ -27,8 +25,8 @@ struct HomeView: View {
                 .padding(.bottom)
 
             ZStack {
-                if tamponTimer.first?.isRunning ?? false {
-                    ProgressBar(progress: $timerProgress)
+                if tamponTimer.isRunning {
+                    ProgressBar(progress: tamponTimer.progress)
                         .offset(y: 40)
                 }
 
@@ -82,11 +80,6 @@ struct HomeView: View {
                     .padding(.top)
                 }
             }
-
-//            Button("Progress") {
-//                timerProgress += 0.1
-//                tamponTimer.isRunning = true
-//            }
         }
         .onAppear {
             DispatchQueue.main.async {

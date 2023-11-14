@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProgressBar: View {
-    @Binding var progress: Float
+    let progress: Double
 
     var body: some View {
         ZStack {

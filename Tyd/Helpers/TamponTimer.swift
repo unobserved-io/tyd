@@ -13,6 +13,7 @@ class TamponTimer {
     var isRunning: Bool = false
     var formatted = "00:00:00"
     var timesUp: Bool = false
+    var progress: Double = 0.0
     @ObservationIgnored var intervalInSeconds: Int = 0
     @ObservationIgnored var product: Product? = nil
     @ObservationIgnored var startTime: Date? = nil
@@ -81,8 +82,10 @@ class TamponTimer {
                 
                 if secondsElapsed > self.intervalInSeconds {
                     self.timesUp = true
+                    self.progress = 1.0
                 } else {
                     self.timesUp = false
+                    self.progress = Double(secondsElapsed) / Double(self.intervalInSeconds)
                 }
                 
                 if !self.timesUp {
