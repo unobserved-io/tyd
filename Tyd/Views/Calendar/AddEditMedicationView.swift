@@ -11,19 +11,15 @@ import SwiftUI
 struct AddEditMedicationView: View {
     @Environment(\.dismiss) var dismiss
     @Query private var appData: [AppData]
-    @Query var medication: [Medication]
-    
-    init(predicate: Predicate<Medication>) {
-        _medication = Query(filter: predicate)
-    }
+    @Binding var medication: Medication
 
     var body: some View {
-        VStack {
+        VStack(spacing: 10) {
             // Name field
             HStack {
                 Text("Medication")
                 Spacer()
-                Picker("Medication", selection: Bindable(medication.first ?? Medication()).name) {
+                Picker("Medication", selection: $medication.name) {
                     ForEach(appData.first?.medicines ?? [], id: \.self) { name in
                         Text(LocalizedStringKey(name.localizedCapitalized))
                     }
@@ -33,7 +29,7 @@ struct AddEditMedicationView: View {
             // Time taken field
             DatePicker(
                 "Time Taken",
-                selection: Bindable(medication.first ?? Medication()).time,
+                selection: $medication.time,
                 in: ...Date.now,
                 displayedComponents: [.hourAndMinute]
             )
@@ -42,28 +38,19 @@ struct AddEditMedicationView: View {
             HStack {
                 Text("Dose")
                 Spacer()
-                TextField("20 mg, etc.", text: Bindable(medication.first ?? Medication()).dose)
+                TextField("20 mg, etc.", text: $medication.dose)
                     .multilineTextAlignment(.trailing)
             }
-            
-            // Save & Cancel
-            HStack(spacing: 15) {
-                Button("Close") {
-                    dismiss()
-                }
-                .buttonStyle(.bordered)
-            }
-            .padding(.top, 10)
         }
         .padding()
         .onAppear {
-            if medication.first?.name.isEmpty ?? false {
-                medication.first?.name = appData.first?.medicines.first ?? ""
+            if medication.name.isEmpty {
+                medication.name = appData.first?.medicines.first ?? ""
             }
         }
     }
 }
 
-// #Preview {
-//    AddEditMedicationView()
-// }
+#Preview {
+    AddEditMedicationView(medication: .constant(Medication()))
+}

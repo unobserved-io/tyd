@@ -18,7 +18,7 @@ struct TimerView: View {
     }) var dayData: [Day]
     @Query var appData: [AppData]
     @State var showingEditTimedEventSheet: Bool = false
-    @State var tappedTimedEvent: TimedEvent = TimedEvent(product: .tampon, startTime: .now, stopTime: .now)
+    @State var tappedTimedEvent: TimedEvent = .init(product: .tampon, startTime: .now, stopTime: .now)
     
     var body: some View {
         VStack {
@@ -53,11 +53,11 @@ struct TimerView: View {
                     DatePicker(
                         "Change start time",
                         selection: Binding(get: {
-                            tamponTimer.startTime ?? .now
-                        },
-                      set: { newValue in
-                          tamponTimer.startTime = newValue
-                      }),
+                                               tamponTimer.startTime ?? .now
+                                           },
+                                           set: { newValue in
+                                               tamponTimer.startTime = newValue
+                                           }),
                         in: ...Date.now,
                         displayedComponents: [.hourAndMinute]
                     )
@@ -98,7 +98,7 @@ struct TimerView: View {
                 }
                 .sheet(isPresented: $showingEditTimedEventSheet) {
                     EditTimedEventView(timedEvent: $tappedTimedEvent)
-                        .presentationDetents([.medicationInput])
+                        .presentationDetents([.small])
                 }
             }
         }
@@ -111,12 +111,11 @@ struct TimerView: View {
     private func deleteTimerData(at offsets: IndexSet) {
         for index in offsets {
             let timedEventToMatch: TimedEvent = (dayData.first?.timerData ?? []).sorted(by: { $0.stopTime > $1.stopTime })[index]
-            if let indexToRemove = dayData.first?.timerData.firstIndex(where: { $0 == timedEventToMatch}) {
+            if let indexToRemove = dayData.first?.timerData.firstIndex(where: { $0 == timedEventToMatch }) {
                 dayData.first?.timerData.remove(at: indexToRemove)
                 modelContext.delete(timedEventToMatch)
             }
         }
-        
     }
 }
 

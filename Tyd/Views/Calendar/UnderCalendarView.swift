@@ -13,11 +13,9 @@ struct UnderCalendarView: View {
     @Query var appData: [AppData]
     @Query var dayData: [Day]
     let date: Date
-    @State private var showAddMedSheet: Bool = false
+    @State private var showingEditMedSheet: Bool = false
     static var defaultUUID: UUID { UUID() }
-    @State private var medicationPredicate: Predicate<Medication> = #Predicate<Medication> { medication in
-        medication.id == defaultUUID
-    }
+    @State private var tappedMedication: Medication = .init()
     
     init(predicate: Predicate<Day>, date: Date) {
         _dayData = Query(filter: predicate)
@@ -44,9 +42,9 @@ struct UnderCalendarView: View {
         .onChange(of: date) {
             checkForAndCreateDate()
         }
-        .sheet(isPresented: $showAddMedSheet) {
-                AddEditMedicationView(predicate: medicationPredicate)
-                    .presentationDetents([.medicationInput])
+        .sheet(isPresented: $showingEditMedSheet) {
+            AddEditMedicationView(medication: $tappedMedication)
+                .presentationDetents([.small])
         }
                     
         if dayData.first?.period ?? false || dayData.first?.pms ?? false {
@@ -102,7 +100,12 @@ struct UnderCalendarView: View {
             // Medication
             Section {
                 ForEach(dayData.first?.medication ?? []) { medication in
-                    Text("\(timeFormatter.string(from: medication.time)) - \(medication.dose) \(medication.name)")
+                    Button {
+                        tappedMedication = medication
+                        showingEditMedSheet.toggle()
+                    } label: {
+                        Text("\(timeFormatter.string(from: medication.time)) - \(medication.dose) \(medication.name)")
+                    }
                 }
                 .onDelete(perform: deleteMedication)
                 
@@ -110,11 +113,8 @@ struct UnderCalendarView: View {
                     let newMedication = Medication()
                     modelContext.insert(newMedication)
                     dayData.first?.medication.append(newMedication)
-                    let newUUID = newMedication.id
-                    medicationPredicate = #Predicate<Medication> { medication in
-                        medication.id == newUUID
-                    }
-                    showAddMedSheet.toggle()
+                    tappedMedication = newMedication
+                    showingEditMedSheet.toggle()
                 }
             }
                         
