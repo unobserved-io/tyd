@@ -63,7 +63,6 @@ struct TimerView: View {
                     )
                     .labelsHidden()
                     .onChange(of: tamponTimer.startTime) {
-                        print("Changed notification")
                         tamponTimer.updateNotificationTime()
                     }
                     

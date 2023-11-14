@@ -8,8 +8,6 @@
 import SwiftData
 import SwiftUI
 
-// TODO: Delete this file if TamponTimer model works
-
 @Observable
 class TamponTimer {
     var isRunning: Bool = false
