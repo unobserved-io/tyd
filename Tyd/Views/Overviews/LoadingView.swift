@@ -19,11 +19,14 @@ struct LoadingView: View {
     var body: some View {
         TabsView()
             .onAppear {
+                // If AppData does not exist, create it
                 if appData.first == nil {
                     modelContext.insert(AppData())
                 }
+                
                 stats.updateStats(dayData: dayData)
-                // TODO: Uncomment and start timer if necessary
+                
+                // TODO: Continue running timer if it was running when the app was closed
 //                if persistentTimer.first == nil {
 //                    modelContext.insert(PersistentTimer())
 //                } else {

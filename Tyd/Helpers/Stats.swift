@@ -17,7 +17,6 @@ class Stats {
     var daysUsingTyd: Int = 0
     var totalPeriodDays: Int = 0
     var totalPmsDays: Int = 0
-//    var appData: [AppData]
     
     func resetAllStats() {
         self.lastPeriod = nil
