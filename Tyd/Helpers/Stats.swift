@@ -30,6 +30,11 @@ class Stats {
     }
     
     func updateStats(dayData: [DayData]) {
-        
+        let sortedDays = dayData.sorted(by: {
+            dateFormatter.date(from: $0.day) ?? .now > dateFormatter.date(from: $1.day) ?? .now
+        })
+        sortedDays.forEach { day in
+            print(day.day)
+        }
     }
 }
