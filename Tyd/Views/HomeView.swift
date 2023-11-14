@@ -20,7 +20,7 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            Text("DAY 29")
+            Text("DAY 29") // TODO: Show correct day
                 .bold()
                 .padding(.bottom)
 
