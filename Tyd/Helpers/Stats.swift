@@ -36,5 +36,7 @@ class Stats {
         sortedDays.forEach { day in
             print(day.day)
         }
+        
+        // TODO: BUG: Multiple DayData items are being created for a single date
     }
 }

@@ -10,11 +10,8 @@ import SwiftUI
 
 struct CalendarView: View {
     @Environment(\.modelContext) private var modelContext
-    static var today: String { getTodaysDate() }
     @State private var date: Date = .now
-    @State private var datePredicate: Predicate<DayData> = #Predicate<DayData> { day in
-        day.day == today
-    }
+    @State private var currentDay: DayData = DayData(day: "06.08.1927")
 
     var body: some View {
         NavigationStack {
@@ -28,16 +25,40 @@ struct CalendarView: View {
                     )
                     .datePickerStyle(.graphical)
                     .onChange(of: date) { oldDate, newDate in
-                        let dateString = dateFormatter.string(from: newDate)
-                        datePredicate = #Predicate<DayData> { day in
-                            day.day == dateString
-                        }
+                        getDayData(date: newDate)
                     }
                 }
                 
-                UnderCalendarView(predicate: datePredicate, date: date)
+                if currentDay.day != "06.08.1927" {
+                    UnderCalendarView(dayData: $currentDay)
+                }
+            }
+            .onAppear {
+                getDayData(date: .now)
             }
         }
+    }
+    
+    private func getDayData(date: Date) {
+        let dateString = dateFormatter.string(from: date)
+        let fetchDescriptor = FetchDescriptor<DayData>(predicate: #Predicate<DayData> { day in
+            day.day == dateString
+        })
+        do {
+            var fetchedDay = try modelContext.fetch(fetchDescriptor)
+            if fetchedDay.first == nil {
+                createAndAssignDayData(dateString: dateString)
+                fetchedDay = try modelContext.fetch(fetchDescriptor)
+            }
+            currentDay = fetchedDay.first ?? DayData(day: "06.08.1927")
+        } catch {
+            print("Failed to load day data.")
+        }
+    }
+    
+    private func createAndAssignDayData(dateString: String) {
+        let newDayData = DayData(day: dateString)
+        modelContext.insert(newDayData)
     }
 }
 

@@ -10,137 +10,110 @@ import SwiftUI
 
 struct UnderCalendarView: View {
     @Environment(\.modelContext) private var modelContext
+    @Binding var dayData: DayData
     @Query var appData: [AppData]
-    @Query var dayData: [DayData]
-    let date: Date
     @State private var showingEditMedSheet: Bool = false
     static var defaultUUID: UUID { UUID() }
     @State private var tappedMedication: Medication = .init()
     
-    init(predicate: Predicate<DayData>, date: Date) {
-        _dayData = Query(filter: predicate)
-        self.date = date
-    }
-    
     var body: some View {
+        // Period or PMS
         Section {
-            if !(dayData.first?.pms ?? true) {
-                Toggle("Period", isOn: Bindable(dayData.first ?? DayData(day: getTodaysDate())).period)
+            if !dayData.pms {
+                Toggle("Period", isOn: $dayData.period)
                     .tint(.accentColor)
             }
-            if !(dayData.first?.period ?? true) {
-                Toggle("PMS", isOn: Bindable(dayData.first ?? DayData(day: getTodaysDate())).pms)
+            if !dayData.period {
+                Toggle("PMS", isOn: $dayData.pms)
                     .tint(.accentColor)
             }
-            if dayData.first == nil {
-                Text("No Data")
-            }
         }
-        .onAppear {
-            checkForAndCreateDate()
-        }
-        .onChange(of: date) {
-            checkForAndCreateDate()
-        }
-        .sheet(isPresented: $showingEditMedSheet) {
-            AddEditMedicationView(medication: $tappedMedication)
-                .presentationDetents([.small])
-        }
-                    
-        if dayData.first?.period ?? false || dayData.first?.pms ?? false {
-            Section {
-                // Bleeding
-                if dayData.first?.period ?? false {
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("Bleeding")
-                            Spacer()
-                            Text("\(Int(dayData.first?.bleeding ?? 0.0))")
-                        }
-                        Slider(
-                            value: Bindable(dayData.first ?? DayData(day: getTodaysDate())).bleeding,
-                            in: 0 ... 10,
-                            step: 1.0
-                        )
-                    }
-                }
-                            
-                // Pain
+        
+        Section {
+            // Bleeding
+            if dayData.period {
                 VStack(alignment: .leading) {
                     HStack {
-                        Text("Pain")
+                        Text("Bleeding")
                         Spacer()
-                        Text("\(Int(dayData.first?.pain ?? 0.0))")
+                        Text("\(Int(dayData.bleeding))")
                     }
                     Slider(
-                        value: Bindable(dayData.first ?? DayData(day: getTodaysDate())).pain,
+                        value: $dayData.bleeding,
                         in: 0 ... 10,
                         step: 1.0
                     )
                 }
             }
-                        
-            // Symptoms
-            Section {
-                if dayData.first?.period ?? false {
-                    MultiSelector(
-                        label: String(localized: "Symptoms"),
-                        options: defaultPeriodSymptoms + (appData.first?.periodSymptoms ?? []),
-                        selected: Bindable(dayData.first ?? DayData(day: getTodaysDate())).periodSymptoms
-                    )
-                } else {
-                    MultiSelector(
-                        label: String(localized: "Symptoms"),
-                        options: defaultPmsSymptoms + (appData.first?.pmsSymptoms ?? []),
-                        selected: Bindable(dayData.first ?? DayData(day: getTodaysDate())).pmsSymptoms
-                    )
+                            
+            // Pain
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Pain")
+                    Spacer()
+                    Text("\(Int(dayData.pain))")
                 }
-            }
-                        
-            // Medication
-            Section((dayData.first?.medication.isEmpty ?? true) ? "" : "MEDICATION") {
-                ForEach(dayData.first?.medication ?? []) { medication in
-                    Button {
-                        tappedMedication = medication
-                        showingEditMedSheet.toggle()
-                    } label: {
-                        Text("\(timeFormatter.string(from: medication.time)) - \(medication.dose) \(medication.name)")
-                    }
-                }
-                .onDelete(perform: deleteMedication)
-                
-                Button("Add medication") {
-                    let newMedication = Medication()
-                    modelContext.insert(newMedication)
-                    dayData.first?.medication.append(newMedication)
-                    tappedMedication = newMedication
-                    showingEditMedSheet.toggle()
-                }
-            }
-                        
-            // Notes
-            Section((dayData.first?.notes.isEmpty ?? true) ? "" : "NOTES") {
-                TextField("Notes", text: Bindable(dayData.first ?? DayData(day: getTodaysDate())).notes, axis: .vertical)
+                Slider(
+                    value: $dayData.pain,
+                    in: 0 ... 10,
+                    step: 1.0
+                )
             }
         }
-    }
-    
-    private func checkForAndCreateDate() {
-        DispatchQueue.main.async {
-            if dayData.first == nil {
-                modelContext.insert(DayData(day: dateFormatter.string(from: date)))
+                        
+        // Symptoms
+        Section {
+            if dayData.period {
+                MultiSelector(
+                    label: String(localized: "Symptoms"),
+                    options: defaultPeriodSymptoms + (appData.first?.periodSymptoms ?? []),
+                    selected: $dayData.periodSymptoms
+                )
+            } else {
+                MultiSelector(
+                    label: String(localized: "Symptoms"),
+                    options: defaultPmsSymptoms + (appData.first?.pmsSymptoms ?? []),
+                    selected: $dayData.pmsSymptoms
+                )
             }
+        }
+                        
+        // Medication
+        Section(dayData.medication.isEmpty ? "" : "MEDICATION") {
+            ForEach(dayData.medication) { medication in
+                Button {
+                    tappedMedication = medication
+                    showingEditMedSheet.toggle()
+                } label: {
+                    Text("\(timeFormatter.string(from: medication.time)) - \(medication.dose) \(medication.name)")
+                }
+            }
+            .onDelete(perform: deleteMedication)
+                
+            Button("Add medication") {
+                let newMedication = Medication()
+                modelContext.insert(newMedication)
+                dayData.medication.append(newMedication)
+                tappedMedication = newMedication
+                showingEditMedSheet.toggle()
+            }
+        }
+        .sheet(isPresented: $showingEditMedSheet) {
+            AddEditMedicationView(medication: $tappedMedication)
+                .presentationDetents([.small])
+        }
+                        
+        // Notes
+        Section(dayData.notes.isEmpty ? "" : "NOTES") {
+            TextField("Notes", text: $dayData.notes, axis: .vertical)
         }
     }
     
     private func deleteMedication(at offsets: IndexSet) {
-        let index = offsets.first
-        if index != nil {
-            let medToDelete: Medication? = dayData.first?.medication[index!]
-            if medToDelete != nil {
-                dayData.first?.medication.remove(at: index!)
-                modelContext.delete(medToDelete!)
-            }
+        offsets.forEach { index in
+            let medToDelete: Medication = dayData.medication[index]
+            dayData.medication.remove(at: index)
+            modelContext.delete(medToDelete)
         }
     }
 }
