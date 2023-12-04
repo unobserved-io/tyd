@@ -62,6 +62,8 @@ class Stats {
         // Get data using alteredDays, which may or may not be changed
         self.getLastPeriod(from: alteredDays)
         self.getDaysLengthAndBleeding(from: alteredDays)
+        self.getAvgCycle(from: alteredDays)
+        self.getPmsDaysPerCycle(from: alteredDays)
         
         //            // Get data using alteredDays
         //            getLastPeriod(from: alteredDays)
@@ -114,8 +116,10 @@ class Stats {
         var periodStart: Date?
         var periodEnd: Date?
         var allPeriodLengths: [Int] = []
-        var periodDay = 1
+        var periodDay: Int = 1
         var tempBleedingByDay: [Int: [Double]] = [:]
+        var allStartDates: [Date] = []
+        var cycleLengths: [Int] = []
         
         for day in dayData.reversed() {
             if day.period {
@@ -148,6 +152,7 @@ class Stats {
                     let daysBetweenDates = Calendar.current.dateComponents([.day], from: periodStart ?? .now, to: periodEnd ?? .now).day
                     if daysBetweenDates != nil {
                         allPeriodLengths.append(daysBetweenDates!)
+                        allStartDates.append(periodStart ?? .now)
                     }
                     
                     // Starting a new period, record start and end
@@ -168,6 +173,7 @@ class Stats {
                     let daysBetweenDates = Calendar.current.dateComponents([.day], from: periodStart ?? .now, to: periodEnd ?? .now).day
                     if daysBetweenDates != nil {
                         allPeriodLengths.append(daysBetweenDates!)
+                        allStartDates.append(periodStart ?? .now)
                     }
                     
                     periodStart = nil
@@ -186,6 +192,20 @@ class Stats {
         tempBleedingByDay.forEach { dayNumber, bleedingNumbers in
             self.avgBleedingByDay[dayNumber] = Float(bleedingNumbers.sum()) / Float(bleedingNumbers.count)
         }
+        // Calculate average cycle
+        for i in 0...allStartDates.count {
+            if i + 1 <= (allStartDates.count - 1) {
+                let daysBetween = Calendar.current.dateComponents([.day], from: allStartDates[i] , to: allStartDates[i+1]).day
+                if daysBetween != nil {
+                    cycleLengths.append(daysBetween!)
+                }
+            }
+        }
+        if cycleLengths.isEmpty {
+            self.avgCycle = 0
+        } else {
+            self.avgCycle = cycleLengths.average()
+        }
     }
     
     func getTotalDaysUsingTyd(from dayData: [DayData]) {
@@ -201,5 +221,95 @@ class Stats {
             }
         }
         self.totalPmsDays = pmsDays
+    }
+    
+    func getAvgCycle(from dayData: [DayData]) {
+        var periodStart: Date?
+        var periodEnd: Date?
+        var cycleEnd: Date?
+        var allCycleLengths: [Int] = []
+        
+        for day in dayData.reversed() {
+            let parsedDate = dateFormatter.date(from: day.day)
+            if day.period {
+                if periodStart == nil {
+                    // This is the first day, so record start and end
+                    periodStart = parsedDate
+                    periodEnd = parsedDate
+                    cycleEnd = parsedDate
+                } else if Calendar.current.isDate(parsedDate ?? .distantFuture, inSameDayAs: calendar.date(byAdding: .day, value: 1, to: periodEnd ?? .distantPast) ?? .distantPast) {
+                    // Still within period, record end
+                    periodEnd = parsedDate
+                    cycleEnd = parsedDate
+                } else {
+                    // Last period is over, save length and start a new one
+//                    print("Cycle: \(periodStart ?? .now) to \(cycleEnd ?? .now)")
+                    let daysBetweenDates = Calendar.current.dateComponents([.day], from: periodStart ?? .now, to: cycleEnd ?? .now).day
+                    if daysBetweenDates != nil {
+                        allCycleLengths.append(daysBetweenDates!)
+                    }
+                    
+                    // Starting a new period, record start and end
+                    periodStart = parsedDate
+                    periodEnd = parsedDate
+                    cycleEnd = parsedDate
+                }
+            } else {
+                if Calendar.current.isDate(parsedDate ?? .distantFuture, inSameDayAs: calendar.date(byAdding: .day, value: 1, to: cycleEnd ?? .distantPast) ?? .distantPast) {
+                    cycleEnd = parsedDate
+                } else if periodStart != nil {
+//                    print("Cycle: \(periodStart ?? .now) to \(cycleEnd ?? .now)")
+                    let daysBetweenDates = Calendar.current.dateComponents([.day], from: periodStart ?? .now, to: cycleEnd ?? .now).day
+                    if daysBetweenDates != nil {
+                        allCycleLengths.append(daysBetweenDates!)
+                    }
+                    periodStart = nil
+                    periodEnd = nil
+                    cycleEnd = nil
+                }
+            }
+        }
+    }
+    
+    func getPmsDaysPerCycle(from dayData: [DayData]) {
+        var pmsDays: Int = 0
+        var allPmsDays: [Int] = []
+        var newCycle = true
+        var hasBeenPeriod = false
+        
+        for day in dayData.reversed() {
+            if day.period {
+//                print("\(day.day): Period")
+                if !hasBeenPeriod {
+                    hasBeenPeriod = true
+                }
+                
+                if !newCycle {
+                    allPmsDays.append(pmsDays)
+                    pmsDays = 0
+                }
+                newCycle = true
+            } else if day.pms {
+                if hasBeenPeriod {
+                    pmsDays += 1
+                    newCycle = false
+                }
+//                print("\(day.day): PMS (\(pmsDays))")
+            } else {
+//                print("\(day.day): None")
+                if hasBeenPeriod {
+                    newCycle = false
+                }
+            }
+        }
+        
+        if dayData.count >= 2 {
+            if !(dayData.reversed().last?.period ?? false) {
+                allPmsDays.append(pmsDays)
+            }
+        }
+        
+//        print("allPmsDays: \(allPmsDays)")
+        self.avgPmsDaysPerCycle = allPmsDays.average()
     }
 }

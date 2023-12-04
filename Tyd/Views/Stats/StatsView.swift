@@ -19,9 +19,9 @@ struct StatsView: View {
         VStack {
             Text("Last period: \(monthDay.string(from: stats.lastPeriodEnd ?? .distantPast))") // Date
             Text("Avg period length: \(stats.avgPeriodLength ?? 0)") // Number of days
-            Text("Avg PMS days per cycle: ") // # of days
-            Text("Avg bleeding on day one: \(stats.avgBleedingByDay[1] ?? 0)")
-            Text("Avg cycle: ")
+            Text("Avg PMS days per cycle: \(String(format: "%.1f", stats.avgPmsDaysPerCycle))") // # of days
+            Text("Avg bleeding on day one: \(String(format: "%.1f", (stats.avgBleedingByDay[1] ?? 0)))")
+            Text("Avg cycle: \(stats.avgCycle ?? 0)")
             
             Text("Days using tyd: \(stats.daysUsingTyd)")
             Text("Total period days: \(stats.totalPeriodDays)")
