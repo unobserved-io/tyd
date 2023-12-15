@@ -10,6 +10,7 @@ import Foundation
 @Observable
 class Stats {
     var lastPeriodEnd: Date?
+    var lastPeriodStart: Date?
     var currentStartDate: Date?
     var avgPeriodLength: Int?
     var avgPmsDaysPerCycle: Float = 0
@@ -95,21 +96,27 @@ class Stats {
     
     // TODO: Update this function to be smaller if I don't need the start date of last period
     func getLastPeriod(from dayData: [DayData]) {
-        //        var lastPeriodStart: String? = nil
+        var lastPeriodStart: String?
         var lastPeriodEnd: String?
+        var lastDate: Date?
         
         for day in dayData {
+            let parsedDate = dateFormatter.date(from: day.day) ?? .distantFuture
             if day.period {
                 if lastPeriodEnd == nil {
                     lastPeriodEnd = day.day
+                    lastPeriodStart = day.day
+                } else if Calendar.current.isDate(parsedDate, inSameDayAs: calendar.date(byAdding: .day, value: -1, to: lastDate ?? .distantPast) ?? .distantPast) {
+                    lastPeriodStart = day.day
                 }
-                //                lastPeriodStart = day.day
+                lastDate = dateFormatter.date(from: day.day) ?? .now
             } else if lastPeriodEnd != nil {
                 break
             }
         }
         
-        self.lastPeriodEnd = dateFormatter.date(from: lastPeriodEnd ?? "")
+        self.lastPeriodStart = dateFormatter.date(from: lastPeriodStart ?? "01.01.1974")
+        self.lastPeriodEnd = dateFormatter.date(from: lastPeriodEnd ?? "01.01.1974")
     }
     
     func getDaysLengthAndBleeding(from dayData: [DayData]) {

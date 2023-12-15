@@ -24,7 +24,7 @@ struct LoadingView: View {
                     modelContext.insert(AppData())
                 }
                 
-                stats.updateAllStats(from: dayData)
+//                stats.updateAllStats(from: dayData)
                 
                 // TODO: Continue running timer if it was running when the app was closed
 //                if persistentTimer.first == nil {

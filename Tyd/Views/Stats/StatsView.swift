@@ -17,6 +17,15 @@ struct StatsView: View {
     
     var body: some View {
         VStack {
+            Text("Last Period")
+//                .bold()
+                .frame(alignment: .center)
+                .font(.title2)
+            Text("\(monthDay.string(from: stats.lastPeriodStart ?? .distantPast)) - \(monthDay.string(from: stats.lastPeriodEnd ?? .distantFuture))")
+                .frame(alignment: .center)
+                .font(.largeTitle)
+                .foregroundStyle(.accent)
+            Spacer()
             Text("Last period: \(monthDay.string(from: stats.lastPeriodEnd ?? .distantPast))") // Date
             Text("Avg period length: \(stats.avgPeriodLength ?? 0)") // Number of days
             Text("Avg PMS days per cycle: \(String(format: "%.1f", stats.avgPmsDaysPerCycle))") // # of days
