@@ -11,6 +11,7 @@ import Foundation
 class Stats {
     var lastPeriodEnd: Date?
     var lastPeriodStart: Date?
+    var daysSinceLastPeriod: Int = 0
     var currentStartDate: Date?
     var avgPeriodLength: Int?
     var avgPmsDaysPerCycle: Float = 0
@@ -23,6 +24,8 @@ class Stats {
     
     func resetAllStats() {
         self.lastPeriodEnd = nil
+        self.lastPeriodStart = nil
+        self.daysSinceLastPeriod = 0
         self.currentStartDate = nil
         self.avgPeriodLength = nil
         self.avgPmsDaysPerCycle = 0
@@ -94,7 +97,6 @@ class Stats {
         }
     }
     
-    // TODO: Update this function to be smaller if I don't need the start date of last period
     func getLastPeriod(from dayData: [DayData]) {
         var lastPeriodStart: String?
         var lastPeriodEnd: String?
@@ -117,6 +119,7 @@ class Stats {
         
         self.lastPeriodStart = dateFormatter.date(from: lastPeriodStart ?? "01.01.1974")
         self.lastPeriodEnd = dateFormatter.date(from: lastPeriodEnd ?? "01.01.1974")
+        self.daysSinceLastPeriod = Calendar.current.dateComponents([.day], from: self.lastPeriodEnd ?? .now, to: .now).day ?? 0
     }
     
     func getDaysLengthAndBleeding(from dayData: [DayData]) {
