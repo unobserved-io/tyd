@@ -16,10 +16,11 @@ struct StatsView: View {
         dateFormatter.dateFormat = "MMM d"
         return dateFormatter
     }()
+
     @State var bleedingDay: Int = 1
     
     var body: some View {
-        ScrollView{
+        ScrollView {
             VStack {
                 // Last Period
                 VStack {
@@ -72,7 +73,7 @@ struct StatsView: View {
                             }
                             .padding(.leading)
                             Spacer()
-                            Text(String(format: "%.1f", (stats.avgBleedingByDay[bleedingDay] ?? 0)))
+                            Text(String(format: "%.1f", stats.avgBleedingByDay[bleedingDay] ?? 0))
                                 .font(.system(size: 55))
                                 .foregroundStyle(.accent)
                             Spacer()
