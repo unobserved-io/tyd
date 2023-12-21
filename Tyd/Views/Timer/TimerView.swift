@@ -11,7 +11,7 @@ import SwiftUI
 struct TimerView: View {
     @Environment(TamponTimer.self) private var tamponTimer
     @Environment(\.modelContext) private var modelContext
-    @Query var persistentTimer: [PersistentTimer]
+    @Query private var persistentTimer: [PersistentTimer]
     static var today: String { getTodaysDate() }
     @Query(filter: #Predicate<DayData> { day in
         day.day == today
@@ -44,6 +44,7 @@ struct TimerView: View {
                     ForEach(Product.allCases, id: \.rawValue) { product in
                         Button(product.rawValue.capitalized) {
                             startTimer(with: product)
+                            initiatePersistentTimer()
                         }
                         .buttonStyle(.borderedProminent)
                         .disabled(!(dayData.first?.period ?? false))
@@ -76,6 +77,7 @@ struct TimerView: View {
                         modelContext.insert(newTimedEvent)
                         dayData.first?.timerData.append(newTimedEvent)
                         tamponTimer.resetTimedEventData()
+                        resetPersistentTimer()
                     }
                     .buttonStyle(.borderedProminent)
                 }
@@ -123,6 +125,25 @@ struct TimerView: View {
     
     private func getDateADayAgo() -> Date {
         return Calendar.current.date(byAdding: .day, value: -1, to: .now) ?? .now
+    }
+    
+    private func initiatePersistentTimer() {
+        if persistentTimer.first == nil {
+            let newPersistentTimer = PersistentTimer()
+            newPersistentTimer.isRunning = true
+            newPersistentTimer.product = tamponTimer.product ?? .tampon
+            newPersistentTimer.startTime = tamponTimer.startTime
+            modelContext.insert(PersistentTimer())
+        } else {
+            persistentTimer.first?.isRunning = true
+            persistentTimer.first?.product = tamponTimer.product ?? .tampon
+            persistentTimer.first?.startTime = tamponTimer.startTime
+        }
+    }
+    
+    private func resetPersistentTimer() {
+        persistentTimer.first?.isRunning = false
+        persistentTimer.first?.startTime = nil
     }
 }
 

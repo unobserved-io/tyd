@@ -5,7 +5,7 @@
 //  Created by Ricky Kresslein on 6/28/23.
 //
 
-import SwiftData
+// import SwiftData
 import SwiftUI
 
 @Observable
@@ -19,7 +19,7 @@ class TamponTimer {
     @ObservationIgnored var startTime: Date? = nil
     @ObservationIgnored var stopTime: Date? = nil
     
-    var timer: Timer = Timer()
+    var timer: Timer = .init()
     
     private func formatTime(_ secondsElapsed: Int) {
         /// Format time for stop watch clock
@@ -66,14 +66,52 @@ class TamponTimer {
         self.product = product
         startTime = .now
         intervalInSeconds = Int(interval * 60 * 60)
-        var secondsElapsed: Int = 0
-        var secondsRemaining: Int = 0
+        var secondsElapsed = 0
+        var secondsRemaining = 0
         
         // Register notification
         showLocalNotification(in: intervalInSeconds)
         
         // To quickly display the amount of starting time before the timer starts
         formatTime(intervalInSeconds)
+        
+        DispatchQueue.main.async {
+            self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+                secondsElapsed = Calendar.current.dateComponents([.second], from: self.startTime ?? .now, to: Date.now).second ?? 0
+                secondsRemaining = self.intervalInSeconds - secondsElapsed
+                
+                if secondsElapsed > self.intervalInSeconds {
+                    self.timesUp = true
+                    self.progress = 1.0
+                } else {
+                    self.timesUp = false
+                    self.progress = Double(secondsElapsed) / Double(self.intervalInSeconds)
+                }
+                
+                if !self.timesUp {
+                    self.formatTime(secondsRemaining)
+                } else {
+                    self.formatTime(secondsElapsed)
+                }
+            }
+        }
+    }
+    
+    func resume(interval: Float) {
+        isRunning = true
+        intervalInSeconds = Int(interval * 60 * 60)
+        var secondsElapsed: Int = Calendar.current.dateComponents([.second], from: startTime ?? .now, to: Date.now).second ?? 0
+        var secondsRemaining: Int = intervalInSeconds - secondsElapsed
+        
+        if secondsRemaining > 0 {
+            // Register notification
+            showLocalNotification(in: secondsRemaining)
+            
+            // To quickly display the amount of starting time before the timer starts
+            formatTime(secondsRemaining)
+        } else {
+            formatTime(secondsElapsed)
+        }
         
         DispatchQueue.main.async {
             self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
@@ -114,7 +152,7 @@ class TamponTimer {
     
     func updateNotificationTime() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        let secondsElapsed = Calendar.current.dateComponents([.second], from: self.startTime ?? .now, to: Date.now).second ?? 0
+        let secondsElapsed = Calendar.current.dateComponents([.second], from: startTime ?? .now, to: Date.now).second ?? 0
         if secondsElapsed < intervalInSeconds {
             showLocalNotification(in: intervalInSeconds)
         }

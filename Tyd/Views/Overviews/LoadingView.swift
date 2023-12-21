@@ -24,16 +24,14 @@ struct LoadingView: View {
                     modelContext.insert(AppData())
                 }
 
-                // TODO: Continue running timer if it was running when the app was closed
-//                if persistentTimer.first == nil {
-//                    modelContext.insert(PersistentTimer())
-//                } else {
-//                    tamponTimer.isRunning = persistentTimer.first?.isRunning ?? false
-//                    if tamponTimer.isRunning {
-//                        tamponTimer.product = persistentTimer.first?.product
-//                        tamponTimer.startTime = persistentTimer.first?.startTime
-//                    }
-//                }
+                // Continue running timer if it was running when the app was closed
+                if persistentTimer.first != nil {
+                    if persistentTimer.first?.isRunning ?? false {
+                        tamponTimer.product = persistentTimer.first?.product
+                        tamponTimer.startTime = persistentTimer.first?.startTime
+                        tamponTimer.resume(interval: appData.first?.timerIntervals[tamponTimer.product ?? .tampon] ?? 4.0)
+                    }
+                }
             }
     }
 }
