@@ -34,7 +34,7 @@ struct CalendarView: View {
                 }
             }
             .onAppear {
-                getDayData(date: .now)
+                getDayData(date: date)
             }
         }
     }

@@ -47,17 +47,19 @@ struct UnderCalendarView: View {
             }
                             
             // Pain
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Pain")
-                    Spacer()
-                    Text("\(Int(dayData.pain))")
+            if dayData.period || dayData.pms {
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text("Pain")
+                        Spacer()
+                        Text("\(Int(dayData.pain))")
+                    }
+                    Slider(
+                        value: $dayData.pain,
+                        in: 0 ... 10,
+                        step: 1.0
+                    )
                 }
-                Slider(
-                    value: $dayData.pain,
-                    in: 0 ... 10,
-                    step: 1.0
-                )
             }
         }
                         
@@ -69,7 +71,7 @@ struct UnderCalendarView: View {
                     options: defaultPeriodSymptoms + (appData.first?.periodSymptoms ?? []),
                     selected: $dayData.periodSymptoms
                 )
-            } else {
+            } else if dayData.pms {
                 MultiSelector(
                     label: String(localized: "Symptoms"),
                     options: defaultPmsSymptoms + (appData.first?.pmsSymptoms ?? []),
