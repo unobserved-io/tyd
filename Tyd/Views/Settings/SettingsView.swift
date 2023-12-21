@@ -7,6 +7,7 @@
 
 import SwiftData
 import SwiftUI
+//import UniformTypeIdentifiers
 
 struct OldData: Decodable {
     var data: [OldDayData]
@@ -123,7 +124,9 @@ struct SettingsView: View {
     @State private var showingResetAlert: Bool = false
     @State private var showingDeleteDataAlert: Bool = false
     @State private var deleteDataConfirmationText: String = ""
-    @State private var showingDataImportFilePicker: Bool = false
+    @State private var showingDataImporter: Bool = false
+    @State private var showingDataExporter: Bool = false
+    @State private var showingImportWarning: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -153,17 +156,32 @@ struct SettingsView: View {
                 }
                 
                 Section("Saved Data") {
-                    // TODO: Import data from Tyd or Clue
-                    // TODO: Export data
+                    // Export data
+                    Button {
+                        showingDataExporter.toggle()
+                    } label: {
+                        Label {
+                            Text("Export Data")
+                                .foregroundColor(.primary)
+                        } icon: {
+                            Image(systemName: "square.and.arrow.up.fill")
+                        }
+                    }
+                    .fileExporter(
+                        isPresented: $showingDataExporter,
+                        document: JSONDocument(data: getDayDataAsJSON() ?? "[]".data(using: .utf8)!),
+                        contentType: .json,
+                        defaultFilename: "Tyd-\(dateFormatter.string(from: Date.now))"
+                    ) { _ in }
+                    
+                    // TODO: Import data from Clue
                     // Import Data
                     Button {
-                        showingDataImportFilePicker.toggle()
-                        // TODO: Show warning dialog
-//                        if dayData.count > 1 {
-//                            showingDayImportAlert.toggle()
-//                        } else {
-//                            showingDayFilePicker.toggle()
-//                        }
+                        if dayData.count > 1 {
+                            showingImportWarning.toggle()
+                        } else {
+                            showingDataImporter.toggle()
+                        }
                     } label: {
                         Label {
                             Text("Import Data")
@@ -172,19 +190,20 @@ struct SettingsView: View {
                             Image(systemName: "square.and.arrow.down.fill")
                         }
                     }
-                    .fileImporter(isPresented: $showingDataImportFilePicker, allowedContentTypes: [.json]) { result in
+                    .fileImporter(isPresented: $showingDataImporter, allowedContentTypes: [.json]) { result in
                         do {
                             let fileURL = try result.get()
                             if fileURL.startAccessingSecurityScopedResource() {
                                 let fileData = try Data(contentsOf: fileURL, options: .mappedIfSafe)
-                                // TODO: First try to decode as standard data, then else if decode as legacy data
-                                if let allDayData = try? JSONDecoder().decode(OldData.self, from: fileData) {
-                                    // First, delete all current data
+                                // First try to decode as standard data, then else if decode as legacy data
+                                if let allDayData = try? JSONDecoder().decode([DayData].self, from: fileData) {
                                     deleteAllDayData()
-
-                                    // Variables to check for today in imported data
-                                    let todayString: String = dateFormatter.string(from: .now)
-                                    var todayFound = false
+                                    
+                                    for tDayData in allDayData {
+                                        modelContext.insert(tDayData)
+                                    }
+                                } else if let allDayData = try? JSONDecoder().decode(OldData.self, from: fileData) {
+                                    deleteAllDayData()
                                     
                                     for tDayData in allDayData.data {
                                         // Check if the day being imported already exists
@@ -192,10 +211,6 @@ struct SettingsView: View {
                                             modelContext.delete(duplicateData)
                                         }
                                         let newDay: DayData = DayData(day: tDayData.date)
-                                        // Check for today in imported data
-                                        if newDay.day == todayString {
-                                            todayFound = true
-                                        }
                                         newDay.period = tDayData.period
                                         newDay.pms = tDayData.pms
                                         newDay.bleeding = tDayData.bleeding * 10
@@ -229,11 +244,6 @@ struct SettingsView: View {
                                         
                                         modelContext.insert(newDay)
                                     }
-                                    
-                                    // Reload app if today is not found to build it
-                                    if !todayFound {
-                                        // TODO: Create a "today" item
-                                    }
                                 } else {
                                     print("Data import failed")
                                 }
@@ -243,6 +253,14 @@ struct SettingsView: View {
                             print("Failed to import data: \(error.localizedDescription)")
                         }
                     }
+                }
+                .alert("Delete all data?", isPresented: $showingImportWarning) {
+                    Button("Import") {
+                        showingDataImporter.toggle()
+                    }
+                    Button("Cancel", role: .cancel) {}
+                } message: {
+                    Text("Importing data will delete all current data. Do you still want to import?")
                 }
                 
                 Section("Danger Zone") {
@@ -289,6 +307,13 @@ struct SettingsView: View {
         } catch {
             print("Failed to delete all DayData.")
         }
+    }
+    
+    private func getDayDataAsJSON() -> Data? {
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .secondsSince1970
+        encoder.outputFormatting = .prettyPrinted
+        return try? encoder.encode(dayData.sorted(by: { $0.day < $1.day }))
     }
 }
 
