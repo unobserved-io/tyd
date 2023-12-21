@@ -18,7 +18,7 @@ struct HomeView: View {
         day.day == today
     }) var dayData: [DayData]
     @State var longPressed = false
-    
+
     var body: some View {
         VStack {
             if !(dayData.first?.period ?? false) {
@@ -82,6 +82,11 @@ struct HomeView: View {
                     }
                     .padding(.top)
                 }
+            }
+
+            if stats.avgCycle != nil && !(dayData.first?.period ?? false) {
+                Text("~\(stats.daysToNextCycle) days until your next period")
+                    .padding(.top)
             }
         }
         .onAppear {

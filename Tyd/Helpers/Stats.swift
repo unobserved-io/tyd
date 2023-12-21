@@ -20,6 +20,7 @@ class Stats {
     var daysUsingTyd: Int = 0
     var totalPeriodDays: Int = 0
     var totalPmsDays: Int = 0
+    var daysToNextCycle: Int = 0
     @ObservationIgnored var onPeriod = false
     
     func resetAllStats() {
@@ -34,6 +35,7 @@ class Stats {
         self.daysUsingTyd = 0
         self.totalPeriodDays = 0
         self.totalPmsDays = 0
+        self.daysToNextCycle = 0
         self.onPeriod = false
     }
     
@@ -69,13 +71,7 @@ class Stats {
         self.getAvgCycle(from: alteredDays)
         self.getPmsDaysPerCycle(from: alteredDays)
         
-        //            // Get data using alteredDays
-        //            getLastPeriod(from: alteredDays)
-        //            getDaysLengthAndBleeding(from: alteredDays)
-        //        } else {
-        //            getLastPeriod(from: sortedDays)
-        //            getDaysLengthAndBleeding(from: sortedDays)
-        //        }
+        self.daysToNextCycle = (self.avgCycle ?? 0) - self.daysSinceLastPeriod
     }
     
     func getCurrentPeriodStart(from dayData: [DayData]) {
@@ -126,7 +122,7 @@ class Stats {
         var periodStart: Date?
         var periodEnd: Date?
         var allPeriodLengths: [Int] = []
-        var periodDay: Int = 1
+        var periodDay = 1
         var tempBleedingByDay: [Int: [Double]] = [:]
         var allStartDates: [Date] = []
         var cycleLengths: [Int] = []
@@ -205,7 +201,7 @@ class Stats {
         // Calculate average cycle
         for i in 0...allStartDates.count {
             if i + 1 <= (allStartDates.count - 1) {
-                let daysBetween = Calendar.current.dateComponents([.day], from: allStartDates[i] , to: allStartDates[i+1]).day
+                let daysBetween = Calendar.current.dateComponents([.day], from: allStartDates[i], to: allStartDates[i + 1]).day
                 if daysBetween != nil {
                     cycleLengths.append(daysBetween!)
                 }
@@ -282,7 +278,7 @@ class Stats {
     }
     
     func getPmsDaysPerCycle(from dayData: [DayData]) {
-        var pmsDays: Int = 0
+        var pmsDays = 0
         var allPmsDays: [Int] = []
         var newCycle = true
         var hasBeenPeriod = false
