@@ -11,7 +11,7 @@ import SwiftUI
 struct CalendarView: View {
     @Environment(\.modelContext) private var modelContext
     @State private var date: Date = .now
-    @State private var currentDay: DayData = DayData(day: "06.08.1927")
+    @State private var currentDay: DayData = .init(day: "06.08.1927")
 
     var body: some View {
         NavigationStack {
@@ -24,11 +24,11 @@ struct CalendarView: View {
                         displayedComponents: [.date]
                     )
                     .datePickerStyle(.graphical)
-                    .onChange(of: date) { oldDate, newDate in
+                    .onChange(of: date) { _, newDate in
                         getDayData(date: newDate)
                     }
                 }
-                
+
                 if currentDay.day != "06.08.1927" {
                     UnderCalendarView(dayData: $currentDay)
                 }
@@ -38,7 +38,7 @@ struct CalendarView: View {
             }
         }
     }
-    
+
     private func getDayData(date: Date) {
         let dateString = dateFormatter.string(from: date)
         let fetchDescriptor = FetchDescriptor<DayData>(predicate: #Predicate<DayData> { day in
@@ -55,7 +55,7 @@ struct CalendarView: View {
             print("Failed to load day data.")
         }
     }
-    
+
     private func createAndAssignDayData(dateString: String) {
         let newDayData = DayData(day: dateString)
         modelContext.insert(newDayData)
