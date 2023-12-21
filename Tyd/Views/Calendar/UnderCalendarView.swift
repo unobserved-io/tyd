@@ -68,13 +68,13 @@ struct UnderCalendarView: View {
             if dayData.period {
                 MultiSelector(
                     label: String(localized: "Symptoms"),
-                    options: defaultPeriodSymptoms + (appData.first?.periodSymptoms ?? []),
+                    options: removeDuplicates(from: defaultPeriodSymptoms + (appData.first?.periodSymptoms ?? []) + dayData.periodSymptoms),
                     selected: $dayData.periodSymptoms
                 )
             } else if dayData.pms {
                 MultiSelector(
                     label: String(localized: "Symptoms"),
-                    options: defaultPmsSymptoms + (appData.first?.pmsSymptoms ?? []),
+                    options: removeDuplicates(from: defaultPmsSymptoms + (appData.first?.pmsSymptoms ?? []) + dayData.pmsSymptoms),
                     selected: $dayData.pmsSymptoms
                 )
             }
@@ -117,6 +117,10 @@ struct UnderCalendarView: View {
             dayData.medication.remove(at: index)
             modelContext.delete(medToDelete)
         }
+    }
+    
+    private func removeDuplicates(from symptomList: [String]) -> [String] {
+        return Array(Set(symptomList))
     }
 }
 
