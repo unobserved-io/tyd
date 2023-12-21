@@ -19,6 +19,12 @@ struct TabsView: View {
                 .tabItem {
                     Image(systemName: "house")
                 }
+                .onAppear {
+                    let sortedDays = dayData.sorted(by: {
+                        dateFormatter.date(from: $0.day) ?? .now > dateFormatter.date(from: $1.day) ?? .now
+                    })
+                    stats.getLastPeriod(from: sortedDays)
+                }
 
             CalendarView()
                 .tabItem {

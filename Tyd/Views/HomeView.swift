@@ -11,6 +11,7 @@ import SwiftUI
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(TamponTimer.self) private var tamponTimer
+    @Environment(Stats.self) private var stats
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     static var today: String { getTodaysDate() }
     @Query(filter: #Predicate<DayData> { day in
@@ -20,9 +21,11 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            Text("DAY 29") // TODO: Show correct day
-                .bold()
-                .padding(.bottom)
+            if !(dayData.first?.period ?? false) {
+                Text("DAY \(stats.daysSinceLastPeriod)")
+                    .bold()
+                    .padding(.bottom)
+            }
 
             ZStack {
                 if tamponTimer.isRunning {
