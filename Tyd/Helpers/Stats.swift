@@ -53,16 +53,18 @@ class Stats {
         // If on period, create an altered list without the first period
         if self.onPeriod {
             // Remove current period from sortedDays and save as alteredDays
-            var indexToRemove = 0
-            for i in 0...sortedDays.count {
-                if sortedDays[i].period {
-                    indexToRemove = i
-                } else {
-                    break
+            if sortedDays.count > 0 {
+                var indexToRemove = 0
+                for i in 0 ..< sortedDays.count {
+                    if sortedDays[i].period {
+                        indexToRemove = i
+                    } else {
+                        break
+                    }
                 }
+                self.currentStartDate = dateFormatter.date(from: sortedDays[indexToRemove].day)
+                alteredDays.removeSubrange(0 ... indexToRemove)
             }
-            self.currentStartDate = dateFormatter.date(from: sortedDays[indexToRemove].day)
-            alteredDays.removeSubrange(0...indexToRemove)
         }
         
         // Get data using alteredDays, which may or may not be changed
@@ -154,7 +156,6 @@ class Stats {
                     }
                 } else {
                     // Last period is over, save length and start a new one
-                    //                    print("Period: \(periodStart ?? .now) to \(periodEnd ?? .now)")
                     let daysBetweenDates = Calendar.current.dateComponents([.day], from: periodStart ?? .now, to: periodEnd ?? .now).day
                     if daysBetweenDates != nil {
                         allPeriodLengths.append(daysBetweenDates!)
@@ -175,7 +176,6 @@ class Stats {
                 }
             } else {
                 if periodStart != nil {
-                    //                    print("Period: \(periodStart ?? .now) to \(periodEnd ?? .now)")
                     let daysBetweenDates = Calendar.current.dateComponents([.day], from: periodStart ?? .now, to: periodEnd ?? .now).day
                     if daysBetweenDates != nil {
                         allPeriodLengths.append(daysBetweenDates!)
@@ -189,7 +189,6 @@ class Stats {
             }
         }
         
-        //        print("Period lengths: \(allPeriodLengths)")
         // Record total period days
         self.totalPeriodDays = allPeriodLengths.sum()
         // Record average period length
@@ -199,7 +198,7 @@ class Stats {
             self.avgBleedingByDay[dayNumber] = Float(bleedingNumbers.sum()) / Float(bleedingNumbers.count)
         }
         // Calculate average cycle
-        for i in 0...allStartDates.count {
+        for i in 0 ..< allStartDates.count {
             if i + 1 <= (allStartDates.count - 1) {
                 let daysBetween = Calendar.current.dateComponents([.day], from: allStartDates[i], to: allStartDates[i + 1]).day
                 if daysBetween != nil {
@@ -249,7 +248,6 @@ class Stats {
                     cycleEnd = parsedDate
                 } else {
                     // Last period is over, save length and start a new one
-//                    print("Cycle: \(periodStart ?? .now) to \(cycleEnd ?? .now)")
                     let daysBetweenDates = Calendar.current.dateComponents([.day], from: periodStart ?? .now, to: cycleEnd ?? .now).day
                     if daysBetweenDates != nil {
                         allCycleLengths.append(daysBetweenDates!)
@@ -264,7 +262,6 @@ class Stats {
                 if Calendar.current.isDate(parsedDate ?? .distantFuture, inSameDayAs: calendar.date(byAdding: .day, value: 1, to: cycleEnd ?? .distantPast) ?? .distantPast) {
                     cycleEnd = parsedDate
                 } else if periodStart != nil {
-//                    print("Cycle: \(periodStart ?? .now) to \(cycleEnd ?? .now)")
                     let daysBetweenDates = Calendar.current.dateComponents([.day], from: periodStart ?? .now, to: cycleEnd ?? .now).day
                     if daysBetweenDates != nil {
                         allCycleLengths.append(daysBetweenDates!)
@@ -300,9 +297,7 @@ class Stats {
                     pmsDays += 1
                     newCycle = false
                 }
-//                print("\(day.day): PMS (\(pmsDays))")
             } else {
-//                print("\(day.day): None")
                 if hasBeenPeriod {
                     newCycle = false
                 }
@@ -315,7 +310,6 @@ class Stats {
             }
         }
         
-//        print("allPmsDays: \(allPmsDays)")
         self.avgPmsDaysPerCycle = allPmsDays.average()
     }
 }
