@@ -120,6 +120,6 @@ struct UnderCalendarView: View {
     }
 }
 
-// #Preview {
-//    UnderCalendarView()
-// }
+ #Preview {
+     UnderCalendarView(dayData: .constant(DayData(day: "2023.31.12")))
+ }
