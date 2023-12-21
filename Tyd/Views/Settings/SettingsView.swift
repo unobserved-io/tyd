@@ -7,7 +7,7 @@
 
 import SwiftData
 import SwiftUI
-//import UniformTypeIdentifiers
+// import UniformTypeIdentifiers
 
 struct OldData: Decodable {
     var data: [OldDayData]
@@ -29,7 +29,7 @@ struct OldDayData: Decodable {
     var pmsNotes: String
 }
 
-//"periodMedsTaken": [
+// "periodMedsTaken": [
 //       [
 //         "Aspirin",
 //         "5:00",
@@ -49,7 +49,7 @@ struct OldEnvironment: Decodable {
     var application_id: String
 }
 
-//"settings": {
+// "settings": {
 //    "medicines": [
 //      "Aspirin",
 //      "Ibuprofen",
@@ -115,7 +115,7 @@ struct OldEnvironment: Decodable {
 //  "environment": {
 //    "application_id": "com.lakoliu.tyd"
 //  }
-//}
+// }
 
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
@@ -210,7 +210,7 @@ struct SettingsView: View {
                                         if let duplicateData = dayData.first(where: { $0.day == tDayData.date }) {
                                             modelContext.delete(duplicateData)
                                         }
-                                        let newDay: DayData = DayData(day: tDayData.date)
+                                        let newDay: DayData = .init(day: tDayData.date)
                                         newDay.period = tDayData.period
                                         newDay.pms = tDayData.pms
                                         newDay.bleeding = tDayData.bleeding * 10
@@ -223,7 +223,7 @@ struct SettingsView: View {
                                         newDay.pmsSymptoms = tDayData.pmsSymptoms
                                         for medication in tDayData.periodMedsTaken {
                                             if medication.count == 3 {
-                                                let newMedication: Medication = Medication()
+                                                let newMedication: Medication = .init()
                                                 newMedication.name = medication[0]
                                                 newMedication.time = dateFormatter.date(from: newDay.day) ?? .distantPast
                                                 newMedication.dose = medication[2]
@@ -233,7 +233,7 @@ struct SettingsView: View {
                                         }
                                         for medication in tDayData.pmsMedsTaken {
                                             if medication.count == 3 {
-                                                let newMedication: Medication = Medication()
+                                                let newMedication: Medication = .init()
                                                 newMedication.name = medication[0]
                                                 newMedication.time = dateFormatter.date(from: newDay.day) ?? .distantPast
                                                 newMedication.dose = medication[2]
