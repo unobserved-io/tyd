@@ -58,8 +58,7 @@ struct TimerView: View {
                                            set: { newValue in
                                                tamponTimer.startTime = newValue
                                            }),
-                        in: ...Date.now,
-                        displayedComponents: [.hourAndMinute]
+                        in: getDateADayAgo() ... Date.now
                     )
                     .labelsHidden()
                     .onChange(of: tamponTimer.startTime) {
@@ -115,6 +114,10 @@ struct TimerView: View {
                 modelContext.delete(timedEventToMatch)
             }
         }
+    }
+    
+    private func getDateADayAgo() -> Date {
+        return Calendar.current.date(byAdding: .day, value: -1, to: .now) ?? .now
     }
 }
 
