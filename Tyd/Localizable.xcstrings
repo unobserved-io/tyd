@@ -1,5 +1,243 @@
 {
   "sourceLanguage" : "en",
-  "strings" : {},
+  "strings" : {
+    "" : {
+
+    },
+    "%@ - %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - %2$@"
+          }
+        }
+      }
+    },
+    "%@ - %@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - %2$@ %3$@"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "~%lld days until your next period" : {
+
+    },
+    "20 mg, etc." : {
+
+    },
+    "Add" : {
+
+    },
+    "Add %@" : {
+
+    },
+    "Add medication" : {
+
+    },
+    "Add Medicine" : {
+
+    },
+    "Add Symptom" : {
+
+    },
+    "Additional Period Symptoms" : {
+
+    },
+    "Additional PMS Symptoms" : {
+
+    },
+    "App color" : {
+
+    },
+    "App Color" : {
+
+    },
+    "Appearance" : {
+
+    },
+    "Are you sure you want to erase all of your data? This is irreversible." : {
+
+    },
+    "Are you sure you want to reset all colors to defaults?" : {
+
+    },
+    "Are you sure you want to reset all settings to their defaults?" : {
+
+    },
+    "Average bleeding on day %@" : {
+
+    },
+    "Average cycle" : {
+
+    },
+    "Average period" : {
+
+    },
+    "Average PMS days per cycle" : {
+
+    },
+    "Begin period to use tampon timer." : {
+
+    },
+    "Bleeding" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Change start time" : {
+
+    },
+    "Change your %@ in" : {
+
+    },
+    "Danger Zone" : {
+
+    },
+    "day" : {
+
+    },
+    "DAY %lld" : {
+
+    },
+    "days" : {
+
+    },
+    "Days using Tyd" : {
+
+    },
+    "Delete All Data" : {
+
+    },
+    "Delete all data?" : {
+
+    },
+    "Dose" : {
+
+    },
+    "End time" : {
+
+    },
+    "Export Data" : {
+
+    },
+    "Import" : {
+
+    },
+    "Import Data" : {
+
+    },
+    "Importing data will delete all current data. Do you still want to import?" : {
+
+    },
+    "Info" : {
+
+    },
+    "Intervals" : {
+
+    },
+    "Last Period" : {
+
+    },
+    "Medication" : {
+
+    },
+    "MEDICATION" : {
+
+    },
+    "Medicines" : {
+
+    },
+    "None" : {
+
+    },
+    "Notes" : {
+
+    },
+    "NOTES" : {
+
+    },
+    "Pain" : {
+
+    },
+    "Period" : {
+
+    },
+    "Period days" : {
+
+    },
+    "PMS" : {
+
+    },
+    "PMS Days" : {
+
+    },
+    "Product" : {
+
+    },
+    "Reset" : {
+
+    },
+    "Reset All Settings" : {
+
+    },
+    "Reset settings?" : {
+
+    },
+    "Reset to defaults" : {
+
+    },
+    "Reset?" : {
+
+    },
+    "Saved Data" : {
+
+    },
+    "Start Date" : {
+
+    },
+    "Start time" : {
+
+    },
+    "Stop" : {
+
+    },
+    "Symptoms" : {
+
+    },
+    "Symptoms & Meds" : {
+
+    },
+    "Tap for period, hold for PMS" : {
+
+    },
+    "Time since you changed your %@" : {
+
+    },
+    "Time Taken" : {
+
+    },
+    "Timer" : {
+
+    }
+  },
   "version" : "1.0"
 }
