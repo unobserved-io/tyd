@@ -42,6 +42,13 @@
 		9CED713D2AFABEAA006D5732 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713C2AFABEAA006D5732 /* CalendarView.swift */; };
 		9CED713F2AFAC4CB006D5732 /* UnderCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713E2AFAC4CB006D5732 /* UnderCalendarView.swift */; };
 		9CEEBF502B35832C00E9BB5C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9CEEBF4F2B35832C00E9BB5C /* Localizable.xcstrings */; };
+		9CEEBF712B35A27200E9BB5C /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEEBF572B35A21E00E9BB5C /* WidgetKit.framework */; };
+		9CEEBF722B35A27200E9BB5C /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEEBF592B35A21E00E9BB5C /* SwiftUI.framework */; };
+		9CEEBF752B35A27300E9BB5C /* TydWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEBF742B35A27300E9BB5C /* TydWidgetBundle.swift */; };
+		9CEEBF772B35A27300E9BB5C /* TydWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEBF762B35A27300E9BB5C /* TydWidgetLiveActivity.swift */; };
+		9CEEBF792B35A27300E9BB5C /* TydWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEEBF782B35A27300E9BB5C /* TydWidget.swift */; };
+		9CEEBF7B2B35A27300E9BB5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9CEEBF7A2B35A27300E9BB5C /* Assets.xcassets */; };
+		9CEEBF7F2B35A27300E9BB5C /* TydWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9CEEBF702B35A27200E9BB5C /* TydWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9CF3A4E92B029094008380E9 /* EditTimedEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3A4E82B029094008380E9 /* EditTimedEventView.swift */; };
 		9CF9E1902AF4F618002BF692 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9E18F2AF4F618002BF692 /* Globals.swift */; };
 		9CF9E1922AF4F6CD002BF692 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9E1912AF4F6CD002BF692 /* Functions.swift */; };
@@ -62,7 +69,28 @@
 			remoteGlobalIDString = 9C0253142A4AECC100F2E68B;
 			remoteInfo = Tyd;
 		};
+		9CEEBF7D2B35A27300E9BB5C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9C02530D2A4AECC100F2E68B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9CEEBF6F2B35A27200E9BB5C;
+			remoteInfo = TydWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9CEEBF6B2B35A21F00E9BB5C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				9CEEBF7F2B35A27300E9BB5C /* TydWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		9C01410D2B00C5580036C7AB /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -105,6 +133,14 @@
 		9CED713C2AFABEAA006D5732 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		9CED713E2AFAC4CB006D5732 /* UnderCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderCalendarView.swift; sourceTree = "<group>"; };
 		9CEEBF4F2B35832C00E9BB5C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		9CEEBF572B35A21E00E9BB5C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		9CEEBF592B35A21E00E9BB5C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		9CEEBF702B35A27200E9BB5C /* TydWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TydWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		9CEEBF742B35A27300E9BB5C /* TydWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydWidgetBundle.swift; sourceTree = "<group>"; };
+		9CEEBF762B35A27300E9BB5C /* TydWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		9CEEBF782B35A27300E9BB5C /* TydWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydWidget.swift; sourceTree = "<group>"; };
+		9CEEBF7A2B35A27300E9BB5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9CEEBF7C2B35A27300E9BB5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9CF3A4E82B029094008380E9 /* EditTimedEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimedEventView.swift; sourceTree = "<group>"; };
 		9CF9E18F2AF4F618002BF692 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		9CF9E1912AF4F6CD002BF692 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -132,6 +168,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9CEEBF6D2B35A27200E9BB5C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CEEBF722B35A27200E9BB5C /* SwiftUI.framework in Frameworks */,
+				9CEEBF712B35A27200E9BB5C /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -141,6 +186,8 @@
 				9C0253172A4AECC100F2E68B /* Tyd */,
 				9C02532C2A4AECC200F2E68B /* TydTests */,
 				9C0253362A4AECC200F2E68B /* TydUITests */,
+				9CEEBF732B35A27300E9BB5C /* TydWidget */,
+				9CEEBF562B35A21E00E9BB5C /* Frameworks */,
 				9C0253162A4AECC100F2E68B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -151,6 +198,7 @@
 				9C0253152A4AECC100F2E68B /* Tyd.app */,
 				9C0253292A4AECC200F2E68B /* TydTests.xctest */,
 				9C0253332A4AECC200F2E68B /* TydUITests.xctest */,
+				9CEEBF702B35A27200E9BB5C /* TydWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -300,6 +348,27 @@
 			path = Objects;
 			sourceTree = "<group>";
 		};
+		9CEEBF562B35A21E00E9BB5C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9CEEBF572B35A21E00E9BB5C /* WidgetKit.framework */,
+				9CEEBF592B35A21E00E9BB5C /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9CEEBF732B35A27300E9BB5C /* TydWidget */ = {
+			isa = PBXGroup;
+			children = (
+				9CEEBF742B35A27300E9BB5C /* TydWidgetBundle.swift */,
+				9CEEBF762B35A27300E9BB5C /* TydWidgetLiveActivity.swift */,
+				9CEEBF782B35A27300E9BB5C /* TydWidget.swift */,
+				9CEEBF7A2B35A27300E9BB5C /* Assets.xcassets */,
+				9CEEBF7C2B35A27300E9BB5C /* Info.plist */,
+			);
+			path = TydWidget;
+			sourceTree = "<group>";
+		};
 		9CF3A4E72B029083008380E9 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,10 +399,12 @@
 				9C0253112A4AECC100F2E68B /* Sources */,
 				9C0253122A4AECC100F2E68B /* Frameworks */,
 				9C0253132A4AECC100F2E68B /* Resources */,
+				9CEEBF6B2B35A21F00E9BB5C /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				9CEEBF7E2B35A27300E9BB5C /* PBXTargetDependency */,
 			);
 			name = Tyd;
 			productName = Tyd;
@@ -376,6 +447,23 @@
 			productReference = 9C0253332A4AECC200F2E68B /* TydUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		9CEEBF6F2B35A27200E9BB5C /* TydWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9CEEBF802B35A27300E9BB5C /* Build configuration list for PBXNativeTarget "TydWidgetExtension" */;
+			buildPhases = (
+				9CEEBF6C2B35A27200E9BB5C /* Sources */,
+				9CEEBF6D2B35A27200E9BB5C /* Frameworks */,
+				9CEEBF6E2B35A27200E9BB5C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TydWidgetExtension;
+			productName = TydWidgetExtension;
+			productReference = 9CEEBF702B35A27200E9BB5C /* TydWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -383,7 +471,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					9C0253142A4AECC100F2E68B = {
@@ -396,6 +484,9 @@
 					9C0253322A4AECC200F2E68B = {
 						CreatedOnToolsVersion = 15.0;
 						TestTargetID = 9C0253142A4AECC100F2E68B;
+					};
+					9CEEBF6F2B35A27200E9BB5C = {
+						CreatedOnToolsVersion = 15.1;
 					};
 				};
 			};
@@ -416,6 +507,7 @@
 				9C0253142A4AECC100F2E68B /* Tyd */,
 				9C0253282A4AECC200F2E68B /* TydTests */,
 				9C0253322A4AECC200F2E68B /* TydUITests */,
+				9CEEBF6F2B35A27200E9BB5C /* TydWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -442,6 +534,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9CEEBF6E2B35A27200E9BB5C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CEEBF7B2B35A27300E9BB5C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +604,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9CEEBF6C2B35A27200E9BB5C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CEEBF792B35A27300E9BB5C /* TydWidget.swift in Sources */,
+				9CEEBF772B35A27300E9BB5C /* TydWidgetLiveActivity.swift in Sources */,
+				9CEEBF752B35A27300E9BB5C /* TydWidgetBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -516,6 +626,11 @@
 			isa = PBXTargetDependency;
 			target = 9C0253142A4AECC100F2E68B /* Tyd */;
 			targetProxy = 9C0253342A4AECC200F2E68B /* PBXContainerItemProxy */;
+		};
+		9CEEBF7E2B35A27300E9BB5C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9CEEBF6F2B35A27200E9BB5C /* TydWidgetExtension */;
+			targetProxy = 9CEEBF7D2B35A27300E9BB5C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -642,6 +757,7 @@
 		9C02533E2A4AECC200F2E68B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Tyd/Tyd.entitlements;
@@ -675,6 +791,7 @@
 		9C02533F2A4AECC200F2E68B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Tyd/Tyd.entitlements;
@@ -781,6 +898,62 @@
 			};
 			name = Release;
 		};
+		9CEEBF812B35A27300E9BB5C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z5MKQX2NCZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TydWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TydWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.unobserved.Tyd.TydWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9CEEBF822B35A27300E9BB5C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Z5MKQX2NCZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TydWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TydWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.unobserved.Tyd.TydWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -816,6 +989,15 @@
 			buildConfigurations = (
 				9C0253442A4AECC200F2E68B /* Debug */,
 				9C0253452A4AECC200F2E68B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9CEEBF802B35A27300E9BB5C /* Build configuration list for PBXNativeTarget "TydWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CEEBF812B35A27300E9BB5C /* Debug */,
+				9CEEBF822B35A27300E9BB5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
