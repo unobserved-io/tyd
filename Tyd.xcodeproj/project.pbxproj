@@ -41,6 +41,7 @@
 		9CED713B2AFAA458006D5732 /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713A2AFAA458006D5732 /* Medication.swift */; };
 		9CED713D2AFABEAA006D5732 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713C2AFABEAA006D5732 /* CalendarView.swift */; };
 		9CED713F2AFAC4CB006D5732 /* UnderCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713E2AFAC4CB006D5732 /* UnderCalendarView.swift */; };
+		9CEEBF502B35832C00E9BB5C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9CEEBF4F2B35832C00E9BB5C /* Localizable.xcstrings */; };
 		9CF3A4E92B029094008380E9 /* EditTimedEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3A4E82B029094008380E9 /* EditTimedEventView.swift */; };
 		9CF9E1902AF4F618002BF692 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9E18F2AF4F618002BF692 /* Globals.swift */; };
 		9CF9E1922AF4F6CD002BF692 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9E1912AF4F6CD002BF692 /* Functions.swift */; };
@@ -103,6 +104,7 @@
 		9CED713A2AFAA458006D5732 /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
 		9CED713C2AFABEAA006D5732 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		9CED713E2AFAC4CB006D5732 /* UnderCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderCalendarView.swift; sourceTree = "<group>"; };
+		9CEEBF4F2B35832C00E9BB5C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9CF3A4E82B029094008380E9 /* EditTimedEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimedEventView.swift; sourceTree = "<group>"; };
 		9CF9E18F2AF4F618002BF692 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		9CF9E1912AF4F6CD002BF692 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				9C0253232A4AECC100F2E68B /* Tyd.entitlements */,
 				9C0253242A4AECC100F2E68B /* Info.plist */,
 				9C02531E2A4AECC100F2E68B /* Preview Content */,
+				9CEEBF4F2B35832C00E9BB5C /* Localizable.xcstrings */,
 			);
 			path = Tyd;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = 9C02530C2A4AECC100F2E68B;
 			productRefGroup = 9C0253162A4AECC100F2E68B /* Products */;
@@ -423,6 +427,7 @@
 			files = (
 				9C0253202A4AECC100F2E68B /* Preview Assets.xcassets in Resources */,
 				9C02531D2A4AECC100F2E68B /* Assets.xcassets in Resources */,
+				9CEEBF502B35832C00E9BB5C /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

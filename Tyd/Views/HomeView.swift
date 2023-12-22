@@ -21,7 +21,7 @@ struct HomeView: View {
 
     var body: some View {
         VStack {
-            if !(dayData.first?.period ?? false) {
+            if !(dayData.first?.period ?? false) && stats.daysSinceLastPeriod > 0 {
                 Text("DAY \(stats.daysSinceLastPeriod)")
                     .bold()
                     .padding(.bottom)
@@ -84,7 +84,7 @@ struct HomeView: View {
                 }
             }
 
-            if stats.avgCycle != nil && !(dayData.first?.period ?? false) {
+            if !(dayData.first?.period ?? false) && stats.avgCycle ?? 0 > 0 {
                 Text("~\(stats.daysToNextCycle) days until your next period")
                     .padding(.top)
             }
