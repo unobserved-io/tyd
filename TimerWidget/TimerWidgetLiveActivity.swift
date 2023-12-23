@@ -1,15 +1,15 @@
 //
-//  TydWidgetLiveActivity.swift
-//  TydWidget
+//  TimerWidgetLiveActivity.swift
+//  TimerWidget
 //
-//  Created by Ricky Kresslein on 12/22/23.
+//  Created by Ricky Kresslein on 12/23/23.
 //
 
 import ActivityKit
 import WidgetKit
 import SwiftUI
 
-struct TydWidgetAttributes: ActivityAttributes {
+struct TimerWidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         // Dynamic stateful properties about your activity go here!
         var emoji: String
@@ -19,9 +19,9 @@ struct TydWidgetAttributes: ActivityAttributes {
     var name: String
 }
 
-struct TydWidgetLiveActivity: Widget {
+struct TimerWidgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
-        ActivityConfiguration(for: TydWidgetAttributes.self) { context in
+        ActivityConfiguration(for: TimerWidgetAttributes.self) { context in
             // Lock screen/banner UI goes here
             VStack {
                 Text("Hello \(context.state.emoji)")
@@ -56,25 +56,25 @@ struct TydWidgetLiveActivity: Widget {
     }
 }
 
-extension TydWidgetAttributes {
-    fileprivate static var preview: TydWidgetAttributes {
-        TydWidgetAttributes(name: "World")
+extension TimerWidgetAttributes {
+    fileprivate static var preview: TimerWidgetAttributes {
+        TimerWidgetAttributes(name: "World")
     }
 }
 
-extension TydWidgetAttributes.ContentState {
-    fileprivate static var smiley: TydWidgetAttributes.ContentState {
-        TydWidgetAttributes.ContentState(emoji: "😀")
+extension TimerWidgetAttributes.ContentState {
+    fileprivate static var smiley: TimerWidgetAttributes.ContentState {
+        TimerWidgetAttributes.ContentState(emoji: "😀")
      }
      
-     fileprivate static var starEyes: TydWidgetAttributes.ContentState {
-         TydWidgetAttributes.ContentState(emoji: "🤩")
+     fileprivate static var starEyes: TimerWidgetAttributes.ContentState {
+         TimerWidgetAttributes.ContentState(emoji: "🤩")
      }
 }
 
-#Preview("Notification", as: .content, using: TydWidgetAttributes.preview) {
-   TydWidgetLiveActivity()
+#Preview("Notification", as: .content, using: TimerWidgetAttributes.preview) {
+   TimerWidgetLiveActivity()
 } contentStates: {
-    TydWidgetAttributes.ContentState.smiley
-    TydWidgetAttributes.ContentState.starEyes
+    TimerWidgetAttributes.ContentState.smiley
+    TimerWidgetAttributes.ContentState.starEyes
 }

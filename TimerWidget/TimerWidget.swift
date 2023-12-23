@@ -1,8 +1,8 @@
 //
-//  TydWidget.swift
-//  TydWidget
+//  TimerWidget.swift
+//  TimerWidget
 //
-//  Created by Ricky Kresslein on 12/22/23.
+//  Created by Ricky Kresslein on 12/23/23.
 //
 
 import WidgetKit
@@ -39,7 +39,7 @@ struct SimpleEntry: TimelineEntry {
     let emoji: String
 }
 
-struct TydWidgetEntryView : View {
+struct TimerWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
@@ -53,16 +53,16 @@ struct TydWidgetEntryView : View {
     }
 }
 
-struct TydWidget: Widget {
-    let kind: String = "TydWidget"
+struct TimerWidget: Widget {
+    let kind: String = "TimerWidget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
             if #available(iOS 17.0, *) {
-                TydWidgetEntryView(entry: entry)
+                TimerWidgetEntryView(entry: entry)
                     .containerBackground(.fill.tertiary, for: .widget)
             } else {
-                TydWidgetEntryView(entry: entry)
+                TimerWidgetEntryView(entry: entry)
                     .padding()
                     .background()
             }
@@ -73,7 +73,7 @@ struct TydWidget: Widget {
 }
 
 #Preview(as: .systemSmall) {
-    TydWidget()
+    TimerWidget()
 } timeline: {
     SimpleEntry(date: .now, emoji: "😀")
     SimpleEntry(date: .now, emoji: "🤩")
