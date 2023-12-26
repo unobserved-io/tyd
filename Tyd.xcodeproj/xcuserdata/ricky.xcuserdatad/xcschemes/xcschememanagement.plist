@@ -7,12 +7,12 @@
 		<key>TimerWidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Tyd.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>3</integer>
 		</dict>
 		<key>TydTests.xcscheme_^#shared#^_</key>
 		<dict>
@@ -24,15 +24,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>TydWidgetExtension.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>9C0253142A4AECC100F2E68B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9C0253282A4AECC200F2E68B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9C6BB3622B370A4300166B30</key>
 		<dict>
 			<key>primary</key>
 			<true/>

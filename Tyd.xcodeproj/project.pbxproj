@@ -247,6 +247,13 @@
 			path = TydUITests;
 			sourceTree = "<group>";
 		};
+		9C27A83B2B3717220028ACFE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		9C2CE94A2A4AF05A00AAAC52 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +315,7 @@
 		9C6BB3662B370A4300166B30 /* TimerWidget */ = {
 			isa = PBXGroup;
 			children = (
+				9C27A83B2B3717220028ACFE /* Helpers */,
 				9C6BB3672B370A4300166B30 /* TimerWidgetBundle.swift */,
 				9C6BB3692B370A4300166B30 /* TimerWidgetLiveActivity.swift */,
 				9C6BB36B2B370A4300166B30 /* TimerWidget.swift */,

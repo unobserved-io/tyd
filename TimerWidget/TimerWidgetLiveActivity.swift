@@ -6,49 +6,104 @@
 //
 
 import ActivityKit
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 struct TimerWidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
-        // Dynamic stateful properties about your activity go here!
-        var emoji: String
+        var startTime: Date
     }
-
-    // Fixed non-changing properties about your activity go here!
-    var name: String
 }
 
 struct TimerWidgetLiveActivity: Widget {
+    let tydPurple: Color = .init(red: 0.5450980392, green: 0.5450980392, blue: 0.6901960784)
+    @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
+    
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: TimerWidgetAttributes.self) { context in
             // Lock screen/banner UI goes here
-            VStack {
-                Text("Hello \(context.state.emoji)")
+            HStack {
+                Spacer()
+                
+                Button {} label: {
+                    Image(systemName: "stop.fill")
+                        .foregroundColor(.white)
+                }
+                .buttonBorderShape(.circle)
+                .tint(.white)
+                .font(.system(size: 25.0))
+                
+                Button {} label: {
+                    Image(systemName: "repeat")
+                        .foregroundColor(.white)
+                }
+                .buttonBorderShape(.circle)
+                .tint(.white)
+                .font(.system(size: 25.0))
+                                    
+                Text(
+                    Date(
+                        timeIntervalSinceNow: Double(context.state.startTime.timeIntervalSince1970) - Date().timeIntervalSince1970
+                    ),
+                    style: .timer
+                )
+                .font(Font.monospacedDigit(.system(size: 60.0))())
+                .foregroundStyle(.white)
+                .multilineTextAlignment(.center)
             }
-            .activityBackgroundTint(Color.cyan)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .padding(.horizontal)
+            .padding(.vertical, 10.0)
+            .background(LinearGradient(gradient: Gradient(colors: [tydPurple.opacity(0.35), tydPurple]), startPoint: .top, endPoint: .bottom))
+            .activityBackgroundTint(Color.white)
             .activitySystemActionForegroundColor(Color.black)
 
         } dynamicIsland: { context in
             DynamicIsland {
-                // Expanded UI goes here.  Compose the expanded UI through
-                // various regions, like leading/trailing/center/bottom
                 DynamicIslandExpandedRegion(.leading) {
-                    Text("Leading")
+                    HStack {
+                        Button {} label: {
+                            Image(systemName: "stop.fill")
+                                .foregroundColor(.accent)
+                        }
+                        .buttonBorderShape(.circle)
+                        .tint(.accent)
+                        
+                        Button {} label: {
+                            Image(systemName: "repeat")
+                                .foregroundColor(.accent)
+                        }
+                        .buttonBorderShape(.circle)
+                        .tint(.accent)
+                    }
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Text("Trailing")
+                    Image("Tyd15-Accent")
+                        .padding(.top, 8.0)
+                        .padding(.trailing, 7.0)
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text("Bottom \(context.state.emoji)")
-                    // more content
+                    Text(
+                        Date(
+                            timeIntervalSinceNow: Double(context.state.startTime.timeIntervalSince1970) - Date().timeIntervalSince1970
+                        ),
+                        style: .timer
+                    )
+                    .font(Font.monospacedDigit(.system(size: 60.0))())
+                    .foregroundStyle(.accent)
                 }
             } compactLeading: {
-                Text("L")
+                Image("Tyd15-Accent")
             } compactTrailing: {
-                Text("T \(context.state.emoji)")
+                Text(
+                    Date(
+                        timeIntervalSinceNow: Double(context.state.startTime.timeIntervalSince1970) - Date().timeIntervalSince1970
+                    ),
+                    style: .timer
+                )
+                .foregroundStyle(.accent)
             } minimal: {
-                Text(context.state.emoji)
+                Image("Tyd15-Accent")
             }
             .widgetURL(URL(string: "http://www.apple.com"))
             .keylineTint(Color.red)
@@ -56,25 +111,14 @@ struct TimerWidgetLiveActivity: Widget {
     }
 }
 
-extension TimerWidgetAttributes {
-    fileprivate static var preview: TimerWidgetAttributes {
-        TimerWidgetAttributes(name: "World")
+private extension TimerWidgetAttributes {
+    static var preview: TimerWidgetAttributes {
+        TimerWidgetAttributes()
     }
 }
 
-extension TimerWidgetAttributes.ContentState {
-    fileprivate static var smiley: TimerWidgetAttributes.ContentState {
-        TimerWidgetAttributes.ContentState(emoji: "😀")
-     }
-     
-     fileprivate static var starEyes: TimerWidgetAttributes.ContentState {
-         TimerWidgetAttributes.ContentState(emoji: "🤩")
-     }
-}
-
 #Preview("Notification", as: .content, using: TimerWidgetAttributes.preview) {
-   TimerWidgetLiveActivity()
+    TimerWidgetLiveActivity()
 } contentStates: {
-    TimerWidgetAttributes.ContentState.smiley
-    TimerWidgetAttributes.ContentState.starEyes
+    TimerWidgetAttributes.ContentState(startTime: .now)
 }
