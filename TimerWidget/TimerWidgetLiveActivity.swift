@@ -91,35 +91,45 @@ struct TimerWidgetLiveActivity: Widget {
                     }
                 }
                 DynamicIslandExpandedRegion(.trailing) {
-                    Image("Tyd15-Accent")
-                        .padding(.top, 8.0)
-                        .padding(.trailing, 7.0)
+                    Button {} label: {
+                        Image("Tyd15-Accent")
+                    }
+                    .buttonBorderShape(.circle)
+                    .tint(.accent.opacity(0.0))
                 }
                 DynamicIslandExpandedRegion(.bottom) {
-                    Text(
-                        Date(
-                            timeIntervalSinceNow: Double(context.state.startTime.timeIntervalSince1970) - Date().timeIntervalSince1970
-                        ),
-                        style: .timer
-                    )
-                    .font(Font.monospacedDigit(.system(size: 60.0))())
-                    .foregroundStyle(.accent)
+                    if context.state.stoppedTime == nil {
+                        Text(
+                            context.state.endTime,
+                            style: .timer
+                        )
+                        .font(Font.monospacedDigit(.system(size: 60.0))())
+                        .foregroundStyle(.accent)
+                        .multilineTextAlignment(.center)
+                    } else {
+                        Text(formatTime(Calendar.current.dateComponents([.second], from: context.state.startTime, to: context.state.stoppedTime ?? .now).second ?? 0))
+                            .font(Font.monospacedDigit(.system(size: 60.0))())
+                            .foregroundStyle(.accent)
+                            .multilineTextAlignment(.center)
+                    }
                 }
             } compactLeading: {
                 Image("Tyd15-Accent")
+                    .padding()
             } compactTrailing: {
                 Text(
-                    Date(
-                        timeIntervalSinceNow: Double(context.state.startTime.timeIntervalSince1970) - Date().timeIntervalSince1970
-                    ),
+                    context.state.endTime,
                     style: .timer
                 )
+                .frame(maxWidth: .minimum(50, 50), alignment: .leading)
                 .foregroundStyle(.accent)
+                .multilineTextAlignment(.center)
             } minimal: {
                 Image("Tyd15-Accent")
             }
+            // TODO: Change the widget URL
             .widgetURL(URL(string: "http://www.apple.com"))
-            .keylineTint(Color.red)
+            .keylineTint(.accent)
         }
     }
     
