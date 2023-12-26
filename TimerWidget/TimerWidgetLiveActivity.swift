@@ -12,6 +12,8 @@ import WidgetKit
 struct TimerWidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         var startTime: Date
+        var endTime: Date
+        var stoppedTime: Date? = nil
     }
 }
 
@@ -21,35 +23,46 @@ struct TimerWidgetLiveActivity: Widget {
     
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: TimerWidgetAttributes.self) { context in
-            // Lock screen/banner UI goes here
             HStack {
                 Spacer()
                 
-                Button {} label: {
-                    Image(systemName: "stop.fill")
-                        .foregroundColor(.white)
+                if context.state.stoppedTime == nil {
+                    Button {} label: {
+                        Image(systemName: "stop.fill")
+                            .foregroundColor(.white)
+                    }
+                    .buttonBorderShape(.circle)
+                    .tint(.white)
+                    .font(.system(size: 20.0))
+                    
+                    Button {} label: {
+                        Image(systemName: "repeat")
+                            .foregroundColor(.white)
+                    }
+                    .buttonBorderShape(.circle)
+                    .tint(.white)
+                    .font(.system(size: 20.0))
+                } else {
+                    Image("Tyd25")
                 }
-                .buttonBorderShape(.circle)
-                .tint(.white)
-                .font(.system(size: 25.0))
                 
-                Button {} label: {
-                    Image(systemName: "repeat")
-                        .foregroundColor(.white)
+                Spacer()
+                
+                if context.state.stoppedTime == nil {
+                    Text(
+                        context.state.endTime,
+                        style: .timer
+                    )
+                    .font(Font.monospacedDigit(.system(size: 50.0))())
+                    .foregroundStyle(.white)
+                    .multilineTextAlignment(.center)
+                } else {
+                    Text(formatTime(Calendar.current.dateComponents([.second], from: context.state.startTime, to: context.state.stoppedTime ?? .now).second ?? 0))
+                        .font(Font.monospacedDigit(.system(size: 50.0))())
+                        .foregroundStyle(.white)
+                        .multilineTextAlignment(.center)
+                    Spacer()
                 }
-                .buttonBorderShape(.circle)
-                .tint(.white)
-                .font(.system(size: 25.0))
-                                    
-                Text(
-                    Date(
-                        timeIntervalSinceNow: Double(context.state.startTime.timeIntervalSince1970) - Date().timeIntervalSince1970
-                    ),
-                    style: .timer
-                )
-                .font(Font.monospacedDigit(.system(size: 60.0))())
-                .foregroundStyle(.white)
-                .multilineTextAlignment(.center)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal)
@@ -57,7 +70,7 @@ struct TimerWidgetLiveActivity: Widget {
             .background(LinearGradient(gradient: Gradient(colors: [tydPurple.opacity(0.35), tydPurple]), startPoint: .top, endPoint: .bottom))
             .activityBackgroundTint(Color.white)
             .activitySystemActionForegroundColor(Color.black)
-
+            
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
@@ -109,6 +122,17 @@ struct TimerWidgetLiveActivity: Widget {
             .keylineTint(Color.red)
         }
     }
+    
+    private func formatTime(_ secondsElapsed: Int) -> String {
+        /// Format time for stop watch clock
+        let hours = secondsElapsed / 3600
+        let hoursString = (hours < 10) ? "0\(hours)" : "\(hours)"
+        let minutes = (secondsElapsed % 3600) / 60
+        let minutesString = (minutes < 10) ? "0\(minutes)" : "\(minutes)"
+        let seconds = secondsElapsed % 60
+        let secondsString = (seconds < 10) ? "0\(seconds)" : "\(seconds)"
+        return hoursString + ":" + minutesString + ":" + secondsString
+    }
 }
 
 private extension TimerWidgetAttributes {
@@ -120,5 +144,6 @@ private extension TimerWidgetAttributes {
 #Preview("Notification", as: .content, using: TimerWidgetAttributes.preview) {
     TimerWidgetLiveActivity()
 } contentStates: {
-    TimerWidgetAttributes.ContentState(startTime: .now)
+    TimerWidgetAttributes.ContentState(startTime: .now, endTime: Calendar.current.date(byAdding: .minute, value: 11, to: .now) ?? .now)
+    // stoppedTime: Calendar.current.date(byAdding: .hour, value: 5, to: .now) ?? .now
 }
