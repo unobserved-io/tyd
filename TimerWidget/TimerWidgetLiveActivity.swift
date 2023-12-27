@@ -19,35 +19,36 @@ struct TimerWidgetAttributes: ActivityAttributes {
 
 struct TimerWidgetLiveActivity: Widget {
     let tydPurple: Color = .init(red: 0.5450980392, green: 0.5450980392, blue: 0.6901960784)
-    @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
-    
+
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: TimerWidgetAttributes.self) { context in
             HStack {
                 Spacer()
                 
-                if context.state.stoppedTime == nil {
-                    Button {} label: {
-                        Image(systemName: "stop.fill")
-                            .foregroundColor(.white)
-                    }
-                    .buttonBorderShape(.circle)
-                    .tint(.white)
-                    .font(.system(size: 20.0))
-                    
-                    Button {} label: {
-                        Image(systemName: "repeat")
-                            .foregroundColor(.white)
-                    }
-                    .buttonBorderShape(.circle)
-                    .tint(.white)
-                    .font(.system(size: 20.0))
-                } else {
-                    Image("Tyd25")
-                }
+//                if context.state.stoppedTime == nil {
+//                    Button{} label: {
+//                        Image(systemName: "stop.fill")
+//                            .foregroundColor(.white)
+//                    }
+//                    .buttonBorderShape(.circle)
+//                    .tint(.white)
+//                    .font(.system(size: 20.0))
+//                    
+//                    Button {} label: {
+//                        Image(systemName: "repeat")
+//                            .foregroundColor(.white)
+//                    }
+//                    .buttonBorderShape(.circle)
+//                    .tint(.white)
+//                    .font(.system(size: 20.0))
+//                } else {
+//                    Image("Tyd25")
+//                }
+                
+                Image("Tyd25")
                 
                 Spacer()
-                
+                                
                 if context.state.stoppedTime == nil {
                     Text(
                         context.state.endTime,
@@ -61,8 +62,8 @@ struct TimerWidgetLiveActivity: Widget {
                         .font(Font.monospacedDigit(.system(size: 50.0))())
                         .foregroundStyle(.white)
                         .multilineTextAlignment(.center)
-                    Spacer()
                 }
+                Spacer()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal)
@@ -74,21 +75,27 @@ struct TimerWidgetLiveActivity: Widget {
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
-                    HStack {
-                        Button {} label: {
-                            Image(systemName: "stop.fill")
-                                .foregroundColor(.accent)
-                        }
-                        .buttonBorderShape(.circle)
-                        .tint(.accent)
-                        
-                        Button {} label: {
-                            Image(systemName: "repeat")
-                                .foregroundColor(.accent)
-                        }
-                        .buttonBorderShape(.circle)
-                        .tint(.accent)
+//                    HStack {
+//                        Button {} label: {
+//                            Image(systemName: "stop.fill")
+//                                .foregroundColor(.accent)
+//                        }
+//                        .buttonBorderShape(.circle)
+//                        .tint(.accent)
+//                        
+//                        Button {} label: {
+//                            Image(systemName: "repeat")
+//                                .foregroundColor(.accent)
+//                        }
+//                        .buttonBorderShape(.circle)
+//                        .tint(.accent)
+//                    }
+                    Button {} label: {
+                        Text("Tyd timer")
+                            .foregroundColor(.accent)
                     }
+                    .buttonBorderShape(.circle)
+                    .tint(.accent.opacity(0.0))
                 }
                 DynamicIslandExpandedRegion(.trailing) {
                     Button {} label: {
@@ -121,7 +128,7 @@ struct TimerWidgetLiveActivity: Widget {
                     context.state.endTime,
                     style: .timer
                 )
-                .frame(maxWidth: .minimum(50, 50), alignment: .leading)
+//                .frame(maxWidth: .minimum(70, 70), alignment: .leading)
                 .foregroundStyle(.accent)
                 .multilineTextAlignment(.center)
             } minimal: {
@@ -154,6 +161,6 @@ private extension TimerWidgetAttributes {
 #Preview("Notification", as: .content, using: TimerWidgetAttributes.preview) {
     TimerWidgetLiveActivity()
 } contentStates: {
-    TimerWidgetAttributes.ContentState(startTime: .now, endTime: Calendar.current.date(byAdding: .minute, value: 11, to: .now) ?? .now)
+    TimerWidgetAttributes.ContentState(startTime: .now, endTime: Calendar.current.date(byAdding: .hour, value: 11, to: .now) ?? .now)
     // stoppedTime: Calendar.current.date(byAdding: .hour, value: 5, to: .now) ?? .now
 }

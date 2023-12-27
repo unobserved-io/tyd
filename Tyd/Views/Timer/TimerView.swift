@@ -72,12 +72,7 @@ struct TimerView: View {
                     }
                     
                     Button("Stop") {
-                        tamponTimer.stop()
-                        let newTimedEvent = TimedEvent(product: tamponTimer.product ?? .tampon, startTime: tamponTimer.startTime ?? .now, stopTime: tamponTimer.stopTime ?? .now)
-                        modelContext.insert(newTimedEvent)
-                        dayData.first?.timerData.append(newTimedEvent)
-                        tamponTimer.resetTimedEventData()
-                        resetPersistentTimer()
+                        stopTimer()
                     }
                     .buttonStyle(.borderedProminent)
                 }
@@ -144,6 +139,15 @@ struct TimerView: View {
     private func resetPersistentTimer() {
         persistentTimer.first?.isRunning = false
         persistentTimer.first?.startTime = nil
+    }
+    
+    private func stopTimer() {
+        tamponTimer.stop()
+        let newTimedEvent = TimedEvent(product: tamponTimer.product ?? .tampon, startTime: tamponTimer.startTime ?? .now, stopTime: tamponTimer.stopTime ?? .now)
+        modelContext.insert(newTimedEvent)
+        dayData.first?.timerData.append(newTimedEvent)
+        tamponTimer.resetTimedEventData()
+        resetPersistentTimer()
     }
 }
 

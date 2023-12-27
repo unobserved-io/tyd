@@ -5,8 +5,10 @@
 //  Created by Ricky Kresslein on 6/28/23.
 //
 
+import ActivityKit
 // import SwiftData
 import SwiftUI
+import TimerWidgetExtension
 
 @Observable
 class TamponTimer {
@@ -17,7 +19,9 @@ class TamponTimer {
     @ObservationIgnored var intervalInSeconds: Int = 0
     @ObservationIgnored var product: Product? = nil
     @ObservationIgnored var startTime: Date? = nil
+    @ObservationIgnored var endTime: Date? = nil
     @ObservationIgnored var stopTime: Date? = nil
+    @ObservationIgnored var activity: Activity<TimerWidgetAttributes>? = nil
     
     var timer: Timer = .init()
     
@@ -68,9 +72,12 @@ class TamponTimer {
         intervalInSeconds = Int(interval * 60 * 60)
         var secondsElapsed = 0
         var secondsRemaining = 0
+        endTime = Calendar.current.date(byAdding: .second, value: intervalInSeconds, to: startTime ?? .now)
         
         // Register notification
         showLocalNotification(in: intervalInSeconds)
+        
+        startLiveActivity()
         
         // To quickly display the amount of starting time before the timer starts
         formatTime(intervalInSeconds)
@@ -113,6 +120,9 @@ class TamponTimer {
             formatTime(secondsElapsed)
         }
         
+        endTime = Calendar.current.date(byAdding: .second, value: intervalInSeconds, to: startTime ?? .now)
+        startLiveActivity()
+        
         DispatchQueue.main.async {
             self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
                 secondsElapsed = Calendar.current.dateComponents([.second], from: self.startTime ?? .now, to: Date.now).second ?? 0
@@ -142,6 +152,9 @@ class TamponTimer {
         formatted = "00:00:00"
         timesUp = false
         stopTime = .now
+        Task {
+            await stopLiveActivity()
+        }
     }
     
     func resetTimedEventData() {
@@ -156,5 +169,39 @@ class TamponTimer {
         if secondsElapsed < intervalInSeconds {
             showLocalNotification(in: intervalInSeconds)
         }
+    }
+    
+    private func startLiveActivity() {
+        if ActivityAuthorizationInfo().areActivitiesEnabled {
+            do {
+                let timerWidget = TimerWidgetAttributes()
+                let initialState = TimerWidgetAttributes.ContentState(
+                    startTime: startTime ?? .now,
+                    endTime: endTime ?? .distantFuture
+                )
+                
+                activity = try Activity.request(
+                    attributes: timerWidget,
+                    content: .init(state: initialState, staleDate: nil),
+                    pushType: .token
+                )
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func stopLiveActivity() async {
+        if activity == nil {
+            return
+        }
+                        
+        let finalContent = TimerWidgetAttributes.ContentState(
+            startTime: startTime ?? .now,
+            endTime: endTime ?? .distantFuture,
+            stoppedTime: stopTime
+        )
+            
+        await activity?.end(ActivityContent(state: finalContent, staleDate: nil), dismissalPolicy: .immediate)
     }
 }

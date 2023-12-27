@@ -133,6 +133,9 @@
     "Dose" : {
 
     },
+    "Emoji:" : {
+
+    },
     "End time" : {
 
     },
@@ -164,6 +167,9 @@
 
     },
     "Medicines" : {
+
+    },
+    "My Widget" : {
 
     },
     "None" : {
@@ -229,13 +235,22 @@
     "Tap for period, hold for PMS" : {
 
     },
+    "This is an example widget." : {
+
+    },
     "Time since you changed your %@" : {
 
     },
     "Time Taken" : {
 
     },
+    "Time:" : {
+
+    },
     "Timer" : {
+
+    },
+    "Tyd timer" : {
 
     },
     "You will see more stats once you have recorded more data." : {
