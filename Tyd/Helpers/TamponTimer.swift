@@ -121,7 +121,11 @@ class TamponTimer {
         }
         
         endTime = Calendar.current.date(byAdding: .second, value: intervalInSeconds, to: startTime ?? .now)
-        startLiveActivity()
+        // On resume, don't start a live activity if one is already running
+        // TODO: This could be nil and one is already running. Solve for that issue
+        if activity == nil {
+            startLiveActivity()
+        }
         
         DispatchQueue.main.async {
             self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
