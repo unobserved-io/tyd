@@ -122,7 +122,6 @@ class TamponTimer {
         
         endTime = Calendar.current.date(byAdding: .second, value: intervalInSeconds, to: startTime ?? .now)
         // On resume, don't start a live activity if one is already running
-        // TODO: This could be nil and one is already running. Solve for that issue
         if activity == nil {
             startLiveActivity()
         }
@@ -195,6 +194,7 @@ class TamponTimer {
         }
     }
     
+    // TODO: Dismiss live activity when the app is terminated
     private func stopLiveActivity() async {
         if activity == nil {
             return
