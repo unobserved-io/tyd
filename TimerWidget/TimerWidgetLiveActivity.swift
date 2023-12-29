@@ -24,7 +24,7 @@ struct TimerWidgetLiveActivity: Widget {
         ActivityConfiguration(for: TimerWidgetAttributes.self) { context in
             HStack {
                 Spacer()
-                
+
 //                if context.state.stoppedTime == nil {
 //                    Button{} label: {
 //                        Image(systemName: "stop.fill")
@@ -33,7 +33,7 @@ struct TimerWidgetLiveActivity: Widget {
 //                    .buttonBorderShape(.circle)
 //                    .tint(.white)
 //                    .font(.system(size: 20.0))
-//                    
+//
 //                    Button {} label: {
 //                        Image(systemName: "repeat")
 //                            .foregroundColor(.white)
@@ -44,11 +44,11 @@ struct TimerWidgetLiveActivity: Widget {
 //                } else {
 //                    Image("Tyd25")
 //                }
-                
+
                 Image("Tyd25")
-                
+
                 Spacer()
-                                
+
                 if context.state.stoppedTime == nil {
                     Text(
                         context.state.endTime,
@@ -71,7 +71,7 @@ struct TimerWidgetLiveActivity: Widget {
             .background(LinearGradient(gradient: Gradient(colors: [tydPurple.opacity(0.35), tydPurple]), startPoint: .top, endPoint: .bottom))
             .activityBackgroundTint(Color.white)
             .activitySystemActionForegroundColor(Color.black)
-            
+
         } dynamicIsland: { context in
             DynamicIsland {
                 DynamicIslandExpandedRegion(.leading) {
@@ -82,7 +82,7 @@ struct TimerWidgetLiveActivity: Widget {
 //                        }
 //                        .buttonBorderShape(.circle)
 //                        .tint(.accent)
-//                        
+//
 //                        Button {} label: {
 //                            Image(systemName: "repeat")
 //                                .foregroundColor(.accent)
@@ -139,7 +139,7 @@ struct TimerWidgetLiveActivity: Widget {
             .keylineTint(.accent)
         }
     }
-    
+
     private func formatTime(_ secondsElapsed: Int) -> String {
         /// Format time for stop watch clock
         let hours = secondsElapsed / 3600
