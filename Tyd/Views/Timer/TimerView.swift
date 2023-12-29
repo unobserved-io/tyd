@@ -9,7 +9,7 @@ import SwiftData
 import SwiftUI
 
 struct TimerView: View {
-    @Environment(TamponTimer.self) private var tamponTimer
+    @Environment(TimerHelper.self) private var timerHelper
     @Environment(\.modelContext) private var modelContext
     @Query private var persistentTimer: [PersistentTimer]
     static var today: String { getTodaysDate() }
@@ -19,27 +19,45 @@ struct TimerView: View {
     @Query var appData: [AppData]
     @State var showingEditTimedEventSheet: Bool = false
     @State var tappedTimedEvent: TimedEvent = .init(product: .tampon, startTime: .now, stopTime: .now)
+    @State private var showingStartTimeSheet: Bool = false
     
     var body: some View {
         VStack {
-            if tamponTimer.isRunning {
-                if tamponTimer.timesUp {
-                    Text("Time since you changed your \((tamponTimer.product ?? Product.tampon).rawValue)")
+            if timerHelper.isRunning {
+                if Date.now > timerHelper.endTime ?? .distantFuture {
+                    Text("Time since you changed your \((timerHelper.product ?? Product.tampon).rawValue)")
+                } else if Date.now == timerHelper.endTime ?? .distantFuture {
+                    Text("Change your \((timerHelper.product ?? Product.tampon).rawValue)!")
                 } else {
-                    Text("Change your \((tamponTimer.product ?? Product.tampon).rawValue) in")
+                    Text("Change your \((timerHelper.product ?? Product.tampon).rawValue) in")
                 }
             } else {
                 Text("")
             }
-            Text(tamponTimer.formatted)
+            if timerHelper.isRunning {
+                Text(
+                    timerHelper.endTime ?? .now,
+                    style: .timer
+                )
                 .font(Font.monospacedDigit(.system(size: 80.0))())
                 .lineLimit(1)
                 .lineSpacing(0)
                 .allowsTightening(false)
                 .frame(maxHeight: 90)
                 .padding(.horizontal)
+                .multilineTextAlignment(.center)
+            } else {
+                Text("00:00:00")
+                    .font(Font.monospacedDigit(.system(size: 80.0))())
+                    .lineLimit(1)
+                    .lineSpacing(0)
+                    .allowsTightening(false)
+                    .frame(maxHeight: 90)
+                    .padding(.horizontal)
+                    .multilineTextAlignment(.center)
+            }
             
-            if !(tamponTimer.isRunning) {
+            if !(timerHelper.isRunning) {
                 HStack {
                     ForEach(Product.allCases, id: \.rawValue) { product in
                         Button(product.rawValue.capitalized) {
@@ -56,25 +74,49 @@ struct TimerView: View {
                 }
             } else {
                 HStack {
+                    Button {
+                        showingStartTimeSheet.toggle()
+                    } label: {
+                        Text(timerHelper.startTime?.formatted(date: .omitted, time: .shortened) ?? "12:00")
+                    }
+                    .buttonStyle(.bordered)
+                    
+                    Button {
+                        stopTimer()
+                    } label: {
+                        Image(systemName: "stop.fill")
+                    }
+                    .buttonStyle(.borderedProminent)
+                    
+                    Button {
+                        let lastProductUsed = timerHelper.product ?? .tampon
+                        stopTimer()
+                        startTimer(with: lastProductUsed)
+                    } label: {
+                        Image(systemName: "repeat")
+                    }
+                    .buttonStyle(.bordered)
+                }
+                .sheet(isPresented: $showingStartTimeSheet) {
                     DatePicker(
                         "Change start time",
                         selection: Binding(get: {
-                                               tamponTimer.startTime ?? .now
+                                               timerHelper.startTime ?? .now
                                            },
                                            set: { newValue in
-                                               tamponTimer.startTime = newValue
+                                               timerHelper.startTime = newValue
                                            }),
-                        in: getDateADayAgo() ... Date.now
+                        in: getDateADayAgo() ... Date.now,
+                        displayedComponents: [.date, .hourAndMinute]
                     )
+                    .datePickerStyle(.wheel)
                     .labelsHidden()
-                    .onChange(of: tamponTimer.startTime) {
-                        tamponTimer.updateNotificationTime()
+                    .onChange(of: timerHelper.startTime) {
+                        persistentTimer.first?.startTime = timerHelper.startTime
+                        timerHelper.updateEndTime()
+                        timerHelper.updateNotificationTime()
                     }
-                    
-                    Button("Stop") {
-                        stopTimer()
-                    }
-                    .buttonStyle(.borderedProminent)
+                    .presentationDetents([.small])
                 }
             }
             
@@ -88,7 +130,7 @@ struct TimerView: View {
                             HStack {
                                 Text(timedEvent.product.rawValue.capitalized)
                                 Spacer()
-                                Text("\(timeFormatter.string(from: timedEvent.startTime)) - \(timeFormatter.string(from: timedEvent.stopTime))")
+                                Text("\(timedEvent.startTime.formatted(date: .omitted, time: .shortened)) - \(timedEvent.stopTime.formatted(date: .omitted, time: .shortened))")
                                     .lineLimit(1)
                                     .opacity(0.626)
                             }
@@ -105,7 +147,7 @@ struct TimerView: View {
     }
     
     private func startTimer(with product: Product) {
-        tamponTimer.start(product: product, interval: appData.first?.timerIntervals[product] ?? 4.0)
+        timerHelper.start(product: product, interval: appData.first?.timerIntervals[product] ?? 4.0)
     }
     
     private func deleteTimerData(at offsets: IndexSet) {
@@ -119,20 +161,20 @@ struct TimerView: View {
     }
     
     private func getDateADayAgo() -> Date {
-        return Calendar.current.date(byAdding: .day, value: -1, to: .now) ?? .now
+        return Calendar.current.date(byAdding: .second, value: -86399, to: .now) ?? .now
     }
     
     private func initiatePersistentTimer() {
         if persistentTimer.first == nil {
             let newPersistentTimer = PersistentTimer()
             newPersistentTimer.isRunning = true
-            newPersistentTimer.product = tamponTimer.product ?? .tampon
-            newPersistentTimer.startTime = tamponTimer.startTime
+            newPersistentTimer.product = timerHelper.product ?? .tampon
+            newPersistentTimer.startTime = timerHelper.startTime
             modelContext.insert(PersistentTimer())
         } else {
             persistentTimer.first?.isRunning = true
-            persistentTimer.first?.product = tamponTimer.product ?? .tampon
-            persistentTimer.first?.startTime = tamponTimer.startTime
+            persistentTimer.first?.product = timerHelper.product ?? .tampon
+            persistentTimer.first?.startTime = timerHelper.startTime
         }
     }
     
@@ -142,11 +184,11 @@ struct TimerView: View {
     }
     
     private func stopTimer() {
-        tamponTimer.stop()
-        let newTimedEvent = TimedEvent(product: tamponTimer.product ?? .tampon, startTime: tamponTimer.startTime ?? .now, stopTime: tamponTimer.stopTime ?? .now)
+        timerHelper.stop()
+        let newTimedEvent = TimedEvent(product: timerHelper.product ?? .tampon, startTime: timerHelper.startTime ?? .now, stopTime: timerHelper.stopTime ?? .now)
         modelContext.insert(newTimedEvent)
         dayData.first?.timerData.append(newTimedEvent)
-        tamponTimer.resetTimedEventData()
+        timerHelper.resetTimedEventData()
         resetPersistentTimer()
     }
 }

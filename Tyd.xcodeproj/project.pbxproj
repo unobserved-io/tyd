@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C00000D2B3D7946008DFE47 /* TimerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C00000C2B3D7946008DFE47 /* TimerHelper.swift */; };
 		9C01410E2B00C5580036C7AB /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C01410D2B00C5580036C7AB /* TimerView.swift */; };
 		9C0141102B00D2470036C7AB /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C01410F2B00D2470036C7AB /* Enums.swift */; };
 		9C0141122B00D4C30036C7AB /* PersistentTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0141112B00D4C30036C7AB /* PersistentTimer.swift */; };
@@ -44,8 +45,7 @@
 		9C86E4592AF8DC6E000F84D5 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4582AF8DC6E000F84D5 /* AppData.swift */; };
 		9CDD0AAF2B040E4900F09B39 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD0AAE2B040E4900F09B39 /* StatsView.swift */; };
 		9CDD0AB12B04199800F09B39 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD0AB02B04199800F09B39 /* Stats.swift */; };
-		9CDF3F8C2A4C67B0007DF07F /* TimerProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF3F8B2A4C67B0007DF07F /* TimerProgressBar.swift */; };
-		9CDF3F8F2A4C73B2007DF07F /* TamponTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF3F8E2A4C73B2007DF07F /* TamponTimer.swift */; };
+		9CDF3F8C2A4C67B0007DF07F /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDF3F8B2A4C67B0007DF07F /* ProgressBar.swift */; };
 		9CED71362AFA9A02006D5732 /* AddEditMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED71352AFA9A02006D5732 /* AddEditMedicationView.swift */; };
 		9CED713B2AFAA458006D5732 /* Medication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713A2AFAA458006D5732 /* Medication.swift */; };
 		9CED713D2AFABEAA006D5732 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713C2AFABEAA006D5732 /* CalendarView.swift */; };
@@ -95,6 +95,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9C00000C2B3D7946008DFE47 /* TimerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerHelper.swift; sourceTree = "<group>"; };
 		9C01410D2B00C5580036C7AB /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		9C01410F2B00D2470036C7AB /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		9C0141112B00D4C30036C7AB /* PersistentTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentTimer.swift; sourceTree = "<group>"; };
@@ -134,8 +135,7 @@
 		9C86E4582AF8DC6E000F84D5 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		9CDD0AAE2B040E4900F09B39 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		9CDD0AB02B04199800F09B39 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
-		9CDF3F8B2A4C67B0007DF07F /* TimerProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerProgressBar.swift; sourceTree = "<group>"; };
-		9CDF3F8E2A4C73B2007DF07F /* TamponTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamponTimer.swift; sourceTree = "<group>"; };
+		9CDF3F8B2A4C67B0007DF07F /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 		9CED71352AFA9A02006D5732 /* AddEditMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddEditMedicationView.swift; path = Tyd/Views/Calendar/AddEditMedicationView.swift; sourceTree = SOURCE_ROOT; };
 		9CED713A2AFAA458006D5732 /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
 		9CED713C2AFABEAA006D5732 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -347,7 +347,7 @@
 		9CDF3F8A2A4C67A3007DF07F /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
-				9CDF3F8B2A4C67B0007DF07F /* TimerProgressBar.swift */,
+				9CDF3F8B2A4C67B0007DF07F /* ProgressBar.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -355,9 +355,9 @@
 		9CDF3F8D2A4C739F007DF07F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				9CDF3F8E2A4C73B2007DF07F /* TamponTimer.swift */,
 				9C26D0FB2B00021F001548E2 /* ColorHex.swift */,
 				9CDD0AB02B04199800F09B39 /* Stats.swift */,
+				9C00000C2B3D7946008DFE47 /* TimerHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -563,7 +563,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CED71362AFA9A02006D5732 /* AddEditMedicationView.swift in Sources */,
-				9CDF3F8C2A4C67B0007DF07F /* TimerProgressBar.swift in Sources */,
+				9CDF3F8C2A4C67B0007DF07F /* ProgressBar.swift in Sources */,
 				9C2E10F22B3B630400A4334B /* TimerWidget.swift in Sources */,
 				9C2CE94D2A4AF43300AAAC52 /* TimedEvent.swift in Sources */,
 				9CF9E1922AF4F6CD002BF692 /* Functions.swift in Sources */,
@@ -573,6 +573,7 @@
 				9C2B170F2B3366C300EF0C94 /* JSONDocument.swift in Sources */,
 				9C7C68602AFF85A600B3F8B6 /* MedicinesView.swift in Sources */,
 				9CED713D2AFABEAA006D5732 /* CalendarView.swift in Sources */,
+				9C00000D2B3D7946008DFE47 /* TimerHelper.swift in Sources */,
 				9C7C68622AFF8D0900B3F8B6 /* PmsSymptomsView.swift in Sources */,
 				9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */,
 				9C0253222A4AECC100F2E68B /* DayData.swift in Sources */,
@@ -591,7 +592,6 @@
 				9C6B38182AFCE47200A4F987 /* Extensions.swift in Sources */,
 				9C7C68642AFF8D9600B3F8B6 /* PeriodSymptomsView.swift in Sources */,
 				9C0141122B00D4C30036C7AB /* PersistentTimer.swift in Sources */,
-				9CDF3F8F2A4C73B2007DF07F /* TamponTimer.swift in Sources */,
 				9CDD0AAF2B040E4900F09B39 /* StatsView.swift in Sources */,
 				9C0253192A4AECC100F2E68B /* TydApp.swift in Sources */,
 				9C86E4592AF8DC6E000F84D5 /* AppData.swift in Sources */,

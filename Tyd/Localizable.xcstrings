@@ -40,6 +40,9 @@
     "~%lld days until your next period" : {
 
     },
+    "00:00:00" : {
+
+    },
     "20 mg, etc." : {
 
     },
@@ -107,6 +110,9 @@
 
     },
     "Change your %@ in" : {
+
+    },
+    "Change your %@!" : {
 
     },
     "Danger Zone" : {
@@ -221,9 +227,6 @@
 
     },
     "Start time" : {
-
-    },
-    "Stop" : {
 
     },
     "Symptoms" : {

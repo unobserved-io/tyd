@@ -87,7 +87,7 @@ struct UnderCalendarView: View {
                     tappedMedication = medication
                     showingEditMedSheet.toggle()
                 } label: {
-                    Text("\(timeFormatter.string(from: medication.time)) - \(medication.dose) \(medication.name)")
+                    Text("\(medication.time.formatted(date: .omitted, time: .shortened)) - \(medication.dose) \(medication.name)")
                 }
             }
             .onDelete(perform: deleteMedication)

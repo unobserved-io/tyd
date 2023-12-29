@@ -9,14 +9,7 @@ import Foundation
 
 let dateFormatter: DateFormatter = {
     let dateFormatter = DateFormatter()
-//    dateFormatter.dateFormat = "dd.MM.yyyy"
     dateFormatter.dateFormat = "yyyy-MM-dd"
-    return dateFormatter
-}()
-
-let timeFormatter: DateFormatter = {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "H:mm"
     return dateFormatter
 }()
 

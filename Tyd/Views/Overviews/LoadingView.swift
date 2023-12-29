@@ -9,7 +9,7 @@ import SwiftData
 import SwiftUI
 
 struct LoadingView: View {
-    @Environment(TamponTimer.self) private var tamponTimer
+    @Environment(TimerHelper.self) private var timerHelper
     @Environment(Stats.self) private var stats
     @Environment(\.modelContext) private var modelContext
     @Query private var appData: [AppData]
@@ -27,9 +27,9 @@ struct LoadingView: View {
                 // Continue running timer if it was running when the app was closed and it is less than 48 hours old
                 if persistentTimer.first != nil {
                     if persistentTimer.first?.isRunning ?? false && (Calendar.current.dateComponents([.hour], from: persistentTimer.first?.startTime ?? .distantPast, to: .now).hour ?? 50 < 48) {
-                        tamponTimer.product = persistentTimer.first?.product
-                        tamponTimer.startTime = persistentTimer.first?.startTime
-                        tamponTimer.resume(interval: appData.first?.timerIntervals[tamponTimer.product ?? .tampon] ?? 4.0)
+                        timerHelper.product = persistentTimer.first?.product
+                        timerHelper.startTime = persistentTimer.first?.startTime
+                        timerHelper.resume(interval: appData.first?.timerIntervals[timerHelper.product ?? .tampon] ?? 4.0)
                     }
                 }
             }
