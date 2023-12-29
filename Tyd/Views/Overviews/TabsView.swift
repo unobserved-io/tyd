@@ -12,13 +12,15 @@ struct TabsView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(Stats.self) private var stats
     @Query private var dayData: [DayData]
+    @State private var selectedTab = "home"
 
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             HomeView()
                 .tabItem {
                     Image(systemName: "house")
                 }
+                .tag("home")
                 .onAppear {
                     stats.updateAllStats(from: dayData)
                 }
@@ -27,16 +29,19 @@ struct TabsView: View {
                 .tabItem {
                     Image(systemName: "calendar")
                 }
+                .tag("calendar")
 
             TimerView()
                 .tabItem {
                     Image(systemName: "timer")
                 }
+                .tag("timer")
 
             StatsView()
                 .tabItem {
                     Image(systemName: "chart.bar")
                 }
+                .tag("stats")
                 .onAppear {
                     stats.updateAllStats(from: dayData)
                 }
@@ -45,6 +50,13 @@ struct TabsView: View {
                 .tabItem {
                     Image(systemName: "gear")
                 }
+                .tag("settings")
+        }
+        .onOpenURL { url in
+            guard url.scheme == "tyd" else { return }
+            if url.absoluteString == "tyd://timerView" {
+                selectedTab = "timer"
+            }
         }
     }
 }

@@ -71,6 +71,7 @@ struct TimerWidgetLiveActivity: Widget {
             .background(LinearGradient(gradient: Gradient(colors: [tydPurple.opacity(0.35), tydPurple]), startPoint: .top, endPoint: .bottom))
             .activityBackgroundTint(Color.white)
             .activitySystemActionForegroundColor(Color.black)
+            .widgetURL(URL(string: "tyd://timerView"))
 
         } dynamicIsland: { context in
             DynamicIsland {
@@ -134,8 +135,7 @@ struct TimerWidgetLiveActivity: Widget {
             } minimal: {
                 Image("Tyd15-Accent")
             }
-            // TODO: Change the widget URL
-            .widgetURL(URL(string: "http://www.apple.com"))
+            .widgetURL(URL(string: "tyd://timerView"))
             .keylineTint(.accent)
         }
     }
