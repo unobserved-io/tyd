@@ -18,8 +18,7 @@ class TimerHelper {
     @ObservationIgnored var intervalInSeconds: Int = 0
     @ObservationIgnored var product: Product? = nil
     @ObservationIgnored var stopTime: Date? = nil
-    @ObservationIgnored var activity: Activity<TimerWidgetAttributes>? = nil
-    
+
     func start(product: Product, interval: Float) {
         /// Start running the timer
         isRunning = true
@@ -32,14 +31,13 @@ class TimerHelper {
         showLocalNotification(in: intervalInSeconds)
         
         startLiveActivity()
-
-        // TODO: Add progress for bar on main page
     }
     
     func stop() {
         /// Stop running the timer
         isRunning = false
         stopTime = .now
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         Task {
             await stopLiveActivity()
         }
@@ -50,15 +48,16 @@ class TimerHelper {
         intervalInSeconds = Int(interval * 60 * 60)
         endTime = Calendar.current.date(byAdding: .second, value: intervalInSeconds, to: startTime ?? .now)
         
+        // Remove all pending notifications
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
         // Register a notification if the time has not already elapsed
-        if Date.now > endTime ?? .distantPast {
-            showLocalNotification(in: Int(endTime?.timeIntervalSince(startTime ?? .now) ?? 0.0))
-            print(Int(endTime?.timeIntervalSince(startTime ?? .now) ?? 0.0))
+        if Date.now < endTime ?? .distantPast {
+            showLocalNotification(in: Int(endTime?.timeIntervalSince(.now) ?? 0.0))
         }
         
         // On resume, don't start a live activity if one is already running
-        // TODO: This does not matter if the app had been closed
-        if activity == nil {
+        if Activity<TimerWidgetAttributes>.activities.isEmpty {
             startLiveActivity()
         }
     }
@@ -81,12 +80,14 @@ class TimerHelper {
             endTime: endTime ?? .distantFuture
         )
         
-        await activity?.update(
-            ActivityContent<TimerWidgetAttributes.ContentState>(
-                state: updatedState,
-                staleDate: Calendar.current.date(byAdding: .hour, value: 24, to: .now)
+        for activeActivities in Activity<TimerWidgetAttributes>.activities {
+            await activeActivities.update(
+                ActivityContent<TimerWidgetAttributes.ContentState>(
+                    state: updatedState,
+                    staleDate: Calendar.current.date(byAdding: .hour, value: 24, to: .now)
+                )
             )
-        )
+        }
     }
     
     func resetTimedEventData() {
@@ -132,7 +133,7 @@ class TimerHelper {
                     endTime: endTime ?? .distantFuture
                 )
                 
-                activity = try Activity.request(
+                _ = try Activity.request(
                     attributes: timerWidget,
                     content: .init(state: initialState, staleDate: Calendar.current.date(byAdding: .hour, value: 24, to: .now)),
                     pushType: .token
@@ -143,19 +144,15 @@ class TimerHelper {
         }
     }
     
-    // TODO: Dismiss live activity when the app is terminated
     private func stopLiveActivity() async {
-        if activity == nil {
-            return
-        }
-                        
         let finalContent = TimerWidgetAttributes.ContentState(
             startTime: startTime ?? .now,
             endTime: endTime ?? .distantFuture,
             stoppedTime: stopTime
         )
             
-        await activity?.end(ActivityContent(state: finalContent, staleDate: nil), dismissalPolicy: .immediate)
+        for activeActivities in Activity<TimerWidgetAttributes>.activities {
+            await activeActivities.end(ActivityContent(state: finalContent, staleDate: nil), dismissalPolicy: .immediate)
+        }
     }
-    
 }
