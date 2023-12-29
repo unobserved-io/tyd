@@ -75,6 +75,20 @@ class TimerHelper {
         }
     }
     
+    func updateLiveActivity() async {
+        let updatedState = TimerWidgetAttributes.ContentState(
+            startTime: startTime ?? .now,
+            endTime: endTime ?? .distantFuture
+        )
+        
+        await activity?.update(
+            ActivityContent<TimerWidgetAttributes.ContentState>(
+                state: updatedState,
+                staleDate: Calendar.current.date(byAdding: .hour, value: 24, to: .now)
+            )
+        )
+    }
+    
     func resetTimedEventData() {
         product = nil
         startTime = nil
@@ -120,7 +134,7 @@ class TimerHelper {
                 
                 activity = try Activity.request(
                     attributes: timerWidget,
-                    content: .init(state: initialState, staleDate: nil),
+                    content: .init(state: initialState, staleDate: Calendar.current.date(byAdding: .hour, value: 24, to: .now)),
                     pushType: .token
                 )
             } catch {
