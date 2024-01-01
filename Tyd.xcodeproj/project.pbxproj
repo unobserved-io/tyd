@@ -51,6 +51,7 @@
 		9CED713F2AFAC4CB006D5732 /* UnderCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED713E2AFAC4CB006D5732 /* UnderCalendarView.swift */; };
 		9CEEBF502B35832C00E9BB5C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9CEEBF4F2B35832C00E9BB5C /* Localizable.xcstrings */; };
 		9CF3A4E92B029094008380E9 /* EditTimedEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF3A4E82B029094008380E9 /* EditTimedEventView.swift */; };
+		9CF892192B42C1EF00673BF9 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF892182B42C1EF00673BF9 /* AboutView.swift */; };
 		9CF9E1902AF4F618002BF692 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9E18F2AF4F618002BF692 /* Globals.swift */; };
 		9CF9E1922AF4F6CD002BF692 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9E1912AF4F6CD002BF692 /* Functions.swift */; };
 /* End PBXBuildFile section */
@@ -142,6 +143,7 @@
 		9CEEBF572B35A21E00E9BB5C /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		9CEEBF592B35A21E00E9BB5C /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		9CF3A4E82B029094008380E9 /* EditTimedEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTimedEventView.swift; sourceTree = "<group>"; };
+		9CF892182B42C1EF00673BF9 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		9CF9E18F2AF4F618002BF692 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		9CF9E1912AF4F6CD002BF692 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -288,6 +290,7 @@
 				9C7C68632AFF8D9600B3F8B6 /* PeriodSymptomsView.swift */,
 				9C7C68652AFF8FEC00B3F8B6 /* TimerIntervalsView.swift */,
 				9C26D0FD2B000499001548E2 /* AccentColorPickerView.swift */,
+				9CF892182B42C1EF00673BF9 /* AboutView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 			files = (
 				9CED71362AFA9A02006D5732 /* AddEditMedicationView.swift in Sources */,
 				9C2E10F22B3B630400A4334B /* TimerWidget.swift in Sources */,
+				9CF892192B42C1EF00673BF9 /* AboutView.swift in Sources */,
 				9C2CE94D2A4AF43300AAAC52 /* TimedEvent.swift in Sources */,
 				9CF9E1922AF4F6CD002BF692 /* Functions.swift in Sources */,
 				9CED713B2AFAA458006D5732 /* Medication.swift in Sources */,

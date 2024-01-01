@@ -46,6 +46,9 @@
     "20 mg, etc." : {
 
     },
+    "About" : {
+
+    },
     "Add" : {
 
     },
@@ -101,6 +104,9 @@
 
     },
     "Bleeding" : {
+
+    },
+    "by" : {
 
     },
     "Cancel" : {
@@ -205,6 +211,9 @@
     "Product" : {
 
     },
+    "Questions, suggestions, or concerns? Email [support@unobserved.io](mailto:support@unobserved.io)" : {
+
+    },
     "Reset" : {
 
     },
@@ -238,6 +247,9 @@
     "Tap for period, hold for PMS" : {
 
     },
+    "Thank you for using Tyd. We understand the trust it takes to put your personal information into an app, which is why we make privacy a promise.\n\nTyd is created by Unobserved. As the name suggests, Unobserved creates privacy-first software for people who don't believe their data should be spread across the internet, often under the control of people and companies who use it for sketchy purposes.\n\nNo accounts are required for any Unobserved apps, no data is collected, even for analytics, and we never show ads to monetize our apps. This is app design as it should be." : {
+
+    },
     "This is an example widget." : {
 
     },
@@ -254,6 +266,9 @@
 
     },
     "Tyd timer" : {
+
+    },
+    "Version %@" : {
 
     },
     "You will see more stats once you have recorded more data." : {

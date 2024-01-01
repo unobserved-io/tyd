@@ -46,7 +46,6 @@ struct HomeView: View {
                 }
             } label: {
                 Image("TydLogo")
-                    .imageScale(.small)
                     .opacity(dayData.first?.pms ?? false || dayData.first?.period ?? false ? 1.0 : 0.3)
             }
             .simultaneousGesture(
