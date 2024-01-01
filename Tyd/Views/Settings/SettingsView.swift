@@ -29,14 +29,6 @@ struct OldDayData: Decodable {
     var pmsNotes: String
 }
 
-// "periodMedsTaken": [
-//       [
-//         "Aspirin",
-//         "5:00",
-//         "20mg"
-//       ]
-//     ],
-
 struct OldSettings: Decodable {
     var medicines: Set<String>
     var periodSymptoms: [String]
@@ -49,74 +41,6 @@ struct OldEnvironment: Decodable {
     var application_id: String
 }
 
-// "settings": {
-//    "medicines": [
-//      "Aspirin",
-//      "Ibuprofen",
-//      "Paracetamol",
-//      "Acetaminophen"
-//    ],
-//    "periodSymptoms": [
-//      "Anxious",
-//      "Back pain",
-//      "Bloating",
-//      "Breast tenderness",
-//      "Constipation",
-//      "Cramps",
-//      "Diarrhea",
-//      "Fatigue",
-//      "Headache",
-//      "Insomnia",
-//      "Irritable",
-//      "Joint pain",
-//      "Muscle aches",
-//      "Nausea",
-//      "Painful defecation",
-//      "Pimples"
-//    ],
-//    "pmsSymptoms": [
-//      "Anger",
-//      "Anxious",
-//      "Back pain",
-//      "Bloating",
-//      "Breast tenderness",
-//      "Changed appetite",
-//      "Changed sex drive",
-//      "Constipation",
-//      "Cramps",
-//      "Diarrhea",
-//      "Dizziness",
-//      "Fatigue",
-//      "Headache",
-//      "Insomnia",
-//      "Irritable",
-//      "Joint pain",
-//      "Muscle aches",
-//      "Nausea",
-//      "Painful defecation",
-//      "Pimples",
-//      "Sadness"
-//    ],
-//    "sanitaryTypes": {
-//      "Tampon": 4.0,
-//      "Pad": 4.0,
-//      "Cup": 4.0,
-//      "Underwear": 4.0
-//    },
-//    "tamponSizes": [
-//      "-",
-//      "Light",
-//      "Regular",
-//      "Super",
-//      "Super Plus",
-//      "Ultra"
-//    ]
-//  },
-//  "environment": {
-//    "application_id": "com.lakoliu.tyd"
-//  }
-// }
-
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
     @Query var appData: [AppData]
@@ -127,6 +51,7 @@ struct SettingsView: View {
     @State private var showingDataImporter: Bool = false
     @State private var showingDataExporter: Bool = false
     @State private var showingImportWarning: Bool = false
+    @State private var showingAboutSheet: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -295,7 +220,12 @@ struct SettingsView: View {
                 }
                 
                 Section("Info") {
-                    // TODO: About Tyd page? (Is this allowed by Apple if it includes email?)
+                    Button("About") {
+                        showingAboutSheet.toggle()
+                    }
+                }
+                .sheet(isPresented: $showingAboutSheet) {
+                    AboutView()
                 }
             }
         }
