@@ -9,8 +9,8 @@ import SwiftUI
 
 struct StatsView: View {
     @Environment(Stats.self) private var stats
+    @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     let dualInnerBoxColor: Color = .white.opacity(0.5)
-    let boxColor: Color = .accent.opacity(0.2)
     let monthDay: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
@@ -32,7 +32,7 @@ struct StatsView: View {
                         Text("\(monthDay.string(from: stats.lastPeriodStart ?? .distantPast)) - \(monthDay.string(from: stats.lastPeriodEnd ?? .distantFuture))")
                             .frame(alignment: .center)
                             .font(.system(size: 55))
-                            .foregroundStyle(.accent)
+                            .foregroundStyle(Color(hex: tydAccentColor) ?? .accent)
                     }
                     .padding(.top)
                 }
@@ -44,7 +44,7 @@ struct StatsView: View {
                             HStack(alignment: .lastTextBaseline) {
                                 Text(String(stats.avgPeriodLength ?? 0))
                                     .font(.system(size: 55))
-                                    .foregroundStyle(.accent)
+                                    .foregroundStyle(Color(hex: tydAccentColor) ?? .accent)
                                 Text(stats.avgPeriodLength != 1 ? "days" : "day")
                             }
                             Text("Average period")
@@ -53,7 +53,7 @@ struct StatsView: View {
                         .frame(maxWidth: .infinity)
                         .padding()
                     }
-                    .background(boxColor)
+                    .background((Color(hex: tydAccentColor) ?? .accent).opacity(0.2))
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                     .frame(alignment: .center)
                 }
@@ -64,7 +64,7 @@ struct StatsView: View {
                     VStack {
                         Text(String(format: "%.1f", stats.avgPmsDaysPerCycle))
                             .font(.system(size: 55))
-                            .foregroundStyle(.accent)
+                            .foregroundStyle(Color(hex: tydAccentColor) ?? .accent)
                         Text("Average PMS days per cycle")
                             .font(.title2)
                     }
@@ -84,7 +84,7 @@ struct StatsView: View {
                                 Spacer()
                                 Text(String(format: "%.1f", stats.avgBleedingByDay[bleedingDay] ?? 0))
                                     .font(.system(size: 55))
-                                    .foregroundStyle(.accent)
+                                    .foregroundStyle(Color(hex: tydAccentColor) ?? .accent)
                                 Spacer()
                                 Button {
                                     rightArrowPressed()
@@ -100,7 +100,7 @@ struct StatsView: View {
                         .frame(maxWidth: .infinity)
                         .padding()
                     }
-                    .background(boxColor)
+                    .background((Color(hex: tydAccentColor) ?? .accent).opacity(0.2))
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                     .frame(alignment: .center)
                 }
@@ -111,7 +111,7 @@ struct StatsView: View {
                         HStack(alignment: .lastTextBaseline) {
                             Text(String(stats.avgCycle ?? 0))
                                 .font(.system(size: 55))
-                                .foregroundStyle(.accent)
+                                .foregroundStyle(Color(hex: tydAccentColor) ?? .accent)
                             Text(stats.avgCycle != 1 ? "days" : "day")
                         }
                         Text("Average cycle")
@@ -127,7 +127,7 @@ struct StatsView: View {
                                 .font(.title2)
                             Text(String(stats.daysUsingTyd))
                                 .font(.system(size: 55))
-                                .foregroundStyle(.accent)
+                                .foregroundStyle(Color(hex: tydAccentColor) ?? .accent)
                         }
                         .frame(maxWidth: .infinity)
                         .padding()
@@ -142,7 +142,7 @@ struct StatsView: View {
                             VStack {
                                 Text(String(stats.totalPeriodDays))
                                     .font(.system(size: 55))
-                                    .foregroundStyle(.accent)
+                                    .foregroundStyle(Color(hex: tydAccentColor) ?? .accent)
                                 Text("Period days")
                                     .font(.title2)
                             }
@@ -158,7 +158,7 @@ struct StatsView: View {
                             VStack {
                                 Text(String(stats.totalPmsDays))
                                     .font(.system(size: 55))
-                                    .foregroundStyle(.accent)
+                                    .foregroundStyle(Color(hex: tydAccentColor) ?? .accent)
                                 Text("PMS Days")
                                     .font(.title2)
                             }
@@ -172,7 +172,7 @@ struct StatsView: View {
                         .padding(.bottom)
                     }
                 }
-                .background(.accent.opacity(0.5))
+                .background((Color(hex: tydAccentColor) ?? .accent).opacity(0.5))
                 .clipShape(RoundedRectangle(cornerRadius: 15))
                 .frame(alignment: .center)
                 
