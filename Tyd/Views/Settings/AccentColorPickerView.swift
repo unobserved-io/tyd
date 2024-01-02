@@ -33,7 +33,7 @@ struct AccentColorPickerView: View {
             }
             Button("Cancel", role: .cancel) {}
         } message: {
-            Text("Are you sure you want to reset all colors to defaults?")
+            Text("Are you sure you want to reset the app color to the default?")
         }
     }
 }

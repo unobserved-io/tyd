@@ -82,10 +82,10 @@
     "Are you sure you want to erase all of your data? This is irreversible." : {
 
     },
-    "Are you sure you want to reset all colors to defaults?" : {
+    "Are you sure you want to reset all settings to their defaults?" : {
 
     },
-    "Are you sure you want to reset all settings to their defaults?" : {
+    "Are you sure you want to reset the app color to the default?" : {
 
     },
     "Average bleeding on day %@" : {
