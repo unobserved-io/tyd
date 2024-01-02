@@ -11,6 +11,7 @@ import SwiftUI
 struct TimerView: View {
     @Environment(TimerHelper.self) private var timerHelper
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Query private var persistentTimer: [PersistentTimer]
     static var today: String { getTodaysDate() }
     @Query(filter: #Predicate<DayData> { day in
@@ -143,7 +144,7 @@ struct TimerView: View {
                 }
                 .sheet(isPresented: $showingEditTimedEventSheet) {
                     EditTimedEventView(timedEvent: $tappedTimedEvent)
-                        .presentationDetents([.small])
+                        .presentationDetents(dynamicTypeSize <= .xxLarge ? [.small] : [])
                 }
             }
         }

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct UnderCalendarView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @Binding var dayData: DayData
     @Query var appData: [AppData]
     @State private var showingEditMedSheet: Bool = false
@@ -102,7 +103,7 @@ struct UnderCalendarView: View {
         }
         .sheet(isPresented: $showingEditMedSheet) {
             AddEditMedicationView(medication: $tappedMedication)
-                .presentationDetents([.small])
+                .presentationDetents(dynamicTypeSize <= .xxLarge ? [.small] : [])
         }
                         
         // Notes
