@@ -154,6 +154,9 @@
     "Export Data" : {
 
     },
+    "History" : {
+
+    },
     "Import" : {
 
     },
@@ -232,10 +235,16 @@
     "Saved Data" : {
 
     },
+    "Settings" : {
+
+    },
     "Start Date" : {
 
     },
     "Start time" : {
+
+    },
+    "Stats" : {
 
     },
     "Symptoms" : {

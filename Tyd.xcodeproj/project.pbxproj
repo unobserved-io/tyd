@@ -193,6 +193,7 @@
 				9C0253162A4AECC100F2E68B /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		9C0253162A4AECC100F2E68B /* Products */ = {
 			isa = PBXGroup;

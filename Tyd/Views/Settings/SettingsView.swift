@@ -228,6 +228,7 @@ struct SettingsView: View {
                     AboutView()
                 }
             }
+            .navigationBarTitle("Settings")
         }
     }
     

@@ -36,6 +36,7 @@ struct CalendarView: View {
             .onAppear {
                 getDayData(date: date)
             }
+            .navigationBarTitle("History")
         }
     }
 
