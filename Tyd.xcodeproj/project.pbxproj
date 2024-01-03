@@ -26,6 +26,7 @@
 		9C2E10F12B3B630100A4334B /* TimerWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6BB3692B370A4300166B30 /* TimerWidgetLiveActivity.swift */; };
 		9C2E10F22B3B630400A4334B /* TimerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6BB36B2B370A4300166B30 /* TimerWidget.swift */; };
 		9C35A8FE2AFE73A600540A2B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35A8FD2AFE73A600540A2B /* SettingsView.swift */; };
+		9C38825C2B46104C000442FF /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C38825B2B46104C000442FF /* StoreModel.swift */; };
 		9C412BCE2AF50B320051DBAF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCD2AF50B320051DBAF /* LoadingView.swift */; };
 		9C412BD02AF50B570051DBAF /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCF2AF50B570051DBAF /* TabsView.swift */; };
 		9C6B38182AFCE47200A4F987 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6B38172AFCE47200A4F987 /* Extensions.swift */; };
@@ -117,6 +118,8 @@
 		9C2B170E2B3366C300EF0C94 /* JSONDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDocument.swift; sourceTree = "<group>"; };
 		9C2CE94C2A4AF43300AAAC52 /* TimedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimedEvent.swift; sourceTree = "<group>"; };
 		9C35A8FD2AFE73A600540A2B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9C38825A2B460F24000442FF /* SKConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = SKConfiguration.storekit; sourceTree = "<group>"; };
+		9C38825B2B46104C000442FF /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		9C412BCD2AF50B320051DBAF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		9C412BCF2AF50B570051DBAF /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 		9C6B38172AFCE47200A4F987 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -209,6 +212,7 @@
 		9C0253172A4AECC100F2E68B /* Tyd */ = {
 			isa = PBXGroup;
 			children = (
+				9C3882592B4602C6000442FF /* Store */,
 				9CED71372AFA9B6B006D5732 /* Objects */,
 				9CF9E18E2AF4F60D002BF692 /* Globals */,
 				9CDF3F8D2A4C739F007DF07F /* Helpers */,
@@ -294,6 +298,15 @@
 				9CF892182B42C1EF00673BF9 /* AboutView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		9C3882592B4602C6000442FF /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				9C38825A2B460F24000442FF /* SKConfiguration.storekit */,
+				9C38825B2B46104C000442FF /* StoreModel.swift */,
+			);
+			path = Store;
 			sourceTree = "<group>";
 		};
 		9C412BCC2AF50B240051DBAF /* Overviews */ = {
@@ -559,6 +572,7 @@
 				9C2E10F22B3B630400A4334B /* TimerWidget.swift in Sources */,
 				9CF892192B42C1EF00673BF9 /* AboutView.swift in Sources */,
 				9C2CE94D2A4AF43300AAAC52 /* TimedEvent.swift in Sources */,
+				9C38825C2B46104C000442FF /* StoreModel.swift in Sources */,
 				9CF9E1922AF4F6CD002BF692 /* Functions.swift in Sources */,
 				9CED713B2AFAA458006D5732 /* Medication.swift in Sources */,
 				9C412BCE2AF50B320051DBAF /* LoadingView.swift in Sources */,

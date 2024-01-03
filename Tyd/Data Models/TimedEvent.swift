@@ -17,12 +17,12 @@ final class TimedEvent: Codable {
         case formattedTime
     }
 
-    var product: Product
+    var product: PeriodProduct
     var startTime: Date
     var stopTime: Date
     var formattedTime: String
 
-    init(product: Product, startTime: Date, stopTime: Date) {
+    init(product: PeriodProduct, startTime: Date, stopTime: Date) {
         self.product = product
         self.startTime = startTime
         self.stopTime = stopTime
@@ -31,7 +31,7 @@ final class TimedEvent: Codable {
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.product = try container.decode(Product.self, forKey: .product)
+        self.product = try container.decode(PeriodProduct.self, forKey: .product)
         self.startTime = try container.decode(Date.self, forKey: .startTime)
         self.stopTime = try container.decode(Date.self, forKey: .stopTime)
         self.formattedTime = try container.decode(String.self, forKey: .formattedTime)

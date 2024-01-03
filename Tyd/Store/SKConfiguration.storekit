@@ -1,0 +1,143 @@
+{
+  "identifier" : "2F4F1E90",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "15.0",
+      "familyShareable" : false,
+      "internalID" : "6475371318",
+      "localizations" : [
+        {
+          "description" : "Save big on a lifetime membership to Tyd Pro.",
+          "displayName" : "Pro - Lifetime",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "onetime15",
+      "referenceName" : "tyd-pro",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6475370726",
+    "_developerTeamID" : "Z5MKQX2NCZ",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 726011944.72479904,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21429780",
+      "localizations" : [
+
+      ],
+      "name" : "tyd-pro",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "1.0",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6475371112",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Get Tyd Pro for the price of a small cookie.",
+              "displayName" : "Pro - Monthly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "monthly1",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "pro-monthly",
+          "subscriptionGroupID" : "21429780",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "9.0",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6475370880",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Save 25% on a yearly subscription to Tyd Pro",
+              "displayName" : "Pro - Yearly",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "yearly9",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "pro-yearly",
+          "subscriptionGroupID" : "21429780",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

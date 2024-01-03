@@ -13,7 +13,7 @@ final class AppData {
     var periodSymptoms: [String]
     var pmsSymptoms: [String]
     var medicines: [String]
-    var timerIntervals: [Product: Float]
+    var timerIntervals: [PeriodProduct: Float]
 
     init() {
         self.periodSymptoms = []

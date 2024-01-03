@@ -27,9 +27,9 @@ struct TimerView: View {
         VStack {
             if timerHelper.isRunning {
                 if timerHelper.ended {
-                    Text("Time since you should have changed your \((timerHelper.product ?? Product.tampon).rawValue)")
+                    Text("Time since you should have changed your \((timerHelper.product ?? PeriodProduct.tampon).rawValue)")
                 } else {
-                    Text("Change your \((timerHelper.product ?? Product.tampon).rawValue) in")
+                    Text("Change your \((timerHelper.product ?? PeriodProduct.tampon).rawValue) in")
                 }
             } else {
                 Text("")
@@ -57,7 +57,7 @@ struct TimerView: View {
             
             if !(timerHelper.isRunning) {
                 HStack {
-                    ForEach(Product.allCases, id: \.rawValue) { product in
+                    ForEach(PeriodProduct.allCases, id: \.rawValue) { product in
                         Button(product.rawValue.capitalized) {
                             startTimer(with: product)
                             initiatePersistentTimer()
@@ -147,7 +147,7 @@ struct TimerView: View {
         }
     }
     
-    private func startTimer(with product: Product) {
+    private func startTimer(with product: PeriodProduct) {
         timerHelper.start(product: product, interval: appData.first?.timerIntervals[product] ?? 4.0)
     }
     

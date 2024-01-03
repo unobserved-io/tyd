@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Product: String, Codable, CaseIterable {
+enum PeriodProduct: String, Codable, CaseIterable {
     case cup
     case pad
     case tampon

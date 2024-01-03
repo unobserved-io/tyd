@@ -16,10 +16,10 @@ class TimerHelper {
     var startTime: Date?
     var ended: Bool = false
     @ObservationIgnored var intervalInSeconds: Int = 0
-    @ObservationIgnored var product: Product? = nil
+    @ObservationIgnored var product: PeriodProduct? = nil
     @ObservationIgnored var stopTime: Date? = nil
 
-    func start(product: Product, interval: Float) {
+    func start(product: PeriodProduct, interval: Float) {
         /// Start running the timer
         isRunning = true
         self.product = product

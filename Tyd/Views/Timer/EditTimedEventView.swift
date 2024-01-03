@@ -19,7 +19,7 @@ struct EditTimedEventView: View {
                 Text("Product")
                 Spacer()
                 Picker("Product", selection: $timedEvent.product){
-                    ForEach(Product.allCases, id: \.rawValue) { product in
+                    ForEach(PeriodProduct.allCases, id: \.rawValue) { product in
                         Text(LocalizedStringKey(product.rawValue.localizedCapitalized)).tag(product)
                     }
                 }

@@ -11,7 +11,7 @@ import SwiftData
 @Model
 final class PersistentTimer {
     var isRunning: Bool
-    var product: Product
+    var product: PeriodProduct
     var startTime: Date?
 
     init() {

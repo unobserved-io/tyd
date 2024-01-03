@@ -9,10 +9,10 @@ import SwiftData
 import SwiftUI
 
 struct TimerIntervalsView: View {
-    @Binding var intervals: [Product: Float]
+    @Binding var intervals: [PeriodProduct: Float]
     @State private var showingAlert: Bool = false
     @State private var newInterval: Float = 4.0
-    @State private var showSliders: [Product: Bool] = [
+    @State private var showSliders: [PeriodProduct: Bool] = [
         .tampon: false,
         .pad: false,
         .cup: false,
