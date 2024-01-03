@@ -12,9 +12,9 @@ import TimerWidgetExtension
 @Observable
 class TimerHelper {
     var isRunning: Bool = false
-    var progress: Double = 0.0
     var endTime: Date?
     var startTime: Date?
+    var ended: Bool = false
     @ObservationIgnored var intervalInSeconds: Int = 0
     @ObservationIgnored var product: Product? = nil
     @ObservationIgnored var stopTime: Date? = nil
@@ -26,6 +26,9 @@ class TimerHelper {
         startTime = .now
         intervalInSeconds = Int(interval * 60 * 60)
         endTime = Calendar.current.date(byAdding: .second, value: intervalInSeconds, to: startTime ?? .now)
+        
+        let timer = Timer(fireAt: endTime ?? .distantPast, interval: 0, target: self, selector: #selector(setTimerEnded), userInfo: nil, repeats: false)
+        RunLoop.main.add(timer, forMode: .common)
         
         // Register notification
         showLocalNotification(in: intervalInSeconds)
@@ -54,6 +57,9 @@ class TimerHelper {
         // Register a notification if the time has not already elapsed
         if Date.now < endTime ?? .distantPast {
             showLocalNotification(in: Int(endTime?.timeIntervalSince(.now) ?? 0.0))
+            
+            let timer = Timer(fireAt: endTime ?? .distantPast, interval: 0, target: self, selector: #selector(setTimerEnded), userInfo: nil, repeats: false)
+            RunLoop.main.add(timer, forMode: .common)
         }
         
         // On resume, don't start a live activity if one is already running
@@ -94,6 +100,7 @@ class TimerHelper {
         product = nil
         startTime = nil
         stopTime = nil
+        ended = false
     }
     
     private func showLocalNotification(in scheduledFor: Int) {
@@ -154,5 +161,9 @@ class TimerHelper {
         for activeActivities in Activity<TimerWidgetAttributes>.activities {
             await activeActivities.end(ActivityContent(state: finalContent, staleDate: nil), dismissalPolicy: .immediate)
         }
+    }
+    
+    @objc func setTimerEnded() {
+        ended = true
     }
 }

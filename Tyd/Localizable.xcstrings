@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "-" : {
+
+    },
     "%@ - %@" : {
       "localizations" : {
         "en" : {
@@ -116,9 +119,6 @@
 
     },
     "Change your %@ in" : {
-
-    },
-    "Change your %@!" : {
 
     },
     "Danger Zone" : {
@@ -262,7 +262,7 @@
     "This is an example widget." : {
 
     },
-    "Time since you changed your %@" : {
+    "Time since you should have changed your %@" : {
 
     },
     "Time Taken" : {

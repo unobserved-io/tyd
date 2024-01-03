@@ -161,6 +161,6 @@ private extension TimerWidgetAttributes {
 #Preview("Notification", as: .content, using: TimerWidgetAttributes.preview) {
     TimerWidgetLiveActivity()
 } contentStates: {
-    TimerWidgetAttributes.ContentState(startTime: .now, endTime: Calendar.current.date(byAdding: .hour, value: 11, to: .now) ?? .now)
+    TimerWidgetAttributes.ContentState(startTime: .now, endTime: Calendar.current.date(byAdding: .second, value: 11, to: .now) ?? .now)
     // stoppedTime: Calendar.current.date(byAdding: .hour, value: 5, to: .now) ?? .now
 }

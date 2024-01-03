@@ -21,14 +21,13 @@ struct TimerView: View {
     @State var showingEditTimedEventSheet: Bool = false
     @State var tappedTimedEvent: TimedEvent = .init(product: .tampon, startTime: .now, stopTime: .now)
     @State private var showingStartTimeSheet: Bool = false
+    let tenSecsFromNow = Calendar.current.date(byAdding: .second, value: 10, to: .now)
     
     var body: some View {
         VStack {
             if timerHelper.isRunning {
-                if Date.now > timerHelper.endTime ?? .distantFuture {
-                    Text("Time since you changed your \((timerHelper.product ?? Product.tampon).rawValue)")
-                } else if Date.now == timerHelper.endTime ?? .distantFuture {
-                    Text("Change your \((timerHelper.product ?? Product.tampon).rawValue)!")
+                if timerHelper.ended {
+                    Text("Time since you should have changed your \((timerHelper.product ?? Product.tampon).rawValue)")
                 } else {
                     Text("Change your \((timerHelper.product ?? Product.tampon).rawValue) in")
                 }
@@ -45,7 +44,6 @@ struct TimerView: View {
                 .lineSpacing(0)
                 .allowsTightening(false)
                 .frame(maxHeight: 90)
-                .padding(.horizontal)
                 .multilineTextAlignment(.center)
             } else {
                 Text("00:00:00")
@@ -54,7 +52,6 @@ struct TimerView: View {
                     .lineSpacing(0)
                     .allowsTightening(false)
                     .frame(maxHeight: 90)
-                    .padding(.horizontal)
                     .multilineTextAlignment(.center)
             }
             
