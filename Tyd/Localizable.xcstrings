@@ -4,9 +4,6 @@
     "" : {
 
     },
-    "-" : {
-
-    },
     "%@ - %@" : {
       "localizations" : {
         "en" : {
@@ -77,6 +74,9 @@
 
     },
     "App Color" : {
+
+    },
+    "App Color (Pro)" : {
 
     },
     "Appearance" : {

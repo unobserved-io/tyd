@@ -43,6 +43,7 @@ struct OldEnvironment: Decodable {
 
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
+    @ObservedObject var storeModel = StoreModel.sharedInstance
     @Query var appData: [AppData]
     @Query var dayData: [DayData]
     @State private var showingResetAlert: Bool = false
@@ -52,14 +53,43 @@ struct SettingsView: View {
     @State private var showingDataExporter: Bool = false
     @State private var showingImportWarning: Bool = false
     @State private var showingAboutSheet: Bool = false
+    @State private var showingPurchaseSheet: Bool = false
+//    @State private var path: [String] = []
     
     var body: some View {
         NavigationStack {
             Form {
                 Section("Appearance") {
-                    NavigationLink(destination: AccentColorPickerView()) {
-                        Text("App Color")
+                    if storeModel.purchasedIds.isEmpty {
+                        Button {
+                            showingPurchaseSheet.toggle()
+                        } label: {
+                            Label {
+                                Text("App Color (Pro)")
+                                    .foregroundColor(.primary)
+                            } icon: {
+                                Image(systemName: "paintpalette.fill")
+                            }
+                        }
+                    } else {
+                        NavigationLink(destination: AccentColorPickerView()) {
+                            Label("App Color", systemImage: "paintpalette.fill")
+                        }
                     }
+//                    Button {
+//                        if storeModel.purchasedIds.isEmpty {
+//                            showingPurchaseSheet.toggle()
+//                        } else {
+//                            path.append("AccentColorPickerView")
+//                        }
+//                    } label: {
+//                        Label {
+//                            Text(storeModel.purchasedIds.isEmpty ? "App Color (Pro)" : "App Color")
+//                                .foregroundColor(.primary)
+//                        } icon: {
+//                            Image(systemName: "paintpalette.fill")
+//                        }
+//                    }
                 }
                 
                 Section("Symptoms & Meds") {
@@ -229,6 +259,11 @@ struct SettingsView: View {
                 }
             }
             .navigationBarTitle("Settings")
+//            .navigationDestination(for: String.self) { view in
+//                if view == "AccentColorPickerView" {
+//                    AccentColorPickerView()
+//                }
+//            }
         }
     }
     
