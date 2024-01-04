@@ -211,9 +211,11 @@ struct SettingsView: View {
                     Button("Reset All Settings") {
                         showingResetAlert.toggle()
                     }
+                    .foregroundStyle(.primary)
                     Button("Delete All Data") {
                         showingDeleteDataAlert.toggle()
                     }
+                    .foregroundStyle(.primary)
                 }
                 .alert("Reset settings?", isPresented: $showingResetAlert) {
                     Button("Reset") {
@@ -242,6 +244,7 @@ struct SettingsView: View {
                     Button("About") {
                         showingAboutSheet.toggle()
                     }
+                    .foregroundStyle(.primary)
                 }
                 .sheet(isPresented: $showingAboutSheet) {
                     AboutView()
