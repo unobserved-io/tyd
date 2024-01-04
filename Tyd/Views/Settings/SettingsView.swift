@@ -133,7 +133,6 @@ struct SettingsView: View {
                         defaultFilename: "Tyd-\(dateFormatter.string(from: Date.now))"
                     ) { _ in }
                     
-                    // TODO: Import data from Clue
                     // Import Data
                     Button {
                         if dayData.count > 1 {
@@ -255,22 +254,28 @@ struct SettingsView: View {
                     Text("Are you sure you want to erase all of your data? This is irreversible.")
                 }
                 
-                Section("Info") {
+                Section("More") {
                     Button("About") {
                         showingAboutSheet.toggle()
                     }
                     .foregroundStyle(.primary)
+                    
+                    if storeModel.purchasedIds.isEmpty {
+                        Button {
+                            showingPurchaseSheet.toggle()
+                        } label: {
+                            HStack {
+                                Text("Purchase Tyd+")
+                                    .foregroundColor(.accent)
+                            }
+                        }
+                    }
                 }
                 .sheet(isPresented: $showingAboutSheet) {
                     AboutView()
                 }
             }
             .navigationBarTitle("Settings")
-//            .navigationDestination(for: String.self) { view in
-//                if view == "AccentColorPickerView" {
-//                    AccentColorPickerView()
-//                }
-//            }
         }
     }
     

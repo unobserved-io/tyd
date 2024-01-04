@@ -190,9 +190,6 @@
     "Importing data will delete all current data. Do you still want to import?" : {
 
     },
-    "Info" : {
-
-    },
     "Intervals" : {
 
     },
@@ -215,6 +212,9 @@
 
     },
     "Medicines" : {
+
+    },
+    "More" : {
 
     },
     "More to come" : {
@@ -251,6 +251,9 @@
 
     },
     "Product" : {
+
+    },
+    "Purchase Tyd+" : {
 
     },
     "Questions, suggestions, or concerns? Email [support@unobserved.io](mailto:support@unobserved.io)" : {
