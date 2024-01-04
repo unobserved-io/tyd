@@ -12,6 +12,7 @@ struct TimerView: View {
     @Environment(TimerHelper.self) private var timerHelper
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @AppStorage("showLiveActivity") var showLiveActivity: Bool = false
     @Query private var persistentTimer: [PersistentTimer]
     static var today: String { getTodaysDate() }
     @Query(filter: #Predicate<DayData> { day in
@@ -148,7 +149,7 @@ struct TimerView: View {
     }
     
     private func startTimer(with product: PeriodProduct) {
-        timerHelper.start(product: product, interval: appData.first?.timerIntervals[product] ?? 4.0)
+        timerHelper.start(product: product, interval: appData.first?.timerIntervals[product] ?? 4.0, liveActivity: showLiveActivity)
     }
     
     private func deleteTimerData(at offsets: IndexSet) {

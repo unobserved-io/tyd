@@ -19,7 +19,7 @@ class TimerHelper {
     @ObservationIgnored var product: PeriodProduct? = nil
     @ObservationIgnored var stopTime: Date? = nil
 
-    func start(product: PeriodProduct, interval: Float) {
+    func start(product: PeriodProduct, interval: Float, liveActivity: Bool = false) {
         /// Start running the timer
         isRunning = true
         self.product = product
@@ -33,7 +33,9 @@ class TimerHelper {
         // Register notification
         showLocalNotification(in: intervalInSeconds)
         
-        startLiveActivity()
+        if liveActivity {
+            startLiveActivity()
+        }
     }
     
     func stop() {
@@ -46,7 +48,7 @@ class TimerHelper {
         }
     }
     
-    func resume(interval: Float) {
+    func resume(interval: Float, liveActivity: Bool = false) {
         isRunning = true
         intervalInSeconds = Int(interval * 60 * 60)
         endTime = Calendar.current.date(byAdding: .second, value: intervalInSeconds, to: startTime ?? .now)
@@ -63,7 +65,7 @@ class TimerHelper {
         }
         
         // On resume, don't start a live activity if one is already running
-        if Activity<TimerWidgetAttributes>.activities.isEmpty {
+        if Activity<TimerWidgetAttributes>.activities.isEmpty && liveActivity {
             startLiveActivity()
         }
     }

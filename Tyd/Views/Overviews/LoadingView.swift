@@ -12,6 +12,7 @@ struct LoadingView: View {
     @Environment(TimerHelper.self) private var timerHelper
     @Environment(Stats.self) private var stats
     @Environment(\.modelContext) private var modelContext
+    @AppStorage("showLiveActivity") var showLiveActivity: Bool = false
     @Query private var appData: [AppData]
     @Query private var dayData: [DayData]
     @Query private var persistentTimer: [PersistentTimer]
@@ -29,7 +30,7 @@ struct LoadingView: View {
                     if persistentTimer.first?.isRunning ?? false && (Calendar.current.dateComponents([.hour], from: persistentTimer.first?.startTime ?? .distantPast, to: .now).hour ?? 50 < 48) {
                         timerHelper.product = persistentTimer.first?.product
                         timerHelper.startTime = persistentTimer.first?.startTime
-                        timerHelper.resume(interval: appData.first?.timerIntervals[timerHelper.product ?? .tampon] ?? 4.0)
+                        timerHelper.resume(interval: appData.first?.timerIntervals[timerHelper.product ?? .tampon] ?? 4.0, liveActivity: showLiveActivity)
                     }
                 }
             }
