@@ -19,6 +19,8 @@
 		9C02532E2A4AECC200F2E68B /* TydTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02532D2A4AECC200F2E68B /* TydTests.swift */; };
 		9C0253382A4AECC200F2E68B /* TydUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253372A4AECC200F2E68B /* TydUITests.swift */; };
 		9C02533A2A4AECC200F2E68B /* TydUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */; };
+		9C260B6C2B46A7F300E3A486 /* PaywallSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C260B6B2B46A7F300E3A486 /* PaywallSubscription.swift */; };
+		9C260B6E2B46CD9A00E3A486 /* PaywallIndividual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C260B6D2B46CD9A00E3A486 /* PaywallIndividual.swift */; };
 		9C26D0FC2B00021F001548E2 /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C26D0FB2B00021F001548E2 /* ColorHex.swift */; };
 		9C26D0FE2B000499001548E2 /* AccentColorPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C26D0FD2B000499001548E2 /* AccentColorPickerView.swift */; };
 		9C2B170F2B3366C300EF0C94 /* JSONDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2B170E2B3366C300EF0C94 /* JSONDocument.swift */; };
@@ -113,6 +115,8 @@
 		9C0253332A4AECC200F2E68B /* TydUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TydUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0253372A4AECC200F2E68B /* TydUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITests.swift; sourceTree = "<group>"; };
 		9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9C260B6B2B46A7F300E3A486 /* PaywallSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallSubscription.swift; sourceTree = "<group>"; };
+		9C260B6D2B46CD9A00E3A486 /* PaywallIndividual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallIndividual.swift; sourceTree = "<group>"; };
 		9C26D0FB2B00021F001548E2 /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
 		9C26D0FD2B000499001548E2 /* AccentColorPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentColorPickerView.swift; sourceTree = "<group>"; };
 		9C2B170E2B3366C300EF0C94 /* JSONDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDocument.swift; sourceTree = "<group>"; };
@@ -253,6 +257,15 @@
 			path = TydUITests;
 			sourceTree = "<group>";
 		};
+		9C260B6A2B46A7C400E3A486 /* Paywall */ = {
+			isa = PBXGroup;
+			children = (
+				9C260B6B2B46A7F300E3A486 /* PaywallSubscription.swift */,
+				9C260B6D2B46CD9A00E3A486 /* PaywallIndividual.swift */,
+			);
+			path = Paywall;
+			sourceTree = "<group>";
+		};
 		9C27A83B2B3717220028ACFE /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +276,7 @@
 		9C2CE94A2A4AF05A00AAAC52 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9C260B6A2B46A7C400E3A486 /* Paywall */,
 				9CDD0AAD2B040E3D00F09B39 /* Stats */,
 				9CF3A4E72B029083008380E9 /* Timer */,
 				9C35A8FC2AFE739900540A2B /* Settings */,
@@ -291,8 +305,8 @@
 			children = (
 				9C35A8FD2AFE73A600540A2B /* SettingsView.swift */,
 				9C7C685F2AFF85A600B3F8B6 /* MedicinesView.swift */,
-				9C7C68612AFF8D0900B3F8B6 /* PmsSymptomsView.swift */,
 				9C7C68632AFF8D9600B3F8B6 /* PeriodSymptomsView.swift */,
+				9C7C68612AFF8D0900B3F8B6 /* PmsSymptomsView.swift */,
 				9C7C68652AFF8FEC00B3F8B6 /* TimerIntervalsView.swift */,
 				9C26D0FD2B000499001548E2 /* AccentColorPickerView.swift */,
 				9CF892182B42C1EF00673BF9 /* AboutView.swift */,
@@ -578,6 +592,7 @@
 				9C412BCE2AF50B320051DBAF /* LoadingView.swift in Sources */,
 				9C2E10F12B3B630100A4334B /* TimerWidgetLiveActivity.swift in Sources */,
 				9C2B170F2B3366C300EF0C94 /* JSONDocument.swift in Sources */,
+				9C260B6C2B46A7F300E3A486 /* PaywallSubscription.swift in Sources */,
 				9C7C68602AFF85A600B3F8B6 /* MedicinesView.swift in Sources */,
 				9CED713D2AFABEAA006D5732 /* CalendarView.swift in Sources */,
 				9C00000D2B3D7946008DFE47 /* TimerHelper.swift in Sources */,
@@ -597,6 +612,7 @@
 				9C26D0FE2B000499001548E2 /* AccentColorPickerView.swift in Sources */,
 				9CF3A4E92B029094008380E9 /* EditTimedEventView.swift in Sources */,
 				9C6B38182AFCE47200A4F987 /* Extensions.swift in Sources */,
+				9C260B6E2B46CD9A00E3A486 /* PaywallIndividual.swift in Sources */,
 				9C7C68642AFF8D9600B3F8B6 /* PeriodSymptomsView.swift in Sources */,
 				9C0141122B00D4C30036C7AB /* PersistentTimer.swift in Sources */,
 				9CDD0AAF2B040E4900F09B39 /* StatsView.swift in Sources */,

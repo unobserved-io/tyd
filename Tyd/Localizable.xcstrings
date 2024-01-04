@@ -103,6 +103,9 @@
     "Average PMS days per cycle" : {
 
     },
+    "Bedazzle your Home Screen" : {
+
+    },
     "Begin period to use tampon timer." : {
 
     },
@@ -115,10 +118,28 @@
     "Cancel" : {
 
     },
+    "Cancel anytime in Settings" : {
+
+    },
     "Change start time" : {
 
     },
+    "Change the color" : {
+
+    },
+    "Change the icon" : {
+
+    },
     "Change your %@ in" : {
+
+    },
+    "Choose the plan that's best for you" : {
+
+    },
+    "Custom color" : {
+
+    },
+    "Custom icons" : {
 
     },
     "Danger Zone" : {
@@ -154,6 +175,9 @@
     "Export Data" : {
 
     },
+    "Future access to new features" : {
+
+    },
     "History" : {
 
     },
@@ -175,6 +199,12 @@
     "Last Period" : {
 
     },
+    "Let the app represent your style" : {
+
+    },
+    "Live Activity" : {
+
+    },
     "Medication" : {
 
     },
@@ -182,6 +212,9 @@
 
     },
     "Medicines" : {
+
+    },
+    "More to come" : {
 
     },
     "My Widget" : {
@@ -203,6 +236,9 @@
 
     },
     "Period days" : {
+
+    },
+    "Plans:" : {
 
     },
     "PMS" : {
@@ -232,10 +268,19 @@
     "Reset?" : {
 
     },
+    "Restore Purchase" : {
+
+    },
     "Saved Data" : {
 
     },
+    "See the timer at a glance" : {
+
+    },
     "Settings" : {
+
+    },
+    "Start 7-Day Free Trial" : {
 
     },
     "Start Date" : {
@@ -277,7 +322,13 @@
     "Tyd timer" : {
 
     },
+    "Tyd+" : {
+
+    },
     "Version %@" : {
+
+    },
+    "With a subscription, you get:" : {
 
     },
     "You will see more stats once you have recorded more data." : {

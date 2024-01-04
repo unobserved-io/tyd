@@ -24,7 +24,7 @@
     "_applicationInternalID" : "6475370726",
     "_developerTeamID" : "Z5MKQX2NCZ",
     "_failTransactionsEnabled" : false,
-    "_lastSynchronizedDate" : 726011944.72479904,
+    "_lastSynchronizedDate" : 726065196.26756597,
     "_locale" : "en_US",
     "_storefront" : "USA",
     "_storeKitErrors" : [
@@ -97,8 +97,8 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Get Tyd Pro for the price of a small cookie.",
-              "displayName" : "Pro - Monthly",
+              "description" : "The price of a small fries.",
+              "displayName" : "Monthly",
               "locale" : "en_US"
             }
           ],
@@ -122,8 +122,8 @@
           "introductoryOffer" : null,
           "localizations" : [
             {
-              "description" : "Save 25% on a yearly subscription to Tyd Pro",
-              "displayName" : "Pro - Yearly",
+              "description" : "Save 25%!",
+              "displayName" : "Yearly",
               "locale" : "en_US"
             }
           ],

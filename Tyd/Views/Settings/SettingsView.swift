@@ -76,20 +76,9 @@ struct SettingsView: View {
                             Label("App Color", systemImage: "paintpalette.fill")
                         }
                     }
-//                    Button {
-//                        if storeModel.purchasedIds.isEmpty {
-//                            showingPurchaseSheet.toggle()
-//                        } else {
-//                            path.append("AccentColorPickerView")
-//                        }
-//                    } label: {
-//                        Label {
-//                            Text(storeModel.purchasedIds.isEmpty ? "App Color (Pro)" : "App Color")
-//                                .foregroundColor(.primary)
-//                        } icon: {
-//                            Image(systemName: "paintpalette.fill")
-//                        }
-//                    }
+                }
+                .sheet(isPresented: $showingPurchaseSheet) {
+                    PaywallSubscription()
                 }
                 
                 Section("Symptoms & Meds") {
