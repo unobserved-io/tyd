@@ -43,6 +43,7 @@ struct OldEnvironment: Decodable {
 
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
+    @AppStorage("showLiveActivity") var showLiveActivity: Bool = false
     @ObservedObject var storeModel = StoreModel.sharedInstance
     @Query var appData: [AppData]
     @Query var dayData: [DayData]
@@ -65,8 +66,12 @@ struct SettingsView: View {
                             showingPurchaseSheet.toggle()
                         } label: {
                             Label {
-                                Text("App Color (Pro)")
-                                    .foregroundColor(.primary)
+                                HStack {
+                                    Text("App Color")
+                                        .foregroundColor(.primary)
+                                    Text("(Tyd+)")
+                                        .foregroundStyle(.accent)
+                                }
                             } icon: {
                                 Image(systemName: "paintpalette.fill")
                             }
@@ -97,6 +102,16 @@ struct SettingsView: View {
                     NavigationLink(destination: TimerIntervalsView(intervals: Bindable(appData.first ?? AppData()).timerIntervals)) {
                         Text("Intervals")
                     }
+                    Toggle(isOn: $showLiveActivity) {
+                        HStack {
+                            Text("Live Activity widget")
+                            if storeModel.purchasedIds.isEmpty {
+                                Text("(Tyd+)")
+                                    .foregroundStyle(.accent)
+                            }
+                        }
+                    }
+                    .disabled(storeModel.purchasedIds.isEmpty)
                 }
                 
                 Section("Saved Data") {
