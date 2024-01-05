@@ -964,7 +964,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.8.1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = Z5MKQX2NCZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimerWidget/Info.plist;
@@ -976,7 +976,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.8;
+				MARKETING_VERSION = 0.8.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.unobserved.Tyd.TimerWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -996,7 +996,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0.8.1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = Z5MKQX2NCZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TimerWidget/Info.plist;
@@ -1008,7 +1008,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 0.8;
+				MARKETING_VERSION = 0.8.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.unobserved.Tyd.TimerWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
