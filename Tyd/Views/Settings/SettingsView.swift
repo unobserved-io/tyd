@@ -49,6 +49,8 @@ struct SettingsView: View {
     @Query var dayData: [DayData]
     @State private var showingResetAlert: Bool = false
     @State private var showingDeleteDataAlert: Bool = false
+    @State private var showingImportSuccessAlert: Bool = false
+    @State private var showingImportFailedAlert: Bool = false
     @State private var deleteDataConfirmationText: String = ""
     @State private var showingDataImporter: Bool = false
     @State private var showingDataExporter: Bool = false
@@ -181,6 +183,7 @@ struct SettingsView: View {
                                     for tDayData in allDayData {
                                         modelContext.insert(tDayData)
                                     }
+                                    showingImportSuccessAlert.toggle()
                                 } else if let allDayData = try? JSONDecoder().decode(OldData.self, from: fileData) {
                                     deleteAllDayData()
                                     
@@ -223,23 +226,17 @@ struct SettingsView: View {
                                         
                                         modelContext.insert(newDay)
                                     }
+                                    showingImportSuccessAlert.toggle()
                                 } else {
-                                    print("Data import failed")
+                                    showingImportFailedAlert.toggle()
                                 }
                             }
                             fileURL.stopAccessingSecurityScopedResource()
                         } catch {
+                            showingImportFailedAlert.toggle()
                             print("Failed to import data: \(error.localizedDescription)")
                         }
                     }
-                }
-                .alert("Delete all data?", isPresented: $showingImportWarning) {
-                    Button("Import") {
-                        showingDataImporter.toggle()
-                    }
-                    Button("Cancel", role: .cancel) {}
-                } message: {
-                    Text("Importing data will delete all current data. Do you still want to import?")
                 }
                 
                 Section("Danger Zone") {
@@ -297,6 +294,24 @@ struct SettingsView: View {
                 }
             }
             .navigationBarTitle("Settings")
+        }
+        .alert("Delete all data?", isPresented: $showingImportWarning) {
+            Button("Import") {
+                showingDataImporter.toggle()
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Importing data will delete all current data. Do you still want to import?")
+        }
+        .alert("Success", isPresented: $showingImportSuccessAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("Data successfully imported")
+        }
+        .alert("Failed", isPresented: $showingImportFailedAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("The file you selected cannot be imported")
         }
     }
     

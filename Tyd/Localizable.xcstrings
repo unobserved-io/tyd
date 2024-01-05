@@ -148,6 +148,9 @@
     "Danger Zone" : {
 
     },
+    "Data successfully imported" : {
+
+    },
     "day" : {
 
     },
@@ -176,6 +179,9 @@
 
     },
     "Export Data" : {
+
+    },
+    "Failed" : {
 
     },
     "Future access to new features" : {
@@ -233,6 +239,9 @@
 
     },
     "NOTES" : {
+
+    },
+    "OK" : {
 
     },
     "Pain" : {
@@ -301,6 +310,9 @@
     "Stats" : {
 
     },
+    "Success" : {
+
+    },
     "Symptoms" : {
 
     },
@@ -311,6 +323,9 @@
 
     },
     "Thank you for using Tyd. We understand the trust it takes to put your personal information into an app, which is why we make privacy a promise.\n\nTyd is created by Unobserved. As the name suggests, Unobserved creates privacy-first software for people who don't believe their data should be spread across the internet, often under the control of people and companies who use it for sketchy purposes.\n\nNo accounts are required for any Unobserved apps, no data is collected, even for analytics, and we never show ads to monetize our apps. This is app design as it should be." : {
+
+    },
+    "The file you selected cannot be imported" : {
 
     },
     "This is an example widget." : {
