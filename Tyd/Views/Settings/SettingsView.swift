@@ -5,9 +5,9 @@
 //  Created by Ricky Kresslein on 11/10/23.
 //
 
+import StoreKit
 import SwiftData
 import SwiftUI
-// import UniformTypeIdentifiers
 
 struct OldData: Decodable {
     var data: [OldDayData]
@@ -43,10 +43,15 @@ struct OldEnvironment: Decodable {
 
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(PassStatusModel.self) var passStatusModel: PassStatusModel
+    @Environment(\.passIDs) private var passIDs
+    @State private var status: EntitlementTaskState<PassStatus> = .loading
+    
     @AppStorage("showLiveActivity") var showLiveActivity: Bool = false
-    @ObservedObject var storeModel = StoreModel.sharedInstance
+    
     @Query var appData: [AppData]
     @Query var dayData: [DayData]
+    
     @State private var showingResetAlert: Bool = false
     @State private var showingDeleteDataAlert: Bool = false
     @State private var showingImportSuccessAlert: Bool = false
@@ -57,13 +62,12 @@ struct SettingsView: View {
     @State private var showingImportWarning: Bool = false
     @State private var showingAboutSheet: Bool = false
     @State private var showingPurchaseSheet: Bool = false
-//    @State private var path: [String] = []
     
     var body: some View {
         NavigationStack {
             Form {
                 Section("Appearance") {
-                    if storeModel.purchasedIds.isEmpty {
+                    if passStatusModel.passStatus == .notSubscribed {
                         Button {
                             showingPurchaseSheet.toggle()
                         } label: {
@@ -84,7 +88,7 @@ struct SettingsView: View {
                         }
                     }
                     
-                    if storeModel.purchasedIds.isEmpty {
+                    if passStatusModel.passStatus == .notSubscribed {
                         Button {
                             showingPurchaseSheet.toggle()
                         } label: {
@@ -128,13 +132,13 @@ struct SettingsView: View {
                     Toggle(isOn: $showLiveActivity) {
                         HStack {
                             Text("Live Activity Widget")
-                            if storeModel.purchasedIds.isEmpty {
+                            if passStatusModel.passStatus == .notSubscribed {
                                 Text("(Tyd+)")
                                     .foregroundStyle(.accent)
                             }
                         }
                     }
-                    .disabled(storeModel.purchasedIds.isEmpty)
+                    .disabled(passStatusModel.passStatus == .notSubscribed)
                 }
                 
                 Section("Saved Data") {
@@ -278,7 +282,7 @@ struct SettingsView: View {
                     }
                     .foregroundStyle(.primary)
                     
-                    if storeModel.purchasedIds.isEmpty {
+                    if passStatusModel.passStatus == .notSubscribed {
                         Button {
                             showingPurchaseSheet.toggle()
                         } label: {
@@ -295,6 +299,29 @@ struct SettingsView: View {
             }
             .navigationBarTitle("Settings")
         }
+        .subscriptionStatusTask(for: "21429780") { taskStatus in
+            self.status = await taskStatus.map { statuses in
+                await ProductSubscription.shared.status(
+                    for: statuses,
+                    ids: passIDs
+                )
+            }
+            switch self.status {
+            case .failure(let error):
+                passStatusModel.passStatus = .notSubscribed
+                print("Failed to check subscription status: \(error)")
+            case .success(let status):
+                passStatusModel.passStatus = status
+                if status == .notSubscribed {
+                    if showLiveActivity {
+                        showLiveActivity = false
+                    }
+                }
+            case .loading:
+                print("Loading")
+            @unknown default: break
+            }
+        }
         .alert("Delete all data?", isPresented: $showingImportWarning) {
             Button("Import") {
                 showingDataImporter.toggle()
@@ -304,12 +331,12 @@ struct SettingsView: View {
             Text("Importing data will delete all current data. Do you still want to import?")
         }
         .alert("Success", isPresented: $showingImportSuccessAlert) {
-            Button("OK", role: .cancel) { }
+            Button("OK", role: .cancel) {}
         } message: {
             Text("Data successfully imported")
         }
         .alert("Failed", isPresented: $showingImportFailedAlert) {
-            Button("OK", role: .cancel) { }
+            Button("OK", role: .cancel) {}
         } message: {
             Text("The file you selected cannot be imported")
         }

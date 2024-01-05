@@ -14,6 +14,7 @@ struct TydApp: App {
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     @State private var timerHelper = TimerHelper()
     @State private var stats = Stats()
+    @State private var passStatusModel = PassStatusModel()
 
     var body: some Scene {
         WindowGroup {
@@ -21,6 +22,7 @@ struct TydApp: App {
                 .accentColor(Color(hex: tydAccentColor) ?? .accent)
                 .environment(timerHelper)
                 .environment(stats)
+                .environment(passStatusModel)
         }
         .modelContainer(for: [
             AppData.self,

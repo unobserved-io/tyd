@@ -19,6 +19,8 @@
 		9C02532E2A4AECC200F2E68B /* TydTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02532D2A4AECC200F2E68B /* TydTests.swift */; };
 		9C0253382A4AECC200F2E68B /* TydUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253372A4AECC200F2E68B /* TydUITests.swift */; };
 		9C02533A2A4AECC200F2E68B /* TydUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */; };
+		9C06253C2B4847C500764E51 /* PassStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C06253B2B4847C500764E51 /* PassStatus.swift */; };
+		9C06253E2B48488100764E51 /* PassStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C06253D2B48488100764E51 /* PassStatusModel.swift */; };
 		9C16D3AA2B47FB9100B16B9A /* AppIconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C16D3A92B47FB9100B16B9A /* AppIconPickerView.swift */; };
 		9C16D3AC2B48139C00B16B9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C02531C2A4AECC100F2E68B /* Assets.xcassets */; };
 		9C260B6C2B46A7F300E3A486 /* PaywallSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C260B6B2B46A7F300E3A486 /* PaywallSubscription.swift */; };
@@ -30,7 +32,6 @@
 		9C2E10F12B3B630100A4334B /* TimerWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6BB3692B370A4300166B30 /* TimerWidgetLiveActivity.swift */; };
 		9C2E10F22B3B630400A4334B /* TimerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6BB36B2B370A4300166B30 /* TimerWidget.swift */; };
 		9C35A8FE2AFE73A600540A2B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35A8FD2AFE73A600540A2B /* SettingsView.swift */; };
-		9C38825C2B46104C000442FF /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C38825B2B46104C000442FF /* StoreModel.swift */; };
 		9C412BCE2AF50B320051DBAF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCD2AF50B320051DBAF /* LoadingView.swift */; };
 		9C412BD02AF50B570051DBAF /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCF2AF50B570051DBAF /* TabsView.swift */; };
 		9C6B38182AFCE47200A4F987 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6B38172AFCE47200A4F987 /* Extensions.swift */; };
@@ -48,6 +49,7 @@
 		9C86E4552AF8D660000F84D5 /* MultiSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4542AF8D660000F84D5 /* MultiSelector.swift */; };
 		9C86E4572AF8D66B000F84D5 /* MultiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */; };
 		9C86E4592AF8DC6E000F84D5 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4582AF8DC6E000F84D5 /* AppData.swift */; };
+		9C996DCF2B485756009F4C01 /* ProductSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C996DCE2B485756009F4C01 /* ProductSubscription.swift */; };
 		9CDD0AAF2B040E4900F09B39 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD0AAE2B040E4900F09B39 /* StatsView.swift */; };
 		9CDD0AB12B04199800F09B39 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD0AB02B04199800F09B39 /* Stats.swift */; };
 		9CED71362AFA9A02006D5732 /* AddEditMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED71352AFA9A02006D5732 /* AddEditMedicationView.swift */; };
@@ -117,6 +119,8 @@
 		9C0253332A4AECC200F2E68B /* TydUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TydUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0253372A4AECC200F2E68B /* TydUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITests.swift; sourceTree = "<group>"; };
 		9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9C06253B2B4847C500764E51 /* PassStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassStatus.swift; sourceTree = "<group>"; };
+		9C06253D2B48488100764E51 /* PassStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassStatusModel.swift; sourceTree = "<group>"; };
 		9C16D3A92B47FB9100B16B9A /* AppIconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPickerView.swift; sourceTree = "<group>"; };
 		9C260B6B2B46A7F300E3A486 /* PaywallSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallSubscription.swift; sourceTree = "<group>"; };
 		9C260B6D2B46CD9A00E3A486 /* PaywallIndividual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallIndividual.swift; sourceTree = "<group>"; };
@@ -126,7 +130,6 @@
 		9C2CE94C2A4AF43300AAAC52 /* TimedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimedEvent.swift; sourceTree = "<group>"; };
 		9C35A8FD2AFE73A600540A2B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		9C38825A2B460F24000442FF /* SKConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = SKConfiguration.storekit; sourceTree = "<group>"; };
-		9C38825B2B46104C000442FF /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		9C412BCD2AF50B320051DBAF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		9C412BCF2AF50B570051DBAF /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 		9C6B38172AFCE47200A4F987 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -143,6 +146,7 @@
 		9C86E4542AF8D660000F84D5 /* MultiSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelector.swift; sourceTree = "<group>"; };
 		9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectionView.swift; sourceTree = "<group>"; };
 		9C86E4582AF8DC6E000F84D5 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
+		9C996DCE2B485756009F4C01 /* ProductSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSubscription.swift; sourceTree = "<group>"; };
 		9CDD0AAE2B040E4900F09B39 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		9CDD0AB02B04199800F09B39 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		9CED71352AFA9A02006D5732 /* AddEditMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddEditMedicationView.swift; path = Tyd/Views/Calendar/AddEditMedicationView.swift; sourceTree = SOURCE_ROOT; };
@@ -322,7 +326,9 @@
 			isa = PBXGroup;
 			children = (
 				9C38825A2B460F24000442FF /* SKConfiguration.storekit */,
-				9C38825B2B46104C000442FF /* StoreModel.swift */,
+				9C06253B2B4847C500764E51 /* PassStatus.swift */,
+				9C06253D2B48488100764E51 /* PassStatusModel.swift */,
+				9C996DCE2B485756009F4C01 /* ProductSubscription.swift */,
 			);
 			path = Store;
 			sourceTree = "<group>";
@@ -591,7 +597,7 @@
 				9C2E10F22B3B630400A4334B /* TimerWidget.swift in Sources */,
 				9CF892192B42C1EF00673BF9 /* AboutView.swift in Sources */,
 				9C2CE94D2A4AF43300AAAC52 /* TimedEvent.swift in Sources */,
-				9C38825C2B46104C000442FF /* StoreModel.swift in Sources */,
+				9C06253C2B4847C500764E51 /* PassStatus.swift in Sources */,
 				9CF9E1922AF4F6CD002BF692 /* Functions.swift in Sources */,
 				9CED713B2AFAA458006D5732 /* Medication.swift in Sources */,
 				9C412BCE2AF50B320051DBAF /* LoadingView.swift in Sources */,
@@ -617,6 +623,8 @@
 				9C26D0FE2B000499001548E2 /* AccentColorPickerView.swift in Sources */,
 				9CF3A4E92B029094008380E9 /* EditTimedEventView.swift in Sources */,
 				9C6B38182AFCE47200A4F987 /* Extensions.swift in Sources */,
+				9C996DCF2B485756009F4C01 /* ProductSubscription.swift in Sources */,
+				9C06253E2B48488100764E51 /* PassStatusModel.swift in Sources */,
 				9C260B6E2B46CD9A00E3A486 /* PaywallIndividual.swift in Sources */,
 				9C7C68642AFF8D9600B3F8B6 /* PeriodSymptomsView.swift in Sources */,
 				9C0141122B00D4C30036C7AB /* PersistentTimer.swift in Sources */,

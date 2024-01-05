@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 enum PeriodProduct: String, Codable, CaseIterable {
     case cup
@@ -72,3 +73,54 @@ enum AppIcons: String, CaseIterable, Identifiable {
         UIImage(named: rawValue + "-Preview") ?? UIImage()
     }
 }
+
+//public struct PassIdentifiers: Sendable {
+//    public var group: String
+//    
+//    public var individual: String
+//    public var family: String
+//    public var premium: String
+//}
+//
+//enum PassStatus: Comparable, Hashable {
+//    case notSubscribed
+//    case individual
+//    case family
+//    case premium
+//    
+//    init(levelOfService: Int) {
+//        self = switch levelOfService {
+//        case 1: .premium
+//        case 2: .family
+//        case 3: .individual
+//        default: .notSubscribed
+//        }
+//    }
+//    
+//    init?(productID: Product.ID, ids: PassIdentifiers) {
+//        switch productID {
+//        case ids.individual: self = .individual
+//        case ids.family: self = .family
+//        case ids.premium: self = .premium
+//        default: return nil
+//        }
+//    }
+//}
+//
+//public extension EnvironmentValues {
+//    
+//    private enum PassIDsKey: EnvironmentKey {
+//        static var defaultValue = PassIdentifiers(
+//            group: "21429780",
+//            individual: "pass.individual",
+//            family: "pass.family",
+//            premium: "pass.premium"
+//        )
+//    }
+//    
+//    var passIDs: PassIdentifiers {
+//        get { self[PassIDsKey.self] }
+//        set { self[PassIDsKey.self] = newValue }
+//    }
+//    
+//}

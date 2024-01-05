@@ -5,10 +5,12 @@
 //  Created by Ricky Kresslein on 1/4/24.
 //
 
-import SwiftUI
 import StoreKit
+import SwiftUI
 
 struct PaywallSubscription: View {
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         SubscriptionStoreView(groupID: "21429780") {
             VStack {
@@ -73,6 +75,7 @@ struct PaywallSubscription: View {
                 }
                 
                 // MARK: Plans
+
                 Text("Plans:")
                     .font(.callout.smallCaps())
                     .bold()
@@ -81,11 +84,15 @@ struct PaywallSubscription: View {
                     .padding(.horizontal)
                     .padding(.top)
             }
-            
         }
         .storeButton(.visible, for: .restorePurchases)
         .storeButton(.hidden, for: .cancellation)
         .subscriptionStoreControlStyle(.prominentPicker)
+        .onInAppPurchaseCompletion { _, result in
+            if case .success(.success(_)) = result {
+                dismiss()
+            }
+        }
     }
 }
 
