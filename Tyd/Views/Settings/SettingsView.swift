@@ -317,8 +317,7 @@ struct SettingsView: View {
                         showLiveActivity = false
                     }
                 }
-            case .loading:
-                print("Loading")
+            case .loading: break
             @unknown default: break
             }
         }
