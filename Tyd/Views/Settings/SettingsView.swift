@@ -81,6 +81,27 @@ struct SettingsView: View {
                             Label("App Color", systemImage: "paintpalette.fill")
                         }
                     }
+                    
+                    if storeModel.purchasedIds.isEmpty {
+                        Button {
+                            showingPurchaseSheet.toggle()
+                        } label: {
+                            Label {
+                                HStack {
+                                    Text("App Icon")
+                                        .foregroundColor(.primary)
+                                    Text("(Tyd+)")
+                                        .foregroundStyle(.accent)
+                                }
+                            } icon: {
+                                Image(systemName: "app.gift.fill")
+                            }
+                        }
+                    } else {
+                        NavigationLink(destination: AppIconPickerView()) {
+                            Label("App Icon", systemImage: "app.gift.fill")
+                        }
+                    }
                 }
                 .sheet(isPresented: $showingPurchaseSheet) {
                     PaywallSubscription()
@@ -104,7 +125,7 @@ struct SettingsView: View {
                     }
                     Toggle(isOn: $showLiveActivity) {
                         HStack {
-                            Text("Live Activity widget")
+                            Text("Live Activity Widget")
                             if storeModel.purchasedIds.isEmpty {
                                 Text("(Tyd+)")
                                     .foregroundStyle(.accent)

@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "Tyd-App-Icon-1024x1024-White-on-Gray-40@2x.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Tyd-App-Icon-1024x1024-White-on-Gray-60@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Tyd-App-Icon-1024x1024-White-on-Gray-60@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

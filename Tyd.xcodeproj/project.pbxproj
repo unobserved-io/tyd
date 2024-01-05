@@ -19,6 +19,8 @@
 		9C02532E2A4AECC200F2E68B /* TydTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C02532D2A4AECC200F2E68B /* TydTests.swift */; };
 		9C0253382A4AECC200F2E68B /* TydUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253372A4AECC200F2E68B /* TydUITests.swift */; };
 		9C02533A2A4AECC200F2E68B /* TydUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */; };
+		9C16D3AA2B47FB9100B16B9A /* AppIconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C16D3A92B47FB9100B16B9A /* AppIconPickerView.swift */; };
+		9C16D3AC2B48139C00B16B9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C02531C2A4AECC100F2E68B /* Assets.xcassets */; };
 		9C260B6C2B46A7F300E3A486 /* PaywallSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C260B6B2B46A7F300E3A486 /* PaywallSubscription.swift */; };
 		9C260B6E2B46CD9A00E3A486 /* PaywallIndividual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C260B6D2B46CD9A00E3A486 /* PaywallIndividual.swift */; };
 		9C26D0FC2B00021F001548E2 /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C26D0FB2B00021F001548E2 /* ColorHex.swift */; };
@@ -37,7 +39,7 @@
 		9C6BB3682B370A4300166B30 /* TimerWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6BB3672B370A4300166B30 /* TimerWidgetBundle.swift */; };
 		9C6BB36A2B370A4300166B30 /* TimerWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6BB3692B370A4300166B30 /* TimerWidgetLiveActivity.swift */; };
 		9C6BB36C2B370A4300166B30 /* TimerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6BB36B2B370A4300166B30 /* TimerWidget.swift */; };
-		9C6BB36E2B370A4400166B30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6BB36D2B370A4400166B30 /* Assets.xcassets */; };
+		9C6BB36E2B370A4400166B30 /* WidgetAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6BB36D2B370A4400166B30 /* WidgetAssets.xcassets */; };
 		9C6BB3722B370A4400166B30 /* TimerWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9C6BB3632B370A4300166B30 /* TimerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9C7C68602AFF85A600B3F8B6 /* MedicinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C685F2AFF85A600B3F8B6 /* MedicinesView.swift */; };
 		9C7C68622AFF8D0900B3F8B6 /* PmsSymptomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C68612AFF8D0900B3F8B6 /* PmsSymptomsView.swift */; };
@@ -115,6 +117,7 @@
 		9C0253332A4AECC200F2E68B /* TydUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TydUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C0253372A4AECC200F2E68B /* TydUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITests.swift; sourceTree = "<group>"; };
 		9C0253392A4AECC200F2E68B /* TydUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TydUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		9C16D3A92B47FB9100B16B9A /* AppIconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconPickerView.swift; sourceTree = "<group>"; };
 		9C260B6B2B46A7F300E3A486 /* PaywallSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallSubscription.swift; sourceTree = "<group>"; };
 		9C260B6D2B46CD9A00E3A486 /* PaywallIndividual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallIndividual.swift; sourceTree = "<group>"; };
 		9C26D0FB2B00021F001548E2 /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
@@ -131,7 +134,7 @@
 		9C6BB3672B370A4300166B30 /* TimerWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWidgetBundle.swift; sourceTree = "<group>"; };
 		9C6BB3692B370A4300166B30 /* TimerWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWidgetLiveActivity.swift; sourceTree = "<group>"; };
 		9C6BB36B2B370A4300166B30 /* TimerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWidget.swift; sourceTree = "<group>"; };
-		9C6BB36D2B370A4400166B30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9C6BB36D2B370A4400166B30 /* WidgetAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WidgetAssets.xcassets; sourceTree = "<group>"; };
 		9C6BB36F2B370A4400166B30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C7C685F2AFF85A600B3F8B6 /* MedicinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicinesView.swift; sourceTree = "<group>"; };
 		9C7C68612AFF8D0900B3F8B6 /* PmsSymptomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PmsSymptomsView.swift; sourceTree = "<group>"; };
@@ -310,6 +313,7 @@
 				9C7C68652AFF8FEC00B3F8B6 /* TimerIntervalsView.swift */,
 				9C26D0FD2B000499001548E2 /* AccentColorPickerView.swift */,
 				9CF892182B42C1EF00673BF9 /* AboutView.swift */,
+				9C16D3A92B47FB9100B16B9A /* AppIconPickerView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -349,7 +353,7 @@
 				9C6BB3672B370A4300166B30 /* TimerWidgetBundle.swift */,
 				9C6BB3692B370A4300166B30 /* TimerWidgetLiveActivity.swift */,
 				9C6BB36B2B370A4300166B30 /* TimerWidget.swift */,
-				9C6BB36D2B370A4400166B30 /* Assets.xcassets */,
+				9C6BB36D2B370A4400166B30 /* WidgetAssets.xcassets */,
 				9C6BB36F2B370A4400166B30 /* Info.plist */,
 			);
 			path = TimerWidget;
@@ -571,7 +575,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C6BB36E2B370A4400166B30 /* Assets.xcassets in Resources */,
+				9C16D3AC2B48139C00B16B9A /* Assets.xcassets in Resources */,
+				9C6BB36E2B370A4400166B30 /* WidgetAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +622,7 @@
 				9C0141122B00D4C30036C7AB /* PersistentTimer.swift in Sources */,
 				9CDD0AAF2B040E4900F09B39 /* StatsView.swift in Sources */,
 				9C0253192A4AECC100F2E68B /* TydApp.swift in Sources */,
+				9C16D3AA2B47FB9100B16B9A /* AppIconPickerView.swift in Sources */,
 				9C86E4592AF8DC6E000F84D5 /* AppData.swift in Sources */,
 				9C35A8FE2AFE73A600540A2B /* SettingsView.swift in Sources */,
 			);
@@ -675,6 +681,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -739,6 +746,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -797,6 +805,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Tyd/Tyd.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -831,6 +840,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Tyd/Tyd.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -938,7 +948,10 @@
 		9C6BB3742B370A4400166B30 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=*]" = "";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -966,7 +979,11 @@
 		9C6BB3752B370A4400166B30 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "";
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=*]" = "";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
