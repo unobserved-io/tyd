@@ -27,6 +27,7 @@ struct TimerView: View {
     var body: some View {
         VStack {
             if timerHelper.isRunning {
+                // TODO: Can I replace this with somehting that happens only onAppear or some other way so I don't need a timer?
                 if timerHelper.ended {
                     Text("Time since you should have changed your \((timerHelper.product ?? PeriodProduct.tampon).rawValue)")
                 } else {

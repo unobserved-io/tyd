@@ -48,6 +48,8 @@ struct SettingsView: View {
     @State private var status: EntitlementTaskState<PassStatus> = .loading
     
     @AppStorage("showLiveActivity") var showLiveActivity: Bool = false
+    @AppStorage("chosenIcon") var chosenIcon: String = AppIcons.primary.rawValue
+    @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     
     @Query var appData: [AppData]
     @Query var dayData: [DayData]
@@ -62,6 +64,7 @@ struct SettingsView: View {
     @State private var showingImportWarning: Bool = false
     @State private var showingAboutSheet: Bool = false
     @State private var showingPurchaseSheet: Bool = false
+    @State private var showingManageSubscriptionSheet: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -291,6 +294,15 @@ struct SettingsView: View {
                                     .foregroundColor(.accent)
                             }
                         }
+                    } else {
+                        Button {
+                            showingManageSubscriptionSheet.toggle()
+                        } label: {
+                            HStack {
+                                Text("Manage Subscription")
+                                    .foregroundColor(.accent)
+                            }
+                        }
                     }
                 }
                 .sheet(isPresented: $showingAboutSheet) {
@@ -320,7 +332,15 @@ struct SettingsView: View {
             case .loading: break
             @unknown default: break
             }
+            
+            if passStatusModel.passStatus == .notSubscribed {
+                resetPaywalledFeatures()
+            }
         }
+        .manageSubscriptionsSheet(
+           isPresented: $showingManageSubscriptionSheet,
+           subscriptionGroupID: passIDs.group
+       )
         .alert("Delete all data?", isPresented: $showingImportWarning) {
             Button("Import") {
                 showingDataImporter.toggle()
@@ -354,6 +374,13 @@ struct SettingsView: View {
         encoder.dateEncodingStrategy = .secondsSince1970
         encoder.outputFormatting = .prettyPrinted
         return try? encoder.encode(dayData.sorted(by: { $0.day < $1.day }))
+    }
+    
+    private func resetPaywalledFeatures() {
+        showLiveActivity = false
+        tydAccentColor = "8B8BB0FF"
+        chosenIcon = AppIcons.primary.rawValue
+        UIApplication.shared.setAlternateIconName(chosenIcon)
     }
 }
 

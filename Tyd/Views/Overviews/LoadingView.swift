@@ -13,10 +13,18 @@ struct LoadingView: View {
     @Environment(TimerHelper.self) private var timerHelper
     @Environment(Stats.self) private var stats
     @Environment(\.modelContext) private var modelContext
+    @Environment(PassStatusModel.self) var passStatusModel: PassStatusModel
+    @Environment(\.passIDs) private var passIDs
+
     @AppStorage("showLiveActivity") var showLiveActivity: Bool = false
+    @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
+    @AppStorage("chosenIcon") var chosenIcon: String = AppIcons.primary.rawValue
+
     @Query private var appData: [AppData]
     @Query private var dayData: [DayData]
     @Query private var persistentTimer: [PersistentTimer]
+
+    @State private var status: EntitlementTaskState<PassStatus> = .loading
 
     var body: some View {
         TabsView()
@@ -35,6 +43,39 @@ struct LoadingView: View {
                     }
                 }
             }
+            .subscriptionStatusTask(for: "21429780") { taskStatus in
+                self.status = await taskStatus.map { statuses in
+                    await ProductSubscription.shared.status(
+                        for: statuses,
+                        ids: passIDs
+                    )
+                }
+                switch self.status {
+                case .failure(let error):
+                    passStatusModel.passStatus = .notSubscribed
+                    print("Failed to check subscription status: \(error)")
+                case .success(let status):
+                    passStatusModel.passStatus = status
+                    if status == .notSubscribed {
+                        if showLiveActivity {
+                            showLiveActivity = false
+                        }
+                    }
+                case .loading: break
+                @unknown default: break
+                }
+                
+                if passStatusModel.passStatus == .notSubscribed {
+                    resetPaywalledFeatures()
+                }
+            }
+    }
+    
+    private func resetPaywalledFeatures() {
+        showLiveActivity = false
+        tydAccentColor = "8B8BB0FF"
+        chosenIcon = AppIcons.primary.rawValue
+        UIApplication.shared.setAlternateIconName(chosenIcon)
     }
 }
 
