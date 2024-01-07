@@ -324,11 +324,6 @@ struct SettingsView: View {
                 print("Failed to check subscription status: \(error)")
             case .success(let status):
                 passStatusModel.passStatus = status
-                if status == .notSubscribed {
-                    if showLiveActivity {
-                        showLiveActivity = false
-                    }
-                }
             case .loading: break
             @unknown default: break
             }
