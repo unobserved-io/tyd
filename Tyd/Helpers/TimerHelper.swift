@@ -33,9 +33,11 @@ class TimerHelper {
         // Register notification
         showLocalNotification(in: intervalInSeconds)
         
+        #if os(iOS)
         if liveActivity {
             startLiveActivity()
         }
+        #endif
     }
     
     func stop() {
@@ -43,9 +45,11 @@ class TimerHelper {
         isRunning = false
         stopTime = .now
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        #if os(iOS)
         Task {
             await stopLiveActivity()
         }
+        #endif
     }
     
     func resume(interval: Float, liveActivity: Bool = false) {
@@ -64,10 +68,12 @@ class TimerHelper {
             RunLoop.main.add(timer, forMode: .common)
         }
         
+        #if os(iOS)
         // On resume, don't start a live activity if one is already running
-        if Activity<TimerWidgetAttributes>.activities.isEmpty && liveActivity {
+        if Activity<TimerWidgetAttributes>.activities.isEmpty, liveActivity {
             startLiveActivity()
         }
+        #endif
     }
     
     func updateEndTime() {

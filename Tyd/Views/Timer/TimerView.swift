@@ -115,9 +115,11 @@ struct TimerView: View {
                         persistentTimer.first?.startTime = timerHelper.startTime
                         timerHelper.updateEndTime()
                         timerHelper.updateNotificationTime()
+#if os(iOS)
                         Task {
                             await timerHelper.updateLiveActivity()
                         }
+#endif
                     }
                     .presentationDetents([.small])
                 }
