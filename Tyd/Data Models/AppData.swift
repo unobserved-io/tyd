@@ -14,6 +14,7 @@ final class AppData {
     var pmsSymptoms: [String]
     var medicines: [String]
     var timerIntervals: [PeriodProduct: Float]
+    var firstDayUsingTyd: Date
 
     init() {
         self.periodSymptoms = []
@@ -25,5 +26,6 @@ final class AppData {
             .cup: 4.0,
             .underwear: 4.0
         ]
+        self.firstDayUsingTyd = .now
     }
 }

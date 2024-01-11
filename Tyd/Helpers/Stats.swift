@@ -17,7 +17,7 @@ class Stats {
     var avgPmsDaysPerCycle: Float = 0
     var avgBleedingByDay: [Int: Float] = [:]
     var avgCycle: Int?
-    var daysUsingTyd: Int = 1
+    var daysUsingTyd: Int?
     var totalPeriodDays: Int = 0
     var totalPmsDays: Int = 0
     var daysToNextCycle: Int = 0
@@ -32,7 +32,7 @@ class Stats {
         self.avgPmsDaysPerCycle = 0
         self.avgBleedingByDay = [:]
         self.avgCycle = nil
-        self.daysUsingTyd = 1
+        self.daysUsingTyd = nil
         self.totalPeriodDays = 0
         self.totalPmsDays = 0
         self.daysToNextCycle = 0
@@ -214,8 +214,14 @@ class Stats {
     }
     
     func getTotalDaysUsingTyd(from dayData: [DayData]) {
-        let firstUseDate = dateFormatter.date(from: dayData.last?.day ?? "01.01.1975")
-        self.daysUsingTyd = (Calendar.current.dateComponents([.day], from: firstUseDate ?? .now, to: .now).day ?? 0) + 1
+        self.daysUsingTyd = nil
+        for day in dayData.reversed() {
+            if day.period || day.pms {
+                let firstUseDate = dateFormatter.date(from: day.day)
+                self.daysUsingTyd = (Calendar.current.dateComponents([.day], from: firstUseDate ?? .now, to: .now).day ?? 0) + 1
+                return
+            }
+        }
     }
     
     func getTotalPMSDays(from dayData: [DayData]) {

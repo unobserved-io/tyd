@@ -5,20 +5,25 @@
 //  Created by Ricky Kresslein on 11/14/23.
 //
 
+import SwiftData
 import SwiftUI
 
 struct StatsView: View {
     @Environment(Stats.self) private var stats
+    
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
+    
+    @Query var appData: [AppData]
+    
+    @State private var showingMoreStatsMessage: Bool = false
+    @State var bleedingDay: Int = 1
+    
     let dualInnerBoxColor: Color = .white.opacity(0.5)
     let monthDay: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
         return dateFormatter
     }()
-    @State private var showingMoreStatsMessage: Bool = false
-
-    @State var bleedingDay: Int = 1
     
     var body: some View {
         NavigationStack {
@@ -126,7 +131,7 @@ struct StatsView: View {
                             VStack {
                                 Text("Days using Tyd")
                                     .font(.title2)
-                                Text(String(stats.daysUsingTyd))
+                                Text(String(stats.daysUsingTyd ?? (Calendar.current.dateComponents([.day], from: appData.first?.firstDayUsingTyd ?? .now, to: .now).day ?? 0) + 1))
                                     .font(.system(size: 55))
                                     .foregroundStyle(Color(hex: tydAccentColor) ?? .accent)
                             }
