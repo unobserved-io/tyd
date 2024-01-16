@@ -34,6 +34,9 @@
 		9C35A8FE2AFE73A600540A2B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C35A8FD2AFE73A600540A2B /* SettingsView.swift */; };
 		9C412BCE2AF50B320051DBAF /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCD2AF50B320051DBAF /* LoadingView.swift */; };
 		9C412BD02AF50B570051DBAF /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C412BCF2AF50B570051DBAF /* TabsView.swift */; };
+		9C59F0842B56F06100D700AE /* JustChangedTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59F0832B56F06100D700AE /* JustChangedTip.swift */; };
+		9C59F0862B56F58500D700AE /* StartTimeTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59F0852B56F58500D700AE /* StartTimeTip.swift */; };
+		9C59F0892B56FDDE00D700AE /* SwipeTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59F0882B56FDDE00D700AE /* SwipeTip.swift */; };
 		9C6B38182AFCE47200A4F987 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6B38172AFCE47200A4F987 /* Extensions.swift */; };
 		9C6BB3642B370A4300166B30 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEEBF572B35A21E00E9BB5C /* WidgetKit.framework */; };
 		9C6BB3652B370A4300166B30 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEEBF592B35A21E00E9BB5C /* SwiftUI.framework */; };
@@ -132,6 +135,9 @@
 		9C38825A2B460F24000442FF /* SKConfiguration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = SKConfiguration.storekit; sourceTree = "<group>"; };
 		9C412BCD2AF50B320051DBAF /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		9C412BCF2AF50B570051DBAF /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
+		9C59F0832B56F06100D700AE /* JustChangedTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustChangedTip.swift; sourceTree = "<group>"; };
+		9C59F0852B56F58500D700AE /* StartTimeTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTimeTip.swift; sourceTree = "<group>"; };
+		9C59F0882B56FDDE00D700AE /* SwipeTip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTip.swift; sourceTree = "<group>"; };
 		9C6B38172AFCE47200A4F987 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9C6BB3632B370A4300166B30 /* TimerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TimerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C6BB3672B370A4300166B30 /* TimerWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerWidgetBundle.swift; sourceTree = "<group>"; };
@@ -223,6 +229,7 @@
 		9C0253172A4AECC100F2E68B /* Tyd */ = {
 			isa = PBXGroup;
 			children = (
+				9C59F0822B56F04500D700AE /* Tips */,
 				9C3882592B4602C6000442FF /* Store */,
 				9CED71372AFA9B6B006D5732 /* Objects */,
 				9CF9E18E2AF4F60D002BF692 /* Globals */,
@@ -340,6 +347,24 @@
 				9C412BCF2AF50B570051DBAF /* TabsView.swift */,
 			);
 			path = Overviews;
+			sourceTree = "<group>";
+		};
+		9C59F0822B56F04500D700AE /* Tips */ = {
+			isa = PBXGroup;
+			children = (
+				9C59F0872B56F5A700D700AE /* Timer */,
+			);
+			path = Tips;
+			sourceTree = "<group>";
+		};
+		9C59F0872B56F5A700D700AE /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				9C59F0832B56F06100D700AE /* JustChangedTip.swift */,
+				9C59F0852B56F58500D700AE /* StartTimeTip.swift */,
+				9C59F0882B56FDDE00D700AE /* SwipeTip.swift */,
+			);
+			path = Timer;
 			sourceTree = "<group>";
 		};
 		9C675FB22AFE399F007102B0 /* Calendar */ = {
@@ -595,6 +620,7 @@
 			files = (
 				9CED71362AFA9A02006D5732 /* AddEditMedicationView.swift in Sources */,
 				9C2E10F22B3B630400A4334B /* TimerWidget.swift in Sources */,
+				9C59F0842B56F06100D700AE /* JustChangedTip.swift in Sources */,
 				9CF892192B42C1EF00673BF9 /* AboutView.swift in Sources */,
 				9C2CE94D2A4AF43300AAAC52 /* TimedEvent.swift in Sources */,
 				9C06253C2B4847C500764E51 /* PassStatus.swift in Sources */,
@@ -611,6 +637,8 @@
 				9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */,
 				9C0253222A4AECC100F2E68B /* DayData.swift in Sources */,
 				9C7C68662AFF8FEC00B3F8B6 /* TimerIntervalsView.swift in Sources */,
+				9C59F0892B56FDDE00D700AE /* SwipeTip.swift in Sources */,
+				9C59F0862B56F58500D700AE /* StartTimeTip.swift in Sources */,
 				9C86E4552AF8D660000F84D5 /* MultiSelector.swift in Sources */,
 				9C26D0FC2B00021F001548E2 /* ColorHex.swift in Sources */,
 				9C86E4572AF8D66B000F84D5 /* MultiSelectionView.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import SwiftData
 import SwiftUI
+import TipKit
 
 @main
 struct TydApp: App {
@@ -31,5 +32,11 @@ struct TydApp: App {
             TimedEvent.self,
             PersistentTimer.self
         ])
+    }
+    
+    init() {
+        // Reset for testing
+        // try? Tips.resetDatastore()
+        try? Tips.configure()
     }
 }

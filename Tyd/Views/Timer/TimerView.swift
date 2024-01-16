@@ -7,6 +7,7 @@
 
 import SwiftData
 import SwiftUI
+import TipKit
 
 struct TimerView: View {
     @Environment(TimerHelper.self) private var timerHelper
@@ -23,6 +24,9 @@ struct TimerView: View {
     @State var tappedTimedEvent: TimedEvent = .init(product: .tampon, startTime: .now, stopTime: .now)
     @State private var showingStartTimeSheet: Bool = false
     let tenSecsFromNow = Calendar.current.date(byAdding: .second, value: 10, to: .now)
+    let justChangedTip = JustChangedTip()
+    // let startTimeTip = StartTimeTip()
+    let swipeTip = SwipeTip()
     
     var body: some View {
         VStack {
@@ -75,11 +79,14 @@ struct TimerView: View {
             } else {
                 HStack {
                     Button {
+                        // startTimeTip.invalidate(reason: .actionPerformed)
                         showingStartTimeSheet.toggle()
                     } label: {
                         Text(timerHelper.startTime?.formatted(date: .omitted, time: .shortened) ?? "12:00")
                     }
                     .buttonStyle(.bordered)
+                    // TODO: Add this tip if TipKit gets fixed to allow two sequential tips
+                    // .popoverTip(startTimeTip, arrowEdge: .bottom)
                     
                     Button {
                         stopTimer()
@@ -89,6 +96,7 @@ struct TimerView: View {
                     .buttonStyle(.borderedProminent)
                     
                     Button {
+                        justChangedTip.invalidate(reason: .actionPerformed)
                         let lastProductUsed = timerHelper.product ?? .tampon
                         stopTimer()
                         startTimer(with: lastProductUsed)
@@ -96,6 +104,7 @@ struct TimerView: View {
                         Image(systemName: "repeat")
                     }
                     .buttonStyle(.bordered)
+                    .popoverTip(justChangedTip, arrowEdge: .bottom)
                 }
                 .sheet(isPresented: $showingStartTimeSheet) {
                     DatePicker(
@@ -127,6 +136,7 @@ struct TimerView: View {
             
             if !(dayData.first?.timerData.isEmpty ?? true) {
                 List {
+                    TipView(swipeTip)
                     ForEach((dayData.first?.timerData ?? []).sorted(by: { $0.stopTime > $1.stopTime })) { timedEvent in
                         Button {
                             tappedTimedEvent = timedEvent
@@ -156,6 +166,7 @@ struct TimerView: View {
     }
     
     private func deleteTimerData(at offsets: IndexSet) {
+        swipeTip.invalidate(reason: .actionPerformed)
         for index in offsets {
             let timedEventToMatch: TimedEvent = (dayData.first?.timerData ?? []).sorted(by: { $0.stopTime > $1.stopTime })[index]
             if let indexToRemove = dayData.first?.timerData.firstIndex(where: { $0 == timedEventToMatch }) {
