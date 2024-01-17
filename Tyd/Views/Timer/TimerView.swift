@@ -69,12 +69,7 @@ struct TimerView: View {
                             initiatePersistentTimer()
                         }
                         .buttonStyle(.borderedProminent)
-                        .disabled(!(dayData.first?.period ?? false))
                     }
-                }
-                if !(dayData.first?.period ?? false) {
-                    Text("Begin period to use tampon timer.")
-                        .padding(.top, 10)
                 }
             } else {
                 HStack {
