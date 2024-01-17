@@ -49,6 +49,7 @@ class Stats {
         self.getTotalDaysUsingTyd(from: sortedDays)
         self.getTotalPMSDays(from: sortedDays)
         self.getCurrentPeriodStart(from: sortedDays)
+        self.getDaysSinceLastPeriod(from: sortedDays)
         
         // If on period, create an altered list without the first period
         if self.onPeriod {
@@ -117,7 +118,35 @@ class Stats {
         
         self.lastPeriodStart = dateFormatter.date(from: lastPeriodStart ?? "01.01.1974")
         self.lastPeriodEnd = dateFormatter.date(from: lastPeriodEnd ?? "01.01.1974")
-        self.daysSinceLastPeriod = Calendar.current.dateComponents([.day], from: self.lastPeriodEnd ?? .now, to: .now).day ?? 0
+//        self.daysSinceLastPeriod = Calendar.current.dateComponents([.day], from: self.lastPeriodEnd ?? .now, to: .now).day ?? 0
+    }
+    
+    func getDaysSinceLastPeriod(from dayData: [DayData]) {
+        var lastPeriodStart: String?
+        var lastPeriodEnd: String?
+        var lastDate: Date?
+        
+        for day in dayData {
+            let parsedDate = dateFormatter.date(from: day.day) ?? .distantFuture
+            if day.period {
+                if lastPeriodEnd == nil {
+                    lastPeriodEnd = day.day
+                    lastPeriodStart = day.day
+                } else if Calendar.current.isDate(parsedDate, inSameDayAs: calendar.date(byAdding: .day, value: -1, to: lastDate ?? .distantPast) ?? .distantPast) {
+                    lastPeriodStart = day.day
+                }
+                lastDate = dateFormatter.date(from: day.day) ?? .now
+            } else if lastPeriodEnd != nil {
+                break
+            }
+        }
+        
+        if lastPeriodStart != nil {
+            let lastPeriodStartDate = dateFormatter.date(from: lastPeriodStart ?? "01.01.1974")
+            self.daysSinceLastPeriod = (Calendar.current.dateComponents([.day], from: lastPeriodStartDate ?? .now, to: .now).day ?? 0) + 1
+        } else {
+            self.daysSinceLastPeriod = 0
+        }
     }
     
     func getDaysLengthAndBleeding(from dayData: [DayData]) {
@@ -288,7 +317,6 @@ class Stats {
         
         for day in dayData.reversed() {
             if day.period {
-//                print("\(day.day): Period")
                 if !hasBeenPeriod {
                     hasBeenPeriod = true
                 }

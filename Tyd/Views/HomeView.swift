@@ -12,16 +12,21 @@ struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(TimerHelper.self) private var timerHelper
     @Environment(Stats.self) private var stats
+    
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
+    
     static var today: String { getTodaysDate() }
+    
     @Query(filter: #Predicate<DayData> { day in
         day.day == today
     }) var dayData: [DayData]
+    @Query private var allDayData: [DayData]
+    
     @State var longPressed = false
 
     var body: some View {
         VStack {
-            if !(dayData.first?.period ?? false) && stats.daysSinceLastPeriod > 0 {
+            if stats.daysSinceLastPeriod > 0 {
                 Text("DAY \(stats.daysSinceLastPeriod)")
                     .bold()
                     .padding(.bottom)
@@ -44,6 +49,7 @@ struct HomeView: View {
                         dayData.first?.period.toggle()
                     }
                 }
+                stats.updateAllStats(from: allDayData)
             } label: {
                 Image("TydLogo")
                     .opacity(dayData.first?.pms ?? false || dayData.first?.period ?? false ? 1.0 : 0.3)
