@@ -12,6 +12,7 @@ struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(TimerHelper.self) private var timerHelper
     @Environment(Stats.self) private var stats
+    @Environment(CalendarDateChanger.self) private var calendarDateChanger
     
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     
@@ -23,6 +24,8 @@ struct HomeView: View {
     @Query private var allDayData: [DayData]
     
     @State var longPressed = false
+    
+    var selectedTab: Binding<String>
 
     var body: some View {
         VStack {
@@ -49,6 +52,13 @@ struct HomeView: View {
                         dayData.first?.period.toggle()
                     }
                 }
+                
+                // If toggling PMS or Period on, switch user to CalendarView
+                if dayData.first?.period ?? false || dayData.first?.pms ?? false {
+                    calendarDateChanger.date = .now
+                    selectedTab.wrappedValue = "calendar"
+                }
+                
                 stats.updateAllStats(from: allDayData)
             } label: {
                 Image("TydLogo")
@@ -109,6 +119,6 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(selectedTab: .constant("home"))
         .modelContainer(for: DayData.self, inMemory: true)
 }

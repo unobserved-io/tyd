@@ -16,6 +16,7 @@ struct TydApp: App {
     @State private var timerHelper = TimerHelper()
     @State private var stats = Stats()
     @State private var passStatusModel = PassStatusModel()
+    @State private var calendarDateChanger = CalendarDateChanger()
 
     var body: some Scene {
         WindowGroup {
@@ -24,6 +25,7 @@ struct TydApp: App {
                 .environment(timerHelper)
                 .environment(stats)
                 .environment(passStatusModel)
+                .environment(calendarDateChanger)
         }
         .modelContainer(for: [
             AppData.self,

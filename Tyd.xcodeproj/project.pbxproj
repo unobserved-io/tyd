@@ -52,6 +52,7 @@
 		9C86E4572AF8D66B000F84D5 /* MultiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */; };
 		9C86E4592AF8DC6E000F84D5 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4582AF8DC6E000F84D5 /* AppData.swift */; };
 		9C996DCF2B485756009F4C01 /* ProductSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C996DCE2B485756009F4C01 /* ProductSubscription.swift */; };
+		9CB7469B2B5A6DEB00839907 /* CalendarDateChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7469A2B5A6DEB00839907 /* CalendarDateChanger.swift */; };
 		9CDD0AAF2B040E4900F09B39 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD0AAE2B040E4900F09B39 /* StatsView.swift */; };
 		9CDD0AB12B04199800F09B39 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD0AB02B04199800F09B39 /* Stats.swift */; };
 		9CED71362AFA9A02006D5732 /* AddEditMedicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CED71352AFA9A02006D5732 /* AddEditMedicationView.swift */; };
@@ -151,6 +152,7 @@
 		9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectionView.swift; sourceTree = "<group>"; };
 		9C86E4582AF8DC6E000F84D5 /* AppData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppData.swift; sourceTree = "<group>"; };
 		9C996DCE2B485756009F4C01 /* ProductSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSubscription.swift; sourceTree = "<group>"; };
+		9CB7469A2B5A6DEB00839907 /* CalendarDateChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateChanger.swift; sourceTree = "<group>"; };
 		9CDD0AAE2B040E4900F09B39 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		9CDD0AB02B04199800F09B39 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		9CED71352AFA9A02006D5732 /* AddEditMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddEditMedicationView.swift; path = Tyd/Views/Calendar/AddEditMedicationView.swift; sourceTree = SOURCE_ROOT; };
@@ -410,6 +412,7 @@
 				9C26D0FB2B00021F001548E2 /* ColorHex.swift */,
 				9CDD0AB02B04199800F09B39 /* Stats.swift */,
 				9C00000C2B3D7946008DFE47 /* TimerHelper.swift */,
+				9CB7469A2B5A6DEB00839907 /* CalendarDateChanger.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				9C260B6E2B46CD9A00E3A486 /* PaywallIndividual.swift in Sources */,
 				9C7C68642AFF8D9600B3F8B6 /* AdditionalSymptomsView.swift in Sources */,
 				9C0141122B00D4C30036C7AB /* PersistentTimer.swift in Sources */,
+				9CB7469B2B5A6DEB00839907 /* CalendarDateChanger.swift in Sources */,
 				9CDD0AAF2B040E4900F09B39 /* StatsView.swift in Sources */,
 				9C0253192A4AECC100F2E68B /* TydApp.swift in Sources */,
 				9C16D3AA2B47FB9100B16B9A /* AppIconPickerView.swift in Sources */,

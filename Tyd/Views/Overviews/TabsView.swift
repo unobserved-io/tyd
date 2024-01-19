@@ -12,11 +12,11 @@ struct TabsView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(Stats.self) private var stats
     @Query private var dayData: [DayData]
-    @State private var selectedTab = "home"
+    @State var selectedTab = "home"
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            HomeView()
+            HomeView(selectedTab: $selectedTab)
                 .tabItem {
                     Image(systemName: "house")
                 }

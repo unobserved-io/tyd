@@ -10,6 +10,7 @@ import SwiftUI
 
 struct CalendarView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(CalendarDateChanger.self) private var calendarDateChanger
     @State private var date: Date = .now
     @State private var currentDay: DayData = .init(day: "06.08.1927")
 
@@ -26,6 +27,11 @@ struct CalendarView: View {
                     .datePickerStyle(.graphical)
                     .onChange(of: date) { _, newDate in
                         getDayData(date: newDate)
+                    }
+                    .onChange(of: calendarDateChanger.date) { _, newDate in
+                        if newDate != nil {
+                            date = newDate ?? .now
+                        }
                     }
                 }
 
