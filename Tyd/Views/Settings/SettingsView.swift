@@ -256,28 +256,6 @@ struct SettingsView: View {
                     }
                     .foregroundStyle(.primary)
                 }
-                .alert("Reset settings?", isPresented: $showingResetAlert) {
-                    Button("Reset") {
-                        do {
-                            try modelContext.delete(model: AppData.self)
-                            modelContext.insert(AppData())
-                        } catch {}
-                    }
-                    Button("Cancel", role: .cancel) {}
-                } message: {
-                    Text("Are you sure you want to reset all settings to their defaults?")
-                }
-                .alert("Delete all data?", isPresented: $showingDeleteDataAlert) {
-                    Button("Reset") {
-                        do {
-                            try modelContext.delete(model: DayData.self)
-                            modelContext.insert(DayData(day: getTodaysDate()))
-                        } catch {}
-                    }
-                    Button("Cancel", role: .cancel) {}
-                } message: {
-                    Text("Are you sure you want to erase all of your data? This is irreversible.")
-                }
                 
                 Section("More") {
                     Button("About") {
@@ -353,6 +331,28 @@ struct SettingsView: View {
             Button("OK", role: .cancel) {}
         } message: {
             Text("The file you selected cannot be imported")
+        }
+        .alert("Reset settings?", isPresented: $showingResetAlert) {
+            Button("Reset") {
+                do {
+                    try modelContext.delete(model: AppData.self)
+                    modelContext.insert(AppData())
+                } catch {}
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Are you sure you want to reset all settings to their defaults?")
+        }
+        .alert("Delete all data?", isPresented: $showingDeleteDataAlert) {
+            Button("Reset") {
+                do {
+                    try modelContext.delete(model: DayData.self)
+                    modelContext.insert(DayData(day: getTodaysDate()))
+                } catch {}
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("Are you sure you want to erase all of your data? This is irreversible.")
         }
     }
     

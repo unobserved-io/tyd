@@ -104,8 +104,12 @@ struct HomeView: View {
             }
 
             if !(dayData.first?.period ?? false) && stats.avgCycle ?? 0 > 0 {
-                Text("~\(stats.daysToNextCycle) days until your next period")
-                    .padding(.top)
+                if stats.daysToNextCycle > 0 {
+                    Text("~\(stats.daysToNextCycle) days until your next period")
+                        .padding(.top)
+                } else {
+                    Text("Your period will start any day now")
+                }
             }
         }
         .onAppear {
