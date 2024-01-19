@@ -117,10 +117,10 @@ struct SettingsView: View {
                 }
                 
                 Section("Symptoms & Meds") {
-                    NavigationLink(destination: PmsSymptomsView(symptoms: Bindable(appData.first ?? AppData()).periodSymptoms)) {
+                    NavigationLink(destination: AdditionalSymptomsView(symptoms: Bindable(appData.first ?? AppData()).periodSymptoms)) {
                         Text("Additional Period Symptoms")
                     }
-                    NavigationLink(destination: PmsSymptomsView(symptoms: Bindable(appData.first ?? AppData()).pmsSymptoms)) {
+                    NavigationLink(destination: AdditionalSymptomsView(symptoms: Bindable(appData.first ?? AppData()).pmsSymptoms)) {
                         Text("Additional PMS Symptoms")
                     }
                     NavigationLink(destination: MedicinesView(medicines: Bindable(appData.first ?? AppData()).medicines)) {

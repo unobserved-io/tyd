@@ -169,6 +169,12 @@
     "Dose" : {
 
     },
+    "Edit" : {
+
+    },
+    "Edit Symptom" : {
+
+    },
     "Emoji:" : {
 
     },
@@ -290,6 +296,9 @@
 
     },
     "Restore Purchase" : {
+
+    },
+    "Save" : {
 
     },
     "Saved Data" : {

@@ -46,8 +46,7 @@
 		9C6BB36E2B370A4400166B30 /* WidgetAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C6BB36D2B370A4400166B30 /* WidgetAssets.xcassets */; };
 		9C6BB3722B370A4400166B30 /* TimerWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 9C6BB3632B370A4300166B30 /* TimerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		9C7C68602AFF85A600B3F8B6 /* MedicinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C685F2AFF85A600B3F8B6 /* MedicinesView.swift */; };
-		9C7C68622AFF8D0900B3F8B6 /* PmsSymptomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C68612AFF8D0900B3F8B6 /* PmsSymptomsView.swift */; };
-		9C7C68642AFF8D9600B3F8B6 /* PeriodSymptomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C68632AFF8D9600B3F8B6 /* PeriodSymptomsView.swift */; };
+		9C7C68642AFF8D9600B3F8B6 /* AdditionalSymptomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C68632AFF8D9600B3F8B6 /* AdditionalSymptomsView.swift */; };
 		9C7C68662AFF8FEC00B3F8B6 /* TimerIntervalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C7C68652AFF8FEC00B3F8B6 /* TimerIntervalsView.swift */; };
 		9C86E4552AF8D660000F84D5 /* MultiSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4542AF8D660000F84D5 /* MultiSelector.swift */; };
 		9C86E4572AF8D66B000F84D5 /* MultiSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */; };
@@ -146,8 +145,7 @@
 		9C6BB36D2B370A4400166B30 /* WidgetAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WidgetAssets.xcassets; sourceTree = "<group>"; };
 		9C6BB36F2B370A4400166B30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C7C685F2AFF85A600B3F8B6 /* MedicinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicinesView.swift; sourceTree = "<group>"; };
-		9C7C68612AFF8D0900B3F8B6 /* PmsSymptomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PmsSymptomsView.swift; sourceTree = "<group>"; };
-		9C7C68632AFF8D9600B3F8B6 /* PeriodSymptomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodSymptomsView.swift; sourceTree = "<group>"; };
+		9C7C68632AFF8D9600B3F8B6 /* AdditionalSymptomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalSymptomsView.swift; sourceTree = "<group>"; };
 		9C7C68652AFF8FEC00B3F8B6 /* TimerIntervalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerIntervalsView.swift; sourceTree = "<group>"; };
 		9C86E4542AF8D660000F84D5 /* MultiSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelector.swift; sourceTree = "<group>"; };
 		9C86E4562AF8D66B000F84D5 /* MultiSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectionView.swift; sourceTree = "<group>"; };
@@ -319,8 +317,7 @@
 			children = (
 				9C35A8FD2AFE73A600540A2B /* SettingsView.swift */,
 				9C7C685F2AFF85A600B3F8B6 /* MedicinesView.swift */,
-				9C7C68632AFF8D9600B3F8B6 /* PeriodSymptomsView.swift */,
-				9C7C68612AFF8D0900B3F8B6 /* PmsSymptomsView.swift */,
+				9C7C68632AFF8D9600B3F8B6 /* AdditionalSymptomsView.swift */,
 				9C7C68652AFF8FEC00B3F8B6 /* TimerIntervalsView.swift */,
 				9C26D0FD2B000499001548E2 /* AccentColorPickerView.swift */,
 				9CF892182B42C1EF00673BF9 /* AboutView.swift */,
@@ -633,7 +630,6 @@
 				9C7C68602AFF85A600B3F8B6 /* MedicinesView.swift in Sources */,
 				9CED713D2AFABEAA006D5732 /* CalendarView.swift in Sources */,
 				9C00000D2B3D7946008DFE47 /* TimerHelper.swift in Sources */,
-				9C7C68622AFF8D0900B3F8B6 /* PmsSymptomsView.swift in Sources */,
 				9C02531B2A4AECC100F2E68B /* HomeView.swift in Sources */,
 				9C0253222A4AECC100F2E68B /* DayData.swift in Sources */,
 				9C7C68662AFF8FEC00B3F8B6 /* TimerIntervalsView.swift in Sources */,
@@ -654,7 +650,7 @@
 				9C996DCF2B485756009F4C01 /* ProductSubscription.swift in Sources */,
 				9C06253E2B48488100764E51 /* PassStatusModel.swift in Sources */,
 				9C260B6E2B46CD9A00E3A486 /* PaywallIndividual.swift in Sources */,
-				9C7C68642AFF8D9600B3F8B6 /* PeriodSymptomsView.swift in Sources */,
+				9C7C68642AFF8D9600B3F8B6 /* AdditionalSymptomsView.swift in Sources */,
 				9C0141122B00D4C30036C7AB /* PersistentTimer.swift in Sources */,
 				9CDD0AAF2B040E4900F09B39 /* StatsView.swift in Sources */,
 				9C0253192A4AECC100F2E68B /* TydApp.swift in Sources */,
