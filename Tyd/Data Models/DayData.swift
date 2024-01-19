@@ -75,31 +75,3 @@ final class DayData: Codable {
         try container.encode(timerData, forKey: .timerData)
     }
 }
-
-// extension DayData: Encodable {
-//    enum CodingKeys: String, CodingKey {
-//        case day
-//        case period
-//        case pms
-//        case bleeding
-//        case pain
-//        case periodSymptoms
-//        case pmsSymptoms
-//        case medication
-//        case notes
-//        case timerData
-//    }
-//
-//    public func encode(to encoder: Encoder) throws {
-//        var container = encoder.container(keyedBy: CodingKeys.self)
-//        try container.encode(day, forKey: .day)
-//        try container.encode(period, forKey: .period)
-//        try container.encode(pms, forKey: .pms)
-//        try container.encode(notes, forKey: .notes)
-//        try container.encode(, forKey: .relax)
-//        try container.encode(sleep.rawValue, forKey: .sleep)
-//        try container.encode(water.rawValue, forKey: .water)
-//        try container.encode(attacks, forKey: .attacks)
-//        try container.encode(medications, forKey: .medications)
-//    }
-// }
