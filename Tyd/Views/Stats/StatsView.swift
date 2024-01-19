@@ -182,7 +182,7 @@ struct StatsView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 15))
                     .frame(alignment: .center)
                     
-                    if stats.lastPeriodStart == nil || stats.lastPeriodEnd == nil || stats.avgPeriodLength ?? 0 == 0 || stats.avgCycle ?? 0 != 0 {
+                    if stats.lastPeriodStart == nil || stats.lastPeriodEnd == nil || stats.avgPeriodLength ?? 0 == 0 || stats.avgCycle ?? 0 == 0 {
                         Text("You will see more stats once you have recorded more data.")
                             .bold()
                             .padding(.top)
