@@ -37,8 +37,9 @@ struct StatsView: View {
                                 .font(.title2)
                             Text("\(monthDay.string(from: stats.lastPeriodStart ?? .distantPast)) - \(monthDay.string(from: stats.lastPeriodEnd ?? .distantFuture))")
                                 .frame(alignment: .center)
-                                .font(.system(size: 55))
+                                .font(.system(size: 45))
                                 .foregroundStyle(Color(hex: tydAccentColor) ?? .accent)
+                                .padding(.top, 1)
                         }
                         .padding(.top)
                     }
