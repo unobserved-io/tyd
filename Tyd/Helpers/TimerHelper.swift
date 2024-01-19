@@ -18,6 +18,7 @@ class TimerHelper {
     @ObservationIgnored var intervalInSeconds: Int = 0
     @ObservationIgnored var product: PeriodProduct? = nil
     @ObservationIgnored var stopTime: Date? = nil
+    @ObservationIgnored var timer = Timer()
 
     func start(product: PeriodProduct, interval: Float, liveActivity: Bool = false) {
         /// Start running the timer
@@ -27,8 +28,7 @@ class TimerHelper {
         intervalInSeconds = Int(interval * 60 * 60)
         endTime = Calendar.current.date(byAdding: .second, value: intervalInSeconds, to: startTime ?? .now)
         
-        let timer = Timer(fireAt: endTime ?? .distantPast, interval: 0, target: self, selector: #selector(setTimerEnded), userInfo: nil, repeats: false)
-        RunLoop.main.add(timer, forMode: .common)
+        setEndTimer()
         
         // Register notification
         showLocalNotification(in: intervalInSeconds)
@@ -45,6 +45,7 @@ class TimerHelper {
         isRunning = false
         stopTime = .now
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        timer.invalidate()
         #if os(iOS)
         Task {
             await stopLiveActivity()
@@ -55,6 +56,7 @@ class TimerHelper {
     func resume(interval: Float, liveActivity: Bool = false) {
         isRunning = true
         intervalInSeconds = Int(interval * 60 * 60)
+        timer.invalidate()
         endTime = Calendar.current.date(byAdding: .second, value: intervalInSeconds, to: startTime ?? .now)
         
         // Remove all pending notifications
@@ -63,9 +65,9 @@ class TimerHelper {
         // Register a notification if the time has not already elapsed
         if Date.now < endTime ?? .distantPast {
             showLocalNotification(in: Int(endTime?.timeIntervalSince(.now) ?? 0.0))
-            
-            let timer = Timer(fireAt: endTime ?? .distantPast, interval: 0, target: self, selector: #selector(setTimerEnded), userInfo: nil, repeats: false)
-            RunLoop.main.add(timer, forMode: .common)
+            setEndTimer()
+        } else {
+            setTimerEnded()
         }
         
         #if os(iOS)
@@ -78,6 +80,8 @@ class TimerHelper {
     
     func updateEndTime() {
         endTime = Calendar.current.date(byAdding: .second, value: intervalInSeconds, to: startTime ?? .now)
+        timer.invalidate()
+        setEndTimer()
     }
     
     func updateNotificationTime() {
@@ -173,5 +177,10 @@ class TimerHelper {
     
     @objc func setTimerEnded() {
         ended = true
+    }
+    
+    private func setEndTimer() {
+        timer = Timer(fireAt: endTime ?? .distantPast, interval: 0, target: self, selector: #selector(setTimerEnded), userInfo: nil, repeats: false)
+        RunLoop.main.add(timer, forMode: .common)
     }
 }

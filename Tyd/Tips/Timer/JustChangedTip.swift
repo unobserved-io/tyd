@@ -16,10 +16,4 @@ struct JustChangedTip: Tip {
     var message: Text? {
         Text("Tap this if you just changed your period product. Restarts the timer and saves the previous data.")
     }
-    
-    var actions: [Action] {
-        [
-            Action(id: "next-tip", title: "Next tip")
-        ]
-    }
 }
