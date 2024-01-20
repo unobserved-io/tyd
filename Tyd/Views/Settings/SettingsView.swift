@@ -45,7 +45,7 @@ struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(PassStatusModel.self) var passStatusModel: PassStatusModel
     @Environment(\.passIDs) private var passIDs
-    @State private var status: EntitlementTaskState<PassStatus> = .loading
+    @Environment(TimerHelper.self) private var timerHelper
     
     @AppStorage("showLiveActivity") var showLiveActivity: Bool = false
     @AppStorage("chosenIcon") var chosenIcon: String = AppIcons.primary.rawValue
@@ -54,6 +54,7 @@ struct SettingsView: View {
     @Query var appData: [AppData]
     @Query var dayData: [DayData]
     
+    @State private var status: EntitlementTaskState<PassStatus> = .loading
     @State private var showingResetAlert: Bool = false
     @State private var showingDeleteDataAlert: Bool = false
     @State private var showingImportSuccessAlert: Bool = false
@@ -142,6 +143,18 @@ struct SettingsView: View {
                         }
                     }
                     .disabled(passStatusModel.passStatus == .notSubscribed)
+                    .onChange(of: showLiveActivity) { _, newValue in
+                        if timerHelper.isRunning {
+                            if newValue {
+                                timerHelper.startLiveActivity()
+                            } else {
+                                Task {
+                                    await timerHelper.stopLiveActivity()
+                                }
+
+                            }
+                        }
+                    }
                 }
                 
                 Section("Saved Data") {

@@ -143,7 +143,7 @@ class TimerHelper {
         UNUserNotificationCenter.current().add(request)
     }
     
-    private func startLiveActivity() {
+    func startLiveActivity() {
         if ActivityAuthorizationInfo().areActivitiesEnabled {
             do {
                 let timerWidget = TimerWidgetAttributes()
@@ -163,7 +163,7 @@ class TimerHelper {
         }
     }
     
-    private func stopLiveActivity() async {
+    func stopLiveActivity() async {
         let finalContent = TimerWidgetAttributes.ContentState(
             startTime: startTime ?? .now,
             endTime: endTime ?? .distantFuture,
