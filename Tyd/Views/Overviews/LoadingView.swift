@@ -35,7 +35,6 @@ struct LoadingView: View {
                 }
 
                 // Continue running timer if it was running when the app was closed and it is less than 48 hours old
-                // DEBUG: print("PT: \(persistentTimer.first?.isRunning ?? false), \(Calendar.current.dateComponents([.hour], from: persistentTimer.first?.startTime ?? .distantPast, to: .now).hour ?? 50)")
                 if persistentTimer.first != nil {
                     if persistentTimer.first?.isRunning ?? false && (Calendar.current.dateComponents([.hour], from: persistentTimer.first?.startTime ?? .distantPast, to: .now).hour ?? 50 < 48) {
                         timerHelper.product = persistentTimer.first?.product
@@ -57,12 +56,11 @@ struct LoadingView: View {
                     print("Failed to check subscription status: \(error)")
                 case .success(let status):
                     passStatusModel.passStatus = status
+                    if passStatusModel.passStatus == .notSubscribed {
+                        resetPaywalledFeatures()
+                    }
                 case .loading: break
                 @unknown default: break
-                }
-                
-                if passStatusModel.passStatus == .notSubscribed {
-                    resetPaywalledFeatures()
                 }
             }
     }

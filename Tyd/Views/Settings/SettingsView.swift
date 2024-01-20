@@ -315,12 +315,11 @@ struct SettingsView: View {
                 print("Failed to check subscription status: \(error)")
             case .success(let status):
                 passStatusModel.passStatus = status
+                if passStatusModel.passStatus == .notSubscribed {
+                    resetPaywalledFeatures()
+                }
             case .loading: break
             @unknown default: break
-            }
-            
-            if passStatusModel.passStatus == .notSubscribed {
-                resetPaywalledFeatures()
             }
         }
         .manageSubscriptionsSheet(
