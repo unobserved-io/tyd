@@ -22,6 +22,7 @@
   ],
   "settings" : {
     "_applicationInternalID" : "6475370726",
+    "_billingGracePeriodEnabled" : false,
     "_developerTeamID" : "Z5MKQX2NCZ",
     "_failTransactionsEnabled" : false,
     "_lastSynchronizedDate" : 726065196.26756597,
