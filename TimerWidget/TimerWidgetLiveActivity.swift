@@ -123,7 +123,7 @@ struct TimerWidgetLiveActivity: Widget {
                 }
             } compactLeading: {
                 Image("Tyd15-Accent")
-                    .padding(.leading, 5)
+                    .padding(.leading, 3)
             } compactTrailing: {
                 Text(
                     context.state.endTime,
