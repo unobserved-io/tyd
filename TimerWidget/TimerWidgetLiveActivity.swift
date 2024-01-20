@@ -123,13 +123,14 @@ struct TimerWidgetLiveActivity: Widget {
                 }
             } compactLeading: {
                 Image("Tyd15-Accent")
-                    .padding()
+                    .padding(.leading, 5)
             } compactTrailing: {
                 Text(
                     context.state.endTime,
                     style: .timer
                 )
-//                .frame(maxWidth: .minimum(70, 70), alignment: .leading)
+                .frame(maxWidth: .minimum(65, 65), alignment: .leading)
+                .padding(-2)
                 .foregroundStyle(.accent)
                 .multilineTextAlignment(.center)
             } minimal: {
@@ -161,6 +162,6 @@ private extension TimerWidgetAttributes {
 #Preview("Notification", as: .content, using: TimerWidgetAttributes.preview) {
     TimerWidgetLiveActivity()
 } contentStates: {
-    TimerWidgetAttributes.ContentState(startTime: .now, endTime: Calendar.current.date(byAdding: .second, value: 11, to: .now) ?? .now)
+    TimerWidgetAttributes.ContentState(startTime: .now, endTime: Calendar.current.date(byAdding: .hour, value: 23, to: .now) ?? .now)
     // stoppedTime: Calendar.current.date(byAdding: .hour, value: 5, to: .now) ?? .now
 }
