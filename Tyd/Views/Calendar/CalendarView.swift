@@ -44,6 +44,7 @@ struct CalendarView: View {
             }
             .navigationBarTitle("History")
         }
+        .scrollDismissesKeyboard(.interactively)
     }
 
     private func getDayData(date: Date) {
