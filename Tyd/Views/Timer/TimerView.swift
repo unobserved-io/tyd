@@ -181,7 +181,7 @@ struct TimerView: View {
             newPersistentTimer.isRunning = true
             newPersistentTimer.product = timerHelper.product ?? .tampon
             newPersistentTimer.startTime = timerHelper.startTime
-            modelContext.insert(PersistentTimer())
+            modelContext.insert(newPersistentTimer)
         } else {
             persistentTimer.first?.isRunning = true
             persistentTimer.first?.product = timerHelper.product ?? .tampon

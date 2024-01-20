@@ -38,8 +38,8 @@
 		9C59F0862B56F58500D700AE /* StartTimeTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59F0852B56F58500D700AE /* StartTimeTip.swift */; };
 		9C59F0892B56FDDE00D700AE /* SwipeTip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C59F0882B56FDDE00D700AE /* SwipeTip.swift */; };
 		9C6B38182AFCE47200A4F987 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6B38172AFCE47200A4F987 /* Extensions.swift */; };
-		9C6BB3642B370A4300166B30 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEEBF572B35A21E00E9BB5C /* WidgetKit.framework */; };
-		9C6BB3652B370A4300166B30 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEEBF592B35A21E00E9BB5C /* SwiftUI.framework */; };
+		9C6BB3642B370A4300166B30 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEEBF572B35A21E00E9BB5C /* WidgetKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		9C6BB3652B370A4300166B30 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CEEBF592B35A21E00E9BB5C /* SwiftUI.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		9C6BB3682B370A4300166B30 /* TimerWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6BB3672B370A4300166B30 /* TimerWidgetBundle.swift */; };
 		9C6BB36A2B370A4300166B30 /* TimerWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6BB3692B370A4300166B30 /* TimerWidgetLiveActivity.swift */; };
 		9C6BB36C2B370A4300166B30 /* TimerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6BB36B2B370A4300166B30 /* TimerWidget.swift */; };
@@ -155,6 +155,7 @@
 		9CB7469A2B5A6DEB00839907 /* CalendarDateChanger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateChanger.swift; sourceTree = "<group>"; };
 		9CDD0AAE2B040E4900F09B39 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		9CDD0AB02B04199800F09B39 /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		9CDD30142B5BD23700CF00F8 /* ActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActivityKit.framework; path = System/Library/Frameworks/ActivityKit.framework; sourceTree = SDKROOT; };
 		9CED71352AFA9A02006D5732 /* AddEditMedicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddEditMedicationView.swift; path = Tyd/Views/Calendar/AddEditMedicationView.swift; sourceTree = SOURCE_ROOT; };
 		9CED713A2AFAA458006D5732 /* Medication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medication.swift; sourceTree = "<group>"; };
 		9CED713C2AFABEAA006D5732 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -428,6 +429,7 @@
 		9CEEBF562B35A21E00E9BB5C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9CDD30142B5BD23700CF00F8 /* ActivityKit.framework */,
 				9CEEBF572B35A21E00E9BB5C /* WidgetKit.framework */,
 				9CEEBF592B35A21E00E9BB5C /* SwiftUI.framework */,
 			);
@@ -868,6 +870,10 @@
 				MARKETING_VERSION = 0.8.3;
 				PRODUCT_BUNDLE_IDENTIFIER = io.unobserved.Tyd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -903,6 +909,10 @@
 				MARKETING_VERSION = 0.8.3;
 				PRODUCT_BUNDLE_IDENTIFIER = io.unobserved.Tyd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
