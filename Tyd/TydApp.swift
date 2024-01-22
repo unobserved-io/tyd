@@ -11,7 +11,6 @@ import TipKit
 
 @main
 struct TydApp: App {
-    @Environment(\.modelContext) private var modelContext
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     @State private var timerHelper = TimerHelper()
     @State private var stats = Stats()
