@@ -21,6 +21,7 @@ class Stats {
     var totalPeriodDays: Int = 0
     var totalPmsDays: Int = 0
     var daysToNextCycle: Int = 0
+    @ObservationIgnored var numberOfCycles: Int = 0
     @ObservationIgnored var onPeriod = false
     
     func resetAllStats() {
@@ -36,6 +37,7 @@ class Stats {
         self.totalPeriodDays = 0
         self.totalPmsDays = 0
         self.daysToNextCycle = 0
+        self.numberOfCycles = 0
         self.onPeriod = false
     }
     
@@ -72,7 +74,7 @@ class Stats {
         // Get data using alteredDays, which may or may not be changed
         self.getLastPeriod(from: alteredDays)
 //        self.getAvgCycle(from: alteredDays)
-        self.getPmsDaysPerCycle(from: alteredDays)
+        self.getPmsDaysPerCycle()
         
         self.daysToNextCycle = (self.avgCycle ?? 0) - self.daysSinceLastPeriod
     }
@@ -240,6 +242,10 @@ class Stats {
         
         // Record total period days
         self.totalPeriodDays = allPeriodLengths.sum()
+        
+        // Record total cycles
+        self.numberOfCycles = allPeriodLengths.count
+        
         // Record average period length
         if cutOffCurrentPeriod {
             let cutOffPeriodLengths = {
@@ -284,6 +290,7 @@ class Stats {
     }
     
     func getTotalPMSDays(from dayData: [DayData]) {
+        // TODO: Clean this up with better code that can do the same in 2 lines
         var pmsDays = 0
         for day in dayData {
             if day.pms {
@@ -293,41 +300,8 @@ class Stats {
         self.totalPmsDays = pmsDays
     }
     
-    func getPmsDaysPerCycle(from dayData: [DayData]) {
-        var pmsDays = 0
-        var allPmsDays: [Int] = []
-        var newCycle = true
-        var hasBeenPeriod = false
-        
-        for day in dayData.reversed() {
-            if day.period {
-                if !hasBeenPeriod {
-                    hasBeenPeriod = true
-                }
-                
-                if !newCycle {
-                    allPmsDays.append(pmsDays)
-                    pmsDays = 0
-                }
-                newCycle = true
-            } else if day.pms {
-                if hasBeenPeriod {
-                    pmsDays += 1
-                    newCycle = false
-                }
-            } else {
-                if hasBeenPeriod {
-                    newCycle = false
-                }
-            }
-        }
-        
-        if dayData.count >= 2 {
-            if !(dayData.reversed().last?.period ?? false) {
-                allPmsDays.append(pmsDays)
-            }
-        }
-        
-        self.avgPmsDaysPerCycle = allPmsDays.average()
+    func getPmsDaysPerCycle() {
+        let avgPmsDaysPerCycleUnrounded = Float(self.totalPmsDays) / Float(self.numberOfCycles)
+        self.avgPmsDaysPerCycle = Float(round(10.0 * (avgPmsDaysPerCycleUnrounded)) / 10.0)
     }
 }
