@@ -10,16 +10,16 @@ import SwiftData
 
 @Model
 final class AppData {
-    var periodSymptoms: [String] = []
-    var pmsSymptoms: [String] = []
-    var medicines: [String]  = ["Aspirin", "Ibuprofen", "Paracetamol", "Acetaminophen"]
-    var timerIntervals: [Float] = [
+    @Attribute(.allowsCloudEncryption) var periodSymptoms: [String] = []
+    @Attribute(.allowsCloudEncryption) var pmsSymptoms: [String] = []
+    @Attribute(.allowsCloudEncryption) var medicines: [String]  = ["Aspirin", "Ibuprofen", "Paracetamol", "Acetaminophen"]
+    @Attribute(.allowsCloudEncryption) var timerIntervals: [Float] = [
         4.0, // Cup
         4.0, // Pad
         4.0, // Tampon
         4.0  // Underwear
     ]
-    var firstDayUsingTyd: Date = Date.now
+    @Attribute(.allowsCloudEncryption) var firstDayUsingTyd: Date = Date.now
 
     init() {}
     

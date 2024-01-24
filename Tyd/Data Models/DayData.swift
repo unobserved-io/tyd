@@ -23,15 +23,15 @@ final class DayData: Codable {
         case timerData
     }
 
-    var day: String = ""
-    var period: Bool = false
-    var pms: Bool = false
-    var bleeding: Double = 0.0
-    var pain: Double = 0.0
-    var periodSymptoms: Set<String> = []
-    var pmsSymptoms: Set<String> = []
+    @Attribute(.allowsCloudEncryption) var day: String = ""
+    @Attribute(.allowsCloudEncryption) var period: Bool = false
+    @Attribute(.allowsCloudEncryption) var pms: Bool = false
+    @Attribute(.allowsCloudEncryption) var bleeding: Double = 0.0
+    @Attribute(.allowsCloudEncryption) var pain: Double = 0.0
+    @Attribute(.allowsCloudEncryption) var periodSymptoms: Set<String> = []
+    @Attribute(.allowsCloudEncryption) var pmsSymptoms: Set<String> = []
     @Relationship(inverse:\Medication.day) var medication: [Medication]? = []
-    var notes: String = ""
+    @Attribute(.allowsCloudEncryption) var notes: String = ""
     @Relationship(inverse:\TimedEvent.day) var timerData: [TimedEvent]? = []
 
     init(day: String) {

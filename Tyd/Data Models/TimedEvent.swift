@@ -17,11 +17,11 @@ final class TimedEvent: Codable {
         case formattedTime
     }
 
-    var product: PeriodProduct = PeriodProduct.tampon
-    var startTime: Date = Date.now
-    var stopTime: Date = Date.now
-    var formattedTime: String = "00:00"
-    var day: DayData?
+    @Attribute(.allowsCloudEncryption) var product: PeriodProduct = PeriodProduct.tampon
+    @Attribute(.allowsCloudEncryption) var startTime: Date = Date.now
+    @Attribute(.allowsCloudEncryption) var stopTime: Date = Date.now
+    @Attribute(.allowsCloudEncryption) var formattedTime: String = "00:00"
+    @Attribute(.allowsCloudEncryption) var day: DayData?
 
     init(product: PeriodProduct, startTime: Date, stopTime: Date) {
         self.product = product

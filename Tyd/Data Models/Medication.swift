@@ -16,10 +16,10 @@ final class Medication: Codable {
         case dose
     }
 
-    var name: String = ""
-    var time: Date = Date.now
-    var dose: String = ""
-    var day: DayData?
+    @Attribute(.allowsCloudEncryption) var name: String = ""
+    @Attribute(.allowsCloudEncryption) var time: Date = Date.now
+    @Attribute(.allowsCloudEncryption) var dose: String = ""
+    @Attribute(.allowsCloudEncryption) var day: DayData?
 
     init() {}
 

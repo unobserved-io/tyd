@@ -10,9 +10,9 @@ import SwiftData
 
 @Model
 final class PersistentTimer {
-    var isRunning: Bool = false
-    var product: PeriodProduct = PeriodProduct.tampon
-    var startTime: Date?
+    @Attribute(.allowsCloudEncryption) var isRunning: Bool = false
+    @Attribute(.allowsCloudEncryption) var product: PeriodProduct = PeriodProduct.tampon
+    @Attribute(.allowsCloudEncryption) var startTime: Date?
 
     init() {}
 }
