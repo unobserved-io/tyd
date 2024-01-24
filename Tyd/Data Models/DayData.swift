@@ -30,9 +30,9 @@ final class DayData: Codable {
     @Attribute(.allowsCloudEncryption) var pain: Double = 0.0
     @Attribute(.allowsCloudEncryption) var periodSymptoms: Set<String> = []
     @Attribute(.allowsCloudEncryption) var pmsSymptoms: Set<String> = []
-    @Relationship(inverse:\Medication.day) var medication: [Medication]? = []
+    @Relationship(deleteRule: .cascade, inverse: \Medication.day) var medication: [Medication]? = []
     @Attribute(.allowsCloudEncryption) var notes: String = ""
-    @Relationship(inverse:\TimedEvent.day) var timerData: [TimedEvent]? = []
+    @Relationship(deleteRule: .cascade, inverse: \TimedEvent.day) var timerData: [TimedEvent]? = []
 
     init(day: String) {
         self.day = day
