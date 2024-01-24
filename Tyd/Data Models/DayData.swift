@@ -23,28 +23,19 @@ final class DayData: Codable {
         case timerData
     }
 
-    var day: String
-    var period: Bool
-    var pms: Bool
-    var bleeding: Double
-    var pain: Double
-    var periodSymptoms: Set<String>
-    var pmsSymptoms: Set<String>
-    var medication: [Medication]
-    var notes: String
-    var timerData: [TimedEvent]
+    var day: String = ""
+    var period: Bool = false
+    var pms: Bool = false
+    var bleeding: Double = 0.0
+    var pain: Double = 0.0
+    var periodSymptoms: Set<String> = []
+    var pmsSymptoms: Set<String> = []
+    @Relationship(inverse:\Medication.day) var medication: [Medication]? = []
+    var notes: String = ""
+    @Relationship(inverse:\TimedEvent.day) var timerData: [TimedEvent]? = []
 
     init(day: String) {
         self.day = day
-        self.period = false
-        self.pms = false
-        self.bleeding = 0.0
-        self.pain = 0.0
-        self.periodSymptoms = []
-        self.pmsSymptoms = []
-        self.medication = []
-        self.notes = ""
-        self.timerData = []
     }
 
     required init(from decoder: Decoder) throws {

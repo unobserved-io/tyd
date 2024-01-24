@@ -16,15 +16,12 @@ final class Medication: Codable {
         case dose
     }
 
-    var name: String
-    var time: Date
-    var dose: String
+    var name: String = ""
+    var time: Date = Date.now
+    var dose: String = ""
+    var day: DayData?
 
-    init() {
-        self.name = ""
-        self.time = .now
-        self.dose = ""
-    }
+    init() {}
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -38,5 +35,9 @@ final class Medication: Codable {
         try container.encode(name, forKey: .name)
         try container.encode(time, forKey: .time)
         try container.encode(dose, forKey: .dose)
+    }
+
+    func setDay(_ dayData: DayData) {
+        day = dayData
     }
 }

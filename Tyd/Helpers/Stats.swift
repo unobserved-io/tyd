@@ -281,7 +281,7 @@ class Stats {
     func getTotalDaysUsingTyd(from dayData: [DayData]) {
         self.daysUsingTyd = nil
         for day in dayData.reversed() {
-            if day.period || day.pms || !day.timerData.isEmpty {
+            if day.period || day.pms || !(day.timerData?.isEmpty ?? true) {
                 let firstUseDate = dateFormatter.date(from: day.day)
                 self.daysUsingTyd = (Calendar.current.dateComponents([.day], from: firstUseDate ?? .now, to: .now).day ?? 0) + 1
                 return

@@ -82,8 +82,8 @@ struct UnderCalendarView: View {
         }
                         
         // Medication
-        Section(dayData.medication.isEmpty ? "" : "MEDICATION") {
-            ForEach(dayData.medication) { medication in
+        Section(dayData.medication?.isEmpty ?? true ? "" : "MEDICATION") {
+            ForEach(dayData.medication ?? []) { medication in
                 Button {
                     tappedMedication = medication
                     showingEditMedSheet.toggle()
@@ -96,7 +96,7 @@ struct UnderCalendarView: View {
             Button("Add medication") {
                 let newMedication = Medication()
                 modelContext.insert(newMedication)
-                dayData.medication.append(newMedication)
+                dayData.medication?.append(newMedication)
                 tappedMedication = newMedication
                 showingEditMedSheet.toggle()
             }
@@ -114,9 +114,11 @@ struct UnderCalendarView: View {
     
     private func deleteMedication(at offsets: IndexSet) {
         offsets.forEach { index in
-            let medToDelete: Medication = dayData.medication[index]
-            dayData.medication.remove(at: index)
-            modelContext.delete(medToDelete)
+            let medToDelete: Medication? = dayData.medication?[index]
+            if medToDelete != nil {
+                dayData.medication?.remove(at: index)
+                modelContext.delete(medToDelete!)
+            }
         }
     }
     

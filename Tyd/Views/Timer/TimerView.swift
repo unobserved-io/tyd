@@ -129,7 +129,7 @@ struct TimerView: View {
                 }
             }
             
-            if !(dayData.first?.timerData.isEmpty ?? true) {
+            if !(dayData.first?.timerData?.isEmpty ?? true) {
                 List {
                     TipView(swipeTip)
                     ForEach((dayData.first?.timerData ?? []).sorted(by: { $0.stopTime > $1.stopTime })) { timedEvent in
@@ -157,15 +157,15 @@ struct TimerView: View {
     }
     
     private func startTimer(with product: PeriodProduct) {
-        timerHelper.start(product: product, interval: appData.first?.timerIntervals[product] ?? 4.0, liveActivity: showLiveActivity)
+        timerHelper.start(product: product, interval: appData.first?.getInterval(for: product) ?? 4.0, liveActivity: showLiveActivity)
     }
     
     private func deleteTimerData(at offsets: IndexSet) {
         swipeTip.invalidate(reason: .actionPerformed)
         for index in offsets {
             let timedEventToMatch: TimedEvent = (dayData.first?.timerData ?? []).sorted(by: { $0.stopTime > $1.stopTime })[index]
-            if let indexToRemove = dayData.first?.timerData.firstIndex(where: { $0 == timedEventToMatch }) {
-                dayData.first?.timerData.remove(at: indexToRemove)
+            if let indexToRemove = dayData.first?.timerData?.firstIndex(where: { $0 == timedEventToMatch }) {
+                dayData.first?.timerData?.remove(at: indexToRemove)
                 modelContext.delete(timedEventToMatch)
             }
         }
@@ -198,7 +198,7 @@ struct TimerView: View {
         timerHelper.stop()
         let newTimedEvent = TimedEvent(product: timerHelper.product ?? .tampon, startTime: timerHelper.startTime ?? .now, stopTime: timerHelper.stopTime ?? .now)
         modelContext.insert(newTimedEvent)
-        dayData.first?.timerData.append(newTimedEvent)
+        dayData.first?.timerData?.append(newTimedEvent)
         timerHelper.resetTimedEventData()
         resetPersistentTimer()
     }

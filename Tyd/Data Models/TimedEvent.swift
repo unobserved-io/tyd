@@ -17,16 +17,16 @@ final class TimedEvent: Codable {
         case formattedTime
     }
 
-    var product: PeriodProduct
-    var startTime: Date
-    var stopTime: Date
-    var formattedTime: String
+    var product: PeriodProduct = PeriodProduct.tampon
+    var startTime: Date = Date.now
+    var stopTime: Date = Date.now
+    var formattedTime: String = "00:00"
+    var day: DayData?
 
     init(product: PeriodProduct, startTime: Date, stopTime: Date) {
         self.product = product
         self.startTime = startTime
         self.stopTime = stopTime
-        self.formattedTime = "00:00"
     }
 
     required init(from decoder: Decoder) throws {
@@ -47,5 +47,9 @@ final class TimedEvent: Codable {
 
     func setStopTime(_ stopTime: Date) {
         self.stopTime = stopTime
+    }
+    
+    func setDay(_ dayData: DayData) {
+        day = dayData
     }
 }

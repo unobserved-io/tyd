@@ -10,22 +10,25 @@ import SwiftData
 
 @Model
 final class AppData {
-    var periodSymptoms: [String]
-    var pmsSymptoms: [String]
-    var medicines: [String]
-    var timerIntervals: [PeriodProduct: Float]
-    var firstDayUsingTyd: Date
+    var periodSymptoms: [String] = []
+    var pmsSymptoms: [String] = []
+    var medicines: [String]  = ["Aspirin", "Ibuprofen", "Paracetamol", "Acetaminophen"]
+    var timerIntervals: [Float] = [
+        4.0, // Cup
+        4.0, // Pad
+        4.0, // Tampon
+        4.0  // Underwear
+    ]
+    var firstDayUsingTyd: Date = Date.now
 
-    init() {
-        self.periodSymptoms = []
-        self.pmsSymptoms = []
-        self.medicines = ["Aspirin", "Ibuprofen", "Paracetamol", "Acetaminophen"]
-        self.timerIntervals = [
-            .tampon: 4.0,
-            .pad: 4.0,
-            .cup: 4.0,
-            .underwear: 4.0
-        ]
-        self.firstDayUsingTyd = .now
+    init() {}
+    
+    func getInterval(for product: PeriodProduct) -> Float {
+        switch product {
+        case .cup: return timerIntervals[0]
+        case .pad: return timerIntervals[1]
+        case .tampon: return timerIntervals[2]
+        case .underwear: return timerIntervals[3]
+        }
     }
 }

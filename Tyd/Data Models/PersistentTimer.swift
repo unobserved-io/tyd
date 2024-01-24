@@ -10,13 +10,9 @@ import SwiftData
 
 @Model
 final class PersistentTimer {
-    var isRunning: Bool
-    var product: PeriodProduct
+    var isRunning: Bool = false
+    var product: PeriodProduct = PeriodProduct.tampon
     var startTime: Date?
 
-    init() {
-        self.isRunning = false
-        self.product = .tampon
-        self.startTime = nil
-    }
+    init() {}
 }

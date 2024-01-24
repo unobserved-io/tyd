@@ -230,7 +230,7 @@ struct SettingsView: View {
                                                 newMedication.time = dateFormatter.date(from: newDay.day) ?? .distantPast
                                                 newMedication.dose = medication[2]
                                                 modelContext.insert(newMedication)
-                                                newDay.medication.append(newMedication)
+                                                newDay.medication?.append(newMedication)
                                             }
                                         }
                                         for medication in tDayData.pmsMedsTaken {
@@ -240,7 +240,7 @@ struct SettingsView: View {
                                                 newMedication.time = dateFormatter.date(from: newDay.day) ?? .distantPast
                                                 newMedication.dose = medication[2]
                                                 modelContext.insert(newMedication)
-                                                newDay.medication.append(newMedication)
+                                                newDay.medication?.append(newMedication)
                                             }
                                         }
                                         
