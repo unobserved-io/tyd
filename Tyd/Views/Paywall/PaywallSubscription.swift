@@ -86,7 +86,7 @@ struct PaywallSubscription: View {
             }
         }
         .storeButton(.visible, for: .restorePurchases)
-        .storeButton(.hidden, for: .cancellation)
+        .storeButton(.visible, for: .cancellation) // X at top right
         .subscriptionStoreControlStyle(.prominentPicker)
         .onInAppPurchaseCompletion { _, result in
             if case .success(.success(_)) = result {
