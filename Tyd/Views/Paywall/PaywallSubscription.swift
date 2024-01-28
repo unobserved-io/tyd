@@ -88,6 +88,10 @@ struct PaywallSubscription: View {
         .storeButton(.visible, for: .restorePurchases)
         .storeButton(.visible, for: .cancellation) // X at top right
         .subscriptionStoreControlStyle(.prominentPicker)
+        .subscriptionStorePolicyDestination(url: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!, for: .termsOfService)
+        .subscriptionStorePolicyDestination(for: .privacyPolicy) {
+            Text("Tyd does not collect or transmit any user data.")
+        }
         .onInAppPurchaseCompletion { _, result in
             if case .success(.success(_)) = result {
                 dismiss()
