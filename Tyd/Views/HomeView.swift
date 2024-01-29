@@ -10,7 +10,6 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
-    @Environment(TimerHelper.self) private var timerHelper
     @Environment(Stats.self) private var stats
     @Environment(CalendarDateChanger.self) private var calendarDateChanger
     
@@ -26,6 +25,7 @@ struct HomeView: View {
     @State var longPressed = false
     
     var selectedTab: Binding<String>
+    var timerHelper = TimerHelper.shared
 
     var body: some View {
         VStack {

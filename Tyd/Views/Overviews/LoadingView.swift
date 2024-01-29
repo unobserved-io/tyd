@@ -10,7 +10,6 @@ import SwiftData
 import SwiftUI
 
 struct LoadingView: View {
-    @Environment(TimerHelper.self) private var timerHelper
     @Environment(Stats.self) private var stats
     @Environment(\.modelContext) private var modelContext
     @Environment(PassStatusModel.self) var passStatusModel: PassStatusModel
@@ -25,6 +24,8 @@ struct LoadingView: View {
     @Query private var persistentTimer: [PersistentTimer]
 
     @State private var status: EntitlementTaskState<PassStatus> = .loading
+    
+    var timerHelper = TimerHelper.shared
 
     var body: some View {
         TabsView()

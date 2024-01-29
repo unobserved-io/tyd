@@ -10,7 +10,6 @@ import SwiftUI
 import TipKit
 
 struct TimerView: View {
-    @Environment(TimerHelper.self) private var timerHelper
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @AppStorage("showLiveActivity") var showLiveActivity: Bool = false
@@ -27,6 +26,7 @@ struct TimerView: View {
     let justChangedTip = JustChangedTip()
     // let startTimeTip = StartTimeTip()
     let swipeTip = SwipeTip()
+    var timerHelper = TimerHelper.shared
     
     var body: some View {
         VStack {

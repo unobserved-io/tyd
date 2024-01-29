@@ -45,7 +45,6 @@ struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(PassStatusModel.self) var passStatusModel: PassStatusModel
     @Environment(\.passIDs) private var passIDs
-    @Environment(TimerHelper.self) private var timerHelper
     
     @AppStorage("showLiveActivity") var showLiveActivity: Bool = false
     @AppStorage("chosenIcon") var chosenIcon: String = AppIcons.primary.rawValue
@@ -66,6 +65,8 @@ struct SettingsView: View {
     @State private var showingAboutSheet: Bool = false
     @State private var showingPurchaseSheet: Bool = false
     @State private var showingManageSubscriptionSheet: Bool = false
+    
+    var timerHelper = TimerHelper.shared
     
     var body: some View {
         NavigationStack {

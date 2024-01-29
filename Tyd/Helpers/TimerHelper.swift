@@ -11,6 +11,8 @@ import TimerWidgetExtension
 
 @Observable
 class TimerHelper {
+    static let shared = TimerHelper()
+    
     var isRunning: Bool = false
     var endTime: Date?
     var startTime: Date?
