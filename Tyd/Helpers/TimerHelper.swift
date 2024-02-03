@@ -7,7 +7,6 @@
 
 import ActivityKit
 import SwiftUI
-import TimerWidgetExtension
 
 @Observable
 class TimerHelper {
