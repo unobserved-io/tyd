@@ -23,31 +23,7 @@ struct TimerWidgetLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: TimerWidgetAttributes.self) { context in
             HStack {
-                Spacer()
-
-//                if context.state.stoppedTime == nil {
-//                    Button{} label: {
-//                        Image(systemName: "stop.fill")
-//                            .foregroundColor(.white)
-//                    }
-//                    .buttonBorderShape(.circle)
-//                    .tint(.white)
-//                    .font(.system(size: 20.0))
-//
-//                    Button {} label: {
-//                        Image(systemName: "repeat")
-//                            .foregroundColor(.white)
-//                    }
-//                    .buttonBorderShape(.circle)
-//                    .tint(.white)
-//                    .font(.system(size: 20.0))
-//                } else {
-//                    Image("Tyd25")
-//                }
-
-                Image("Tyd25")
-
-                Spacer()
+//                Spacer()
 
                 if context.state.stoppedTime == nil {
                     Text(
@@ -63,7 +39,28 @@ struct TimerWidgetLiveActivity: Widget {
                         .foregroundStyle(.white)
                         .multilineTextAlignment(.center)
                 }
+                
                 Spacer()
+                
+                if context.state.stoppedTime == nil {
+                    Button(intent: StopTimerIntent()){
+                        Image(systemName: "stop.fill")
+                            .foregroundColor(.white)
+                    }
+                    .buttonBorderShape(.circle)
+                    .tint(.white)
+                    .font(.system(size: 20.0))
+
+//                    Button {} label: {
+//                        Image(systemName: "repeat")
+//                            .foregroundColor(.white)
+//                    }
+//                    .buttonBorderShape(.circle)
+//                    .tint(.white)
+//                    .font(.system(size: 20.0))
+                } else {
+                    Image("Tyd25")
+                }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal)

@@ -66,3 +66,15 @@ final class DayData: Codable {
         try container.encode(timerData, forKey: .timerData)
     }
 }
+
+extension DayData {
+    static let container = try! ModelContainer(for: schema, configurations: [.init(isStoredInMemoryOnly: false)])
+    
+    static let schema = SwiftData.Schema([
+        DayData.self,
+        TimedEvent.self,
+        AppData.self,
+        Medication.self,
+        PersistentTimer.self,
+    ])
+}
