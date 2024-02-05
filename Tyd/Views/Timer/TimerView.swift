@@ -108,6 +108,7 @@ struct TimerView: View {
                                                timerHelper.startTime ?? .now
                                            },
                                            set: { newValue in
+                                               // TODO: Could change the set value here to the onChange func
                                                timerHelper.startTime = newValue
                                            }),
                         in: getDateADayAgo() ... Date.now,
