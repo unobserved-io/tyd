@@ -7,10 +7,10 @@
 
 import SwiftData
 import SwiftUI
+import WidgetKit
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
-    @Environment(Stats.self) private var stats
     @Environment(CalendarDateChanger.self) private var calendarDateChanger
     
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
@@ -22,6 +22,7 @@ struct HomeView: View {
     }) var dayData: [DayData]
     @Query private var allDayData: [DayData]
     
+    @State private var stats = Stats.shared
     @State var longPressed = false
     
     var selectedTab: Binding<String>
@@ -52,14 +53,12 @@ struct HomeView: View {
                         dayData.first?.period.toggle()
                     }
                 }
-                
+
                 // If toggling PMS or Period on, switch user to CalendarView
                 if dayData.first?.period ?? false || dayData.first?.pms ?? false {
                     calendarDateChanger.date = .now
                     selectedTab.wrappedValue = "calendar"
                 }
-                
-                stats.updateAllStats(from: allDayData)
             } label: {
                 Image("TydLogo")
                     .opacity(dayData.first?.pms ?? false || dayData.first?.period ?? false ? 1.0 : 0.3)
@@ -69,6 +68,14 @@ struct HomeView: View {
                     longPressed = true
                 }
             )
+            .onChange(of: dayData.first?.period) { _, newVal in
+                stats.updateAllStats(from: allDayData)
+                // TODO: I may be able to erase all instances of this refresh and put only one in the thing that happens when the app is moved to background
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+            .onChange(of: dayData.first?.pms) {
+                stats.updateAllStats(from: allDayData)
+            }
 
             if !(dayData.first?.pms ?? false || dayData.first?.period ?? false) {
                 VStack {

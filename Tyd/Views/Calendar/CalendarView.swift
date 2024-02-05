@@ -7,6 +7,7 @@
 
 import SwiftData
 import SwiftUI
+import WidgetKit
 
 struct CalendarView: View {
     @Environment(\.modelContext) private var modelContext
@@ -41,6 +42,7 @@ struct CalendarView: View {
             }
             .onAppear {
                 getDayData(date: date)
+                WidgetCenter.shared.reloadAllTimelines()
             }
             .navigationBarTitle("History")
         }

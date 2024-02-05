@@ -28,3 +28,11 @@ extension Collection where Element: BinaryInteger {
     /// Returns the average of all elements in the array as Floating Point type
     func average<T: FloatingPoint>() -> T { isEmpty ? .zero : T(sum()) / T(count) }
 }
+
+extension UIImage {
+    func resize(targetSize: CGSize) -> UIImage {
+        return UIGraphicsImageRenderer(size: targetSize).image { _ in
+            self.draw(in: CGRect(origin: .zero, size: targetSize))
+        }
+    }
+}

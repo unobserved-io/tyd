@@ -10,7 +10,6 @@ import SwiftData
 import SwiftUI
 
 struct LoadingView: View {
-    @Environment(Stats.self) private var stats
     @Environment(\.modelContext) private var modelContext
     @Environment(PassStatusModel.self) var passStatusModel: PassStatusModel
     @Environment(\.passIDs) private var passIDs

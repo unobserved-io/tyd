@@ -10,8 +10,10 @@ import SwiftUI
 
 struct TabsView: View {
     @Environment(\.modelContext) private var modelContext
-    @Environment(Stats.self) private var stats
+
     @Query private var dayData: [DayData]
+
+    private var stats = Stats.shared
     @State var selectedTab = "home"
 
     var body: some View {

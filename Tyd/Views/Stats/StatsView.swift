@@ -8,14 +8,13 @@
 import SwiftData
 import SwiftUI
 
-struct StatsView: View {
-    @Environment(Stats.self) private var stats
-    
+struct StatsView: View {    
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     
     @Query var appData: [AppData]
     
     @State private var showingMoreStatsMessage: Bool = false
+    @State private var stats = Stats.shared
     @State var bleedingDay: Int = 1
     
     let dualInnerBoxColor: Color = .white.opacity(0.5)

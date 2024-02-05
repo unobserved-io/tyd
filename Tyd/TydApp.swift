@@ -12,7 +12,6 @@ import TipKit
 @main
 struct TydApp: App {
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
-    @State private var stats = Stats()
     @State private var passStatusModel = PassStatusModel()
     @State private var calendarDateChanger = CalendarDateChanger()
 
@@ -20,7 +19,6 @@ struct TydApp: App {
         WindowGroup {
             LoadingView()
                 .accentColor(Color(hex: tydAccentColor) ?? .accent)
-                .environment(stats)
                 .environment(passStatusModel)
                 .environment(calendarDateChanger)
         }

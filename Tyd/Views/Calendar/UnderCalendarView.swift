@@ -7,6 +7,7 @@
 
 import SwiftData
 import SwiftUI
+import WidgetKit
 
 struct UnderCalendarView: View {
     @Environment(\.modelContext) private var modelContext
@@ -23,6 +24,9 @@ struct UnderCalendarView: View {
             if !dayData.pms {
                 Toggle("Period", isOn: $dayData.period)
                     .tint(.accentColor)
+                    .onChange(of: dayData.period) {
+                        WidgetCenter.shared.reloadAllTimelines()
+                    }
             }
             if !dayData.period {
                 Toggle("PMS", isOn: $dayData.pms)

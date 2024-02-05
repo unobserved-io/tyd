@@ -9,6 +9,8 @@ import Foundation
 
 @Observable
 class Stats {
+    static let shared = Stats()
+    
     var lastPeriodEnd: Date?
     var lastPeriodStart: Date?
     var daysSinceLastPeriod: Int = 0

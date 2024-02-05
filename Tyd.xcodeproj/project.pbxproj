@@ -56,6 +56,9 @@
 		9C86E4592AF8DC6E000F84D5 /* AppData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C86E4582AF8DC6E000F84D5 /* AppData.swift */; };
 		9C956D0D2B7163EB0070E6EB /* TogglePeriodIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C956D0C2B7163EB0070E6EB /* TogglePeriodIntent.swift */; };
 		9C956D0E2B7167B90070E6EB /* TogglePeriodIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C956D0C2B7163EB0070E6EB /* TogglePeriodIntent.swift */; };
+		9C956D0F2B716F780070E6EB /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD0AB02B04199800F09B39 /* Stats.swift */; };
+		9C956D102B716F980070E6EB /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF9E18F2AF4F618002BF692 /* Globals.swift */; };
+		9C956D112B716FA50070E6EB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6B38172AFCE47200A4F987 /* Extensions.swift */; };
 		9C996DCF2B485756009F4C01 /* ProductSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C996DCE2B485756009F4C01 /* ProductSubscription.swift */; };
 		9CB7469B2B5A6DEB00839907 /* CalendarDateChanger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7469A2B5A6DEB00839907 /* CalendarDateChanger.swift */; };
 		9CDD0AAF2B040E4900F09B39 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD0AAE2B040E4900F09B39 /* StatsView.swift */; };
@@ -711,6 +714,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9CE19D2C2B6E95EB00FC56A4 /* Medication.swift in Sources */,
+				9C956D0F2B716F780070E6EB /* Stats.swift in Sources */,
 				9CE19D2A2B6E95E500FC56A4 /* TimedEvent.swift in Sources */,
 				9CE19D2E2B6E963000FC56A4 /* Enums.swift in Sources */,
 				9C6BB36A2B370A4300166B30 /* TimerWidgetLiveActivity.swift in Sources */,
@@ -719,8 +723,10 @@
 				9C6BB3682B370A4300166B30 /* TimerWidgetBundle.swift in Sources */,
 				9CE19D2D2B6E95ED00FC56A4 /* PersistentTimer.swift in Sources */,
 				9C6BB36C2B370A4300166B30 /* TogglePeriodWidget.swift in Sources */,
+				9C956D112B716FA50070E6EB /* Extensions.swift in Sources */,
 				9CE19D2B2B6E95E800FC56A4 /* AppData.swift in Sources */,
 				9C956D0E2B7167B90070E6EB /* TogglePeriodIntent.swift in Sources */,
+				9C956D102B716F980070E6EB /* Globals.swift in Sources */,
 				9CE19D2F2B6E964C00FC56A4 /* TimerHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
