@@ -1,5 +1,5 @@
 //
-//  TimerWidget.swift
+//  TogglePeriodWidget.swift
 //  TimerWidget
 //
 //  Created by Ricky Kresslein on 12/23/23.
@@ -56,7 +56,7 @@ struct SimpleEntry: TimelineEntry {
     let dayData: DayData?
 }
 
-struct TimerWidgetEntryView : View {
+struct TogglePeriodWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
@@ -71,12 +71,12 @@ struct TimerWidgetEntryView : View {
     }
 }
 
-struct TimerWidget: Widget {
+struct TogglePeriodWidget: Widget {
     let kind: String = "TimerWidget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            TimerWidgetEntryView(entry: entry)
+            TogglePeriodWidgetEntryView(entry: entry)
                 .containerBackground(.fill.tertiary, for: .widget)
         }
         .configurationDisplayName("Tyd Period")
