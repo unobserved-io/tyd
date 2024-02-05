@@ -166,6 +166,9 @@
     "Delete all data?" : {
 
     },
+    "Display and toggle your period." : {
+
+    },
     "Dose" : {
 
     },
@@ -173,9 +176,6 @@
 
     },
     "Edit Symptom" : {
-
-    },
-    "Emoji:" : {
 
     },
     "End time" : {
@@ -233,9 +233,6 @@
 
     },
     "More to come" : {
-
-    },
-    "My Widget" : {
 
     },
     "None" : {
@@ -358,22 +355,25 @@
     "The file you selected cannot be imported" : {
 
     },
-    "This is an example widget." : {
-
-    },
     "Time since you should have changed your %@" : {
 
     },
     "Time Taken" : {
 
     },
-    "Time:" : {
-
-    },
     "Timer" : {
 
     },
+    "Toggle Period" : {
+
+    },
+    "Toggles your period on/off in Tyd." : {
+
+    },
     "Tyd does not collect or transmit any user data." : {
+
+    },
+    "Tyd Period" : {
 
     },
     "Tyd timer" : {

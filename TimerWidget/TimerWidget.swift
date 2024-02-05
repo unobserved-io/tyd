@@ -5,51 +5,69 @@
 //  Created by Ricky Kresslein on 12/23/23.
 //
 
-import WidgetKit
+import SwiftData
 import SwiftUI
+import WidgetKit
 
 struct Provider: TimelineProvider {
+    @MainActor
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), emoji: "😀")
+        SimpleEntry(date: Date(), dayData: getDayData())
     }
 
+    @MainActor
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), emoji: "😀")
+        let entry = SimpleEntry(date: Date(), dayData: getDayData())
         completion(entry)
     }
 
+    @MainActor
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, emoji: "😀")
-            entries.append(entry)
+        let timeline = Timeline(entries: [SimpleEntry(date: .now, dayData: getDayData())], policy: .after(.now.advanced(by: 60 * 5)))
+        completion(timeline)
+    }
+    
+    @MainActor
+    private func getDayData() -> DayData? {
+        var today: String {
+            let dateFormatter: DateFormatter = {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                return dateFormatter
+            }()
+            return dateFormatter.string(from: Date.now)
         }
 
-        let timeline = Timeline(entries: entries, policy: .atEnd)
-        completion(timeline)
+        let modelContext = ModelContext(DayData.container)
+        guard let dayData = try! modelContext.fetch(
+            FetchDescriptor<DayData>(predicate: #Predicate { day in
+                day.day == today
+            })
+        ).first else {
+            return nil
+        }
+        
+        return dayData
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
-    let emoji: String
+    let dayData: DayData?
 }
 
 struct TimerWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
-
-            Text("Emoji:")
-            Text(entry.emoji)
+        // TODO: I should be able to get the Day by making Stats a shared singleton
+        // TODO: Then calling the function just like getDayData to update the stats and get the day
+        Button(intent: TogglePeriodIntent()) {
+            Image("TydLogo")
+                .foregroundStyle(.accent)
+                .opacity(entry.dayData?.period ?? false ? 1.0 : 0.3)
         }
+        .buttonStyle(.plain)
     }
 }
 
@@ -58,23 +76,18 @@ struct TimerWidget: Widget {
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry in
-            if #available(iOS 17.0, *) {
-                TimerWidgetEntryView(entry: entry)
-                    .containerBackground(.fill.tertiary, for: .widget)
-            } else {
-                TimerWidgetEntryView(entry: entry)
-                    .padding()
-                    .background()
-            }
+            TimerWidgetEntryView(entry: entry)
+                .containerBackground(.fill.tertiary, for: .widget)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Tyd Period")
+        .description("Display and toggle your period.")
+        .supportedFamilies([.systemSmall])
     }
 }
 
-#Preview(as: .systemSmall) {
-    TimerWidget()
-} timeline: {
-    SimpleEntry(date: .now, emoji: "😀")
-    SimpleEntry(date: .now, emoji: "🤩")
-}
+//#Preview(as: .systemSmall) {
+//    TimerWidget()
+//} timeline: {
+//    SimpleEntry(date: .now, dayData: nil)
+//    SimpleEntry(date: .now, dayData: nil)
+//}

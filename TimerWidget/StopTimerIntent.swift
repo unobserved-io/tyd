@@ -46,6 +46,7 @@ struct StopTimerIntent: AppIntent {
             persistentTimer.startTime = nil
         }
         
+        // TODO: Should be able to remove this
         try? modelContext.save()
         
         return .result()
