@@ -7,9 +7,11 @@
 
 import SwiftData
 import SwiftUI
+import WidgetKit
 
 struct TabsView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) var scenePhase
 
     @Query private var dayData: [DayData]
 
@@ -58,6 +60,11 @@ struct TabsView: View {
             guard url.scheme == "tyd" else { return }
             if url.absoluteString == "tyd://timerView" {
                 selectedTab = "timer"
+            }
+        }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .inactive {
+                WidgetCenter.shared.reloadAllTimelines()
             }
         }
     }

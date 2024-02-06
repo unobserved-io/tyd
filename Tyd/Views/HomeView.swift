@@ -7,7 +7,6 @@
 
 import SwiftData
 import SwiftUI
-import WidgetKit
 
 struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
@@ -70,8 +69,6 @@ struct HomeView: View {
             )
             .onChange(of: dayData.first?.period) { _, newVal in
                 stats.updateAllStats(from: allDayData)
-                // TODO: I may be able to erase all instances of this refresh and put only one in the thing that happens when the app is moved to background
-                WidgetCenter.shared.reloadAllTimelines()
             }
             .onChange(of: dayData.first?.pms) {
                 stats.updateAllStats(from: allDayData)
