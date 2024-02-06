@@ -80,8 +80,7 @@ struct SettingsView: View {
                                 HStack {
                                     Text("App Color")
                                         .foregroundColor(.primary)
-                                    Text("(Tyd+)")
-                                        .foregroundStyle(.accent)
+                                        .badge("Tyd+")
                                 }
                             } icon: {
                                 Image(systemName: "paintpalette.fill")
@@ -101,8 +100,7 @@ struct SettingsView: View {
                                 HStack {
                                     Text("App Icon")
                                         .foregroundColor(.primary)
-                                    Text("(Tyd+)")
-                                        .foregroundStyle(.accent)
+                                        .badge("Tyd+")
                                 }
                             } icon: {
                                 Image(systemName: "app.gift.fill")
@@ -137,10 +135,7 @@ struct SettingsView: View {
                     Toggle(isOn: $showLiveActivity) {
                         HStack {
                             Text("Live Activity Widget")
-                            if passStatusModel.passStatus == .notSubscribed {
-                                Text("(Tyd+)")
-                                    .foregroundStyle(.accent)
-                            }
+                                .badge(passStatusModel.passStatus == .notSubscribed ? "Tyd+" : nil)
                         }
                     }
                     .disabled(passStatusModel.passStatus == .notSubscribed)
