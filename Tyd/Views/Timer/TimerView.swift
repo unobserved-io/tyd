@@ -10,22 +10,26 @@ import SwiftUI
 import TipKit
 
 struct TimerView: View {
+    static var today: String { getTodaysDate() }
+    
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
-    @AppStorage("showLiveActivity") var showLiveActivity: Bool = false
+
     @Query private var persistentTimer: [PersistentTimer]
-    static var today: String { getTodaysDate() }
     @Query(filter: #Predicate<DayData> { day in
         day.day == today
     }) var dayData: [DayData]
     @Query var appData: [AppData]
+    
     @State var showingEditTimedEventSheet: Bool = false
     @State var tappedTimedEvent: TimedEvent = .init(product: .tampon, startTime: .now, stopTime: .now)
     @State private var showingStartTimeSheet: Bool = false
+    
     let tenSecsFromNow = Calendar.current.date(byAdding: .second, value: 10, to: .now)
     let justChangedTip = JustChangedTip()
     // let startTimeTip = StartTimeTip()
     let swipeTip = SwipeTip()
+    
     var timerHelper = TimerHelper.shared
     
     var body: some View {
@@ -158,7 +162,7 @@ struct TimerView: View {
     }
     
     private func startTimer(with product: PeriodProduct) {
-        timerHelper.start(product: product, interval: appData.first?.getInterval(for: product) ?? 4.0, liveActivity: showLiveActivity)
+        timerHelper.start(product: product, interval: appData.first?.getInterval(for: product) ?? 4.0)
     }
     
     private func deleteTimerData(at offsets: IndexSet) {
