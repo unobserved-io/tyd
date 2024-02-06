@@ -19,7 +19,7 @@ final class Medication: Codable {
     @Attribute(.allowsCloudEncryption) var name: String = ""
     @Attribute(.allowsCloudEncryption) var time: Date = Date.now
     @Attribute(.allowsCloudEncryption) var dose: String = ""
-    @Attribute(.allowsCloudEncryption) var day: DayData?
+    var day: DayData?
 
     init() {}
 
