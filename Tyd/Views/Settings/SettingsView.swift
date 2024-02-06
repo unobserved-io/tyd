@@ -298,26 +298,6 @@ struct SettingsView: View {
             }
             .navigationBarTitle("Settings")
         }
-        .subscriptionStatusTask(for: "21429780") { taskStatus in
-            self.status = await taskStatus.map { statuses in
-                await ProductSubscription.shared.status(
-                    for: statuses,
-                    ids: passIDs
-                )
-            }
-            switch self.status {
-            case .failure(let error):
-                passStatusModel.passStatus = .notSubscribed
-                print("Failed to check subscription status: \(error)")
-            case .success(let status):
-                passStatusModel.passStatus = status
-                if passStatusModel.passStatus == .notSubscribed {
-                    resetPaywalledFeatures()
-                }
-            case .loading: break
-            @unknown default: break
-            }
-        }
         .manageSubscriptionsSheet(
            isPresented: $showingManageSubscriptionSheet,
            subscriptionGroupID: passIDs.group
