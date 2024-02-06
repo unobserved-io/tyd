@@ -52,6 +52,8 @@ struct HomeView: View {
                         dayData.first?.period.toggle()
                     }
                 }
+                
+                try? modelContext.save()
 
                 // If toggling PMS or Period on, switch user to CalendarView
                 if dayData.first?.period ?? false || dayData.first?.pms ?? false {
