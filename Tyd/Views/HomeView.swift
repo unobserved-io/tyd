@@ -67,7 +67,7 @@ struct HomeView: View {
                     longPressed = true
                 }
             )
-            .onChange(of: dayData.first?.period) { _, newVal in
+            .onChange(of: dayData.first?.period) {
                 stats.updateAllStats(from: allDayData)
             }
             .onChange(of: dayData.first?.pms) {
