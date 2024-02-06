@@ -20,8 +20,10 @@ class TimerHelper {
     @ObservationIgnored var product: PeriodProduct? = nil
     @ObservationIgnored var stopTime: Date? = nil
     @ObservationIgnored var timer = Timer()
+    
+    @ObservationIgnored @AppStorage("showLiveActivity") var showLiveActivity: Bool = false
 
-    func start(product: PeriodProduct, interval: Float, liveActivity: Bool = false) {
+    func start(product: PeriodProduct, interval: Float) {
         /// Start running the timer
         isRunning = true
         self.product = product
@@ -35,7 +37,7 @@ class TimerHelper {
         showLocalNotification(in: intervalInSeconds)
         
         #if os(iOS)
-        if liveActivity {
+        if showLiveActivity {
             startLiveActivity()
         }
         #endif
@@ -54,7 +56,7 @@ class TimerHelper {
         #endif
     }
     
-    func resume(interval: Float, liveActivity: Bool = false) {
+    func resume(interval: Float) {
         isRunning = true
         intervalInSeconds = Int(interval * 60 * 60)
         timer.invalidate()
@@ -73,7 +75,7 @@ class TimerHelper {
         
         #if os(iOS)
         // On resume, don't start a live activity if one is already running
-        if Activity<TimerWidgetAttributes>.activities.isEmpty, liveActivity {
+        if Activity<TimerWidgetAttributes>.activities.isEmpty, showLiveActivity {
             startLiveActivity()
         }
         #endif

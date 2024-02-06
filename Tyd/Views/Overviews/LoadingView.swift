@@ -23,7 +23,7 @@ struct LoadingView: View {
     @Query private var persistentTimer: [PersistentTimer]
 
     @State private var status: EntitlementTaskState<PassStatus> = .loading
-    
+
     var timerHelper = TimerHelper.shared
 
     var body: some View {
@@ -39,7 +39,7 @@ struct LoadingView: View {
                     if persistentTimer.first?.isRunning ?? false && (Calendar.current.dateComponents([.hour], from: persistentTimer.first?.startTime ?? .distantPast, to: .now).hour ?? 50 < 48) {
                         timerHelper.product = persistentTimer.first?.product
                         timerHelper.startTime = persistentTimer.first?.startTime
-                        timerHelper.resume(interval: appData.first?.getInterval(for: timerHelper.product ?? .tampon) ?? 4.0, liveActivity: showLiveActivity)
+                        timerHelper.resume(interval: appData.first?.getInterval(for: timerHelper.product ?? .tampon) ?? 4.0)
                     }
                 }
             }
@@ -64,7 +64,7 @@ struct LoadingView: View {
                 }
             }
     }
-    
+
     private func resetPaywalledFeatures() {
         showLiveActivity = false
         tydAccentColor = "8B8BB0FF"
