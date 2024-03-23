@@ -67,7 +67,13 @@ class TimerHelper {
         
         // Register a notification if the time has not already elapsed
         if Date.now < endTime ?? .distantPast {
-            showLocalNotification(in: Int(endTime?.timeIntervalSince(.now) ?? 0.0))
+            // Check if there is already a notification sent
+            // If so, leave it be, if not set one
+            UNUserNotificationCenter.current().getPendingNotificationRequests(completionHandler: { notifications in
+                if notifications.count <= 0 {
+                    self.showLocalNotification(in: Int(self.endTime?.timeIntervalSince(.now) ?? 0.0))
+                }
+            })
             setEndTimer()
         } else {
             setTimerEnded()

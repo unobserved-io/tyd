@@ -24,6 +24,8 @@ struct LoadingView: View {
 
     @State private var status: EntitlementTaskState<PassStatus> = .loading
 
+    let willBecomeActive = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
+
     var timerHelper = TimerHelper.shared
 
     var body: some View {
@@ -34,14 +36,10 @@ struct LoadingView: View {
                     modelContext.insert(AppData())
                 }
 
-                // Continue running timer if it was running when the app was closed and it is less than 48 hours old
-                if persistentTimer.first != nil {
-                    if persistentTimer.first?.isRunning ?? false && (Calendar.current.dateComponents([.hour], from: persistentTimer.first?.startTime ?? .distantPast, to: .now).hour ?? 50 < 48) {
-                        timerHelper.product = persistentTimer.first?.product
-                        timerHelper.startTime = persistentTimer.first?.startTime
-                        timerHelper.resume(interval: appData.first?.getInterval(for: timerHelper.product ?? .tampon) ?? 4.0)
-                    }
-                }
+                resumeRunningTimer()
+            }
+            .onReceive(willBecomeActive) { _ in
+                resumeRunningTimer()
             }
             .subscriptionStatusTask(for: "21429780") { taskStatus in
                 self.status = await taskStatus.map { statuses in
@@ -63,6 +61,17 @@ struct LoadingView: View {
                 @unknown default: break
                 }
             }
+    }
+
+    private func resumeRunningTimer() {
+        /// Continue running timer if it was running when the app was closed and it is less than 48 hours old
+        if persistentTimer.first != nil {
+            if persistentTimer.first?.isRunning ?? false && (Calendar.current.dateComponents([.hour], from: persistentTimer.first?.startTime ?? .distantPast, to: .now).hour ?? 50 < 48) {
+                timerHelper.product = persistentTimer.first?.product
+                timerHelper.startTime = persistentTimer.first?.startTime
+                timerHelper.resume(interval: appData.first?.getInterval(for: timerHelper.product ?? .tampon) ?? 4.0)
+            }
+        }
     }
 
     private func resetPaywalledFeatures() {
