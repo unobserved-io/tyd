@@ -15,11 +15,14 @@ struct TimerView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
-    @Query private var persistentTimer: [PersistentTimer]
     @Query(filter: #Predicate<DayData> { day in
         day.day == today
     }) var dayData: [DayData]
     @Query var appData: [AppData]
+    
+    @AppStorage("ptIsRunning") private var ptIsRunning: Bool = false
+    @AppStorage("ptProduct") private var ptProduct: PeriodProduct = .tampon
+    @AppStorage("ptStartTime") private var ptStartTimeInt: TimeInterval = Date.now.timeIntervalSinceReferenceDate
     
     @State var showingEditTimedEventSheet: Bool = false
     @State var tappedTimedEvent: TimedEvent = .init(product: .tampon, startTime: .now, stopTime: .now)
@@ -121,7 +124,7 @@ struct TimerView: View {
                     .datePickerStyle(.wheel)
                     .labelsHidden()
                     .onChange(of: timerHelper.startTime) {
-                        persistentTimer.first?.startTime = timerHelper.startTime
+                        ptStartTimeInt = timerHelper.startTime?.timeIntervalSinceReferenceDate ?? Date.now.timeIntervalSinceReferenceDate
                         timerHelper.updateEndTime()
                         timerHelper.updateNotificationTime()
 #if os(iOS)
@@ -181,22 +184,14 @@ struct TimerView: View {
     }
     
     private func initiatePersistentTimer() {
-        if persistentTimer.first == nil {
-            let newPersistentTimer = PersistentTimer()
-            newPersistentTimer.isRunning = true
-            newPersistentTimer.product = timerHelper.product ?? .tampon
-            newPersistentTimer.startTime = timerHelper.startTime
-            modelContext.insert(newPersistentTimer)
-        } else {
-            persistentTimer.first?.isRunning = true
-            persistentTimer.first?.product = timerHelper.product ?? .tampon
-            persistentTimer.first?.startTime = timerHelper.startTime
-        }
+        ptIsRunning = true
+        ptProduct = timerHelper.product ?? .tampon
+        ptStartTimeInt = timerHelper.startTime?.timeIntervalSinceReferenceDate ?? Date.now.timeIntervalSinceReferenceDate
     }
     
     private func resetPersistentTimer() {
-        persistentTimer.first?.isRunning = false
-        persistentTimer.first?.startTime = nil
+        ptIsRunning = false
+        ptStartTimeInt = Date.now.timeIntervalSinceReferenceDate
     }
     
     private func stopTimer() {

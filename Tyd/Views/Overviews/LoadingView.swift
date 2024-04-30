@@ -18,9 +18,12 @@ struct LoadingView: View {
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     @AppStorage("chosenIcon") var chosenIcon: String = AppIcons.primary.rawValue
 
+    @AppStorage("ptIsRunning") private var ptIsRunning: Bool = false
+    @AppStorage("ptProduct") private var ptProduct: PeriodProduct = .tampon
+    @AppStorage("ptStartTime") private var ptStartTimeInt: TimeInterval = Date.now.timeIntervalSinceReferenceDate
+
     @Query private var appData: [AppData]
     @Query private var dayData: [DayData]
-    @Query private var persistentTimer: [PersistentTimer]
 
     @State private var status: EntitlementTaskState<PassStatus> = .loading
 
@@ -65,12 +68,21 @@ struct LoadingView: View {
 
     private func resumeRunningTimer() {
         /// Continue running timer if it was running when the app was closed and it is less than 48 hours old
-        if persistentTimer.first != nil {
-            if persistentTimer.first?.isRunning ?? false && (Calendar.current.dateComponents([.hour], from: persistentTimer.first?.startTime ?? .distantPast, to: .now).hour ?? 50 < 48) {
-                timerHelper.product = persistentTimer.first?.product
-                timerHelper.startTime = persistentTimer.first?.startTime
-                timerHelper.resume(interval: appData.first?.getInterval(for: timerHelper.product ?? .tampon) ?? 4.0)
-            }
+        let ptStartTime = Date(timeIntervalSinceReferenceDate: ptStartTimeInt)
+        if !timerHelper.isRunning &&
+            ptIsRunning &&
+            (Calendar.current.dateComponents(
+                [.hour],
+                from: ptStartTime,
+                to: .now
+            ).hour ?? 50 < 48
+            )
+        {
+            timerHelper.product = ptProduct
+            timerHelper.startTime = ptStartTime
+            timerHelper.resume(interval: appData.first?.getInterval(
+                for: timerHelper.product ?? .tampon
+            ) ?? 4.0)
         }
     }
 

@@ -75,6 +75,5 @@ extension DayData {
         TimedEvent.self,
         AppData.self,
         Medication.self,
-        PersistentTimer.self,
     ])
 }

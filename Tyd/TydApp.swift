@@ -26,8 +26,7 @@ struct TydApp: App {
             AppData.self,
             DayData.self,
             Medication.self,
-            TimedEvent.self,
-            PersistentTimer.self
+            TimedEvent.self
         ])
     }
     
