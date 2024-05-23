@@ -21,6 +21,10 @@ class TimerHelper {
     @ObservationIgnored var stopTime: Date? = nil
     @ObservationIgnored var timer = Timer()
     
+    @ObservationIgnored @AppStorage("ptIsRunning") private var ptIsRunning: Bool = false
+    @ObservationIgnored @AppStorage("ptProduct") private var ptProduct: PeriodProduct = .tampon
+    @ObservationIgnored @AppStorage("ptStartTime") private var ptStartTimeInt: TimeInterval = Date.now.timeIntervalSinceReferenceDate
+    
     @ObservationIgnored @AppStorage("showLiveActivity") var showLiveActivity: Bool = false
 
     func start(product: PeriodProduct, interval: Float) {
@@ -85,6 +89,24 @@ class TimerHelper {
             startLiveActivity()
         }
         #endif
+    }
+    
+    func checkForResume(interval: Float) {
+        /// Continue running timer if it was running when the app was closed and it is less than 48 hours old
+        let ptStartTime = Date(timeIntervalSinceReferenceDate: ptStartTimeInt)
+        if !isRunning &&
+            ptIsRunning &&
+            (Calendar.current.dateComponents(
+                [.hour],
+                from: ptStartTime,
+                to: .now
+            ).hour ?? 50 < 48
+            )
+        {
+            product = ptProduct
+            startTime = ptStartTime
+            resume(interval: interval)
+        }
     }
     
     func updateEndTime() {

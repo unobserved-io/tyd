@@ -13,10 +13,17 @@ struct TabsView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.scenePhase) var scenePhase
 
+    @Query private var appData: [AppData]
     @Query private var dayData: [DayData]
+    
+    @AppStorage("ptProduct") private var ptProduct: PeriodProduct = .tampon
 
-    private var stats = Stats.shared
     @State var selectedTab = "home"
+    
+    private let willBecomeActive = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
+    
+    private var stats = Stats.shared
+    private var timerHelper = TimerHelper.shared
 
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -57,7 +64,9 @@ struct TabsView: View {
                 .tag("settings")
         }
         .onOpenURL { url in
-            guard url.scheme == "tyd" else { return }
+            guard url.scheme == "tyd" else {
+                return
+            }
             if url.absoluteString == "tyd://timerView" {
                 selectedTab = "timer"
             }
@@ -66,6 +75,18 @@ struct TabsView: View {
             if newPhase == .inactive {
                 WidgetCenter.shared.reloadAllTimelines()
             }
+        }
+        .onAppear {
+            // Resume timer
+            timerHelper.checkForResume(interval: appData.first?.getInterval(
+                for: ptProduct
+            ) ?? 4.0)
+        }
+        .onReceive(willBecomeActive) { _ in
+            // Resume timer
+            timerHelper.checkForResume(interval: appData.first?.getInterval(
+                for: ptProduct
+            ) ?? 4.0)
         }
     }
 }

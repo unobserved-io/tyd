@@ -10,7 +10,6 @@ import SwiftData
 import SwiftUI
 
 struct LoadingView: View {
-    @Environment(\.modelContext) private var modelContext
     @Environment(PassStatusModel.self) var passStatusModel: PassStatusModel
     @Environment(\.passIDs) private var passIDs
 
@@ -18,32 +17,10 @@ struct LoadingView: View {
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     @AppStorage("chosenIcon") var chosenIcon: String = AppIcons.primary.rawValue
 
-    @AppStorage("ptIsRunning") private var ptIsRunning: Bool = false
-    @AppStorage("ptProduct") private var ptProduct: PeriodProduct = .tampon
-    @AppStorage("ptStartTime") private var ptStartTimeInt: TimeInterval = Date.now.timeIntervalSinceReferenceDate
-
-    @Query private var appData: [AppData]
-    @Query private var dayData: [DayData]
-
     @State private var status: EntitlementTaskState<PassStatus> = .loading
-
-    let willBecomeActive = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
-
-    var timerHelper = TimerHelper.shared
 
     var body: some View {
         TabsView()
-            .onAppear {
-                // If AppData does not exist, create it
-                if appData.first == nil {
-                    modelContext.insert(AppData())
-                }
-
-                resumeRunningTimer()
-            }
-            .onReceive(willBecomeActive) { _ in
-                resumeRunningTimer()
-            }
             .subscriptionStatusTask(for: "21429780") { taskStatus in
                 self.status = await taskStatus.map { statuses in
                     await ProductSubscription.shared.status(
@@ -64,26 +41,6 @@ struct LoadingView: View {
                 @unknown default: break
                 }
             }
-    }
-
-    private func resumeRunningTimer() {
-        /// Continue running timer if it was running when the app was closed and it is less than 48 hours old
-        let ptStartTime = Date(timeIntervalSinceReferenceDate: ptStartTimeInt)
-        if !timerHelper.isRunning &&
-            ptIsRunning &&
-            (Calendar.current.dateComponents(
-                [.hour],
-                from: ptStartTime,
-                to: .now
-            ).hour ?? 50 < 48
-            )
-        {
-            timerHelper.product = ptProduct
-            timerHelper.startTime = ptStartTime
-            timerHelper.resume(interval: appData.first?.getInterval(
-                for: timerHelper.product ?? .tampon
-            ) ?? 4.0)
-        }
     }
 
     private func resetPaywalledFeatures() {

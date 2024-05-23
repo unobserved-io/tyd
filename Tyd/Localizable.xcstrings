@@ -112,6 +112,9 @@
     "by" : {
 
     },
+    "Calendar" : {
+
+    },
     "Cancel" : {
 
     },
@@ -188,6 +191,9 @@
 
     },
     "History" : {
+
+    },
+    "Home" : {
 
     },
     "Import" : {
@@ -314,12 +320,6 @@
 
     },
     "Stats" : {
-
-    },
-    "Stop Tyd Timer" : {
-
-    },
-    "Stops the currently running Tyd timer" : {
 
     },
     "Success" : {
