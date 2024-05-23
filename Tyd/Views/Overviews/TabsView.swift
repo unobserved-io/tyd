@@ -29,7 +29,7 @@ struct TabsView: View {
         TabView(selection: $selectedTab) {
             HomeView(selectedTab: $selectedTab)
                 .tabItem {
-                    Image(systemName: "house")
+                    Label("Home", systemImage: "house")
                 }
                 .tag("home")
                 .onAppear {
@@ -38,19 +38,19 @@ struct TabsView: View {
 
             CalendarView()
                 .tabItem {
-                    Image(systemName: "calendar")
+                    Label("Calendar", systemImage: "calendar")
                 }
                 .tag("calendar")
 
             TimerView()
                 .tabItem {
-                    Image(systemName: "timer")
+                    Label("Timer", systemImage: "timer")
                 }
                 .tag("timer")
 
             StatsView()
                 .tabItem {
-                    Image(systemName: "chart.bar")
+                    Label("Stats", systemImage: "chart.bar")
                 }
                 .tag("stats")
                 .onAppear {
@@ -59,7 +59,7 @@ struct TabsView: View {
 
             SettingsView()
                 .tabItem {
-                    Image(systemName: "gear")
+                    Label("Settings", systemImage: "gear")
                 }
                 .tag("settings")
         }
