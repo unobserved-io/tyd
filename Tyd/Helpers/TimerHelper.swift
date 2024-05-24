@@ -36,6 +36,7 @@ class TimerHelper {
         endTime = Calendar.current.date(byAdding: .second, value: intervalInSeconds, to: startTime ?? .now)
         
         setEndTimer()
+        initiatePersistentTimer()
         
         // Register notification
         showLocalNotification(in: intervalInSeconds)
@@ -58,6 +59,7 @@ class TimerHelper {
             await stopLiveActivity()
         }
         #endif
+        resetPersistentTimer()
     }
     
     func resume(interval: Float) {
@@ -213,5 +215,16 @@ class TimerHelper {
     private func setEndTimer() {
         timer = Timer(fireAt: endTime ?? .distantPast, interval: 0, target: self, selector: #selector(setTimerEnded), userInfo: nil, repeats: false)
         RunLoop.main.add(timer, forMode: .common)
+    }
+    
+    private func initiatePersistentTimer() {
+        ptIsRunning = true
+        ptProduct = product ?? .tampon
+        ptStartTimeInt = startTime?.timeIntervalSinceReferenceDate ?? Date.now.timeIntervalSinceReferenceDate
+    }
+    
+    private func resetPersistentTimer() {
+        ptIsRunning = false
+        ptStartTimeInt = Date.now.timeIntervalSinceReferenceDate
     }
 }

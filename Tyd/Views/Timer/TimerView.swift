@@ -73,7 +73,6 @@ struct TimerView: View {
                     ForEach(PeriodProduct.allCases, id: \.rawValue) { product in
                         Button(product.rawValue.capitalized) {
                             startTimer(with: product)
-                            initiatePersistentTimer()
                         }
                         .buttonStyle(.borderedProminent)
                     }
@@ -183,24 +182,12 @@ struct TimerView: View {
         return Calendar.current.date(byAdding: .second, value: -86399, to: .now) ?? .now
     }
     
-    private func initiatePersistentTimer() {
-        ptIsRunning = true
-        ptProduct = timerHelper.product ?? .tampon
-        ptStartTimeInt = timerHelper.startTime?.timeIntervalSinceReferenceDate ?? Date.now.timeIntervalSinceReferenceDate
-    }
-    
-    private func resetPersistentTimer() {
-        ptIsRunning = false
-        ptStartTimeInt = Date.now.timeIntervalSinceReferenceDate
-    }
-    
     private func stopTimer() {
         timerHelper.stop()
         let newTimedEvent = TimedEvent(product: timerHelper.product ?? .tampon, startTime: timerHelper.startTime ?? .now, stopTime: timerHelper.stopTime ?? .now)
         modelContext.insert(newTimedEvent)
         dayData.first?.timerData?.append(newTimedEvent)
         timerHelper.resetTimedEventData()
-        resetPersistentTimer()
     }
 }
 
