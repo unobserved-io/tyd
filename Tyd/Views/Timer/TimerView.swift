@@ -28,6 +28,8 @@ struct TimerView: View {
     @State var tappedTimedEvent: TimedEvent = .init(product: .tampon, startTime: .now, stopTime: .now)
     @State private var showingStartTimeSheet: Bool = false
     
+    private let willBecomeActive = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
+    
     let tenSecsFromNow = Calendar.current.date(byAdding: .second, value: 10, to: .now)
     let justChangedTip = JustChangedTip()
     // let startTimeTip = StartTimeTip()
@@ -160,6 +162,12 @@ struct TimerView: View {
                         .presentationDetents(dynamicTypeSize <= .xxLarge ? [.small] : [])
                 }
             }
+        }
+        .onAppear {
+            timerHelper.checkTimerEnded()
+        }
+        .onReceive(willBecomeActive) { _ in
+            timerHelper.checkTimerEnded()
         }
     }
     

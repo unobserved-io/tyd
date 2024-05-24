@@ -208,6 +208,16 @@ class TimerHelper {
         }
     }
     
+    func checkTimerEnded() {
+        if isRunning {
+            if endTime ?? .now < Date.now {
+                setTimerEnded()
+            } else if !timer.isValid {
+                setEndTimer()
+            }
+        }
+    }
+    
     @objc func setTimerEnded() {
         ended = true
     }
