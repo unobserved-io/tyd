@@ -31,7 +31,7 @@ class StoreModel: ObservableObject {
     func fetchProducts() async throws {
         /// Get all user's purchased products
         do {
-            let products = try await Product.products(for: ["extras"])
+            let products = try await Product.products(for: ["onetime15"])
             DispatchQueue.main.async {
                 self.products = products
             }

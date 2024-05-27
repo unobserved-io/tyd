@@ -16,6 +16,8 @@ struct LoadingView: View {
     @AppStorage("showLiveActivity") var showLiveActivity: Bool = false
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     @AppStorage("chosenIcon") var chosenIcon: String = AppIcons.primary.rawValue
+    
+    @ObservedObject var storeModel = StoreModel.shared
 
     @State private var status: EntitlementTaskState<PassStatus> = .loading
 
@@ -34,7 +36,7 @@ struct LoadingView: View {
                     print("Failed to check subscription status: \(error)")
                 case .success(let status):
                     passStatusModel.passStatus = status
-                    if passStatusModel.passStatus == .notSubscribed {
+                    if passStatusModel.passStatus == .notSubscribed && storeModel.purchasedIds.isEmpty {
                         resetPaywalledFeatures()
                     }
                 case .loading: break

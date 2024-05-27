@@ -12,8 +12,10 @@ import TipKit
 @main
 struct TydApp: App {
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
+    // TODO: Remove pass model when certain no one is subscribed
     @State private var passStatusModel = PassStatusModel()
     @State private var calendarDateChanger = CalendarDateChanger()
+    @ObservedObject var storeModel = StoreModel.shared
 
     var body: some Scene {
         WindowGroup {
@@ -21,6 +23,11 @@ struct TydApp: App {
                 .accentColor(Color(hex: tydAccentColor) ?? .accent)
                 .environment(passStatusModel)
                 .environment(calendarDateChanger)
+                .onAppear {
+                    Task {
+                        try await storeModel.fetchProducts()
+                    }
+                }
         }
         .modelContainer(for: [
             AppData.self,

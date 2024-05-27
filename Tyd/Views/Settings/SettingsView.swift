@@ -46,24 +46,27 @@ struct SettingsView: View {
     @Environment(PassStatusModel.self) var passStatusModel: PassStatusModel
     @Environment(\.passIDs) private var passIDs
     
+    @Query var appData: [AppData]
+    @Query var dayData: [DayData]
+    
     @AppStorage("showLiveActivity") var showLiveActivity: Bool = false
     @AppStorage("chosenIcon") var chosenIcon: String = AppIcons.primary.rawValue
     @AppStorage("tydAccentColor") var tydAccentColor: String = "8B8BB0FF"
     
-    @Query var appData: [AppData]
-    @Query var dayData: [DayData]
+    @ObservedObject var storeModel = StoreModel.shared
     
     @State private var status: EntitlementTaskState<PassStatus> = .loading
     @State private var showingResetAlert: Bool = false
     @State private var showingDeleteDataAlert: Bool = false
     @State private var showingImportSuccessAlert: Bool = false
     @State private var showingImportFailedAlert: Bool = false
+    @State private var showingPurchaseAlert: Bool = false
     @State private var deleteDataConfirmationText: String = ""
     @State private var showingDataImporter: Bool = false
     @State private var showingDataExporter: Bool = false
     @State private var showingImportWarning: Bool = false
     @State private var showingAboutSheet: Bool = false
-    @State private var showingPurchaseSheet: Bool = false
+//    @State private var showingPurchaseSheet: Bool = false
     @State private var showingManageSubscriptionSheet: Bool = false
     
     var timerHelper = TimerHelper.shared
@@ -72,9 +75,9 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 Section("Appearance") {
-                    if passStatusModel.passStatus == .notSubscribed {
+                    if passStatusModel.passStatus == .notSubscribed && storeModel.purchasedIds.isEmpty {
                         Button {
-                            showingPurchaseSheet.toggle()
+                            showingPurchaseAlert.toggle()
                         } label: {
                             Label {
                                 HStack {
@@ -92,9 +95,9 @@ struct SettingsView: View {
                         }
                     }
                     
-                    if passStatusModel.passStatus == .notSubscribed {
+                    if passStatusModel.passStatus == .notSubscribed && storeModel.purchasedIds.isEmpty {
                         Button {
-                            showingPurchaseSheet.toggle()
+                            showingPurchaseAlert.toggle()
                         } label: {
                             Label {
                                 HStack {
@@ -112,9 +115,9 @@ struct SettingsView: View {
                         }
                     }
                 }
-                .sheet(isPresented: $showingPurchaseSheet) {
-                    PaywallSubscription()
-                }
+//                .sheet(isPresented: $showingPurchaseSheet) {
+//                    PaywallSubscription()
+//                }
                 
                 Section("Symptoms & Meds") {
                     NavigationLink(destination: AdditionalSymptomsView(symptoms: Bindable(appData.first ?? AppData()).periodSymptoms)) {
@@ -135,10 +138,10 @@ struct SettingsView: View {
                     Toggle(isOn: $showLiveActivity) {
                         HStack {
                             Text("Live Activity Widget")
-                                .badge(passStatusModel.passStatus == .notSubscribed ? "Tyd+" : nil)
+                                .badge(passStatusModel.passStatus == .notSubscribed && storeModel.purchasedIds.isEmpty ? "Tyd+" : nil)
                         }
                     }
-                    .disabled(passStatusModel.passStatus == .notSubscribed)
+                    .disabled(passStatusModel.passStatus == .notSubscribed && storeModel.purchasedIds.isEmpty)
                     .onChange(of: showLiveActivity) { _, newValue in
                         if timerHelper.isRunning {
                             if newValue {
@@ -272,16 +275,17 @@ struct SettingsView: View {
                     }
                     .foregroundStyle(.primary)
                     
-                    if passStatusModel.passStatus == .notSubscribed {
+                    if passStatusModel.passStatus == .notSubscribed && storeModel.purchasedIds.isEmpty {
                         Button {
-                            showingPurchaseSheet.toggle()
+                            showingPurchaseAlert.toggle()
                         } label: {
                             HStack {
                                 Text("Purchase Tyd+")
                                     .foregroundColor(.accent)
                             }
                         }
-                    } else {
+                    } 
+                    if passStatusModel.passStatus != .notSubscribed {
                         Button {
                             showingManageSubscriptionSheet.toggle()
                         } label: {
@@ -292,16 +296,21 @@ struct SettingsView: View {
                         }
                     }
                 }
-                .sheet(isPresented: $showingAboutSheet) {
-                    AboutView()
-                }
             }
             .navigationBarTitle("Settings")
         }
-        .manageSubscriptionsSheet(
-           isPresented: $showingManageSubscriptionSheet,
-           subscriptionGroupID: passIDs.group
-       )
+        .onAppear {
+            Task {
+                try await storeModel.fetchProducts()
+            }
+        }
+//        .manageSubscriptionsSheet(
+//           isPresented: $showingManageSubscriptionSheet,
+//           subscriptionGroupID: passIDs.group
+//       )
+        .sheet(isPresented: $showingAboutSheet) {
+            AboutView()
+        }
         .alert("Delete all data?", isPresented: $showingImportWarning) {
             Button("Import") {
                 showingDataImporter.toggle()
@@ -341,6 +350,23 @@ struct SettingsView: View {
             Button("Cancel", role: .cancel) {}
         } message: {
             Text("Are you sure you want to erase all of your data? This is irreversible.")
+        }
+        .alert("Get Tyd+?", isPresented: $showingPurchaseAlert) {
+            if let product = storeModel.products.first {
+                Button("Upgrade (\(product.displayPrice))") {
+                    Task {
+                        try await storeModel.purchase()
+                    }
+                }
+                Button("Restore purchase") {
+                    Task {
+                        try await AppStore.sync()
+                    }
+                }
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This feature is only availble in Tyd+. Upgrade now to access it.")
         }
     }
     

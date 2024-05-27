@@ -136,6 +136,9 @@
     "Choose the plan that's best for you" : {
 
     },
+    "Close" : {
+
+    },
     "Custom color" : {
 
     },
@@ -188,6 +191,9 @@
 
     },
     "Future access to new features" : {
+
+    },
+    "Get Tyd+?" : {
 
     },
     "History" : {
@@ -295,6 +301,9 @@
     "Restart timer" : {
 
     },
+    "Restore purchase" : {
+
+    },
     "Restore Purchase" : {
 
     },
@@ -352,6 +361,9 @@
     "The file you selected cannot be imported" : {
 
     },
+    "This feature is only availble in Tyd+. Upgrade now to access it." : {
+
+    },
     "Time since you should have changed your %@" : {
 
     },
@@ -377,6 +389,9 @@
 
     },
     "Tyd+" : {
+
+    },
+    "Upgrade (%@)" : {
 
     },
     "Version %@" : {
