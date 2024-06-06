@@ -1,9 +1,5 @@
-# Furtherance
+# Tyd
 Tyd is a period tracker that does not track you or your data.
-
-<p align="center">
-    <img width="500px" src="https://unobserved.io/assets/screenshots/furtherance-mac.png" alt="Furtherance screenshot"/>
-</p>
 
 ## Features
 * Track your period history...forever
